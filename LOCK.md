@@ -1,23 +1,17 @@
-# LOCK — NightDeck (Pass 6 day-link)
+# LOCK — NightDeck (Pass 7 game-night UI)
 
 - **name:** NightDeck
 - **spelling_notes:** NightDeck one word
 - **slug:** nightdeck
 - **demo_vs_sku:** sku
 - **in_scope:**
-  - **Theme:** light white + blue (not dark club)
-  - **Create day:** host picks **one** game type up front (Trivia | Identify | Music) + name → gets a **permanent day link** (shareable URL with day code)
-  - **Join:** visitors open that day link → enter name → land ready to play **that** game (no per-round type picker)
-  - **Play:** short rounds of the chosen type; host or self-paced as already built, workplace-clean packs
-  - **Live leaderboard:** shared Upstash Redis; board page on the day link updates as people complete
-  - Solo demo still OK for dry-run
-  - GitHub Pages: https://dev-storm-clockers.github.io/nightdeck/
+  - Keep Pass 6 product: white/blue, create day with **one** game type, permanent day link, Upstash live board
+  - **Pass 7 bar:** video-game / party-night presentation — big concise **cards**, HUD chrome, not wordy website pages
+  - **Mobile lock-in FIX (hard):** answering on phone must work reliably — prefer **tap option = lock** for multiple choice; huge hit targets; no sticky dock covering buttons; typed guess still has clear Lock
+  - Short copy only (labels, not paragraphs)
+  - Same packs / Upstash day keys
 - **out_of_scope:**
-  - Blank-fill / CAH-style cards
-  - Mixing Trivia+Identify+Music in one day (one type per day)
-  - Copyrighted audio streams
-  - Neon this pass (Upstash only)
-  - Cloudflare Worker proxy (workers.dev still blocked) — client REST to Upstash for MVP scores only
-- **landing:** github-pages
-- **hard_stop_passes:** 4 prefer stop by 2
-- **phil_ok:** 2026-09-09 yes — white/blue; pick game at create; permanent day link; live end board; Claim Upstash path
+  - Blank-fill cards; multi-type mix nights; Neon; Worker proxy; long marketing copy
+- **landing:** github-pages https://dev-storm-clockers.github.io/nightdeck/
+- **hard_stop_passes:** 4 prefer stop by 2 on this polish
+- **phil_ok:** 2026-09-09 yes — “lock in doesn’t work on mobile”; “video game night quality”; “clear concise card visual not wordy pages”

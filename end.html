@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>NightDeck — Results</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
@@ -12,33 +12,28 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Run complete.</p>
+        <p>Done</p>
       </div>
     </div>
 
     <section class="card stack primary-action">
       <div class="end-hero">
         <div class="trophy" aria-hidden="true">★</div>
-        <h2 style="margin:0">Your score</h2>
+        <h2 style="margin:0">Score</h2>
         <p class="muted tight" style="margin-top:0.35rem" id="typeLine">—</p>
       </div>
       <div class="center">
-        <div class="day-code" id="scoreBig">0</div>
-        <p class="muted" id="scoreSub">out of 0</p>
+        <div class="podium-score" id="scoreBig">0</div>
+        <p class="muted" id="scoreSub">/ 0</p>
       </div>
-      <div class="row" style="justify-content:center; gap:0.4rem">
+      <div class="row" style="justify-content:center;gap:0.4rem">
         <span class="pill" id="dayPill">—</span>
         <span class="pill" id="namePill">—</span>
       </div>
-      <div>
-        <div class="muted" style="margin-bottom:0.35rem">Share</div>
-        <pre class="share-box" id="shareBox"></pre>
-      </div>
-      <div class="row">
-        <button class="btn" id="copyBtn" type="button">Copy results</button>
-        <a class="btn secondary" id="boardLink" href="#">Live leaderboard</a>
-        <a class="btn ghost" href="index.html" id="againLink">Create another day</a>
-      </div>
+      <pre class="share-box" id="shareBox"></pre>
+      <button class="btn block card-btn" id="copyBtn" type="button">Copy share</button>
+      <a class="btn secondary block" id="boardLink" href="#">Leaderboard</a>
+      <a class="btn ghost block center" href="index.html" id="againLink">New day</a>
     </section>
   </main>
 
@@ -61,9 +56,9 @@
         return;
       }
       const total = run.queue.length;
-      UI.$("#typeLine").textContent = Game.typeLabel(run.gameType) + " · Staff Night";
+      UI.$("#typeLine").textContent = Game.typeLabel(run.gameType);
       UI.$("#scoreBig").textContent = String(run.score);
-      UI.$("#scoreSub").textContent = "out of " + total;
+      UI.$("#scoreSub").textContent = "/ " + total;
       UI.$("#dayPill").textContent = session.dayCode;
       UI.$("#namePill").textContent = session.name || "Player";
       UI.$("#boardLink").href = "board.html?d=" + encodeURIComponent(session.dayCode);

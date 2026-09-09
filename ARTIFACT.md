@@ -10,7 +10,8 @@
 - **live_url:** https://dev-storm-clockers.github.io/nightdeck/
 - **owner_agent:** Build Head
 - **ready_for_quality:** no
-- **pass:** 6
+- **pass:** 7
 - **notes:** |
-  Pass 6 day-link: white/blue theme; host picks Trivia|Identify|Music at create;
-  permanent day.html?d=CODE; Upstash live board; ready_for_quality=no until Quality.
+  Pass 7 game-night UI + mobile lock-in: tap option = lock for MCQ;
+  fixed bottom Next bar with safe-area; concise Jackbox-style cards;
+  Upstash day sync unchanged; ready_for_quality=no until Quality.

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Join Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NightDeck — Join</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,30 +12,29 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p id="subtitle">Loading day…</p>
+        <p id="subtitle">Loading…</p>
       </div>
     </div>
 
     <section class="card stack hidden" id="errorCard">
       <div class="error-banner" id="errorText">Day not found.</div>
-      <a class="btn secondary" href="index.html">Back to create</a>
+      <a class="btn secondary block" href="index.html">Back</a>
     </section>
 
     <section class="card stack primary-action hidden" id="joinPanel">
-      <div class="row" style="justify-content:space-between">
-        <h2 style="margin:0">Join this day</h2>
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <h2 style="margin:0">Join</h2>
         <span class="pill" id="typePill">—</span>
       </div>
-      <div class="center">
-        <div class="muted">Day code</div>
+      <div class="join-code-card">
         <div class="day-code" id="dayCode">—————</div>
+        <p class="muted tight" id="dayMeta" style="margin-top:0.4rem"></p>
       </div>
-      <p class="muted tight" id="dayMeta"></p>
       <label>Your name
-        <input id="playerName" type="text" maxlength="24" placeholder="What should we call you?" autocomplete="nickname" />
+        <input id="playerName" type="text" maxlength="24" placeholder="Nickname" autocomplete="nickname" />
       </label>
-      <button class="btn block" id="startBtn" type="button">Start game</button>
-      <a class="btn ghost block center" id="boardLink" href="#">Watch live leaderboard</a>
+      <button class="btn block card-btn" id="startBtn" type="button">Start</button>
+      <a class="btn ghost block center" id="boardLink" href="#">Leaderboard</a>
     </section>
   </main>
 
@@ -49,7 +48,6 @@
       const UI = NightDeckUI;
       const Sync = NightDeckSync;
       const Game = NightDeckGame;
-      const Catalog = NightDeckCatalog;
 
       const code = (UI.qs("d") || "").trim().toUpperCase();
       const soloFlag = UI.qs("solo") === "1";
@@ -57,7 +55,7 @@
 
       async function load() {
         if (!code) {
-          showError("Missing day code in the link.");
+          showError("Missing day code.");
           return;
         }
         if (soloFlag) {
@@ -73,7 +71,7 @@
         try {
           day = await Sync.getDay(code);
           if (!day) {
-            showError("Day not found. Ask the host for a fresh link.");
+            showError("Day not found.");
             return;
           }
           renderJoin();
@@ -83,22 +81,22 @@
       }
 
       function showError(msg) {
-        UI.$("#subtitle").textContent = "Day unavailable";
+        UI.$("#subtitle").textContent = "Unavailable";
         UI.$("#errorCard").classList.remove("hidden");
         UI.$("#errorText").textContent = msg;
         UI.$("#joinPanel").classList.add("hidden");
       }
 
       function renderJoin() {
-        UI.$("#subtitle").textContent = "Staff Night · " + Game.typeLabel(day.gameType);
+        UI.$("#subtitle").textContent = Game.typeLabel(day.gameType);
         UI.$("#joinPanel").classList.remove("hidden");
         UI.$("#dayCode").textContent = day.code;
         UI.$("#typePill").textContent = Game.typeEmoji(day.gameType) + " " + Game.typeLabel(day.gameType);
         UI.$("#typePill").className = "pill " + day.gameType;
         UI.$("#dayMeta").textContent =
-          "Hosted by " + (day.hostName || "Host") +
-          " · " + Game.typeLabel(day.gameType) + " only · " +
-          ((day.players && day.players.length) || 0) + " joined";
+          (day.hostName || "Host") +
+          " · " +
+          ((day.players && day.players.length) || 0) + " in";
         UI.$("#boardLink").href = "board.html?d=" + encodeURIComponent(day.code);
         const session = Sync.loadSession();
         if (session && session.dayCode === day.code && session.name) {

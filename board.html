@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Live Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NightDeck — Board</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,31 +12,28 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p id="subtitle"><span class="live-dot" aria-hidden="true"></span>Live leaderboard</p>
+        <p id="subtitle"><span class="live-dot" aria-hidden="true"></span>Live</p>
       </div>
     </div>
 
     <section class="card stack hidden" id="errorCard">
       <div class="error-banner" id="errorText">Day not found.</div>
-      <a class="btn secondary" href="index.html">Create a day</a>
+      <a class="btn secondary block" href="index.html">Create</a>
     </section>
 
     <section class="card stack primary-action" id="boardCard">
-      <div class="row" style="justify-content:space-between">
-        <h2 style="margin:0">Standings</h2>
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <h2 style="margin:0">Board</h2>
         <span class="pill" id="typePill">—</span>
       </div>
       <div class="center">
-        <div class="muted">Day code</div>
         <div class="day-code" id="dayCode">—————</div>
+        <p class="muted tight" id="metaLine" style="margin-top:0.35rem">…</p>
       </div>
-      <p class="muted tight" id="metaLine">Refreshing…</p>
       <div class="scoreboard podium-board" id="scores"></div>
-      <div class="empty-board hidden" id="empty">No scores yet — share the day link and play.</div>
-      <div class="row">
-        <a class="btn" id="playLink" href="#">Join / play</a>
-        <a class="btn secondary" href="index.html">Create another day</a>
-      </div>
+      <div class="empty-board hidden" id="empty">No scores yet</div>
+      <a class="btn block card-btn" id="playLink" href="#">Play</a>
+      <a class="btn secondary block" href="index.html">New day</a>
     </section>
   </main>
 
@@ -55,7 +52,7 @@
       if (!code) {
         UI.$("#errorCard").classList.remove("hidden");
         UI.$("#boardCard").classList.add("hidden");
-        UI.$("#errorText").textContent = "Add ?d=CODE to the URL.";
+        UI.$("#errorText").textContent = "Add ?d=CODE";
         return;
       }
 
@@ -85,12 +82,11 @@
         UI.$("#typePill").className = "pill " + day.gameType;
         UI.$("#subtitle").innerHTML =
           '<span class="live-dot" aria-hidden="true"></span>' +
-          Game.typeLabel(day.gameType) + " · live board";
+          Game.typeLabel(day.gameType);
         const finished = (players || []).filter((p) => p.finishedAt);
         const waiting = (players || []).filter((p) => !p.finishedAt);
         UI.$("#metaLine").textContent =
-          finished.length + " finished · " + waiting.length + " in progress · updates ~2s · host " +
-          (day.hostName || "—");
+          finished.length + " done · " + waiting.length + " playing";
 
         const ranked = Game.rankedPlayers(players);
         const box = UI.$("#scores");
@@ -102,7 +98,7 @@
         UI.$("#empty").classList.add("hidden");
         box.innerHTML = ranked
           .map((p, i) => {
-            const status = p.finishedAt ? "" : " · playing";
+            const status = p.finishedAt ? "" : " · …";
             const medal = i === 0 && p.finishedAt ? " top" : i < 3 && p.finishedAt ? " place" : "";
             return (
               '<div class="score-row' + medal + '"><span class="rank">' + (i + 1) +

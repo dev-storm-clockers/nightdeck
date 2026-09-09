@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>NightDeck — Play</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
@@ -16,7 +16,7 @@
           <p id="metaLine">Loading…</p>
         </div>
       </div>
-      <div class="score-chip">
+      <div class="score-chip" aria-live="polite">
         <div class="lbl">Score</div>
         <div class="val" id="scoreVal">0</div>
       </div>
@@ -28,41 +28,40 @@
       <span class="pill" id="dayPill">—</span>
     </div>
 
-    <section class="card stack round-card" id="roundSection">
-      <div class="prompt-card" id="promptCard">
-        <div class="kicker" id="promptKicker">Question</div>
-        <div class="clue hidden" id="promptClue"></div>
-        <div class="big" id="promptBig">…</div>
-        <div class="hint hidden" id="promptHint"></div>
-      </div>
+    <div class="hud-progress" aria-hidden="true">
+      <div class="q-bar"><i id="progressBar" style="width:0%"></i></div>
+      <span class="q-chip" id="progChip">0/0</span>
+    </div>
 
-      <div class="progress-row">
-        <div class="lock-meter" id="lockMeter" aria-hidden="true"><i id="progressBar" style="width:0%"></i></div>
-        <span class="waiting-chip" id="progChip">0 / 0</span>
-      </div>
+    <div class="prompt-card" id="promptCard">
+      <div class="kicker" id="promptKicker">Question</div>
+      <div class="clue hidden" id="promptClue"></div>
+      <div class="big" id="promptBig">…</div>
+      <div class="hint hidden" id="promptHint"></div>
+    </div>
 
-      <div id="answerArea">
-        <div class="options" id="options" role="group" aria-label="Answer options"></div>
-        <div class="typed-row hidden" id="typedWrap">
-          <label class="typed-label" style="flex:1;margin:0">
-            <span class="sr-only">Type your guess</span>
-            <input id="typedGuess" type="text" maxlength="80" placeholder="Or type a guess…" autocomplete="off" />
-          </label>
-          <button class="btn lock-btn" id="lockBtn" type="button" disabled>Lock in</button>
-        </div>
-        <p class="muted tight" id="lockedNote"></p>
+    <div id="answerArea">
+      <div class="options" id="options" role="group" aria-label="Answer options"></div>
+      <div class="typed-row hidden" id="typedWrap">
+        <label style="flex:1;margin:0;font-size:0;gap:0">
+          <span class="sr-only">Type your guess</span>
+          <input id="typedGuess" type="text" maxlength="80" placeholder="Type a guess…" autocomplete="off" enterkeyhint="done" />
+        </label>
+        <button class="btn lock-btn" id="lockBtn" type="button" disabled>Lock in</button>
       </div>
+    </div>
 
-      <div class="reveal-banner hidden" id="revealBanner"></div>
-    </section>
-
-    <section class="play-dock" id="playDock">
-      <div class="play-dock-actions">
-        <button class="btn ok hidden" id="nextBtn" type="button">Next question</button>
-        <a class="btn ghost" href="board.html" id="boardBtn">Leaderboard</a>
-      </div>
-    </section>
+    <div class="reveal-banner hidden" id="revealBanner"></div>
   </main>
+
+  <div class="action-bar" id="actionBar">
+    <div class="action-bar-inner">
+      <button class="btn ok card-btn hidden" id="nextBtn" type="button">Next</button>
+      <div class="action-bar-links">
+        <a href="board.html" id="boardBtn">Leaderboard</a>
+      </div>
+    </div>
+  </div>
 
   <script src="js/ui.js"></script>
   <script src="js/sync-config.js"></script>
@@ -83,7 +82,7 @@
       }
 
       let run = Sync.loadRun();
-      let selectedOption = null;
+      let locking = false;
       let pack = null;
 
       UI.$("#boardBtn").href = "board.html?d=" + encodeURIComponent(session.dayCode);
@@ -111,6 +110,35 @@
             hint.classList.remove("hidden");
           }
         }
+      }
+
+      function doLock(text, flashEl) {
+        if (!run || run.phase !== "answering" || locking) return;
+        const guess = String(text || "").trim();
+        if (!guess) {
+          UI.toast("Pick or type something");
+          return;
+        }
+        locking = true;
+        if (flashEl) {
+          flashEl.classList.add("selected", "flash");
+          UI.$all(".option-btn").forEach((b) => {
+            if (b !== flashEl) b.disabled = true;
+          });
+        }
+        const apply = () => {
+          const res = Game.lockAndReveal(run, guess);
+          if (!res.ok) {
+            locking = false;
+            UI.toast(res.error);
+            return;
+          }
+          Sync.saveRun(run);
+          render();
+          locking = false;
+        };
+        if (flashEl) setTimeout(apply, 180);
+        else apply();
       }
 
       function renderOptions() {
@@ -145,31 +173,24 @@
               if (isCorrect) btn.classList.add("correct");
               else if (run.currentGuess === opt) btn.classList.add("wrong");
             } else {
-              btn.onclick = () => {
-                selectedOption = opt;
-                UI.$all(".option-btn", optsEl).forEach((b) => b.classList.remove("selected"));
-                btn.classList.add("selected");
-                typedGuess.value = "";
-                lockBtn.disabled = false;
-              };
+              // One gesture: tap option = select + lock + reveal
+              btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                doLock(opt, btn);
+              });
             }
             optsEl.appendChild(btn);
           });
         }
 
         if (run.phase === "answering") {
-          typedWrap.classList.toggle("hidden", !allowTyped && hasOptions);
-          if (!hasOptions) typedWrap.classList.remove("hidden");
-          if (allowTyped) {
+          const showTyped = allowTyped || !hasOptions;
+          typedWrap.classList.toggle("hidden", !showTyped);
+          if (showTyped) {
             typedGuess.disabled = false;
             typedGuess.placeholder = hasOptions ? "Or type a guess…" : "Type your guess…";
-          } else {
-            typedGuess.disabled = true;
-            typedGuess.placeholder = "Pick an option above";
-            if (hasOptions) typedWrap.classList.add("hidden");
+            lockBtn.disabled = !typedGuess.value.trim();
           }
-          lockBtn.classList.remove("hidden");
-          lockBtn.disabled = !(selectedOption || (allowTyped && typedGuess.value.trim()));
         } else {
           typedWrap.classList.add("hidden");
         }
@@ -191,7 +212,7 @@
         UI.$("#dayPill").textContent = session.dayCode;
         const pct = prog.total ? Math.round((run.cursor / prog.total) * 100) : 0;
         UI.$("#progressBar").style.width = pct + "%";
-        UI.$("#progChip").textContent = prog.index + " / " + prog.total;
+        UI.$("#progChip").textContent = prog.index + "/" + prog.total;
 
         const cur = Game.currentQuestion(run);
         if (!cur) return;
@@ -199,6 +220,7 @@
         renderOptions();
 
         const banner = UI.$("#revealBanner");
+        const nextBtn = UI.$("#nextBtn");
         if (run.phase === "reveal") {
           banner.classList.remove("hidden");
           banner.classList.toggle("miss", !run.currentCorrect);
@@ -208,14 +230,12 @@
             '</span><span class="reveal-value">' +
             UI.escapeHtml(cur.item.answer) +
             "</span>";
-          UI.$("#lockedNote").textContent = "";
-          UI.$("#nextBtn").classList.remove("hidden");
-          UI.$("#nextBtn").textContent =
-            run.cursor + 1 >= run.queue.length ? "Finish & submit score" : "Next question";
+          nextBtn.classList.remove("hidden");
+          nextBtn.textContent =
+            run.cursor + 1 >= run.queue.length ? "Finish" : "Next";
         } else {
           banner.classList.add("hidden");
-          UI.$("#lockedNote").textContent = "Select an answer, then lock in.";
-          UI.$("#nextBtn").classList.add("hidden");
+          nextBtn.classList.add("hidden");
         }
       }
 
@@ -265,34 +285,28 @@
       }
 
       UI.$("#typedGuess").addEventListener("input", () => {
-        selectedOption = null;
-        UI.$all(".option-btn").forEach((b) => b.classList.remove("selected"));
         UI.$("#lockBtn").disabled = !UI.$("#typedGuess").value.trim();
       });
       UI.$("#typedGuess").addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
-          UI.$("#lockBtn").click();
+          doLock(UI.$("#typedGuess").value);
         }
       });
-      UI.$("#lockBtn").onclick = () => {
-        if (!run || run.phase !== "answering") return;
-        const text = selectedOption || UI.$("#typedGuess").value.trim();
-        const res = Game.lockAndReveal(run, text);
-        if (!res.ok) return UI.toast(res.error);
-        Sync.saveRun(run);
-        selectedOption = null;
-        render();
-      };
-      UI.$("#nextBtn").onclick = () => {
+      UI.$("#lockBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        doLock(UI.$("#typedGuess").value);
+      });
+      UI.$("#nextBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!run || run.phase !== "reveal") return;
         const res = Game.nextQuestion(run);
         if (!res.ok) return UI.toast(res.error);
         Sync.saveRun(run);
-        selectedOption = null;
         UI.$("#typedGuess").value = "";
         if (res.done) finish();
         else render();
-      };
+      });
 
       boot();
     })();

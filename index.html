@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Create a Staff Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NightDeck</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,69 +12,58 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Staff Night · create a day · share one link</p>
+        <p>Staff Night</p>
       </div>
     </div>
 
-    <div class="hero-banner">
-      <strong>Pick one game. Share a permanent day link. Watch the board fill up.</strong>
-      <span>Trivia, Identify, or Music — chosen once when you create the day. Players open the link, enter a name, and play.</span>
-    </div>
-
     <section class="card stack primary-action" id="createCard">
-      <h2>Create a day</h2>
-      <p class="muted tight">Choose the game type for everyone on this day.</p>
+      <h2>Create day</h2>
       <div class="game-type-grid" id="typeGrid" role="radiogroup" aria-label="Game type">
         <button type="button" class="game-type trivia" data-type="trivia" aria-pressed="false">
           <span class="emoji" aria-hidden="true">🧠</span>
           <strong>Trivia</strong>
-          <span>Four options. Short workplace-clean questions.</span>
+          <span>A–D picks</span>
         </button>
         <button type="button" class="game-type identify" data-type="identify" aria-pressed="false">
           <span class="emoji" aria-hidden="true">🔍</span>
           <strong>Identify</strong>
-          <span>What is it? Options or a typed guess.</span>
+          <span>What is it?</span>
         </button>
         <button type="button" class="game-type music" data-type="music" aria-pressed="false">
           <span class="emoji" aria-hidden="true">🎵</span>
           <strong>Music</strong>
-          <span>Lyric cues. Name the song or artist.</span>
+          <span>Name that cue</span>
         </button>
       </div>
-      <label>Your name (host)
-        <input id="hostName" type="text" maxlength="24" placeholder="Your name" autocomplete="nickname" />
+      <label>Your name
+        <input id="hostName" type="text" maxlength="24" placeholder="Host name" autocomplete="nickname" />
       </label>
-      <button class="btn block" id="createBtn" type="button">Create day &amp; get link</button>
-      <button class="btn secondary block" id="soloBtn" type="button">Solo demo (local only)</button>
+      <button class="btn block card-btn" id="createBtn" type="button">Create</button>
+      <button class="btn secondary block" id="soloBtn" type="button">Solo demo</button>
       <p class="muted tight" id="createStatus"></p>
     </section>
 
     <section class="card stack hidden" id="createdCard">
       <h2>Day ready</h2>
-      <p class="muted tight">Share this permanent link. Anyone with it can join and play <strong id="createdType">—</strong>.</p>
       <div class="center">
-        <div class="muted">Day code</div>
+        <div class="muted">Code · <span id="createdType">—</span></div>
         <div class="day-code" id="createdCode">—————</div>
       </div>
       <div class="link-box" id="createdLink"></div>
       <div class="row">
-        <button class="btn" id="copyLinkBtn" type="button">Copy day link</button>
-        <a class="btn secondary" id="openDayBtn" href="#">Open day</a>
-        <a class="btn ghost" id="openBoardBtn" href="#">Live board</a>
+        <button class="btn" id="copyLinkBtn" type="button">Copy link</button>
+        <a class="btn secondary" id="openDayBtn" href="#">Open</a>
+        <a class="btn ghost" id="openBoardBtn" href="#">Board</a>
       </div>
-      <button class="btn ghost" id="anotherBtn" type="button">Create another day</button>
+      <button class="btn ghost block" id="anotherBtn" type="button">New day</button>
     </section>
 
     <section class="card stack" id="joinCard">
-      <h2>Join an existing day</h2>
+      <h2>Join</h2>
       <label>Day code
-        <input id="joinCode" type="text" maxlength="8" placeholder="e.g. K7M2P" autocomplete="off" style="text-transform:uppercase" />
+        <input id="joinCode" type="text" maxlength="8" placeholder="K7M2P" autocomplete="off" style="text-transform:uppercase;letter-spacing:0.12em;font-weight:800" />
       </label>
-      <button class="btn secondary block" id="joinBtn" type="button">Open day link</button>
-      <details class="inline-help">
-        <summary>How multi-device works</summary>
-        <p class="muted" style="margin:0.5rem 0 0">Days sync nicknames and scores through Upstash. Open the day link on phones; the live board updates about every 2 seconds.</p>
-      </details>
+      <button class="btn secondary block card-btn" id="joinBtn" type="button">Go</button>
     </section>
   </main>
 
@@ -110,29 +99,28 @@
         UI.$("#createdCode").textContent = day.code;
         UI.$("#createdType").textContent = Game.typeLabel(day.gameType);
         const link = Sync.dayUrl(day.code);
-        const board = Sync.boardUrl(day.code);
         UI.$("#createdLink").textContent = link;
         UI.$("#openDayBtn").href = "day.html?d=" + encodeURIComponent(day.code);
         UI.$("#openBoardBtn").href = "board.html?d=" + encodeURIComponent(day.code);
         if (opts && opts.solo) {
-          UI.$("#createdLink").textContent = link + " (local solo — scores stay on this device)";
+          UI.$("#createdLink").textContent = link + " (solo · this device)";
         }
       }
 
       UI.$("#createBtn").addEventListener("click", async () => {
         if (!selectedType) {
-          UI.toast("Pick Trivia, Identify, or Music");
+          UI.toast("Pick a game");
           return;
         }
         const hostName = UI.$("#hostName").value;
         UI.$("#createBtn").disabled = true;
-        UI.$("#createStatus").textContent = "Creating day…";
+        UI.$("#createStatus").textContent = "Creating…";
         try {
           const day = await Sync.createDay({ gameType: selectedType, hostName });
           showCreated(day);
-          UI.toast("Day " + day.code + " created");
+          UI.toast("Day " + day.code);
         } catch (err) {
-          UI.$("#createStatus").textContent = err.message || "Could not create day";
+          UI.$("#createStatus").textContent = err.message || "Failed";
           UI.toast(err.message || "Create failed");
         } finally {
           UI.$("#createBtn").disabled = false;
@@ -141,7 +129,7 @@
 
       UI.$("#soloBtn").addEventListener("click", () => {
         if (!selectedType) {
-          UI.toast("Pick a game type first");
+          UI.toast("Pick a game");
           return;
         }
         const day = Sync.createSoloDay({
@@ -160,7 +148,7 @@
       });
 
       UI.$("#copyLinkBtn").addEventListener("click", () => {
-        UI.copyText(UI.$("#createdLink").textContent.replace(/\s*\(local.*\)$/, ""));
+        UI.copyText(UI.$("#createdLink").textContent.replace(/\s*\(solo.*\)$/, ""));
       });
 
       UI.$("#anotherBtn").addEventListener("click", () => {
@@ -172,7 +160,7 @@
       UI.$("#joinBtn").addEventListener("click", () => {
         const code = UI.$("#joinCode").value.trim().toUpperCase();
         if (!code) {
-          UI.toast("Enter a day code");
+          UI.toast("Enter a code");
           return;
         }
         location.href = "day.html?d=" + encodeURIComponent(code);

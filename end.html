@@ -12,7 +12,7 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Staff Night — that's a wrap.</p>
+        <p>Staff Night complete.</p>
       </div>
     </div>
 
@@ -20,16 +20,16 @@
       <div class="end-hero">
         <div class="trophy" aria-hidden="true">★</div>
         <h2 style="margin:0">Final podium</h2>
-        <p class="muted" style="margin:0.35rem 0 0">Trivia · Identify · Music — brag responsibly.</p>
+        <p class="muted tight" style="margin-top:0.35rem">Trivia · Identify · Music</p>
       </div>
       <div class="row" style="justify-content:center; gap:0.4rem">
         <span class="pill" id="roomPill">—</span>
-        <span class="pill soft" id="roundPill">—</span>
+        <span class="pill" id="roundPill">—</span>
       </div>
-      <p class="muted center" id="summaryLine"></p>
-      <div class="scoreboard" id="scores"></div>
+      <p class="muted center tight" id="summaryLine"></p>
+      <div class="scoreboard podium-board" id="scores"></div>
       <div>
-        <div class="muted" style="margin-bottom:0.35rem">Share this</div>
+        <div class="muted" style="margin-bottom:0.35rem">Share</div>
         <pre class="share-box" id="shareBox"></pre>
       </div>
       <div class="row">
@@ -52,8 +52,7 @@
       const room = session ? Room.readRoom(session.code) : null;
       if (!room) {
         UI.$("#shareBox").textContent =
-          "No room found. Head back to the NightDeck lobby and open one.";
-        UI.$("#summaryLine").textContent = "";
+          "No room found. Open a new Staff Night from the lobby.";
         return;
       }
       if (room.status !== "ended" && room.status !== "playing") {
@@ -65,16 +64,14 @@
       UI.$("#roundPill").textContent =
         room.round + " round" + (room.round === 1 ? "" : "s");
 
-      const history = room.history || [];
       const types = {};
-      history.forEach((h) => {
+      (room.history || []).forEach((h) => {
         types[h.type] = (types[h.type] || 0) + 1;
       });
       const mix = ["trivia", "identify", "music"]
         .filter((t) => types[t])
         .map((t) => types[t] + " " + t)
         .join(" · ");
-
       UI.$("#summaryLine").textContent =
         (mix || "Trivia · Identify · Music") +
         " · " +
@@ -85,8 +82,7 @@
       scores.innerHTML = "";
       Game.rankedPlayers(room).forEach((p, i) => {
         const row = document.createElement("div");
-        row.className = "score-row" + (i === 0 ? " top" : "");
-        const medal = i === 0 ? " ★" : i === 1 ? " ◆" : i === 2 ? " ●" : "";
+        row.className = "score-row" + (i === 0 ? " top" : i < 3 ? " place" : "");
         const bot = p.bot ? " · bot" : "";
         const you = session && p.id === session.playerId ? " (you)" : "";
         row.innerHTML =
@@ -96,7 +92,6 @@
           UI.escapeHtml(p.name) +
           you +
           bot +
-          medal +
           '</span><span class="pts">' +
           p.score +
           "</span>";
@@ -106,10 +101,7 @@
       const text = Game.shareText(room);
       UI.$("#shareBox").textContent = text;
       UI.$("#copyBtn").onclick = () => UI.copyText(text);
-
-      UI.$("#againLink").addEventListener("click", () => {
-        Room.clearSession();
-      });
+      UI.$("#againLink").addEventListener("click", () => Room.clearSession());
     })();
   </script>
 </body>

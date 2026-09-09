@@ -7,92 +7,111 @@
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-  <main class="app">
-    <div class="topbar">
-      <div class="brand" style="margin:0">
+  <main class="app play-app">
+    <header class="play-header">
+      <div class="brand play-brand">
         <div class="brand-mark">ND</div>
         <div>
           <h1>NightDeck</h1>
           <p id="metaLine">Staff Night</p>
         </div>
       </div>
-      <div class="live-scores">
-        <div class="tiny">Live scores</div>
-        <ol id="liveScores"></ol>
-      </div>
-    </div>
+      <aside class="score-rail" aria-label="Live scoreboard">
+        <div class="score-rail-title">Scoreboard</div>
+        <ol id="liveScores" class="score-rail-list"></ol>
+      </aside>
+    </header>
 
-    <div class="status-line">
+    <div class="status-bar">
       <span class="pill" id="roundPill">Round 0</span>
       <span class="pill warn" id="phasePill">picking</span>
-      <span class="pill soft" id="roomPill">room</span>
-      <span class="pill" id="typePill"></span>
+      <span class="pill" id="roomPill">———</span>
+      <span class="pill hidden" id="typePill"></span>
+      <span class="role-badge hidden" id="roleBadge"></span>
     </div>
 
-    <!-- HOST: pick next round type -->
-    <section class="card stack" id="pickerSection">
-      <h2>What are we playing?</h2>
-      <p class="muted" id="pickerHint">Host picks Trivia, Identify, or Music. Keep rounds short.</p>
+    <!-- Picker -->
+    <section class="card stack picker-card" id="pickerSection">
+      <div class="section-head">
+        <h2 id="pickerTitle">Choose a round</h2>
+        <p class="muted tight" id="pickerHint">Host picks the next game. Short rounds, keep the night moving.</p>
+      </div>
       <div class="round-picker" id="roundPicker">
         <button type="button" class="round-type trivia" data-type="trivia">
-          <span class="emoji">🧠</span>
+          <span class="emoji" aria-hidden="true">🧠</span>
           <strong>Trivia</strong>
-          <span>4 options · everyone locks · host reveals</span>
+          <span>Four options. Everyone answers. You reveal.</span>
         </button>
         <button type="button" class="round-type identify" data-type="identify">
-          <span class="emoji">🔍</span>
+          <span class="emoji" aria-hidden="true">🔍</span>
           <strong>Identify</strong>
-          <span>Guess what it is · options or type-in</span>
+          <span>What is it? Options or a typed guess.</span>
         </button>
         <button type="button" class="round-type music" data-type="music">
-          <span class="emoji">🎵</span>
+          <span class="emoji" aria-hidden="true">🎵</span>
           <strong>Music</strong>
-          <span>Lyric / line cue · name that song</span>
+          <span>Lyric cue. Name the song or artist.</span>
         </button>
       </div>
-      <p class="muted hidden" id="waitingPick">Waiting on the host to pick the next round…</p>
+      <div class="waiting-panel hidden" id="waitingPick">
+        <div class="waiting-pulse" aria-hidden="true"></div>
+        <p>Host is choosing the next round…</p>
+      </div>
     </section>
 
-    <!-- ANSWERING / REVEAL: prompt + answers -->
-    <section class="card stack hidden" id="roundSection">
-      <div class="prompt-card" id="promptCard">
+    <!-- Active round -->
+    <section class="card stack round-card hidden" id="roundSection">
+      <div class="prompt-card" id="promptCard" data-type="">
         <div class="kicker" id="promptKicker">Question</div>
         <div class="clue hidden" id="promptClue"></div>
         <div class="big" id="promptBig">…</div>
         <div class="hint hidden" id="promptHint"></div>
       </div>
 
-      <div class="waiting-chip" id="lockChip">0 locked in</div>
+      <div class="progress-row">
+        <div class="lock-meter" id="lockMeter" aria-hidden="true"><i style="width:0%"></i></div>
+        <span class="waiting-chip" id="lockChip">0 locked in</span>
+      </div>
 
       <div id="answerArea">
-        <div class="options" id="options"></div>
-        <div class="stack" id="typedWrap" style="margin-top:0.5rem">
-          <label class="hidden" id="typedLabel">Or type your guess
-            <input id="typedGuess" type="text" maxlength="80" placeholder="Your guess" autocomplete="off" />
+        <div class="options" id="options" role="group" aria-label="Answer options"></div>
+        <div class="typed-row hidden" id="typedWrap">
+          <label id="typedLabel" class="typed-label">
+            <span class="sr-only">Type your guess</span>
+            <input id="typedGuess" type="text" maxlength="80" placeholder="Or type a guess…" autocomplete="off" />
           </label>
-          <button class="btn block" id="lockBtn" type="button" disabled>Lock it in</button>
+          <button class="btn lock-btn" id="lockBtn" type="button" disabled>Lock in</button>
         </div>
-        <p class="muted" id="lockedNote"></p>
+        <p class="muted tight" id="lockedNote"></p>
       </div>
 
-      <div class="reveal-answer hidden" id="revealAnswer"></div>
+      <div class="reveal-banner hidden" id="revealAnswer"></div>
 
       <div class="hidden" id="answersPanel">
-        <h2 style="margin-top:0.5rem">Answers</h2>
+        <div class="section-head compact">
+          <h2>Results</h2>
+          <p class="muted tight" id="resultsHint">Who got it.</p>
+        </div>
         <div class="answer-grid" id="answersGrid"></div>
-      </div>
-
-      <div class="host-bar hidden" id="hostBar">
-        <button class="btn ok" id="revealBtn" type="button">Reveal answer</button>
-        <button class="btn secondary hidden" id="nextRoundBtn" type="button">Next round</button>
       </div>
     </section>
 
-    <section class="card stack scores-card">
-      <h2>Scoreboard</h2>
-      <div class="scoreboard" id="scores"></div>
-      <div class="row">
-        <button class="btn danger" id="endBtn" type="button">Call it a night</button>
+    <!-- Host controls -->
+    <section class="host-dock hidden" id="hostBar">
+      <div class="host-dock-label">Host</div>
+      <div class="host-dock-actions">
+        <button class="btn ok" id="revealBtn" type="button">Reveal answer</button>
+        <button class="btn secondary hidden" id="nextRoundBtn" type="button">Next round</button>
+        <button class="btn danger ghost-danger" id="endBtn" type="button">End night</button>
+      </div>
+    </section>
+
+    <section class="card stack scores-full">
+      <div class="section-head compact">
+        <h2>Full standings</h2>
+      </div>
+      <div class="scoreboard podium-board" id="scores"></div>
+      <div class="row foot-actions" id="playerFoot">
         <a class="btn ghost" href="index.html">Lobby</a>
       </div>
     </section>
@@ -115,49 +134,50 @@
       }
 
       let selectedOption = null;
-      let suppressPoll = false;
 
       function isHost(room) {
         return session.playerId === room.hostId;
       }
 
       function phaseLabel(phase) {
-        if (phase === "picking") return "pick a round";
+        if (phase === "picking") return "choose round";
         if (phase === "answering") return "answering";
         if (phase === "reveal") return "reveal";
         return phase || "—";
       }
 
       function typeLabel(type) {
-        if (type === "trivia") return "Trivia";
-        if (type === "identify") return "Identify";
-        if (type === "music") return "Music";
-        return "";
+        return { trivia: "Trivia", identify: "Identify", music: "Music" }[type] || "";
       }
 
       function renderScores(room) {
         const ranked = Game.rankedPlayers(room);
-        const live = UI.$("#liveScores");
-        live.innerHTML = ranked
-          .slice(0, 6)
-          .map(
-            (p) =>
-              "<li><span>" +
+        UI.$("#liveScores").innerHTML = ranked
+          .slice(0, 8)
+          .map((p, i) => {
+            const you = p.id === session.playerId ? ' class="you"' : "";
+            return (
+              "<li" +
+              you +
+              "><span class=\"n\">" +
+              (i + 1) +
+              ".</span><span class=\"who\">" +
               UI.escapeHtml(p.name) +
               '</span><span class="pts">' +
               p.score +
               "</span></li>"
-          )
+            );
+          })
           .join("");
 
-        const scores = UI.$("#scores");
-        scores.innerHTML = ranked
+        UI.$("#scores").innerHTML = ranked
           .map((p, i) => {
             const you = p.id === session.playerId ? " (you)" : "";
             const bot = p.bot ? " · bot" : "";
+            const medal = i === 0 ? " top" : i < 3 ? " place" : "";
             return (
               '<div class="score-row' +
-              (i === 0 ? " top" : "") +
+              medal +
               '"><span class="rank">' +
               (i + 1) +
               '</span><span class="who">' +
@@ -173,10 +193,12 @@
       }
 
       function fillPrompt(item) {
+        const card = UI.$("#promptCard");
         const kicker = UI.$("#promptKicker");
         const big = UI.$("#promptBig");
         const clue = UI.$("#promptClue");
         const hint = UI.$("#promptHint");
+        card.setAttribute("data-type", item.type || "");
         clue.classList.add("hidden");
         hint.classList.add("hidden");
         clue.textContent = "";
@@ -186,14 +208,14 @@
           kicker.textContent = "Trivia";
           big.textContent = item.q;
         } else if (item.type === "identify") {
-          kicker.textContent = "Identify this";
+          kicker.textContent = "Identify";
           big.textContent = item.prompt;
           if (item.clue) {
             clue.textContent = item.clue;
             clue.classList.remove("hidden");
           }
         } else {
-          kicker.textContent = "Name that tune";
+          kicker.textContent = "Music";
           big.textContent = "“" + item.cue + "”";
           if (item.hint) {
             hint.textContent = item.hint;
@@ -205,33 +227,37 @@
       function renderOptions(room, meLocked) {
         const item = room.current.item;
         const optsEl = UI.$("#options");
-        const typedLabel = UI.$("#typedLabel");
+        const typedWrap = UI.$("#typedWrap");
         const typedGuess = UI.$("#typedGuess");
         const lockBtn = UI.$("#lockBtn");
-        const typedWrap = UI.$("#typedWrap");
         optsEl.innerHTML = "";
 
         const hasOptions = Array.isArray(item.options) && item.options.length > 0;
         const allowTyped = item.type !== "trivia";
+        const letters = "ABCD";
 
         if (hasOptions) {
-          item.options.forEach((opt) => {
+          item.options.forEach((opt, idx) => {
             const btn = document.createElement("button");
             btn.type = "button";
             btn.className = "option-btn";
-            btn.textContent = opt;
-            if (meLocked) {
+            btn.innerHTML =
+              '<span class="opt-letter">' +
+              letters[idx] +
+              '</span><span class="opt-text">' +
+              UI.escapeHtml(opt) +
+              "</span>";
+            if (meLocked || room.phase === "reveal") {
               btn.disabled = true;
-              if (room.current.answers[session.playerId] === opt) {
-                btn.classList.add("selected");
-              }
+              const mine = room.current.answers[session.playerId] === opt;
+              if (mine) btn.classList.add("selected");
               if (room.phase === "reveal") {
-                const correct =
+                const isCorrect =
                   item.type === "trivia"
                     ? opt === item.answer
-                    : Game.matchesAccept(opt, item) || opt === item.answer;
-                if (correct) btn.classList.add("correct");
-                else if (room.current.answers[session.playerId] === opt) btn.classList.add("wrong");
+                    : opt === item.answer || Game.matchesAccept(opt, item);
+                if (isCorrect) btn.classList.add("correct");
+                else if (mine) btn.classList.add("wrong");
               }
             } else {
               btn.onclick = () => {
@@ -246,22 +272,20 @@
           });
         }
 
-        if (allowTyped && room.phase === "answering" && !meLocked) {
-          typedLabel.classList.remove("hidden");
-          typedGuess.disabled = false;
-        } else {
-          typedLabel.classList.add("hidden");
-        }
-
         if (room.phase === "answering" && !meLocked) {
           typedWrap.classList.remove("hidden");
-          lockBtn.classList.remove("hidden");
-          lockBtn.disabled = !(selectedOption || typedGuess.value.trim());
-        } else {
-          lockBtn.classList.add("hidden");
-          if (!(allowTyped && room.phase === "answering")) {
-            typedLabel.classList.add("hidden");
+          typedWrap.classList.toggle("typed-only", !hasOptions);
+          if (allowTyped) {
+            typedGuess.disabled = false;
+            typedGuess.placeholder = hasOptions ? "Or type a guess…" : "Type your guess…";
+          } else {
+            typedGuess.disabled = true;
+            typedGuess.placeholder = "Pick an option above";
           }
+          lockBtn.classList.remove("hidden");
+          lockBtn.disabled = !(selectedOption || (allowTyped && typedGuess.value.trim()));
+        } else {
+          typedWrap.classList.add("hidden");
         }
       }
 
@@ -274,47 +298,57 @@
         }
         panel.classList.remove("hidden");
         const host = isHost(room);
+        const canOverride = host && room.current.item.type !== "trivia";
+        UI.$("#resultsHint").textContent = canOverride
+          ? "Tap ✓ / ✗ if auto-grade missed a close guess."
+          : "Green = point scored.";
+
         grid.innerHTML = "";
-        room.players.forEach((p) => {
+        const ordered = room.players.slice().sort((a, b) => {
+          const ac = room.current.correctMap[a.id] ? 0 : 1;
+          const bc = room.current.correctMap[b.id] ? 0 : 1;
+          return ac - bc || a.name.localeCompare(b.name);
+        });
+        ordered.forEach((p) => {
           const ans = room.current.answers[p.id];
           const correct = !!room.current.correctMap[p.id];
           const row = document.createElement("div");
-          row.className = "answer-row" + (correct ? " correct" : "");
+          row.className = "answer-row" + (correct ? " correct" : " miss");
           const left = document.createElement("div");
+          left.className = "answer-main";
           left.innerHTML =
             '<div class="who">' +
             UI.escapeHtml(p.name) +
-            (p.bot ? " · bot" : "") +
-            (p.id === session.playerId ? " (you)" : "") +
+            (p.bot ? ' <span class="tag">bot</span>' : "") +
+            (p.id === session.playerId ? ' <span class="tag you">you</span>' : "") +
             "</div>" +
             '<div class="guess">' +
             (ans != null ? UI.escapeHtml(ans) : "<em>no answer</em>") +
-            (correct ? " ✓" : "") +
             "</div>";
+          const badge = document.createElement("div");
+          badge.className = "result-badge " + (correct ? "ok" : "no");
+          badge.textContent = correct ? "+1" : "—";
           row.appendChild(left);
-          if (host && room.current.item.type !== "trivia") {
+          row.appendChild(badge);
+          if (canOverride) {
             const actions = document.createElement("div");
-            actions.className = "rowish";
+            actions.className = "override";
             const ok = document.createElement("button");
             ok.type = "button";
-            ok.className = "btn ok";
-            ok.style.padding = "0.35rem 0.6rem";
+            ok.className = "mini ok";
             ok.textContent = "✓";
             ok.title = "Mark correct";
             ok.onclick = () => {
-              const r = Room.readRoom(session.code);
-              Game.markCorrect(r, p.id, true);
+              Game.markCorrect(Room.readRoom(session.code), p.id, true);
               render();
             };
             const no = document.createElement("button");
             no.type = "button";
-            no.className = "btn secondary";
-            no.style.padding = "0.35rem 0.6rem";
+            no.className = "mini";
             no.textContent = "✗";
             no.title = "Mark wrong";
             no.onclick = () => {
-              const r = Room.readRoom(session.code);
-              Game.markCorrect(r, p.id, false);
+              Game.markCorrect(Room.readRoom(session.code), p.id, false);
               render();
             };
             actions.appendChild(ok);
@@ -326,7 +360,6 @@
       }
 
       function render() {
-        if (suppressPoll) return;
         const room = Room.readRoom(session.code);
         if (!room) {
           UI.toast("Room went missing");
@@ -343,13 +376,16 @@
         }
 
         const host = isHost(room);
-        const me = room.players.find((p) => p.id === session.playerId);
-
         UI.$("#metaLine").textContent =
-          room.players.length + " at the table · room " + room.code;
+          room.players.length + " players · " + room.code;
         UI.$("#roundPill").textContent = "Round " + (room.round || 0);
         UI.$("#phasePill").textContent = phaseLabel(room.phase);
         UI.$("#roomPill").textContent = room.code;
+
+        const role = UI.$("#roleBadge");
+        role.classList.remove("hidden");
+        role.textContent = host ? "Host" : "Player";
+        role.className = "role-badge " + (host ? "host" : "player");
 
         const typePill = UI.$("#typePill");
         if (room.current && room.current.type) {
@@ -366,16 +402,24 @@
         const roundSec = UI.$("#roundSection");
         const hostBar = UI.$("#hostBar");
 
+        document.body.classList.toggle("is-host", host);
+        document.body.classList.toggle("is-player", !host);
+
         if (room.phase === "picking") {
           picker.classList.remove("hidden");
           roundSec.classList.add("hidden");
           UI.$("#roundPicker").classList.toggle("hidden", !host);
           UI.$("#waitingPick").classList.toggle("hidden", host);
+          UI.$("#pickerTitle").textContent = host ? "Choose a round" : "Stand by";
           UI.$("#pickerHint").textContent = host
-            ? "Pick Trivia, Identify, or Music. Short rounds. Mix it up."
-            : "Hang tight — host is choosing the next round.";
+            ? "Trivia, Identify, or Music — keep rounds short."
+            : "The host picks the next game.";
           selectedOption = null;
           UI.$("#typedGuess").value = "";
+          hostBar.classList.toggle("hidden", !host);
+          UI.$("#revealBtn").classList.add("hidden");
+          UI.$("#nextRoundBtn").classList.add("hidden");
+          UI.$("#endBtn").classList.toggle("hidden", !host);
         } else if (room.phase === "answering" || room.phase === "reveal") {
           picker.classList.add("hidden");
           roundSec.classList.remove("hidden");
@@ -386,31 +430,28 @@
 
           const locked = Game.lockedCount(room);
           const total = room.players.length;
-          UI.$("#lockChip").textContent =
-            locked + " of " + total + " locked in";
+          const pct = total ? Math.round((locked / total) * 100) : 0;
+          UI.$("#lockChip").textContent = locked + " / " + total + " locked";
+          UI.$("#lockMeter i").style.width = pct + "%";
 
           const meLocked = !!(cur.locked && cur.locked[session.playerId]);
-          UI.$("#lockedNote").textContent = meLocked
-            ? "You're locked in. Waiting on the host to reveal…"
-            : room.phase === "answering"
-              ? "Pick an option" + (item.type !== "trivia" ? " or type a guess" : "") + ", then lock it in."
-              : "";
-
           if (room.phase === "answering") {
             UI.$("#answerArea").classList.remove("hidden");
             UI.$("#revealAnswer").classList.add("hidden");
+            UI.$("#lockedNote").textContent = meLocked
+              ? "Locked in. Waiting for reveal…"
+              : "Select an answer, then lock in.";
             renderOptions(room, meLocked);
-            if (meLocked) {
-              UI.$("#lockBtn").classList.add("hidden");
-              UI.$("#typedLabel").classList.add("hidden");
-            }
           } else {
-            // reveal
             UI.$("#answerArea").classList.add("hidden");
             const rev = UI.$("#revealAnswer");
             rev.classList.remove("hidden");
-            rev.textContent = "Answer: " + item.answer;
+            rev.innerHTML =
+              '<span class="reveal-label">Answer</span><span class="reveal-value">' +
+              UI.escapeHtml(item.answer) +
+              "</span>";
             renderOptions(room, true);
+            UI.$("#lockedNote").textContent = "";
           }
 
           renderAnswersPanel(room);
@@ -419,13 +460,16 @@
           if (host) {
             UI.$("#revealBtn").classList.toggle("hidden", room.phase !== "answering");
             UI.$("#nextRoundBtn").classList.toggle("hidden", room.phase !== "reveal");
+            UI.$("#endBtn").classList.remove("hidden");
           }
         } else {
           picker.classList.add("hidden");
           roundSec.classList.add("hidden");
+          hostBar.classList.add("hidden");
         }
 
-        UI.$("#endBtn").classList.toggle("hidden", !host);
+        // Player foot: only lobby link; host end lives in dock
+        UI.$("#playerFoot").classList.toggle("hidden", host);
       }
 
       UI.$("#roundPicker").addEventListener("click", (ev) => {
@@ -433,11 +477,12 @@
         if (!btn) return;
         const room = Room.readRoom(session.code);
         if (!room || !isHost(room)) return;
-        const res = Game.startRound(room, btn.getAttribute("data-type"));
+        const type = btn.getAttribute("data-type");
+        const res = Game.startRound(room, type);
         if (!res.ok) return UI.toast(res.error);
         selectedOption = null;
         UI.$("#typedGuess").value = "";
-        UI.toast(typeLabel(btn.getAttribute("data-type")) + " round started");
+        UI.toast(typeLabel(type) + " — go");
         render();
       });
 
@@ -447,13 +492,20 @@
         UI.$("#lockBtn").disabled = !UI.$("#typedGuess").value.trim();
       });
 
+      UI.$("#typedGuess").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          UI.$("#lockBtn").click();
+        }
+      });
+
       UI.$("#lockBtn").onclick = () => {
         const room = Room.readRoom(session.code);
         if (!room || room.phase !== "answering") return;
         const text = selectedOption || UI.$("#typedGuess").value.trim();
         const res = Game.lockAnswer(room, session.playerId, text);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Locked in");
+        UI.toast("Locked");
         selectedOption = null;
         render();
       };
@@ -463,7 +515,7 @@
         if (!room || !isHost(room)) return;
         const res = Game.revealRound(room);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Answer revealed");
+        UI.toast("Revealed");
         render();
       };
 
@@ -479,8 +531,8 @@
 
       UI.$("#endBtn").onclick = () => {
         const room = Room.readRoom(session.code);
-        if (!room) return;
-        if (!isHost(room)) return UI.toast("Only the host can wrap it up");
+        if (!room || !isHost(room)) return UI.toast("Only the host can end the night");
+        if (!confirm("End Staff Night and show the podium?")) return;
         Game.endNight(room);
         location.href = "end.html";
       };
@@ -494,7 +546,6 @@
 
       render();
       setInterval(() => {
-        if (suppressPoll) return;
         const room = Room.readRoom(session.code);
         if (room && room.status === "playing" && room.phase === "answering") {
           Game.runBotAnswers(room);

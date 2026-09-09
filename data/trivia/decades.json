@@ -1,0 +1,270 @@
+{
+  "title": "Decades (90s / 2000s)",
+  "subject": "decades",
+  "items": [
+    {
+      "q": "Which Nintendo handheld dominated portable gaming through the 1990s?",
+      "options": [
+        "PSP",
+        "Game Boy",
+        "Nintendo DS",
+        "Game Gear"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which late-90s / 2000s chat tool used screen names and buddy lists?",
+      "options": [
+        "Skype",
+        "AOL Instant Messenger",
+        "Slack",
+        "Discord"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which group had the 1999 hit \"I Want It That Way\"?",
+      "options": [
+        "NSYNC",
+        "Backstreet Boys",
+        "Westlife",
+        "One Direction"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which portable music player did Apple introduce in 2001?",
+      "options": [
+        "Zune",
+        "Walkman",
+        "iPod",
+        "Discman"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which fantasy film trilogy began with The Fellowship of the Ring in 2001?",
+      "options": [
+        "Harry Potter",
+        "The Lord of the Rings",
+        "The Matrix",
+        "Narnia"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which social network launched in 2004 and grew into a global giant?",
+      "options": [
+        "MySpace",
+        "Friendster",
+        "Facebook",
+        "Twitter"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which New York sitcom about six friends ended in 2004?",
+      "options": [
+        "Seinfeld",
+        "Friends",
+        "How I Met Your Mother",
+        "The Big Bang Theory"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What did Y2K fears mainly focus on disrupting?",
+      "options": [
+        "Satellite TV",
+        "Computer date systems",
+        "Radio only",
+        "GPS satellites alone"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which Disney Channel star released Breakout in 2008?",
+      "options": [
+        "Selena Gomez",
+        "Miley Cyrus",
+        "Demi Lovato",
+        "Hilary Duff"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which U.S. singing competition with Simon Cowell debuted in 2002?",
+      "options": [
+        "The Voice",
+        "American Idol",
+        "America's Got Talent",
+        "The X Factor"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which search engine became the default for most web users in the 2000s?",
+      "options": [
+        "Yahoo",
+        "Ask Jeeves",
+        "Google",
+        "AltaVista"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which cartoon about a sponge under the sea premiered in 1999?",
+      "options": [
+        "Adventure Time",
+        "SpongeBob SquarePants",
+        "Phineas and Ferb",
+        "Regular Show"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which matrix-themed film trilogy began in 1999?",
+      "options": [
+        "The Matrix",
+        "Blade",
+        "Equilibrium",
+        "Dark City"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What flip-style Motorola phone became a 2000s fashion icon?",
+      "options": [
+        "Nokia 3310",
+        "RAZR",
+        "BlackBerry Bold",
+        "iPhone 3G"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which Microsoft console launched in 2001 to rival PlayStation 2?",
+      "options": [
+        "Wii",
+        "Xbox",
+        "Dreamcast",
+        "GameCube"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which file-sharing service disrupted music distribution in the late 1990s?",
+      "options": [
+        "Spotify",
+        "Napster",
+        "iTunes",
+        "SoundCloud"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Harry Potter novel was published first (1997)?",
+      "options": [
+        "Chamber of Secrets",
+        "Philosopher's/Sorcerer's Stone",
+        "Prisoner of Azkaban",
+        "Goblet of Fire"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which reality show with Jeff Probst premiered in 2000?",
+      "options": [
+        "The Amazing Race",
+        "Survivor",
+        "Big Brother",
+        "Fear Factor"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which messaging service popularized status updates like \"Away\" and \"Busy\"?",
+      "options": [
+        "MSN Messenger / Windows Live Messenger",
+        "Telegram",
+        "WhatsApp",
+        "Signal"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which animated film about toys was Pixar's first feature (1995)?",
+      "options": [
+        "A Bug's Life",
+        "Toy Story",
+        "Monsters, Inc.",
+        "Finding Nemo"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which British pop group had a massive 1990s hit with \"Wannabe\"?",
+      "options": [
+        "Take That",
+        "Spice Girls",
+        "Westlife",
+        "Boyzone"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In what year did YouTube publicly launch?",
+      "options": [
+        "2003",
+        "2005",
+        "2007",
+        "2009"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which gaming console introduced motion controls with a remote in 2006?",
+      "options": [
+        "Xbox 360",
+        "PlayStation 3",
+        "Nintendo Wii",
+        "Dreamcast"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which tech company acquired YouTube in 2006?",
+      "options": [
+        "Yahoo",
+        "Microsoft",
+        "Google",
+        "Amazon"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    }
+  ]
+}

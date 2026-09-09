@@ -88,15 +88,17 @@
       }
 
       function renderJoin() {
-        UI.$("#subtitle").textContent = Game.typeLabel(day.gameType);
+        const line = Game.typeLine(day.gameType, day.subject);
+        UI.$("#subtitle").textContent = line;
         UI.$("#joinPanel").classList.remove("hidden");
         UI.$("#dayCode").textContent = day.code;
-        UI.$("#typePill").textContent = Game.typeEmoji(day.gameType) + " " + Game.typeLabel(day.gameType);
+        UI.$("#typePill").textContent = Game.typeEmoji(day.gameType) + " " + line;
         UI.$("#typePill").className = "pill " + day.gameType;
         UI.$("#dayMeta").textContent =
           (day.hostName || "Host") +
           " · " +
-          ((day.players && day.players.length) || 0) + " in";
+          ((day.players && day.players.length) || 0) + " in" +
+          (day.subject ? " · " + Game.subjectLabel(day.subject) : "");
         UI.$("#boardLink").href = "board.html?d=" + encodeURIComponent(day.code);
         const session = Sync.loadSession();
         if (session && session.dayCode === day.code && session.name) {
@@ -122,6 +124,7 @@
               playerId,
               name,
               gameType: day.gameType,
+              subject: day.subject || null,
               solo: true,
               day,
             });
@@ -139,6 +142,7 @@
               playerId,
               name,
               gameType: day.gameType,
+              subject: day.subject || null,
               solo: false,
             });
           }

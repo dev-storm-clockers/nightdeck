@@ -56,7 +56,8 @@
         return;
       }
       const total = run.queue.length;
-      UI.$("#typeLine").textContent = Game.typeLabel(run.gameType);
+      const subj = run.subject || session.subject || null;
+      UI.$("#typeLine").textContent = Game.typeLine(run.gameType, subj);
       UI.$("#scoreBig").textContent = String(run.score);
       UI.$("#scoreSub").textContent = "/ " + total;
       UI.$("#dayPill").textContent = session.dayCode;
@@ -65,6 +66,7 @@
       const text = Game.shareText({
         dayCode: session.dayCode,
         gameType: run.gameType,
+        subject: subj,
         playerName: session.name,
         score: run.score,
         total,

@@ -1,0 +1,52 @@
+{
+  "subjects": [
+    {
+      "id": "general",
+      "title": "General Knowledge",
+      "emoji": "\ud83c\udf0d",
+      "blurb": "Everyday facts"
+    },
+    {
+      "id": "pop",
+      "title": "Pop Culture",
+      "emoji": "\u2728",
+      "blurb": "Shows, stars, trends"
+    },
+    {
+      "id": "movies",
+      "title": "Movies & TV",
+      "emoji": "\ud83c\udfac",
+      "blurb": "Screens & series"
+    },
+    {
+      "id": "science",
+      "title": "Science & Nature",
+      "emoji": "\ud83d\udd2c",
+      "blurb": "How the world works"
+    },
+    {
+      "id": "geo",
+      "title": "Geography",
+      "emoji": "\ud83d\uddfa\ufe0f",
+      "blurb": "Places & planet"
+    },
+    {
+      "id": "food",
+      "title": "Food & Drink",
+      "emoji": "\ud83c\udf7d\ufe0f",
+      "blurb": "Kitchen & cuisine"
+    },
+    {
+      "id": "decades",
+      "title": "Decades (90s/2000s)",
+      "emoji": "\ud83d\udcfc",
+      "blurb": "Nostalgia hits"
+    },
+    {
+      "id": "mixed",
+      "title": "Mixed Staff Night",
+      "emoji": "\ud83c\udfb2",
+      "blurb": "Balanced mix"
+    }
+  ]
+}

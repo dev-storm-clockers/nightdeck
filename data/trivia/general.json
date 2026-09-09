@@ -1,0 +1,270 @@
+{
+  "title": "General Knowledge",
+  "subject": "general",
+  "items": [
+    {
+      "q": "How many continents are generally recognized on Earth?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the chemical symbol for gold?",
+      "options": [
+        "Go",
+        "Au",
+        "Ag",
+        "Gd"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "How many degrees are in a right angle?",
+      "options": [
+        "45",
+        "90",
+        "180",
+        "360"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the primary official language of Brazil?",
+      "options": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "Italian"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which ocean covers the largest surface area?",
+      "options": [
+        "Atlantic",
+        "Indian",
+        "Arctic",
+        "Pacific"
+      ],
+      "correct": 3,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the square root of 81?",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which instrument typically has 88 keys?",
+      "options": [
+        "Guitar",
+        "Violin",
+        "Piano",
+        "Harp"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "How many sides does a hexagon have?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What color results from mixing blue and yellow paint?",
+      "options": [
+        "Purple",
+        "Green",
+        "Orange",
+        "Brown"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "From which direction does the sun rise?",
+      "options": [
+        "North",
+        "South",
+        "East",
+        "West"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "How many minutes are in two hours?",
+      "options": [
+        "60",
+        "90",
+        "120",
+        "180"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the largest animal alive today?",
+      "options": [
+        "African elephant",
+        "Blue whale",
+        "Giraffe",
+        "Sperm whale"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which sport is played with a shuttlecock?",
+      "options": [
+        "Tennis",
+        "Badminton",
+        "Squash",
+        "Racquetball"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which country gifted the Statue of Liberty to the United States?",
+      "options": [
+        "United Kingdom",
+        "France",
+        "Spain",
+        "Italy"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What does HTTP stand for?",
+      "options": [
+        "HyperText Transfer Protocol",
+        "High Transfer Text Process",
+        "Host Terminal Type Protocol",
+        "Hyperlink Text Tracking Path"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which metal is liquid at standard room temperature?",
+      "options": [
+        "Sodium",
+        "Mercury",
+        "Aluminum",
+        "Zinc"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the hardest natural mineral on the Mohs scale?",
+      "options": [
+        "Quartz",
+        "Topaz",
+        "Diamond",
+        "Corundum"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which of the Seven Wonders of the Ancient World was a lighthouse near Alexandria?",
+      "options": [
+        "Colossus of Rhodes",
+        "Pharos of Alexandria",
+        "Hanging Gardens",
+        "Temple of Artemis"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which unit measures electric current?",
+      "options": [
+        "Volt",
+        "Watt",
+        "Ampere",
+        "Ohm"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "How many time zones does Russia span at its widest commonly cited count?",
+      "options": [
+        "5",
+        "7",
+        "9",
+        "11"
+      ],
+      "correct": 3,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In which year did the Wright brothers make their first powered flight?",
+      "options": [
+        "1899",
+        "1903",
+        "1912",
+        "1920"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "About how many kilometers is Earth's equatorial circumference?",
+      "options": [
+        "20,000 km",
+        "40,075 km",
+        "60,000 km",
+        "80,000 km"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which chemical element has atomic number 1?",
+      "options": [
+        "Helium",
+        "Hydrogen",
+        "Lithium",
+        "Carbon"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -77,16 +77,18 @@
       }
 
       function render(day, players) {
+        const line = Game.typeLine(day.gameType, day.subject);
         UI.$("#typePill").textContent =
-          Game.typeEmoji(day.gameType) + " " + Game.typeLabel(day.gameType);
+          Game.typeEmoji(day.gameType) + " " + line;
         UI.$("#typePill").className = "pill " + day.gameType;
         UI.$("#subtitle").innerHTML =
           '<span class="live-dot" aria-hidden="true"></span>' +
-          Game.typeLabel(day.gameType);
+          line;
         const finished = (players || []).filter((p) => p.finishedAt);
         const waiting = (players || []).filter((p) => !p.finishedAt);
         UI.$("#metaLine").textContent =
-          finished.length + " done · " + waiting.length + " playing";
+          finished.length + " done · " + waiting.length + " playing" +
+          (day.subject ? " · " + Game.subjectLabel(day.subject) : "");
 
         const ranked = Game.rankedPlayers(players);
         const box = UI.$("#scores");

@@ -92,6 +92,7 @@
     }));
     return {
       gameType,
+      subject: (pack && pack.subject) || null,
       dayCode,
       playerId,
       playerName,
@@ -156,6 +157,17 @@
     };
   }
 
+  const SUBJECT_TITLES = {
+    general: "General Knowledge",
+    pop: "Pop Culture",
+    movies: "Movies & TV",
+    science: "Science & Nature",
+    geo: "Geography",
+    food: "Food & Drink",
+    decades: "Decades (90s/2000s)",
+    mixed: "Mixed Staff Night",
+  };
+
   function typeLabel(type) {
     return { trivia: "Trivia", identify: "Identify", music: "Music" }[type] || type;
   }
@@ -164,10 +176,21 @@
     return { trivia: "🧠", identify: "🔍", music: "🎵" }[type] || "🎮";
   }
 
-  function shareText({ dayCode, gameType, playerName, score, total }) {
+  function subjectLabel(subject) {
+    if (!subject) return "";
+    return SUBJECT_TITLES[subject] || subject;
+  }
+
+  function typeLine(gameType, subject) {
+    const base = typeLabel(gameType);
+    if (gameType === "trivia" && subject) return base + " · " + subjectLabel(subject);
+    return base;
+  }
+
+  function shareText({ dayCode, gameType, subject, playerName, score, total }) {
     return [
       "NightDeck Staff Night",
-      typeLabel(gameType) + " · day " + dayCode,
+      typeLine(gameType, subject) + " · day " + dayCode,
       (playerName || "Player") + " — " + score + "/" + total,
       "",
       "Played on NightDeck",
@@ -191,6 +214,8 @@
     matchesAccept,
     typeLabel,
     typeEmoji,
+    subjectLabel,
+    typeLine,
     shareText,
     rankedPlayers,
     snapshotItem,

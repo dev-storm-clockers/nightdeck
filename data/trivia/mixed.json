@@ -1,0 +1,270 @@
+{
+  "title": "Mixed Staff Night",
+  "subject": "mixed",
+  "items": [
+    {
+      "q": "How many continents are generally recognized on Earth?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the chemical symbol for gold?",
+      "options": [
+        "Go",
+        "Au",
+        "Ag",
+        "Gd"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which unit measures electric current?",
+      "options": [
+        "Volt",
+        "Watt",
+        "Ampere",
+        "Ohm"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which streaming service premiered Stranger Things?",
+      "options": [
+        "Hulu",
+        "Netflix",
+        "Disney+",
+        "Max"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In The Office (U.S.), what is Dwight's last name?",
+      "options": [
+        "Schrute",
+        "Halpert",
+        "Beesly",
+        "Bernard"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which K-pop group released \"Dynamite\" in 2020?",
+      "options": [
+        "BLACKPINK",
+        "BTS",
+        "EXO",
+        "TWICE"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Who directed Jurassic Park (1993)?",
+      "options": [
+        "James Cameron",
+        "Steven Spielberg",
+        "Ridley Scott",
+        "George Lucas"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What kind of fish is Nemo in Finding Nemo?",
+      "options": [
+        "Clownfish",
+        "Goldfish",
+        "Angelfish",
+        "Blue tang"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who played the Joker in The Dark Knight?",
+      "options": [
+        "Joaquin Phoenix",
+        "Heath Ledger",
+        "Jared Leto",
+        "Jack Nicholson"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is H2O more commonly called?",
+      "options": [
+        "Salt",
+        "Water",
+        "Hydrogen peroxide",
+        "Ammonia"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which planet is closest to the Sun?",
+      "options": [
+        "Venus",
+        "Earth",
+        "Mercury",
+        "Mars"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who proposed the theory of general relativity?",
+      "options": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Galileo Galilei"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the capital of France?",
+      "options": [
+        "Lyon",
+        "Marseille",
+        "Paris",
+        "Nice"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is Earth's highest mountain above sea level?",
+      "options": [
+        "K2",
+        "Mount Everest",
+        "Kilimanjaro",
+        "Denali"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the world's smallest country by area?",
+      "options": [
+        "Monaco",
+        "Vatican City",
+        "San Marino",
+        "Liechtenstein"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which fruit is the main base of guacamole?",
+      "options": [
+        "Tomato",
+        "Avocado",
+        "Mango",
+        "Papaya"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which spice often gives curry dishes a yellow color?",
+      "options": [
+        "Paprika",
+        "Turmeric",
+        "Cumin",
+        "Cardamom"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Paella originated in which country?",
+      "options": [
+        "Italy",
+        "Portugal",
+        "Spain",
+        "Greece"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which portable music player did Apple introduce in 2001?",
+      "options": [
+        "Zune",
+        "Walkman",
+        "iPod",
+        "Discman"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which group had the 1999 hit \"I Want It That Way\"?",
+      "options": [
+        "NSYNC",
+        "Backstreet Boys",
+        "Westlife",
+        "One Direction"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which file-sharing service disrupted music in the late 1990s?",
+      "options": [
+        "Spotify",
+        "Napster",
+        "iTunes",
+        "SoundCloud"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In what year did the first iPhone go on sale?",
+      "options": [
+        "2005",
+        "2006",
+        "2007",
+        "2008"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "About how long does sunlight take to reach Earth?",
+      "options": [
+        "8 seconds",
+        "8 minutes",
+        "8 hours",
+        "8 days"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the capital of New Zealand?",
+      "options": [
+        "Auckland",
+        "Christchurch",
+        "Wellington",
+        "Hamilton"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    }
+  ]
+}

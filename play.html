@@ -25,6 +25,7 @@
     <div class="status-bar">
       <span class="pill" id="qPill">Q 0/0</span>
       <span class="pill" id="typePill">—</span>
+      <span class="pill hidden" id="subjectPill">—</span>
       <span class="pill" id="dayPill">—</span>
     </div>
 
@@ -93,7 +94,10 @@
         clue.classList.add("hidden");
         hint.classList.add("hidden");
         if (item.type === "trivia") {
-          UI.$("#promptKicker").textContent = "Trivia";
+          const subj = (run && run.subject) || session.subject;
+          UI.$("#promptKicker").textContent = subj
+            ? "Trivia · " + Game.subjectLabel(subj)
+            : "Trivia";
           UI.$("#promptBig").textContent = item.q;
         } else if (item.type === "identify") {
           UI.$("#promptKicker").textContent = "Identify";
@@ -203,12 +207,20 @@
           return;
         }
         const prog = Game.progress(run);
+        const subj = run.subject || session.subject || null;
         UI.$("#metaLine").textContent =
-          session.name + " · " + Game.typeLabel(run.gameType);
+          session.name + " · " + Game.typeLine(run.gameType, subj);
         UI.$("#scoreVal").textContent = String(run.score);
         UI.$("#qPill").textContent = "Q " + prog.index + "/" + prog.total;
         UI.$("#typePill").textContent = Game.typeLabel(run.gameType);
         UI.$("#typePill").className = "pill " + run.gameType;
+        const subPill = UI.$("#subjectPill");
+        if (run.gameType === "trivia" && subj) {
+          subPill.textContent = Game.subjectLabel(subj);
+          subPill.classList.remove("hidden");
+        } else {
+          subPill.classList.add("hidden");
+        }
         UI.$("#dayPill").textContent = session.dayCode;
         const pct = prog.total ? Math.round((run.cursor / prog.total) * 100) : 0;
         UI.$("#progressBar").style.width = pct + "%";
@@ -266,7 +278,22 @@
 
       async function boot() {
         try {
-          pack = await Catalog.loadPack(session.gameType);
+          let subject = session.subject || null;
+          if (session.gameType === "trivia" && !subject && !session.solo) {
+            try {
+              const day = await Sync.getDay(session.dayCode);
+              if (day && day.subject) {
+                subject = day.subject;
+                session.subject = subject;
+                Sync.saveSession(session);
+              }
+            } catch (e) { /* keep going */ }
+          }
+          if (session.gameType === "trivia" && session.solo && session.day && session.day.subject) {
+            subject = session.day.subject;
+            session.subject = subject;
+          }
+          pack = await Catalog.loadPack(session.gameType, subject);
           if (!run || run.dayCode !== session.dayCode || run.playerId !== session.playerId) {
             run = Game.startRun({
               gameType: session.gameType,

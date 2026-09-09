@@ -1,0 +1,270 @@
+{
+  "title": "Movies & TV",
+  "subject": "movies",
+  "items": [
+    {
+      "q": "Who directed Jurassic Park (1993)?",
+      "options": [
+        "James Cameron",
+        "Steven Spielberg",
+        "Ridley Scott",
+        "George Lucas"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In The Lion King, what is Simba's father's name?",
+      "options": [
+        "Scar",
+        "Mufasa",
+        "Rafiki",
+        "Zazu"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which movie popularized the line \"I'll be back\"?",
+      "options": [
+        "Die Hard",
+        "Predator",
+        "The Terminator",
+        "Aliens"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which hobbit does Elijah Wood play in The Lord of the Rings?",
+      "options": [
+        "Sam",
+        "Frodo",
+        "Merry",
+        "Pippin"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which series is set mainly in Hawkins, Indiana?",
+      "options": [
+        "Riverdale",
+        "Stranger Things",
+        "Twin Peaks",
+        "Gilmore Girls"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In Frozen, what is Elsa's younger sister's name?",
+      "options": [
+        "Anna",
+        "Ariel",
+        "Aurora",
+        "Belle"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who played Jack Dawson in Titanic?",
+      "options": [
+        "Brad Pitt",
+        "Leonardo DiCaprio",
+        "Matt Damon",
+        "Johnny Depp"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What kind of fish is Nemo in Finding Nemo?",
+      "options": [
+        "Clownfish",
+        "Goldfish",
+        "Angelfish",
+        "Blue tang"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which sitcom starred Ted Danson as a Boston bartender?",
+      "options": [
+        "Cheers",
+        "Frasier",
+        "Seinfeld",
+        "Friends"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What color is Luke Skywalker's first lightsaber in Star Wars?",
+      "options": [
+        "Blue",
+        "Green",
+        "Red",
+        "Purple"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which wizard school does Harry Potter attend?",
+      "options": [
+        "Beauxbatons",
+        "Durmstrang",
+        "Hogwarts",
+        "Ilvermorny"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In Toy Story, what is the name of the cowboy doll?",
+      "options": [
+        "Buzz",
+        "Woody",
+        "Jessie",
+        "Rex"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which streaming series follows the royal family of England in dramatized form?",
+      "options": [
+        "The Crown",
+        "Bridgerton",
+        "Downton Abbey",
+        "Victoria"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who voices Shrek in the Shrek films?",
+      "options": [
+        "Eddie Murphy",
+        "Mike Myers",
+        "John Goodman",
+        "Robin Williams"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which film won Best Picture at the Oscars for 2019 films (ceremony in 2020)?",
+      "options": [
+        "1917",
+        "Joker",
+        "Parasite",
+        "Once Upon a Time in Hollywood"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Who played the Joker opposite Christian Bale's Batman in The Dark Knight?",
+      "options": [
+        "Joaquin Phoenix",
+        "Heath Ledger",
+        "Jared Leto",
+        "Jack Nicholson"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In Breaking Bad, what alias does Walter White use while cooking?",
+      "options": [
+        "Heisenberg",
+        "Saul",
+        "Gus",
+        "Todd"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Pixar film is set mostly inside a young girl's mind?",
+      "options": [
+        "Soul",
+        "Inside Out",
+        "Coco",
+        "Up"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which James Cameron film is often cited as the highest-grossing movie of all time (unadjusted)?",
+      "options": [
+        "Titanic",
+        "Avatar",
+        "Terminator 2",
+        "Aliens"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In The Office (U.S.), who is the regional manager at the start of the series?",
+      "options": [
+        "Jim Halpert",
+        "Michael Scott",
+        "Dwight Schrute",
+        "David Wallace"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which director made Pulp Fiction and Kill Bill?",
+      "options": [
+        "Christopher Nolan",
+        "Quentin Tarantino",
+        "Martin Scorsese",
+        "David Fincher"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which actress played Katniss Everdeen in The Hunger Games films?",
+      "options": [
+        "Emma Watson",
+        "Jennifer Lawrence",
+        "Shailene Woodley",
+        "Kristen Stewart"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In what year was the first Star Wars film (A New Hope) released?",
+      "options": [
+        "1975",
+        "1977",
+        "1979",
+        "1980"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which HBO series centers on a contest for control of Westeros?",
+      "options": [
+        "The Witcher",
+        "Game of Thrones",
+        "Westworld",
+        "Rome"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    }
+  ]
+}

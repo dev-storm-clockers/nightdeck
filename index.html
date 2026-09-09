@@ -22,7 +22,7 @@
         <button type="button" class="game-type trivia" data-type="trivia" aria-pressed="false">
           <span class="emoji" aria-hidden="true">🧠</span>
           <strong>Trivia</strong>
-          <span>A–D picks</span>
+          <span>Pick a subject</span>
         </button>
         <button type="button" class="game-type identify" data-type="identify" aria-pressed="false">
           <span class="emoji" aria-hidden="true">🔍</span>
@@ -35,6 +35,15 @@
           <span>Name that cue</span>
         </button>
       </div>
+
+      <div class="subject-step hidden" id="subjectStep">
+        <div class="subject-step-head">
+          <h3>Trivia subject</h3>
+          <p class="muted tight">Required · 8 questions from this pack</p>
+        </div>
+        <div class="subject-grid" id="subjectGrid" role="radiogroup" aria-label="Trivia subject"></div>
+      </div>
+
       <label>Your name
         <input id="hostName" type="text" maxlength="24" placeholder="Host name" autocomplete="nickname" />
       </label>
@@ -46,7 +55,7 @@
     <section class="card stack hidden" id="createdCard">
       <h2>Day ready</h2>
       <div class="center">
-        <div class="muted">Code · <span id="createdType">—</span></div>
+        <div class="muted" id="createdType">—</div>
         <div class="day-code" id="createdCode">—————</div>
       </div>
       <div class="link-box" id="createdLink"></div>
@@ -70,13 +79,42 @@
   <script src="js/ui.js"></script>
   <script src="js/sync-config.js"></script>
   <script src="js/sync.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/game.js"></script>
   <script>
     (function () {
       const UI = NightDeckUI;
       const Sync = NightDeckSync;
       const Game = NightDeckGame;
+      const Catalog = NightDeckCatalog;
       let selectedType = null;
+      let selectedSubject = null;
+
+      function renderSubjects() {
+        const grid = UI.$("#subjectGrid");
+        grid.innerHTML = "";
+        Catalog.listSubjects().forEach((s) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "subject-card";
+          btn.setAttribute("data-subject", s.id);
+          btn.setAttribute("aria-pressed", "false");
+          btn.innerHTML =
+            '<span class="emoji" aria-hidden="true">' + s.emoji + "</span>" +
+            "<strong>" + UI.escapeHtml(s.title) + "</strong>" +
+            "<span>" + UI.escapeHtml(s.blurb) + "</span>";
+          grid.appendChild(btn);
+        });
+      }
+
+      function selectSubject(id) {
+        selectedSubject = id;
+        UI.$all(".subject-card").forEach((btn) => {
+          const on = btn.getAttribute("data-subject") === id;
+          btn.classList.toggle("selected", on);
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      }
 
       function selectType(type) {
         selectedType = type;
@@ -85,7 +123,18 @@
           btn.classList.toggle("selected", on);
           btn.setAttribute("aria-pressed", on ? "true" : "false");
         });
+        const showSubjects = type === "trivia";
+        UI.$("#subjectStep").classList.toggle("hidden", !showSubjects);
+        if (!showSubjects) {
+          selectedSubject = null;
+          UI.$all(".subject-card").forEach((btn) => {
+            btn.classList.remove("selected");
+            btn.setAttribute("aria-pressed", "false");
+          });
+        }
       }
+
+      renderSubjects();
 
       UI.$("#typeGrid").addEventListener("click", (ev) => {
         const btn = ev.target.closest("[data-type]");
@@ -93,11 +142,17 @@
         selectType(btn.getAttribute("data-type"));
       });
 
+      UI.$("#subjectGrid").addEventListener("click", (ev) => {
+        const btn = ev.target.closest("[data-subject]");
+        if (!btn) return;
+        selectSubject(btn.getAttribute("data-subject"));
+      });
+
       function showCreated(day, opts) {
         UI.$("#createCard").classList.add("hidden");
         UI.$("#createdCard").classList.remove("hidden");
         UI.$("#createdCode").textContent = day.code;
-        UI.$("#createdType").textContent = Game.typeLabel(day.gameType);
+        UI.$("#createdType").textContent = Game.typeLine(day.gameType, day.subject);
         const link = Sync.dayUrl(day.code);
         UI.$("#createdLink").textContent = link;
         UI.$("#openDayBtn").href = "day.html?d=" + encodeURIComponent(day.code);
@@ -107,16 +162,29 @@
         }
       }
 
-      UI.$("#createBtn").addEventListener("click", async () => {
+      function requireSelection() {
         if (!selectedType) {
           UI.toast("Pick a game");
-          return;
+          return false;
         }
+        if (selectedType === "trivia" && !selectedSubject) {
+          UI.toast("Pick a trivia subject");
+          return false;
+        }
+        return true;
+      }
+
+      UI.$("#createBtn").addEventListener("click", async () => {
+        if (!requireSelection()) return;
         const hostName = UI.$("#hostName").value;
         UI.$("#createBtn").disabled = true;
         UI.$("#createStatus").textContent = "Creating…";
         try {
-          const day = await Sync.createDay({ gameType: selectedType, hostName });
+          const day = await Sync.createDay({
+            gameType: selectedType,
+            hostName,
+            subject: selectedType === "trivia" ? selectedSubject : null,
+          });
           showCreated(day);
           UI.toast("Day " + day.code);
         } catch (err) {
@@ -128,19 +196,18 @@
       });
 
       UI.$("#soloBtn").addEventListener("click", () => {
-        if (!selectedType) {
-          UI.toast("Pick a game");
-          return;
-        }
+        if (!requireSelection()) return;
         const day = Sync.createSoloDay({
           gameType: selectedType,
           hostName: UI.$("#hostName").value || "You",
+          subject: selectedType === "trivia" ? selectedSubject : null,
         });
         Sync.saveSession({
           dayCode: day.code,
           playerId: Sync.makePlayerId(),
           name: day.hostName,
           gameType: day.gameType,
+          subject: day.subject || null,
           solo: true,
           day: day,
         });

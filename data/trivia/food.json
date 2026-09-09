@@ -1,0 +1,270 @@
+{
+  "title": "Food & Drink",
+  "subject": "food",
+  "items": [
+    {
+      "q": "Which fruit is the main base of guacamole?",
+      "options": [
+        "Tomato",
+        "Avocado",
+        "Mango",
+        "Papaya"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Sushi rice is typically which kind of grain?",
+      "options": [
+        "Wheat",
+        "Short-grain rice",
+        "Quinoa",
+        "Barley"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is tofu primarily made from?",
+      "options": [
+        "Cow's milk",
+        "Soybeans",
+        "Almonds",
+        "Chickpeas"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which pasta is long and thin like strings?",
+      "options": [
+        "Penne",
+        "Fusilli",
+        "Spaghetti",
+        "Farfalle"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What beverage is brewed from roasted coffee beans?",
+      "options": [
+        "Tea",
+        "Coffee",
+        "Cocoa",
+        "Mate"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which nut is used to make traditional marzipan?",
+      "options": [
+        "Walnut",
+        "Almond",
+        "Cashew",
+        "Pecan"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Besides chickpeas, what paste is essential in classic hummus?",
+      "options": [
+        "Yogurt",
+        "Tahini",
+        "Mayonnaise",
+        "Peanut butter"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which fresh herb tops a classic Margherita pizza?",
+      "options": [
+        "Basil",
+        "Cilantro",
+        "Dill",
+        "Mint"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "A traditional mimosa is orange juice mixed with\u2026",
+      "options": [
+        "Gin",
+        "Sparkling wine",
+        "Vodka",
+        "Rum"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which spice often gives curry dishes a yellow color?",
+      "options": [
+        "Paprika",
+        "Turmeric",
+        "Cumin",
+        "Cardamom"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What dairy product is churned to make butter?",
+      "options": [
+        "Cheese",
+        "Cream",
+        "Yogurt",
+        "Whey"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which fruit is dried to make raisins?",
+      "options": [
+        "Apricot",
+        "Grape",
+        "Plum",
+        "Fig"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the main grain in traditional oatmeal?",
+      "options": [
+        "Wheat",
+        "Oats",
+        "Rye",
+        "Corn"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which Italian cheese is commonly grated over pasta?",
+      "options": [
+        "Brie",
+        "Parmesan",
+        "Feta",
+        "Gouda"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Paella originated in which country?",
+      "options": [
+        "Italy",
+        "Portugal",
+        "Spain",
+        "Greece"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the Korean fermented cabbage dish called?",
+      "options": [
+        "Sauerkraut",
+        "Kimchi",
+        "Tsukemono",
+        "Curtido"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Classic \u00e9clairs are made from which pastry dough?",
+      "options": [
+        "Choux pastry",
+        "Puff pastry",
+        "Shortcrust",
+        "Phyllo"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which pasta shape's name means \"little ears\"?",
+      "options": [
+        "Orzo",
+        "Orecchiette",
+        "Rigatoni",
+        "Linguine"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Citrus fruits are especially rich in which vitamin?",
+      "options": [
+        "Vitamin A",
+        "Vitamin B12",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Japanese soup stock is made with kombu and bonito?",
+      "options": [
+        "Miso",
+        "Dashi",
+        "Ponzu",
+        "Mirin"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Espresso is a concentrated form of which drink?",
+      "options": [
+        "Tea",
+        "Coffee",
+        "Chocolate",
+        "Chicory"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the primary alcohol base of a classic margarita?",
+      "options": [
+        "Vodka",
+        "Tequila",
+        "Rum",
+        "Gin"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which French sauce is egg yolks whisked with melted butter?",
+      "options": [
+        "B\u00e9chamel",
+        "Hollandaise",
+        "Velout\u00e9",
+        "Tomato"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Roquefort cheese is traditionally made from the milk of which animal?",
+      "options": [
+        "Cow",
+        "Goat",
+        "Sheep",
+        "Buffalo"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    }
+  ]
+}

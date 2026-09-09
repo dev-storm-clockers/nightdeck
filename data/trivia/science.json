@@ -1,0 +1,270 @@
+{
+  "title": "Science & Nature",
+  "subject": "science",
+  "items": [
+    {
+      "q": "What is H2O more commonly called?",
+      "options": [
+        "Salt",
+        "Water",
+        "Hydrogen peroxide",
+        "Ammonia"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "How many legs does a typical spider have?",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which planet is closest to the Sun?",
+      "options": [
+        "Venus",
+        "Earth",
+        "Mercury",
+        "Mars"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What force keeps planets in orbit around the Sun?",
+      "options": [
+        "Magnetism",
+        "Gravity",
+        "Friction",
+        "Electricity"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the largest organ of the human body?",
+      "options": [
+        "Liver",
+        "Brain",
+        "Skin",
+        "Lungs"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which gas makes up most of Earth's atmosphere?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Argon"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What do honeybees collect from flowers to make honey?",
+      "options": [
+        "Pollen only",
+        "Nectar",
+        "Tree sap",
+        "Dew"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which animal is famous for eating bamboo?",
+      "options": [
+        "Koala",
+        "Giant panda",
+        "Sloth",
+        "Lemur"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "At standard pressure, at what Celsius temperature does water freeze?",
+      "options": [
+        "0\u00b0C",
+        "32\u00b0C",
+        "100\u00b0C",
+        "-10\u00b0C"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Where is DNA stored in human cells?",
+      "options": [
+        "Mitochondria",
+        "Nucleus",
+        "Ribosome",
+        "Cell membrane"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What do plants primarily take in during photosynthesis?",
+      "options": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Helium"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which planet is famous for its prominent ring system?",
+      "options": [
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the boiling point of water at standard pressure in Celsius?",
+      "options": [
+        "90\u00b0C",
+        "100\u00b0C",
+        "110\u00b0C",
+        "212\u00b0C"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which sense organ detects light?",
+      "options": [
+        "Ear",
+        "Nose",
+        "Eye",
+        "Tongue"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Approximately what is the speed of light in a vacuum?",
+      "options": [
+        "3,000 km/s",
+        "30,000 km/s",
+        "300,000 km/s",
+        "3,000,000 km/s"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Who proposed the theory of general relativity?",
+      "options": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Galileo Galilei"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the chemical formula for table salt?",
+      "options": [
+        "NaCl",
+        "KCl",
+        "CaCO3",
+        "HCl"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which blood type is often called the universal red-cell donor?",
+      "options": [
+        "A+",
+        "B+",
+        "AB+",
+        "O\u2212"
+      ],
+      "correct": 3,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Earthquakes are commonly measured using which scale family?",
+      "options": [
+        "Beaufort",
+        "Richter / moment magnitude",
+        "Fujita",
+        "Kelvin"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the powerhouse of the cell often called?",
+      "options": [
+        "Nucleus",
+        "Mitochondrion",
+        "Golgi apparatus",
+        "Lysosome"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which vitamin does skin produce when exposed to sunlight?",
+      "options": [
+        "Vitamin A",
+        "Vitamin B12",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "correct": 3,
+      "difficulty": "medium"
+    },
+    {
+      "q": "About how long does light from the Sun take to reach Earth?",
+      "options": [
+        "8 seconds",
+        "8 minutes",
+        "8 hours",
+        "8 days"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the most abundant element in the universe?",
+      "options": [
+        "Oxygen",
+        "Hydrogen",
+        "Helium",
+        "Carbon"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which particle has a negative electric charge?",
+      "options": [
+        "Proton",
+        "Neutron",
+        "Electron",
+        "Nucleus"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    }
+  ]
+}

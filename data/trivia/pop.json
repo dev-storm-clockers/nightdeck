@@ -1,0 +1,270 @@
+{
+  "title": "Pop Culture",
+  "subject": "pop",
+  "items": [
+    {
+      "q": "Which streaming service premiered Stranger Things?",
+      "options": [
+        "Hulu",
+        "Netflix",
+        "Disney+",
+        "Max"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the name of the coffee shop in Friends?",
+      "options": [
+        "Central Perk",
+        "Monk's Caf\u00e9",
+        "Luke's Diner",
+        "MacLaren's Pub"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who released the album titled 1989?",
+      "options": [
+        "Adele",
+        "Taylor Swift",
+        "Beyonc\u00e9",
+        "Rihanna"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In The Office (U.S.), what is Dwight's last name?",
+      "options": [
+        "Schrute",
+        "Halpert",
+        "Beesly",
+        "Bernard"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which hero is nicknamed the Caped Crusader?",
+      "options": [
+        "Superman",
+        "Spider-Man",
+        "Batman",
+        "Iron Man"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What color is Cookie Monster?",
+      "options": [
+        "Red",
+        "Yellow",
+        "Blue",
+        "Green"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which dating show is known for handing out roses?",
+      "options": [
+        "Survivor",
+        "The Bachelor",
+        "The Voice",
+        "Top Chef"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who created The Simpsons?",
+      "options": [
+        "Seth MacFarlane",
+        "Matt Groening",
+        "Mike Judge",
+        "Trey Parker"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Beyonc\u00e9's dedicated fan community is commonly called the\u2026",
+      "options": [
+        "Little Monsters",
+        "Beyhive",
+        "Swifties",
+        "Beliebers"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which Hogwarts house is Hermione Granger sorted into?",
+      "options": [
+        "Slytherin",
+        "Hufflepuff",
+        "Ravenclaw",
+        "Gryffindor"
+      ],
+      "correct": 3,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which app is best known for short vertical video clips that went mainstream in the late 2010s?",
+      "options": [
+        "Tumblr",
+        "TikTok",
+        "Pinterest",
+        "LinkedIn"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the name of Elsa's sister in Frozen?",
+      "options": [
+        "Anna",
+        "Ariel",
+        "Aurora",
+        "Belle"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which reality competition crowns a winner after singing performances judged by celebrity coaches?",
+      "options": [
+        "American Ninja Warrior",
+        "The Voice",
+        "Chopped",
+        "Shark Tank"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who is known for the alter ego Ziggy Stardust?",
+      "options": [
+        "Elton John",
+        "David Bowie",
+        "Prince",
+        "Freddie Mercury"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which video-game franchise features Master Chief?",
+      "options": [
+        "Halo",
+        "Call of Duty",
+        "Gears of War",
+        "Destiny"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "When Mark Zuckerberg first launched his Harvard site, what was it called?",
+      "options": [
+        "TheFacebook",
+        "FaceNet",
+        "CampusBook",
+        "ConnectU"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Adele album includes the hit \"Rolling in the Deep\"?",
+      "options": [
+        "19",
+        "21",
+        "25",
+        "30"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In the musical Hamilton, who is the title character?",
+      "options": [
+        "Thomas Jefferson",
+        "Alexander Hamilton",
+        "Aaron Burr",
+        "George Washington"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which K-pop group released \"Dynamite\" in 2020?",
+      "options": [
+        "BLACKPINK",
+        "BTS",
+        "EXO",
+        "TWICE"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which streaming series is set partly in Hawkins, Indiana?",
+      "options": [
+        "Riverdale",
+        "Stranger Things",
+        "Wednesday",
+        "Euphoria"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The word \"google\" was inspired by \"googol,\" which means\u2026",
+      "options": [
+        "10 to the power of 100",
+        "A type of telescope",
+        "A Silicon Valley street",
+        "A MIT lab project"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In what year did the first iPhone go on sale?",
+      "options": [
+        "2005",
+        "2006",
+        "2007",
+        "2008"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which artist released the album Lemonade in 2016?",
+      "options": [
+        "Rihanna",
+        "Beyonc\u00e9",
+        "Solange",
+        "Alicia Keys"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which late-night host took over The Tonight Show in 2014?",
+      "options": [
+        "Jimmy Kimmel",
+        "Jimmy Fallon",
+        "Stephen Colbert",
+        "Conan O'Brien"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    }
+  ]
+}

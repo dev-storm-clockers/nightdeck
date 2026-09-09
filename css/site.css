@@ -260,7 +260,75 @@ input:focus, select:focus, textarea:focus {
 }
 .game-type.trivia.selected { border-color: var(--trivia); }
 .game-type.identify.selected { border-color: var(--identify); }
+
 .game-type.music.selected { border-color: var(--music); }
+
+/* —— Index: trivia subject cards (Pass 8) —— */
+.subject-step {
+  margin-top: 0.15rem;
+  padding-top: 0.85rem;
+  border-top: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.subject-step-head h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.subject-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+@media (min-width: 560px) {
+  .subject-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.subject-card {
+  appearance: none;
+  text-align: left;
+  cursor: pointer;
+  border: 2.5px solid var(--border);
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.85rem 0.75rem;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--text);
+  transition: border-color 0.12s, box-shadow 0.12s, background 0.12s, transform 0.1s;
+  touch-action: manipulation;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+.subject-card .emoji { font-size: 1.45rem; line-height: 1; }
+.subject-card strong {
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.subject-card span:last-child {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.subject-card:hover { border-color: #93c5fd; background: #f8fbff; }
+.subject-card:active { transform: scale(0.98); }
+.subject-card.selected {
+  border-color: var(--trivia);
+  background: #eff6ff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18), var(--shadow);
+}
+.pill.subject {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
 
 .day-code {
   font-size: 2.4rem;

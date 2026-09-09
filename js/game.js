@@ -251,13 +251,18 @@
   }
 
   function shareText({ dayCode, gameType, subject, playerName, score, total }) {
-    return [
-      "NightDeck Staff Night",
-      typeLine(gameType, subject) + " · day " + dayCode,
-      (playerName || "Player") + " — " + score + "/" + total,
-      "",
-      "Played on NightDeck",
-    ].join("\n");
+    return (
+      "NightDeck " +
+      score +
+      "/" +
+      total +
+      " · " +
+      typeLine(gameType, subject) +
+      " · " +
+      (playerName || "Player") +
+      " · " +
+      dayCode
+    );
   }
 
   function rankedPlayers(players) {

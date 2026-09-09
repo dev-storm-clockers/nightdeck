@@ -8,31 +8,18 @@
 </head>
 <body>
   <main class="app">
-    <div class="brand">
-      <div class="brand-mark">ND</div>
-      <div>
-        <h1>NightDeck</h1>
-        <p>Done</p>
-      </div>
+    <div class="brand brand-end">
+      <img src="assets/logo.png" alt="NightDeck" class="brand-logo" />
     </div>
 
-    <section class="card stack primary-action">
-      <div class="end-hero">
-        <div class="trophy" aria-hidden="true">★</div>
-        <h2 style="margin:0">Score</h2>
-        <p class="muted tight" style="margin-top:0.35rem" id="typeLine">—</p>
-      </div>
+    <section class="card stack primary-action end-card">
+      <img src="assets/finish.png" alt="" class="finish-hero" width="200" height="200" />
       <div class="center">
-        <div class="podium-score" id="scoreBig">0</div>
-        <p class="muted" id="scoreSub">/ 0</p>
+        <div class="podium-score" id="scoreBig">0<span class="score-of" id="scoreSub"> / 0</span></div>
       </div>
-      <div class="row" style="justify-content:center;gap:0.4rem">
-        <span class="pill" id="dayPill">—</span>
-        <span class="pill" id="namePill">—</span>
-      </div>
-      <pre class="share-box" id="shareBox"></pre>
-      <button class="btn block card-btn" id="copyBtn" type="button">Copy share</button>
-      <a class="btn secondary block" id="boardLink" href="#">Leaderboard</a>
+      <p class="muted center tight end-meta" id="metaLine">—</p>
+      <a class="btn block card-btn" id="boardLink" href="#">Leaderboard</a>
+      <button class="btn secondary block" id="copyBtn" type="button">Copy score</button>
       <a class="btn ghost block center" href="index.html" id="againLink">New day</a>
     </section>
   </main>
@@ -57,21 +44,24 @@
       }
       const total = run.queue.length;
       const subj = run.subject || session.subject || null;
-      UI.$("#typeLine").textContent = Game.typeLine(run.gameType, subj);
-      UI.$("#scoreBig").textContent = String(run.score);
-      UI.$("#scoreSub").textContent = "/ " + total;
-      UI.$("#dayPill").textContent = session.dayCode;
-      UI.$("#namePill").textContent = session.name || "Player";
+      const name = session.name || "Player";
+      const typePart = Game.typeLine(run.gameType, subj);
+      UI.$("#scoreBig").innerHTML =
+        String(run.score) +
+        ' <span class="score-of" id="scoreSub">/ ' +
+        total +
+        "</span>";
+      UI.$("#metaLine").textContent =
+        typePart + " · " + name + " · " + session.dayCode;
       UI.$("#boardLink").href = "board.html?d=" + encodeURIComponent(session.dayCode);
       const text = Game.shareText({
         dayCode: session.dayCode,
         gameType: run.gameType,
         subject: subj,
-        playerName: session.name,
+        playerName: name,
         score: run.score,
         total,
       });
-      UI.$("#shareBox").textContent = text;
       UI.$("#copyBtn").onclick = () => UI.copyText(text);
       UI.$("#againLink").addEventListener("click", () => {
         Sync.clearSession();

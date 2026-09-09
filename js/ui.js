@@ -20,7 +20,7 @@
   function brandHtml(subtitle) {
     return (
       '<div class="brand">' +
-      '<div class="brand-mark">ND</div>' +
+      '<img src="assets/logo.png" alt="NightDeck" class="brand-logo" />' +
       "<div><h1>NightDeck</h1><p>" +
       (subtitle || "Staff Night games") +
       "</p></div></div>"

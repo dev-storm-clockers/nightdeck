@@ -22,3 +22,5 @@
 - **landing:** github-pages
 - **hard_stop_passes:** 4 (prefer stop by 2)
 - **phil_ok:** 2026-09-08/09 yes — workplace clean cut; 12 over ~5h; short game + big winner-choice window
+
+- **ac_files:** `/workspace/nightdeck/AC-accepted.md` · `/workspace/nightdeck/AC-change-solo-visual.md` · `/workspace/nightdeck/AC-change-staff-night.md`

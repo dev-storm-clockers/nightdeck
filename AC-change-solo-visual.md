@@ -30,3 +30,8 @@
 ## Release intent (Product Head)
 
 - Prefer stop by Pass 2
+
+
+## Related deltas
+
+- Staff-night Pass 3: `/workspace/nightdeck/AC-change-staff-night.md`

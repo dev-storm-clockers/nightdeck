@@ -12,57 +12,54 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p id="metaLine">Playing…</p>
+        <p id="metaLine">In progress…</p>
       </div>
     </div>
 
-    <section class="card stack">
+    <section class="card stack phase-card">
       <div class="row" style="justify-content:space-between">
         <span class="pill" id="roundPill">Round</span>
         <span class="pill warn" id="phasePill">phase</span>
         <span class="pill soft" id="roomPill">room</span>
       </div>
-      <div>
-        <div class="section-kicker">Prompt</div>
+      <div class="prompt-wrap">
+        <div class="prompt-label">This round's prompt</div>
         <div class="prompt-card" id="promptCard">…</div>
       </div>
+      <div class="role-line" id="roleLine">You're up.</div>
       <div class="muted" id="judgeLine">Judge: —</div>
-      <div class="muted" id="roleLine">You are: —</div>
       <div class="judge-banner hidden" id="judgeBanner">
-        <strong>Judge window open</strong> — take your time. Soft default ~60 min; no auto-advance. Step away if needed.
+        <strong>You're judging — take your time.</strong>
+        Grab a snack. Debate. No clock is chasing you.
       </div>
     </section>
 
     <section class="card stack" id="handSection">
-      <div class="section-kicker">Submit</div>
       <h2>Your hand</h2>
-      <p class="muted" id="handHint">Pick one answer — fast round. Judge does not see owners until they pick.</p>
+      <p class="muted" id="handHint">Pick the card that makes the table lose it.</p>
       <div class="hand" id="hand"></div>
-      <button class="btn block" id="submitBtn" type="button" disabled>Submit answer</button>
+      <button class="btn block" id="submitBtn" type="button" disabled>Play this card</button>
     </section>
 
     <section class="card stack" id="judgeSection">
-      <div class="section-kicker">Table</div>
-      <h2>Submissions</h2>
-      <p class="muted" id="judgeHint">Waiting for players…</p>
+      <h2 id="tableTitle">On the table</h2>
+      <p class="muted" id="judgeHint">Waiting on the crew…</p>
       <div class="submissions" id="submissions"></div>
-      <button class="btn block" id="pickBtn" type="button" disabled>Pick winner</button>
+      <button class="btn block" id="pickBtn" type="button" disabled>That's the winner</button>
     </section>
 
     <section class="card stack hidden" id="revealSection">
-      <div class="section-kicker">Round result</div>
-      <h2>Winner</h2>
+      <h2>Round champ</h2>
       <p id="winnerLine" class="prompt-card"></p>
-      <button class="btn block" id="nextBtn" type="button">Next round</button>
+      <button class="btn block" id="nextBtn" type="button">Deal the next one</button>
     </section>
 
-    <section class="card stack">
-      <div class="section-kicker">Scoreboard</div>
-      <h2>Scores</h2>
+    <section class="card stack scores-card">
+      <h2>Scoreboard</h2>
       <div class="scoreboard" id="scores"></div>
       <div class="row">
-        <button class="btn danger" id="endBtn" type="button">End night</button>
-        <a class="btn ghost" href="index.html">Lobby</a>
+        <button class="btn danger" id="endBtn" type="button">Call it a night</button>
+        <a class="btn ghost" href="index.html">Back to lobby</a>
       </div>
     </section>
   </main>
@@ -90,10 +87,17 @@
         return String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
       }
 
+      function phaseLabel(phase) {
+        if (phase === "submit") return "play a card";
+        if (phase === "judge") return "judging";
+        if (phase === "reveal") return "reveal";
+        return phase;
+      }
+
       function render() {
         const room = Room.readRoom(session.code);
         if (!room) {
-          UI.toast("Room missing");
+          UI.toast("Room went missing");
           location.href = "index.html";
           return;
         }
@@ -106,7 +110,6 @@
           return;
         }
 
-        // Keep solo demo bots moving (submit / bot-judge)
         Game.runBotTurns(room);
 
         const me = room.players.find((p) => p.id === session.playerId);
@@ -115,24 +118,29 @@
 
         UI.$("#metaLine").textContent =
           (room.deckSnapshot?.name || room.deckId) +
-          " · " + room.players.length + "/" + Room.MAX_PLAYERS + " seats";
-        UI.$("#roundPill").textContent = "Round " + room.round + " / " + room.roundCap;
-        UI.$("#phasePill").textContent = room.phase;
+          " · " + room.players.length + " at the table";
+        UI.$("#roundPill").textContent = "Round " + room.round + " of " + room.roundCap;
+        UI.$("#phasePill").textContent = phaseLabel(room.phase);
         UI.$("#roomPill").textContent = room.code;
         UI.$("#promptCard").textContent = room.prompt || "…";
-        UI.$("#judgeLine").textContent = "Judge: " + (judge ? judge.name : "—") + (judge && judge.bot ? " (bot)" : "");
+        UI.$("#judgeLine").textContent =
+          "Judge tonight: " + (judge ? judge.name : "—") + (judge && judge.bot ? " (bot)" : "");
         UI.$("#roleLine").textContent = iAmJudge
-          ? "You are the judge — sit out and pick when ready (long window, no rush)."
-          : "You are playing — submit one blind answer (short round).";
+          ? "You're judging — sit back and crown a winner when you're ready."
+          : "You're playing — drop one blind card and wait for the laugh.";
 
         const banner = UI.$("#judgeBanner");
         if (room.phase === "judge") {
           banner.classList.remove("hidden");
           const rem = Game.judgeRemainingMs(room);
-          const soft = rem != null ? " Soft clock left: ~" + Game.formatDuration(rem) + "." : "";
-          banner.innerHTML =
-            "<strong>Judge window open</strong> — take your time. No auto-advance." + soft +
-            " People can step away; pick when the table is ready.";
+          const soft = rem != null ? " Soft clock: ~" + Game.formatDuration(rem) + " left — ignore it if you want." : "";
+          if (iAmJudge) {
+            banner.innerHTML =
+              "<strong>You're judging — take your time.</strong> Grab a snack. Debate. No auto-skip." + soft;
+          } else {
+            banner.innerHTML =
+              "<strong>Judge is thinking.</strong> Stretch. Refill. Nobody's rushing this." + soft;
+          }
         } else {
           banner.classList.add("hidden");
         }
@@ -143,7 +151,7 @@
           const row = document.createElement("div");
           row.className = "score-row" + (i === 0 ? " top" : "");
           const you = p.id === session.playerId ? " (you)" : "";
-          const j = judge && judge.id === p.id ? " ⚖" : "";
+          const j = judge && judge.id === p.id ? " ★" : "";
           const bot = p.bot ? " · bot" : "";
           row.innerHTML =
             "<span>" + escapeHtml(p.name) + you + bot + j + "</span><strong>" + p.score + "</strong>";
@@ -160,12 +168,8 @@
           revealSec.classList.remove("hidden");
           const winner = room.players.find((p) => p.id === room.winnerId);
           UI.$("#winnerLine").textContent =
-            (winner ? winner.name : "?") + " wins with: “" + (room.winnerAnswer || "") + "”";
+            (winner ? winner.name : "?") + " lands it with: “" + (room.winnerAnswer || "") + "”";
           UI.$("#nextBtn").disabled = false;
-          // Solo demo: auto-advance next round shortly if host is human and bots only otherwise
-          if (room.soloDemo && me && !me.bot) {
-            /* host still taps next — keep control */
-          }
         } else {
           revealSec.classList.add("hidden");
           handSec.classList.toggle("hidden", iAmJudge || room.phase !== "submit");
@@ -178,8 +182,8 @@
           if (!iAmJudge && room.phase === "submit") {
             const already = !!room.submissions[session.playerId];
             UI.$("#handHint").textContent = already
-              ? "Submitted — waiting for others (fast round)."
-              : "Pick one answer card. Short submit · long judge window after.";
+              ? "Card's in. Waiting on the rest of the table…"
+              : "Pick the card that makes the table lose it.";
             const hand = (room.hands && room.hands[session.playerId]) || [];
             hand.forEach((text) => {
               const btn = document.createElement("button");
@@ -202,25 +206,27 @@
           subEl.innerHTML = "";
           selectedWinnerId = null;
           UI.$("#pickBtn").disabled = true;
+          UI.$("#pickBtn").classList.toggle("hidden", !iAmJudge || room.phase !== "judge");
           const entries = Game.getBlindSubmissions(room);
           const needed = room.players.filter((p) => !judge || p.id !== judge.id).length;
           const count = Object.keys(room.submissions || {}).length;
 
           if (room.phase === "submit") {
+            UI.$("#tableTitle").textContent = "On the table";
             UI.$("#judgeHint").textContent =
-              "Submitted " + count + " / " + needed + ". Blind until all are in.";
+              count + " of " + needed + " cards in. Faces down until everyone's played.";
             for (let i = 0; i < count; i++) {
               const div = document.createElement("div");
-              div.className = "submission";
-              div.style.opacity = "0.5";
-              div.textContent = "Answer card sealed";
+              div.className = "submission sealed";
+              div.textContent = "Sealed card";
               div.style.pointerEvents = "none";
               subEl.appendChild(div);
             }
           } else if (room.phase === "judge") {
+            UI.$("#tableTitle").textContent = iAmJudge ? "Pick a winner" : "The contenders";
             UI.$("#judgeHint").textContent = iAmJudge
-              ? "Pick the funniest answer whenever you're ready. Owners stay hidden until you choose."
-              : "Judge is choosing — no rush (long / pause-friendly window).";
+              ? "Tap the funniest. Names stay hidden until you crown someone."
+              : "Judge is choosing — no rush.";
             entries.forEach((e) => {
               const btn = document.createElement("button");
               btn.type = "button";
@@ -248,7 +254,7 @@
         const res = Game.submitAnswer(room, session.playerId, selectedAnswer);
         if (!res.ok) return UI.toast(res.error);
         Game.runBotTurns(room);
-        UI.toast(res.allIn || room.phase === "judge" ? "All in — judge time" : "Submitted");
+        UI.toast(res.allIn || room.phase === "judge" ? "All in — judge time" : "Played");
         render();
       };
 
@@ -257,7 +263,7 @@
         const room = Room.readRoom(session.code);
         const res = Game.pickWinner(room, session.playerId, selectedWinnerId);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Winner locked");
+        UI.toast("Winner locked in");
         render();
       };
 
@@ -276,7 +282,7 @@
         const room = Room.readRoom(session.code);
         if (!room) return;
         if (session.playerId !== room.hostId) {
-          return UI.toast("Only host can end the night");
+          return UI.toast("Only the host can wrap it up");
         }
         Game.endGame(room);
         location.href = "end.html";
@@ -292,7 +298,6 @@
       render();
       setInterval(() => {
         if (selectedAnswer || selectedWinnerId) {
-          // still drive bots in background
           const room = Room.readRoom(session.code);
           if (room && room.status === "playing") Game.runBotTurns(room);
           return;

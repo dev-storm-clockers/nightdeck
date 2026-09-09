@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Create or Join</title>
+  <title>NightDeck — Let's play</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,92 +12,92 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Staff night · workplace-clean Lobby Warmup</p>
+        <p>Cards for the after-hours hang.</p>
       </div>
     </div>
 
     <div class="hero-banner">
-      <strong>Built for ~12 over a long hang</strong>
-      <span>Short submit rounds · open-ended judge window (pause-friendly) · office-safe humor only on the default deck.</span>
+      <strong>Gather the crew. Deal the weirdest cards you can.</strong>
+      <span>Up to 12. Quick plays. The judge can take forever — that's the fun.</span>
     </div>
 
     <section class="card stack primary-action">
-      <div class="section-kicker">Host</div>
-      <h2>Create a room</h2>
-      <label>Your name
-        <input id="hostName" type="text" maxlength="24" placeholder="Host name" autocomplete="nickname" />
+      <h2>Host a night</h2>
+      <label>What should we call you?
+        <input id="hostName" type="text" maxlength="24" placeholder="Your name" autocomplete="nickname" />
       </label>
       <label>Deck
         <select id="deckSelect"></select>
       </label>
-      <p class="muted" id="deckHint">Free starter: Lobby Warmup (workplace-clean)</p>
-      <button class="btn block" id="createBtn" type="button">Create room</button>
+      <p class="muted" id="deckHint">Lobby Warmup — safe enough for work, sharp enough for laughs.</p>
+      <button class="btn block" id="createBtn" type="button">Open a room</button>
     </section>
 
     <section class="card stack">
-      <div class="section-kicker">Player</div>
-      <h2>Join a room</h2>
+      <h2>Jump in</h2>
       <label>Room code
         <input id="joinCode" type="text" maxlength="8" placeholder="e.g. K7M2P" autocomplete="off" style="text-transform:uppercase" />
       </label>
       <label>Your name
-        <input id="joinName" type="text" maxlength="24" placeholder="Player name" autocomplete="nickname" />
+        <input id="joinName" type="text" maxlength="24" placeholder="What friends call you" autocomplete="nickname" />
       </label>
-      <button class="btn secondary block" id="joinBtn" type="button">Join room</button>
-      <p class="muted">Same-browser tabs sync via localStorage + BroadcastChannel (mock multiplayer — no cloud sync yet).</p>
+      <button class="btn secondary block" id="joinBtn" type="button">Join the table</button>
+      <details class="inline-help">
+        <summary>Same Wi‑Fi tips</summary>
+        <p class="muted" style="margin:0.5rem 0 0">Share a code across tabs in the same browser for now. Cloud sync is coming — tonight works locally.</p>
+      </details>
     </section>
 
     <section class="card stack hidden" id="lobbyPanel">
       <div class="row" style="justify-content:space-between">
         <div>
-          <div class="section-kicker">Lobby</div>
-          <h2 style="margin:0">Waiting room</h2>
+          <h2 style="margin:0">Your table</h2>
         </div>
         <span class="pill" id="statusPill">waiting</span>
       </div>
       <div class="center">
-        <div class="muted">Room code — share with the table</div>
+        <div class="muted">Pass this code around</div>
         <div class="room-code" id="roomCodeDisplay">—————</div>
         <button class="btn ghost" id="copyCodeBtn" type="button" style="margin-top:0.5rem">Copy code</button>
       </div>
       <div>
-        <div class="muted" style="margin-bottom:0.35rem">Players <span id="playerCount"></span></div>
+        <div class="muted" style="margin-bottom:0.35rem">Who's here <span id="playerCount"></span></div>
         <ul class="player-list" id="playerList"></ul>
       </div>
-      <p class="muted" id="startHint">Need at least 3 players to start. Up to 12 seats.</p>
+      <p class="muted" id="startHint">Need 3 to start. Room for 12.</p>
       <div class="lobby-actions rowish" id="hostTools">
-        <button class="btn secondary" id="soloDemoBtn" type="button">Solo demo (fill bots)</button>
-        <button class="btn ghost" id="padSeatsBtn" type="button">Pad seats to 12 (bots)</button>
+        <button class="btn secondary" id="soloDemoBtn" type="button">Practice alone (bots)</button>
+        <button class="btn ghost" id="padSeatsBtn" type="button">Fill empty seats</button>
       </div>
       <div class="row">
         <button class="btn" id="startBtn" type="button" disabled>Start NightDeck</button>
         <button class="btn ghost" id="leaveBtn" type="button">Leave</button>
       </div>
-      <p class="muted" id="soloNote" style="margin:0">Solo demo fills bots to the 3-player minimum so you can test the full loop alone. Real staff night: join with humans (bots optional).</p>
+      <p class="muted hidden" id="soloNote" style="margin:0">Practice mode seats bots so you can try the full loop alone. For the real hang, invite humans.</p>
     </section>
 
     <details class="more-packs" id="unlockPanel">
-      <summary>More packs (optional) — not needed for staff night</summary>
+      <summary>Extra packs (optional)</summary>
       <div class="stack">
         <div class="row" style="justify-content:space-between;align-items:flex-start">
           <strong>Group Chat Unhinged</strong>
           <span class="pill warn" id="gcuStatusPill">Locked</span>
         </div>
-        <p class="muted" id="gcuBlurb" style="margin:0">Gated pack. Staff night uses <strong>Lobby Warmup</strong> only. Unlock stays device-local.</p>
+        <p class="muted" id="gcuBlurb" style="margin:0">Spicier pack — not for the office default. Unlock stays on this device.</p>
         <div class="gate-box" id="gcuLockedBox">
-          <div class="gate-title">Locked</div>
-          <p class="muted" style="margin:0.35rem 0 0">Code required. Free path never dumps paid cards.</p>
+          <div class="gate-title">Needs a code</div>
+          <p class="muted" style="margin:0.35rem 0 0">Lobby Warmup stays free either way.</p>
         </div>
         <div class="gate-box ok hidden" id="gcuUnlockedBox">
-          <div class="gate-title">✓ Unlocked on this device</div>
-          <p class="muted" style="margin:0.35rem 0 0">Available in the deck picker. Lobby Warmup remains free.</p>
+          <div class="gate-title">✓ Unlocked here</div>
+          <p class="muted" style="margin:0.35rem 0 0">Shows up in the deck picker. Warmup still recommended for work nights.</p>
         </div>
         <div id="unlockFormWrap" class="stack">
           <label>Unlock code
             <input id="unlockCode" type="text" placeholder="Enter code" autocomplete="off" spellcheck="false" inputmode="text" />
           </label>
           <div class="row">
-            <button class="btn secondary" id="unlockBtn" type="button">Unlock pack</button>
+            <button class="btn secondary" id="unlockBtn" type="button">Unlock</button>
           </div>
           <p class="field-msg" id="unlockMsg" role="status" aria-live="polite"></p>
         </div>
@@ -144,18 +144,13 @@
       }
 
       function refreshDeckSelect(preferDeckId) {
-        const decks = Cat.listDecks({ staff: true });
-        // Always include Lobby Warmup; include unlocked packs only
         const prev = preferDeckId || deckSelect.value;
         deckSelect.innerHTML = "";
-        const ensure = decks.length ? decks : [{ id: "lobby-warmup", name: "Lobby Warmup", free: true, unlocked: true }];
-        // If unlocked GCU not in staff list, still allow if unlocked
-        const all = Cat.listDecks({ staff: false }).filter((d) => d.unlocked || d.free);
-        const source = all;
+        const source = Cat.listDecks({ staff: false }).filter((d) => d.unlocked || d.free);
         source.forEach((d) => {
           const opt = document.createElement("option");
           opt.value = d.id;
-          if (d.free) opt.textContent = d.name + " — free · workplace-clean";
+          if (d.free) opt.textContent = d.name + " — free";
           else if (d.unlocked) opt.textContent = d.name + " — unlocked";
           else opt.textContent = d.name + " — locked";
           opt.disabled = !d.unlocked;
@@ -172,13 +167,13 @@
         const meta = Cat.listDecks({ staff: false }).find((d) => d.id === id);
         const hint = UI.$("#deckHint");
         if (!meta || meta.free) {
-          hint.textContent = "Lobby Warmup is free, workplace-clean, and the default for staff night.";
+          hint.textContent = "Lobby Warmup — safe enough for work, sharp enough for laughs.";
           return;
         }
         if (meta.unlocked) {
-          hint.textContent = meta.name + " unlocked on this device. Staff night still defaults to Lobby Warmup.";
+          hint.textContent = meta.name + " is unlocked on this device.";
         } else {
-          hint.textContent = "Keep Lobby Warmup for staff night.";
+          hint.textContent = "Stick with Lobby Warmup for the office hang.";
         }
       }
 
@@ -192,7 +187,7 @@
           Room.clearSession();
           session = null;
           lobbyPanel.classList.add("hidden");
-          UI.toast("Room expired");
+          UI.toast("That room expired — open a new one");
           return;
         }
         if (room.status === "playing") {
@@ -206,7 +201,7 @@
         lobbyPanel.classList.remove("hidden");
         UI.$("#roomCodeDisplay").textContent = room.code;
         UI.$("#playerCount").textContent =
-          "(" + room.players.length + "/" + Room.MAX_PLAYERS + " seats · min " + Room.MIN_PLAYERS + ")";
+          "(" + room.players.length + "/" + Room.MAX_PLAYERS + ")";
         const list = UI.$("#playerList");
         list.innerHTML = "";
         room.players.forEach((p) => {
@@ -222,20 +217,18 @@
         UI.$("#hostTools").classList.toggle("hidden", !isHost);
         const can = Room.canStart(room) && isHost;
         UI.$("#startBtn").disabled = !can;
-        UI.$("#soloDemoBtn").disabled = !isHost || room.players.length >= Room.MIN_PLAYERS && room.players.some((p) => p.bot) && Room.canStart(room);
-        // Keep solo button useful if under min
         UI.$("#soloDemoBtn").disabled = !isHost;
         UI.$("#padSeatsBtn").disabled = !isHost || room.players.length >= Room.MAX_PLAYERS;
         if (room.players.length < Room.MIN_PLAYERS) {
           UI.$("#startHint").textContent =
-            "Need at least " + Room.MIN_PLAYERS + " players (or Solo demo). Up to " + Room.MAX_PLAYERS + " seats.";
+            "Need " + Room.MIN_PLAYERS + " to start — or practice alone with bots. Cap is " + Room.MAX_PLAYERS + ".";
         } else if (isHost) {
           UI.$("#startHint").textContent =
-            "Ready — short rounds, long judge window. Host can start (" + room.players.length + " seated).";
+            "Looks good — " + room.players.length + " at the table. Fire when ready.";
         } else {
-          UI.$("#startHint").textContent = "Waiting for host to start.";
+          UI.$("#startHint").textContent = "Host is about to start… hang tight.";
         }
-        UI.$("#statusPill").textContent = room.soloDemo ? "solo demo" : room.status;
+        UI.$("#statusPill").textContent = room.soloDemo ? "practice" : "lobby";
         UI.$("#soloNote").classList.toggle("hidden", !room.soloDemo && room.players.every((p) => !p.bot));
       }
 
@@ -255,13 +248,13 @@
 
       UI.$("#createBtn").onclick = () => {
         const name = hostName.value.trim();
-        if (!name) return UI.toast("Enter a host name");
+        if (!name) return UI.toast("Drop a name first");
         const deckId = deckSelect.value || "lobby-warmup";
         if (!Cat.isUnlocked(deckId)) return UI.toast("That deck is locked");
         const { room, playerId } = Room.createRoom({ hostName: name, deckId });
         session = { code: room.code, playerId, name };
         Room.saveSession(session);
-        UI.toast("Room " + room.code + " created");
+        UI.toast("Room " + room.code + " is live");
         bindRoomWatch();
         renderLobby();
         lobbyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -270,12 +263,12 @@
       UI.$("#joinBtn").onclick = () => {
         const code = joinCode.value.trim().toUpperCase();
         const name = joinName.value.trim();
-        if (!code || !name) return UI.toast("Enter code and name");
+        if (!code || !name) return UI.toast("Need a code and a name");
         const res = Room.joinRoom({ code, playerName: name });
         if (!res.ok) return UI.toast(res.error);
         session = { code: res.room.code, playerId: res.playerId, name };
         Room.saveSession(session);
-        UI.toast("Joined " + res.room.code);
+        UI.toast("You're in — " + res.room.code);
         bindRoomWatch();
         renderLobby();
         lobbyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -284,27 +277,27 @@
       UI.$("#soloDemoBtn").onclick = () => {
         if (!session) return;
         const room = Room.readRoom(session.code);
-        if (!room || session.playerId !== room.hostId) return UI.toast("Only host can solo demo");
+        if (!room || session.playerId !== room.hostId) return UI.toast("Only the host can do that");
         const res = Room.fillSoloBots(room);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Bots seated — start when ready");
+        UI.toast("Bots seated — start whenever");
         renderLobby();
       };
 
       UI.$("#padSeatsBtn").onclick = () => {
         if (!session) return;
         const room = Room.readRoom(session.code);
-        if (!room || session.playerId !== room.hostId) return UI.toast("Only host");
+        if (!room || session.playerId !== room.hostId) return UI.toast("Only the host");
         const res = Room.addBotsTo(room, Room.MAX_PLAYERS);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Padded to " + res.room.players.length + " seats");
+        UI.toast("Filled to " + res.room.players.length);
         renderLobby();
       };
 
       function applyUnlock() {
         const raw = UI.$("#unlockCode").value;
         if (!String(raw || "").trim()) {
-          setUnlockMsg("Enter an unlock code.", "err");
+          setUnlockMsg("Need a code.", "err");
           return;
         }
         const res = Cat.tryUnlock(raw);
@@ -313,7 +306,7 @@
           UI.toast(res.error);
           return;
         }
-        setUnlockMsg("Success — " + res.name + " unlocked. Lobby Warmup stays free.", "ok");
+        setUnlockMsg("Nice — " + res.name + " unlocked. Warmup stays free.", "ok");
         UI.toast("Unlocked " + res.name);
         UI.$("#unlockCode").value = "";
         refreshDeckSelect(res.deckId);
@@ -335,14 +328,14 @@
       UI.$("#startBtn").onclick = async () => {
         if (!session) return;
         const room = Room.readRoom(session.code);
-        if (!room || session.playerId !== room.hostId) return UI.toast("Only host can start");
+        if (!room || session.playerId !== room.hostId) return UI.toast("Only the host can start");
         if (!Room.canStart(room)) return UI.toast("Need " + Room.MIN_PLAYERS + " players");
         try {
           const deck = await Cat.loadDeck(room.deckId);
           Game.startGame(room, deck);
           location.href = "play.html";
         } catch (err) {
-          UI.toast(err.message || "Could not start");
+          UI.toast(err.message || "Couldn't start");
         }
       };
 

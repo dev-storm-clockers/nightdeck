@@ -223,13 +223,12 @@
   function shareText(room) {
     const ranks = rankedPlayers(room);
     const lines = [
-      "NightDeck results — room " + room.code,
-      "Deck: " + (room.deckSnapshot?.name || room.deckId),
-      "Rounds: " + room.round,
+      "NightDeck night — room " + room.code,
+      (room.deckSnapshot?.name || room.deckId) + " · " + room.round + " rounds",
       "",
       ...ranks.map((p, i) => (i + 1) + ". " + p.name + " — " + p.score + " pt" + (p.score === 1 ? "" : "s")),
       "",
-      "Played on NightDeck",
+      "Dealt on NightDeck",
     ];
     return lines.join("\n");
   }

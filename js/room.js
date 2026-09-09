@@ -130,7 +130,7 @@
 
   function joinRoom({ code, playerName }) {
     const room = readRoom(code);
-    if (!room) return { ok: false, error: "Room not found. Same browser tabs only for this mock." };
+    if (!room) return { ok: false, error: "Room not found — try the same browser for now (local rooms)." };
     if (room.status === "ended") return { ok: false, error: "This room already ended." };
     const name = (playerName || "").trim() || "Player";
     const existing = room.players.find(

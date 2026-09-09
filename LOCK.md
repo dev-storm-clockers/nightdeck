@@ -24,3 +24,5 @@
 - **phil_ok:** 2026-09-08/09 yes — workplace clean cut; 12 over ~5h; short game + big winner-choice window
 
 - **ac_files:** `/workspace/nightdeck/AC-accepted.md` · `/workspace/nightdeck/AC-change-solo-visual.md` · `/workspace/nightdeck/AC-change-staff-night.md`
+
+- **Pass 4 (Phil):** feel/quality rewrite — human voice UI, funnier workplace-clean Lobby Warmup, less clinical framing; no new mechanics; hard-stop pass (4/4), prefer STOP after if Done green

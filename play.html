@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NightDeck — Play</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="brand">
+      <div class="brand-mark">ND</div>
+      <div>
+        <h1>NightDeck</h1>
+        <p id="metaLine">Playing…</p>
+      </div>
+    </div>
+
+    <section class="card stack">
+      <div class="row" style="justify-content:space-between">
+        <span class="pill" id="roundPill">Round</span>
+        <span class="pill warn" id="phasePill">phase</span>
+        <span class="pill" id="roomPill">room</span>
+      </div>
+      <div>
+        <div class="muted" style="margin-bottom:0.35rem">Prompt</div>
+        <div class="prompt-card" id="promptCard">…</div>
+      </div>
+      <div class="muted" id="judgeLine">Judge: —</div>
+      <div class="muted" id="roleLine">You are: —</div>
+    </section>
+
+    <section class="card stack" id="handSection">
+      <h2>Your hand</h2>
+      <p class="muted" id="handHint">Pick one answer card to submit. Judge does not see owners until they pick.</p>
+      <div class="hand" id="hand"></div>
+      <button class="btn" id="submitBtn" type="button" disabled>Submit answer</button>
+    </section>
+
+    <section class="card stack" id="judgeSection">
+      <h2>Submissions</h2>
+      <p class="muted" id="judgeHint">Waiting for players…</p>
+      <div class="submissions" id="submissions"></div>
+      <button class="btn" id="pickBtn" type="button" disabled>Pick winner</button>
+    </section>
+
+    <section class="card stack hidden" id="revealSection">
+      <h2>Winner</h2>
+      <p id="winnerLine" class="prompt-card"></p>
+      <button class="btn" id="nextBtn" type="button">Next round</button>
+    </section>
+
+    <section class="card stack">
+      <h2>Scores</h2>
+      <div class="scoreboard" id="scores"></div>
+      <div class="row">
+        <button class="btn danger" id="endBtn" type="button">End night</button>
+        <a class="btn ghost" href="index.html">Lobby</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/room.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    (function () {
+      const UI = NightDeckUI;
+      const Room = NightDeckRoom;
+      const Game = NightDeckGame;
+
+      const session = Room.loadSession();
+      if (!session) {
+        location.href = "index.html";
+        return;
+      }
+
+      let selectedAnswer = null;
+      let selectedWinnerId = null;
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+      }
+
+      function render() {
+        const room = Room.readRoom(session.code);
+        if (!room) {
+          UI.toast("Room missing");
+          location.href = "index.html";
+          return;
+        }
+        if (room.status === "lobby") {
+          location.href = "index.html";
+          return;
+        }
+        if (room.status === "ended") {
+          location.href = "end.html";
+          return;
+        }
+
+        const me = room.players.find((p) => p.id === session.playerId);
+        const judge = Game.currentJudge(room);
+        const iAmJudge = judge && judge.id === session.playerId;
+
+        UI.$("#metaLine").textContent = (room.deckSnapshot?.name || room.deckId) + " · " + room.players.length + " players";
+        UI.$("#roundPill").textContent = "Round " + room.round + " / " + room.roundCap;
+        UI.$("#phasePill").textContent = room.phase;
+        UI.$("#roomPill").textContent = room.code;
+        UI.$("#promptCard").textContent = room.prompt || "…";
+        UI.$("#judgeLine").textContent = "Judge: " + (judge ? judge.name : "—");
+        UI.$("#roleLine").textContent = iAmJudge
+          ? "You are the judge this round — sit out and pick a winner."
+          : "You are playing — submit one blind answer.";
+
+        // Scores
+        const scores = UI.$("#scores");
+        scores.innerHTML = "";
+        Game.rankedPlayers(room).forEach((p) => {
+          const row = document.createElement("div");
+          row.className = "score-row";
+          const you = p.id === session.playerId ? " (you)" : "";
+          const j = judge && judge.id === p.id ? " ⚖" : "";
+          row.innerHTML = "<span>" + escapeHtml(p.name) + you + j + "</span><strong>" + p.score + "</strong>";
+          scores.appendChild(row);
+        });
+
+        // Hand / submit
+        const handSec = UI.$("#handSection");
+        const judgeSec = UI.$("#judgeSection");
+        const revealSec = UI.$("#revealSection");
+
+        if (room.phase === "reveal") {
+          handSec.classList.add("hidden");
+          judgeSec.classList.add("hidden");
+          revealSec.classList.remove("hidden");
+          const winner = room.players.find((p) => p.id === room.winnerId);
+          UI.$("#winnerLine").textContent =
+            (winner ? winner.name : "?") + " wins with: “" + (room.winnerAnswer || "") + "”";
+          UI.$("#nextBtn").disabled = false;
+        } else {
+          revealSec.classList.add("hidden");
+          handSec.classList.toggle("hidden", iAmJudge || room.phase !== "submit");
+          judgeSec.classList.remove("hidden");
+
+          // Hand
+          const handEl = UI.$("#hand");
+          handEl.innerHTML = "";
+          selectedAnswer = null;
+          UI.$("#submitBtn").disabled = true;
+          if (!iAmJudge && room.phase === "submit") {
+            const already = !!room.submissions[session.playerId];
+            UI.$("#handHint").textContent = already
+              ? "Submitted — waiting for others."
+              : "Pick one answer card to submit. Judge does not see owners until they pick.";
+            const hand = (room.hands && room.hands[session.playerId]) || [];
+            hand.forEach((text) => {
+              const btn = document.createElement("button");
+              btn.type = "button";
+              btn.className = "answer-card";
+              btn.textContent = text;
+              btn.disabled = already;
+              btn.onclick = () => {
+                if (already) return;
+                selectedAnswer = text;
+                UI.$all(".answer-card", handEl).forEach((b) => b.classList.remove("selected"));
+                btn.classList.add("selected");
+                UI.$("#submitBtn").disabled = false;
+              };
+              handEl.appendChild(btn);
+            });
+          }
+
+          // Submissions for judge / spectators
+          const subEl = UI.$("#submissions");
+          subEl.innerHTML = "";
+          selectedWinnerId = null;
+          UI.$("#pickBtn").disabled = true;
+          const entries = Game.getBlindSubmissions(room);
+          const needed = room.players.filter((p) => !judge || p.id !== judge.id).length;
+          const count = Object.keys(room.submissions || {}).length;
+
+          if (room.phase === "submit") {
+            UI.$("#judgeHint").textContent = "Submitted " + count + " / " + needed + ". Blind until all are in.";
+            // Show count only during submit (no text to avoid leaking)
+            for (let i = 0; i < count; i++) {
+              const div = document.createElement("div");
+              div.className = "submission";
+              div.style.opacity = "0.5";
+              div.textContent = "Answer card sealed";
+              div.style.pointerEvents = "none";
+              subEl.appendChild(div);
+            }
+          } else if (room.phase === "judge") {
+            UI.$("#judgeHint").textContent = iAmJudge
+              ? "Pick the funniest answer. Owners stay hidden until you choose."
+              : "Judge is choosing a winner…";
+            entries.forEach((e) => {
+              const btn = document.createElement("button");
+              btn.type = "button";
+              btn.className = "submission";
+              btn.textContent = e.text;
+              if (iAmJudge) {
+                btn.onclick = () => {
+                  selectedWinnerId = e.playerId;
+                  UI.$all(".submission", subEl).forEach((b) => b.classList.remove("winner"));
+                  btn.classList.add("winner");
+                  UI.$("#pickBtn").disabled = false;
+                };
+              } else {
+                btn.style.pointerEvents = "none";
+              }
+              subEl.appendChild(btn);
+            });
+          }
+        }
+      }
+
+      UI.$("#submitBtn").onclick = () => {
+        if (!selectedAnswer) return;
+        const room = Room.readRoom(session.code);
+        const res = Game.submitAnswer(room, session.playerId, selectedAnswer);
+        if (!res.ok) return UI.toast(res.error);
+        UI.toast(res.allIn ? "All in — judge time" : "Submitted");
+        render();
+      };
+
+      UI.$("#pickBtn").onclick = () => {
+        if (!selectedWinnerId) return;
+        const room = Room.readRoom(session.code);
+        const res = Game.pickWinner(room, session.playerId, selectedWinnerId);
+        if (!res.ok) return UI.toast(res.error);
+        UI.toast("Winner locked");
+        render();
+      };
+
+      UI.$("#nextBtn").onclick = () => {
+        const room = Room.readRoom(session.code);
+        const res = Game.nextRound(room);
+        if (!res.ok) return UI.toast(res.error);
+        if (res.ended) {
+          location.href = "end.html";
+          return;
+        }
+        render();
+      };
+
+      UI.$("#endBtn").onclick = () => {
+        const room = Room.readRoom(session.code);
+        if (!room) return;
+        if (session.playerId !== room.hostId) {
+          return UI.toast("Only host can end the night");
+        }
+        Game.endGame(room);
+        location.href = "end.html";
+      };
+
+      Room.subscribe((code) => {
+        if (code === session.code) render();
+      });
+      window.addEventListener("storage", (e) => {
+        if (e.key === "nightdeck:room:" + session.code) render();
+      });
+
+      render();
+      // Poll for same-browser tabs that miss BroadcastChannel; skip if user has a pending selection
+      setInterval(() => {
+        if (selectedAnswer || selectedWinnerId) return;
+        render();
+      }, 1200);
+    })();
+  </script>
+</body>
+</html>

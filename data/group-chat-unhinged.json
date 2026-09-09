@@ -1,0 +1,23 @@
+{
+  "id": "group-chat-unhinged",
+  "name": "Group Chat Unhinged",
+  "free": false,
+  "unlock_code": "NIGHTDECK-GCU",
+  "prompts": [
+    "The group chat mutiny started when someone typed _____.",
+    "Admin powers were abused for _____.",
+    "The pinned message nobody asked for was _____.",
+    "Someone changed the chat name to _____.",
+    "The unread badge hit triple digits because of _____."
+  ],
+  "answers": [
+    "a 47-message thread about nothing",
+    "accidentally @everyone at 2am",
+    "reposting the same meme with increasing confidence",
+    "a poll about who is most dramatic",
+    "leaving the chat and rejoining for effect",
+    "a screenshot of a screenshot of a screenshot",
+    "calling a meeting in the chat about the chat",
+    "the friend who only reacts with skull emojis"
+  ]
+}

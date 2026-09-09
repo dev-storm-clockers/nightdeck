@@ -1,0 +1,22 @@
+# LOCK — NightDeck
+
+- **name:** NightDeck
+- **spelling_notes:** one word, capital N and D; not Night Deck / nightdeck in UI copy (slug is lowercase)
+- **slug:** nightdeck
+- **demo_vs_sku:** sku
+- **in_scope:**
+  - Host-run party card nights with **original curated decks only** (no CAH clones, no scraped cards)
+  - Free starter: **Lobby Warmup**
+  - First paid pack intent: **Group Chat Unhinged** (paywall can be mock/unlock-code for MVP if Stripe not ready)
+  - MVP play loop: create/join room (code), draw cards, rotating judge, scores, shareable end state
+  - Landing: prefer **GitHub Pages** + **Neon/Upstash** for room state if claimable stack is ready; else static MVP with localStorage/room mock and clear upgrade path — Product/Build to pick on ARTIFACT.md after claim check
+  - Mobile-ok host + player flows
+- **out_of_scope:**
+  - Cloning Cards Against Humanity or any third-party deck IP
+  - Dorm After Dark pack (parked until tight PG-13 AC)
+  - Small-Town Main Street pack (later)
+  - Full Stripe/accounts unless Build says free-tier path is ready in-pass
+  - Lilly managed-sites candle-style marketing site as the product (NightDeck is the game, not Harbour Glow)
+- **landing:** github-pages (primary); Neon/Upstash for rooms if claimed; managed-sites only if Pages blocked
+- **hard_stop_passes:** 4 (prefer stop by 2)
+- **phil_ok:** 2026-09-08 yes — Phil said “do nightdeck” and draft the three skills; iterate skills from this ship’s output

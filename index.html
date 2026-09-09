@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NightDeck — Create or Join</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <main class="app" id="app">
+    <div class="brand">
+      <div class="brand-mark">ND</div>
+      <div>
+        <h1>NightDeck</h1>
+        <p>Host-run party card nights · original decks</p>
+      </div>
+    </div>
+
+    <section class="card stack">
+      <h2>Create a room</h2>
+      <label>Your name
+        <input id="hostName" type="text" maxlength="24" placeholder="Host name" autocomplete="nickname" />
+      </label>
+      <label>Deck
+        <select id="deckSelect"></select>
+      </label>
+      <p class="muted" id="deckHint">Free starter: Lobby Warmup</p>
+      <button class="btn" id="createBtn" type="button">Create room</button>
+    </section>
+
+    <section class="card stack">
+      <h2>Join a room</h2>
+      <label>Room code
+        <input id="joinCode" type="text" maxlength="8" placeholder="e.g. K7M2P" autocomplete="off" style="text-transform:uppercase" />
+      </label>
+      <label>Your name
+        <input id="joinName" type="text" maxlength="24" placeholder="Player name" autocomplete="nickname" />
+      </label>
+      <button class="btn secondary" id="joinBtn" type="button">Join room</button>
+      <p class="muted">Pass 1 mock: open multiple tabs in <strong>this same browser</strong>. Room state syncs via localStorage + BroadcastChannel (no Upstash yet).</p>
+    </section>
+
+    <section class="card stack" id="unlockPanel">
+      <div class="row" style="justify-content:space-between;align-items:flex-start">
+        <h2 style="margin:0">Group Chat Unhinged</h2>
+        <span class="pill warn" id="gcuStatusPill">Locked</span>
+      </div>
+      <p class="muted" id="gcuBlurb">Paid pack (mock unlock). <strong>Lobby Warmup stays free</strong> — you can host a night without this code.</p>
+      <div class="gate-box" id="gcuLockedBox">
+        <div class="gate-title">🔒 Locked for free play</div>
+        <p class="muted" style="margin:0.35rem 0 0">Enter unlock code <code class="code-chip">NIGHTDECK-GCU</code> to add this pack to the deck picker. Free path never dumps paid cards.</p>
+      </div>
+      <div class="gate-box ok hidden" id="gcuUnlockedBox">
+        <div class="gate-title">✓ Unlocked on this device</div>
+        <p class="muted" style="margin:0.35rem 0 0">Group Chat Unhinged is available in Create a room. Lobby Warmup remains free.</p>
+      </div>
+      <div id="unlockFormWrap" class="stack">
+        <label>Unlock code
+          <input id="unlockCode" type="text" placeholder="NIGHTDECK-GCU" autocomplete="off" spellcheck="false" inputmode="text" />
+        </label>
+        <div class="row">
+          <button class="btn" id="unlockBtn" type="button">Unlock pack</button>
+        </div>
+        <p class="field-msg" id="unlockMsg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="card stack hidden" id="lobbyPanel">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">Lobby</h2>
+        <span class="pill" id="statusPill">waiting</span>
+      </div>
+      <div class="center">
+        <div class="muted">Room code</div>
+        <div class="room-code" id="roomCodeDisplay">—————</div>
+        <button class="btn ghost" id="copyCodeBtn" type="button" style="margin-top:0.5rem">Copy code</button>
+      </div>
+      <div>
+        <div class="muted" style="margin-bottom:0.35rem">Players <span id="playerCount"></span></div>
+        <ul class="player-list" id="playerList"></ul>
+      </div>
+      <p class="muted" id="startHint">Need at least 3 players to start.</p>
+      <div class="row">
+        <button class="btn" id="startBtn" type="button" disabled>Start NightDeck</button>
+        <button class="btn ghost" id="leaveBtn" type="button">Leave</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/room.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    (function () {
+      const UI = NightDeckUI;
+      const Cat = NightDeckCatalog;
+      const Room = NightDeckRoom;
+      const Game = NightDeckGame;
+
+      const hostName = UI.$("#hostName");
+      const joinName = UI.$("#joinName");
+      const joinCode = UI.$("#joinCode");
+      const deckSelect = UI.$("#deckSelect");
+      const lobbyPanel = UI.$("#lobbyPanel");
+
+      let session = Room.loadSession();
+      let unsub = null;
+
+      function setUnlockMsg(text, kind) {
+        const el = UI.$("#unlockMsg");
+        el.textContent = text || "";
+        el.className = "field-msg" + (kind ? " " + kind : "");
+      }
+
+      function refreshUnlockPanel() {
+        const unlocked = Cat.isUnlocked("group-chat-unhinged");
+        const pill = UI.$("#gcuStatusPill");
+        const form = UI.$("#unlockFormWrap");
+        pill.textContent = unlocked ? "Unlocked" : "Locked";
+        pill.className = "pill " + (unlocked ? "ok" : "warn");
+        UI.$("#gcuLockedBox").classList.toggle("hidden", unlocked);
+        UI.$("#gcuUnlockedBox").classList.toggle("hidden", !unlocked);
+        form.classList.toggle("hidden", unlocked);
+        if (unlocked) setUnlockMsg("");
+      }
+
+      function refreshDeckSelect(preferDeckId) {
+        const decks = Cat.listDecks();
+        const prev = preferDeckId || deckSelect.value;
+        deckSelect.innerHTML = "";
+        decks.forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d.id;
+          if (d.free) {
+            opt.textContent = d.name + " — free";
+          } else if (d.unlocked) {
+            opt.textContent = d.name + " — unlocked";
+          } else {
+            opt.textContent = d.name + " — locked (needs code)";
+          }
+          opt.disabled = !d.unlocked;
+          deckSelect.appendChild(opt);
+        });
+        const want = prev && Cat.isUnlocked(prev) ? prev : "lobby-warmup";
+        deckSelect.value = want;
+        updateDeckHint();
+        refreshUnlockPanel();
+      }
+
+      function updateDeckHint() {
+        const id = deckSelect.value || "lobby-warmup";
+        const meta = Cat.listDecks().find((d) => d.id === id);
+        const hint = UI.$("#deckHint");
+        if (!meta) {
+          hint.textContent = "Free starter: Lobby Warmup";
+          return;
+        }
+        if (meta.free) {
+          hint.textContent = "Lobby Warmup is free — play end-to-end with no unlock code.";
+        } else if (meta.unlocked) {
+          hint.textContent = meta.name + " unlocked on this device. Lobby Warmup stays free anytime.";
+        } else {
+          hint.textContent = meta.name + " is locked — use the unlock panel below, or keep Lobby Warmup.";
+        }
+      }
+
+      function renderLobby() {
+        if (!session) {
+          lobbyPanel.classList.add("hidden");
+          return;
+        }
+        const room = Room.readRoom(session.code);
+        if (!room) {
+          Room.clearSession();
+          session = null;
+          lobbyPanel.classList.add("hidden");
+          UI.toast("Room expired");
+          return;
+        }
+        if (room.status === "playing") {
+          location.href = "play.html";
+          return;
+        }
+        if (room.status === "ended") {
+          location.href = "end.html";
+          return;
+        }
+        lobbyPanel.classList.remove("hidden");
+        UI.$("#roomCodeDisplay").textContent = room.code;
+        UI.$("#playerCount").textContent = "(" + room.players.length + "/" + Room.MIN_PLAYERS + " min)";
+        const list = UI.$("#playerList");
+        list.innerHTML = "";
+        room.players.forEach((p) => {
+          const li = document.createElement("li");
+          const you = p.id === session.playerId ? ' <span class="you">(you)</span>' : "";
+          const host = p.id === room.hostId ? " · host" : "";
+          li.innerHTML = "<span>" + escapeHtml(p.name) + you + host + "</span><span class='pill'>" + p.score + "</span>";
+          list.appendChild(li);
+        });
+        const can = Room.canStart(room) && session.playerId === room.hostId;
+        UI.$("#startBtn").disabled = !can;
+        UI.$("#startHint").textContent = room.players.length < Room.MIN_PLAYERS
+          ? "Need at least " + Room.MIN_PLAYERS + " players to start."
+          : session.playerId === room.hostId
+            ? "Ready — host can start."
+            : "Waiting for host to start.";
+        UI.$("#statusPill").textContent = room.status;
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+      }
+
+      function bindRoomWatch() {
+        if (unsub) unsub();
+        unsub = Room.subscribe((code) => {
+          if (session && code === session.code) renderLobby();
+        });
+        window.addEventListener("storage", (e) => {
+          if (session && e.key === "nightdeck:room:" + session.code) renderLobby();
+        });
+      }
+
+      UI.$("#createBtn").onclick = () => {
+        const name = hostName.value.trim();
+        if (!name) return UI.toast("Enter a host name");
+        const deckId = deckSelect.value || "lobby-warmup";
+        if (!Cat.isUnlocked(deckId)) return UI.toast("That deck is locked");
+        const { room, playerId } = Room.createRoom({ hostName: name, deckId });
+        session = { code: room.code, playerId, name };
+        Room.saveSession(session);
+        UI.toast("Room " + room.code + " created");
+        bindRoomWatch();
+        renderLobby();
+      };
+
+      UI.$("#joinBtn").onclick = () => {
+        const code = joinCode.value.trim().toUpperCase();
+        const name = joinName.value.trim();
+        if (!code || !name) return UI.toast("Enter code and name");
+        const res = Room.joinRoom({ code, playerName: name });
+        if (!res.ok) return UI.toast(res.error);
+        session = { code: res.room.code, playerId: res.playerId, name };
+        Room.saveSession(session);
+        UI.toast("Joined " + res.room.code);
+        bindRoomWatch();
+        renderLobby();
+      };
+
+      function applyUnlock() {
+        const raw = UI.$("#unlockCode").value;
+        if (!String(raw || "").trim()) {
+          setUnlockMsg("Enter an unlock code.", "err");
+          return;
+        }
+        const res = Cat.tryUnlock(raw);
+        if (!res.ok) {
+          setUnlockMsg(res.error + " — Lobby Warmup is still free.", "err");
+          UI.toast(res.error);
+          return;
+        }
+        setUnlockMsg("Success — " + res.name + " unlocked. Lobby Warmup stays free.", "ok");
+        UI.toast("Unlocked " + res.name);
+        UI.$("#unlockCode").value = "";
+        refreshDeckSelect(res.deckId);
+      }
+
+      UI.$("#unlockBtn").onclick = applyUnlock;
+      UI.$("#unlockCode").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          applyUnlock();
+        }
+      });
+      deckSelect.addEventListener("change", updateDeckHint);
+
+      UI.$("#copyCodeBtn").onclick = () => {
+        if (session) UI.copyText(session.code);
+      };
+
+      UI.$("#startBtn").onclick = async () => {
+        if (!session) return;
+        const room = Room.readRoom(session.code);
+        if (!room || session.playerId !== room.hostId) return UI.toast("Only host can start");
+        if (!Room.canStart(room)) return UI.toast("Need " + Room.MIN_PLAYERS + " players");
+        try {
+          const deck = await Cat.loadDeck(room.deckId);
+          Game.startGame(room, deck);
+          location.href = "play.html";
+        } catch (err) {
+          UI.toast(err.message || "Could not start");
+        }
+      };
+
+      UI.$("#leaveBtn").onclick = () => {
+        Room.clearSession();
+        session = null;
+        lobbyPanel.classList.add("hidden");
+      };
+
+      refreshDeckSelect();
+      if (session) {
+        bindRoomWatch();
+        renderLobby();
+      }
+    })();
+  </script>
+</body>
+</html>

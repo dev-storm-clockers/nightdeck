@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NightDeck — Results</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="brand">
+      <div class="brand-mark">ND</div>
+      <div>
+        <h1>NightDeck</h1>
+        <p>Shareable end state</p>
+      </div>
+    </div>
+
+    <section class="card stack">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">Night over</h2>
+        <span class="pill" id="roomPill">—</span>
+      </div>
+      <p class="muted" id="deckLine"></p>
+      <div class="scoreboard" id="scores"></div>
+      <div>
+        <div class="muted" style="margin-bottom:0.35rem">Share card</div>
+        <pre class="share-box" id="shareBox"></pre>
+      </div>
+      <div class="row">
+        <button class="btn" id="copyBtn" type="button">Copy results</button>
+        <a class="btn secondary" href="index.html">New room</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/room.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    (function () {
+      const UI = NightDeckUI;
+      const Room = NightDeckRoom;
+      const Game = NightDeckGame;
+
+      const session = Room.loadSession();
+      const room = session ? Room.readRoom(session.code) : null;
+      if (!room) {
+        UI.$("#shareBox").textContent = "No room session found. Start from the NightDeck lobby.";
+        return;
+      }
+      if (room.status !== "ended") {
+        // Allow peeking mid-game via host end; otherwise send back
+        if (room.status === "playing") {
+          // still show live standings as shareable snapshot
+        } else {
+          location.href = "index.html";
+          return;
+        }
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+      }
+
+      UI.$("#roomPill").textContent = room.code;
+      UI.$("#deckLine").textContent =
+        (room.deckSnapshot?.name || room.deckId) +
+        " · " + room.round + " round" + (room.round === 1 ? "" : "s");
+
+      const scores = UI.$("#scores");
+      scores.innerHTML = "";
+      Game.rankedPlayers(room).forEach((p, i) => {
+        const row = document.createElement("div");
+        row.className = "score-row";
+        const medal = i === 0 ? " ★" : "";
+        row.innerHTML =
+          "<span>" + (i + 1) + ". " + escapeHtml(p.name) + medal + "</span><strong>" + p.score + "</strong>";
+        scores.appendChild(row);
+      });
+
+      const text = Game.shareText(room);
+      UI.$("#shareBox").textContent = text;
+      UI.$("#copyBtn").onclick = () => UI.copyText(text);
+    })();
+  </script>
+</body>
+</html>

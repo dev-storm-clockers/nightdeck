@@ -26,8 +26,13 @@
     for (const p of room.players) {
       let hand = room.hands[p.id] || [];
       while (hand.length < handSize) {
-        const pick = pickUnused(deck.answers, room.usedAnswers);
-        if (!pick) break;
+        let pick = pickUnused(deck.answers, room.usedAnswers);
+        if (!pick) {
+          // Long staff nights / 12 seats: recycle answers once the pool is empty.
+          room.usedAnswers = [];
+          pick = pickUnused(deck.answers, room.usedAnswers);
+          if (!pick) break;
+        }
         room.usedAnswers.push(pick.index);
         hand.push(pick.text);
       }
@@ -48,8 +53,10 @@
     room.usedPrompts = [];
     room.usedAnswers = [];
     room.hands = {};
+    room.judgeWindowMs = room.judgeWindowMs || Room().JUDGE_WINDOW_MS;
     ensureHands(room, deck);
     beginRound(room);
+    runBotTurns(room);
     Room().writeRoom(room);
     return room;
   }
@@ -68,6 +75,8 @@
     room.winnerId = null;
     room.winnerAnswer = null;
     room.phase = "submit";
+    room.judgeOpenedAt = null;
+    room.submitOpenedAt = Date.now();
     const pick = pickUnused(deck.prompts, room.usedPrompts);
     if (!pick) {
       endGame(room);
@@ -98,12 +107,48 @@
     if (allIn) {
       room.phase = "judge";
       room.revealed = true;
+      room.judgeOpenedAt = Date.now();
       // Stable blind order for judge UI (avoid reshuffle on every render)
       const entries = Object.entries(room.submissions).map(([playerId, text]) => ({ playerId, text }));
       room.blindOrder = shuffle(entries);
     }
     Room().writeRoom(room);
     return { ok: true, allIn };
+  }
+
+  /** Bots auto-submit random hand cards; bot judge auto-picks after short delay (solo demo). */
+  function runBotTurns(room) {
+    if (!room || room.status !== "playing") return { acted: false };
+    let acted = false;
+    const judge = currentJudge(room);
+
+    if (room.phase === "submit") {
+      for (const p of room.players) {
+        if (!p.bot) continue;
+        if (judge && p.id === judge.id) continue;
+        if (room.submissions[p.id]) continue;
+        const hand = room.hands[p.id] || [];
+        if (!hand.length) continue;
+        const pick = hand[Math.floor(Math.random() * hand.length)];
+        const res = submitAnswer(room, p.id, pick);
+        if (res.ok) acted = true;
+      }
+    }
+
+    if (room.phase === "judge" && judge && judge.bot) {
+      const entries = Object.keys(room.submissions || {});
+      if (entries.length) {
+        // Soft delay: only auto-pick if judge window has been open briefly (solo demo speed)
+        const opened = room.judgeOpenedAt || Date.now();
+        if (Date.now() - opened >= 600) {
+          const winnerId = entries[Math.floor(Math.random() * entries.length)];
+          const res = pickWinner(room, judge.id, winnerId);
+          if (res.ok) acted = true;
+        }
+      }
+    }
+
+    return { acted };
   }
 
   function pickWinner(room, judgeId, winnerPlayerId) {
@@ -132,6 +177,7 @@
     room.judgeIndex = (room.judgeIndex + 1) % room.players.length;
     beginRound(room);
     if (room.status === "ended") return { ok: true, ended: true };
+    runBotTurns(room);
     Room().writeRoom(room);
     return { ok: true, ended: false };
   }
@@ -156,6 +202,22 @@
 
   function rankedPlayers(room) {
     return room.players.slice().sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+  }
+
+  function judgeRemainingMs(room) {
+    if (room.phase !== "judge" || !room.judgeOpenedAt) return null;
+    const windowMs = room.judgeWindowMs || Room().JUDGE_WINDOW_MS;
+    return Math.max(0, windowMs - (Date.now() - room.judgeOpenedAt));
+  }
+
+  function formatDuration(ms) {
+    if (ms == null) return "";
+    const totalSec = Math.floor(ms / 1000);
+    const h = Math.floor(totalSec / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    if (h > 0) return h + "h " + m + "m";
+    if (m > 0) return m + " min";
+    return totalSec + "s";
   }
 
   function shareText(room) {
@@ -183,5 +245,8 @@
     rankedPlayers,
     shareText,
     ensureHands,
+    runBotTurns,
+    judgeRemainingMs,
+    formatDuration,
   };
 })(window);

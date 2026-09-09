@@ -1,4 +1,4 @@
-/** NightDeck deck catalog + unlock gate (Pass 1 mock). */
+/** NightDeck deck catalog + unlock gate (staff-night: Lobby Warmup default). */
 (function (global) {
   const UNLOCK_STORAGE = "nightdeck:unlocks";
   const DECKS = {
@@ -6,12 +6,15 @@
       id: "lobby-warmup",
       name: "Lobby Warmup",
       free: true,
+      featured: true,
       path: "data/lobby-warmup.json",
     },
     "group-chat-unhinged": {
       id: "group-chat-unhinged",
       name: "Group Chat Unhinged",
       free: false,
+      featured: false,
+      staffHide: true,
       unlockCode: "NIGHTDECK-GCU",
       path: "data/group-chat-unhinged.json",
     },
@@ -46,7 +49,7 @@
         return { ok: true, deckId: meta.id, name: meta.name };
       }
     }
-    return { ok: false, error: "Invalid unlock code — try NIGHTDECK-GCU for Group Chat Unhinged" };
+    return { ok: false, error: "Invalid unlock code" };
   }
 
   async function loadDeck(deckId) {
@@ -67,13 +70,23 @@
     };
   }
 
-  function listDecks() {
-    return Object.values(DECKS).map((d) => ({
-      id: d.id,
-      name: d.name,
-      free: d.free,
-      unlocked: isUnlocked(d.id),
-    }));
+  function listDecks(opts) {
+    const staff = !opts || opts.staff !== false;
+    return Object.values(DECKS)
+      .filter((d) => {
+        if (!staff) return true;
+        // Staff night: only show locked packs if already unlocked; never feature them
+        if (d.staffHide && !isUnlocked(d.id)) return false;
+        return true;
+      })
+      .map((d) => ({
+        id: d.id,
+        name: d.name,
+        free: d.free,
+        featured: !!d.featured,
+        unlocked: isUnlocked(d.id),
+        staffHide: !!d.staffHide,
+      }));
   }
 
   global.NightDeckCatalog = {

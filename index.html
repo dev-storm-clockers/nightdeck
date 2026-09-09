@@ -12,11 +12,17 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Host-run party card nights · original decks</p>
+        <p>Staff night · workplace-clean Lobby Warmup</p>
       </div>
     </div>
 
-    <section class="card stack">
+    <div class="hero-banner">
+      <strong>Built for ~12 over a long hang</strong>
+      <span>Short submit rounds · open-ended judge window (pause-friendly) · office-safe humor only on the default deck.</span>
+    </div>
+
+    <section class="card stack primary-action">
+      <div class="section-kicker">Host</div>
       <h2>Create a room</h2>
       <label>Your name
         <input id="hostName" type="text" maxlength="24" placeholder="Host name" autocomplete="nickname" />
@@ -24,11 +30,12 @@
       <label>Deck
         <select id="deckSelect"></select>
       </label>
-      <p class="muted" id="deckHint">Free starter: Lobby Warmup</p>
-      <button class="btn" id="createBtn" type="button">Create room</button>
+      <p class="muted" id="deckHint">Free starter: Lobby Warmup (workplace-clean)</p>
+      <button class="btn block" id="createBtn" type="button">Create room</button>
     </section>
 
     <section class="card stack">
+      <div class="section-kicker">Player</div>
       <h2>Join a room</h2>
       <label>Room code
         <input id="joinCode" type="text" maxlength="8" placeholder="e.g. K7M2P" autocomplete="off" style="text-transform:uppercase" />
@@ -36,42 +43,20 @@
       <label>Your name
         <input id="joinName" type="text" maxlength="24" placeholder="Player name" autocomplete="nickname" />
       </label>
-      <button class="btn secondary" id="joinBtn" type="button">Join room</button>
-      <p class="muted">Pass 1 mock: open multiple tabs in <strong>this same browser</strong>. Room state syncs via localStorage + BroadcastChannel (no Upstash yet).</p>
-    </section>
-
-    <section class="card stack" id="unlockPanel">
-      <div class="row" style="justify-content:space-between;align-items:flex-start">
-        <h2 style="margin:0">Group Chat Unhinged</h2>
-        <span class="pill warn" id="gcuStatusPill">Locked</span>
-      </div>
-      <p class="muted" id="gcuBlurb">Paid pack (mock unlock). <strong>Lobby Warmup stays free</strong> — you can host a night without this code.</p>
-      <div class="gate-box" id="gcuLockedBox">
-        <div class="gate-title">🔒 Locked for free play</div>
-        <p class="muted" style="margin:0.35rem 0 0">Enter unlock code <code class="code-chip">NIGHTDECK-GCU</code> to add this pack to the deck picker. Free path never dumps paid cards.</p>
-      </div>
-      <div class="gate-box ok hidden" id="gcuUnlockedBox">
-        <div class="gate-title">✓ Unlocked on this device</div>
-        <p class="muted" style="margin:0.35rem 0 0">Group Chat Unhinged is available in Create a room. Lobby Warmup remains free.</p>
-      </div>
-      <div id="unlockFormWrap" class="stack">
-        <label>Unlock code
-          <input id="unlockCode" type="text" placeholder="NIGHTDECK-GCU" autocomplete="off" spellcheck="false" inputmode="text" />
-        </label>
-        <div class="row">
-          <button class="btn" id="unlockBtn" type="button">Unlock pack</button>
-        </div>
-        <p class="field-msg" id="unlockMsg" role="status" aria-live="polite"></p>
-      </div>
+      <button class="btn secondary block" id="joinBtn" type="button">Join room</button>
+      <p class="muted">Same-browser tabs sync via localStorage + BroadcastChannel (mock multiplayer — no cloud sync yet).</p>
     </section>
 
     <section class="card stack hidden" id="lobbyPanel">
       <div class="row" style="justify-content:space-between">
-        <h2 style="margin:0">Lobby</h2>
+        <div>
+          <div class="section-kicker">Lobby</div>
+          <h2 style="margin:0">Waiting room</h2>
+        </div>
         <span class="pill" id="statusPill">waiting</span>
       </div>
       <div class="center">
-        <div class="muted">Room code</div>
+        <div class="muted">Room code — share with the table</div>
         <div class="room-code" id="roomCodeDisplay">—————</div>
         <button class="btn ghost" id="copyCodeBtn" type="button" style="margin-top:0.5rem">Copy code</button>
       </div>
@@ -79,12 +64,45 @@
         <div class="muted" style="margin-bottom:0.35rem">Players <span id="playerCount"></span></div>
         <ul class="player-list" id="playerList"></ul>
       </div>
-      <p class="muted" id="startHint">Need at least 3 players to start.</p>
+      <p class="muted" id="startHint">Need at least 3 players to start. Up to 12 seats.</p>
+      <div class="lobby-actions rowish" id="hostTools">
+        <button class="btn secondary" id="soloDemoBtn" type="button">Solo demo (fill bots)</button>
+        <button class="btn ghost" id="padSeatsBtn" type="button">Pad seats to 12 (bots)</button>
+      </div>
       <div class="row">
         <button class="btn" id="startBtn" type="button" disabled>Start NightDeck</button>
         <button class="btn ghost" id="leaveBtn" type="button">Leave</button>
       </div>
+      <p class="muted" id="soloNote" style="margin:0">Solo demo fills bots to the 3-player minimum so you can test the full loop alone. Real staff night: join with humans (bots optional).</p>
     </section>
+
+    <details class="more-packs" id="unlockPanel">
+      <summary>More packs (optional) — not needed for staff night</summary>
+      <div class="stack">
+        <div class="row" style="justify-content:space-between;align-items:flex-start">
+          <strong>Group Chat Unhinged</strong>
+          <span class="pill warn" id="gcuStatusPill">Locked</span>
+        </div>
+        <p class="muted" id="gcuBlurb" style="margin:0">Gated pack. Staff night uses <strong>Lobby Warmup</strong> only. Unlock stays device-local.</p>
+        <div class="gate-box" id="gcuLockedBox">
+          <div class="gate-title">Locked</div>
+          <p class="muted" style="margin:0.35rem 0 0">Code required. Free path never dumps paid cards.</p>
+        </div>
+        <div class="gate-box ok hidden" id="gcuUnlockedBox">
+          <div class="gate-title">✓ Unlocked on this device</div>
+          <p class="muted" style="margin:0.35rem 0 0">Available in the deck picker. Lobby Warmup remains free.</p>
+        </div>
+        <div id="unlockFormWrap" class="stack">
+          <label>Unlock code
+            <input id="unlockCode" type="text" placeholder="Enter code" autocomplete="off" spellcheck="false" inputmode="text" />
+          </label>
+          <div class="row">
+            <button class="btn secondary" id="unlockBtn" type="button">Unlock pack</button>
+          </div>
+          <p class="field-msg" id="unlockMsg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </details>
   </main>
 
   <script src="js/ui.js"></script>
@@ -126,19 +144,20 @@
       }
 
       function refreshDeckSelect(preferDeckId) {
-        const decks = Cat.listDecks();
+        const decks = Cat.listDecks({ staff: true });
+        // Always include Lobby Warmup; include unlocked packs only
         const prev = preferDeckId || deckSelect.value;
         deckSelect.innerHTML = "";
-        decks.forEach((d) => {
+        const ensure = decks.length ? decks : [{ id: "lobby-warmup", name: "Lobby Warmup", free: true, unlocked: true }];
+        // If unlocked GCU not in staff list, still allow if unlocked
+        const all = Cat.listDecks({ staff: false }).filter((d) => d.unlocked || d.free);
+        const source = all;
+        source.forEach((d) => {
           const opt = document.createElement("option");
           opt.value = d.id;
-          if (d.free) {
-            opt.textContent = d.name + " — free";
-          } else if (d.unlocked) {
-            opt.textContent = d.name + " — unlocked";
-          } else {
-            opt.textContent = d.name + " — locked (needs code)";
-          }
+          if (d.free) opt.textContent = d.name + " — free · workplace-clean";
+          else if (d.unlocked) opt.textContent = d.name + " — unlocked";
+          else opt.textContent = d.name + " — locked";
           opt.disabled = !d.unlocked;
           deckSelect.appendChild(opt);
         });
@@ -150,18 +169,16 @@
 
       function updateDeckHint() {
         const id = deckSelect.value || "lobby-warmup";
-        const meta = Cat.listDecks().find((d) => d.id === id);
+        const meta = Cat.listDecks({ staff: false }).find((d) => d.id === id);
         const hint = UI.$("#deckHint");
-        if (!meta) {
-          hint.textContent = "Free starter: Lobby Warmup";
+        if (!meta || meta.free) {
+          hint.textContent = "Lobby Warmup is free, workplace-clean, and the default for staff night.";
           return;
         }
-        if (meta.free) {
-          hint.textContent = "Lobby Warmup is free — play end-to-end with no unlock code.";
-        } else if (meta.unlocked) {
-          hint.textContent = meta.name + " unlocked on this device. Lobby Warmup stays free anytime.";
+        if (meta.unlocked) {
+          hint.textContent = meta.name + " unlocked on this device. Staff night still defaults to Lobby Warmup.";
         } else {
-          hint.textContent = meta.name + " is locked — use the unlock panel below, or keep Lobby Warmup.";
+          hint.textContent = "Keep Lobby Warmup for staff night.";
         }
       }
 
@@ -188,24 +205,38 @@
         }
         lobbyPanel.classList.remove("hidden");
         UI.$("#roomCodeDisplay").textContent = room.code;
-        UI.$("#playerCount").textContent = "(" + room.players.length + "/" + Room.MIN_PLAYERS + " min)";
+        UI.$("#playerCount").textContent =
+          "(" + room.players.length + "/" + Room.MAX_PLAYERS + " seats · min " + Room.MIN_PLAYERS + ")";
         const list = UI.$("#playerList");
         list.innerHTML = "";
         room.players.forEach((p) => {
           const li = document.createElement("li");
           const you = p.id === session.playerId ? ' <span class="you">(you)</span>' : "";
           const host = p.id === room.hostId ? " · host" : "";
-          li.innerHTML = "<span>" + escapeHtml(p.name) + you + host + "</span><span class='pill'>" + p.score + "</span>";
+          const bot = p.bot ? ' <span class="bot-tag">bot</span>' : "";
+          li.innerHTML =
+            "<span>" + escapeHtml(p.name) + you + host + bot + "</span><span class='pill soft'>" + p.score + "</span>";
           list.appendChild(li);
         });
-        const can = Room.canStart(room) && session.playerId === room.hostId;
+        const isHost = session.playerId === room.hostId;
+        UI.$("#hostTools").classList.toggle("hidden", !isHost);
+        const can = Room.canStart(room) && isHost;
         UI.$("#startBtn").disabled = !can;
-        UI.$("#startHint").textContent = room.players.length < Room.MIN_PLAYERS
-          ? "Need at least " + Room.MIN_PLAYERS + " players to start."
-          : session.playerId === room.hostId
-            ? "Ready — host can start."
-            : "Waiting for host to start.";
-        UI.$("#statusPill").textContent = room.status;
+        UI.$("#soloDemoBtn").disabled = !isHost || room.players.length >= Room.MIN_PLAYERS && room.players.some((p) => p.bot) && Room.canStart(room);
+        // Keep solo button useful if under min
+        UI.$("#soloDemoBtn").disabled = !isHost;
+        UI.$("#padSeatsBtn").disabled = !isHost || room.players.length >= Room.MAX_PLAYERS;
+        if (room.players.length < Room.MIN_PLAYERS) {
+          UI.$("#startHint").textContent =
+            "Need at least " + Room.MIN_PLAYERS + " players (or Solo demo). Up to " + Room.MAX_PLAYERS + " seats.";
+        } else if (isHost) {
+          UI.$("#startHint").textContent =
+            "Ready — short rounds, long judge window. Host can start (" + room.players.length + " seated).";
+        } else {
+          UI.$("#startHint").textContent = "Waiting for host to start.";
+        }
+        UI.$("#statusPill").textContent = room.soloDemo ? "solo demo" : room.status;
+        UI.$("#soloNote").classList.toggle("hidden", !room.soloDemo && room.players.every((p) => !p.bot));
       }
 
       function escapeHtml(s) {
@@ -233,6 +264,7 @@
         UI.toast("Room " + room.code + " created");
         bindRoomWatch();
         renderLobby();
+        lobbyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
       };
 
       UI.$("#joinBtn").onclick = () => {
@@ -245,6 +277,27 @@
         Room.saveSession(session);
         UI.toast("Joined " + res.room.code);
         bindRoomWatch();
+        renderLobby();
+        lobbyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      UI.$("#soloDemoBtn").onclick = () => {
+        if (!session) return;
+        const room = Room.readRoom(session.code);
+        if (!room || session.playerId !== room.hostId) return UI.toast("Only host can solo demo");
+        const res = Room.fillSoloBots(room);
+        if (!res.ok) return UI.toast(res.error);
+        UI.toast("Bots seated — start when ready");
+        renderLobby();
+      };
+
+      UI.$("#padSeatsBtn").onclick = () => {
+        if (!session) return;
+        const room = Room.readRoom(session.code);
+        if (!room || session.playerId !== room.hostId) return UI.toast("Only host");
+        const res = Room.addBotsTo(room, Room.MAX_PLAYERS);
+        if (!res.ok) return UI.toast(res.error);
+        UI.toast("Padded to " + res.room.players.length + " seats");
         renderLobby();
       };
 

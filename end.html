@@ -16,12 +16,16 @@
       </div>
     </div>
 
-    <section class="card stack">
-      <div class="row" style="justify-content:space-between">
-        <h2 style="margin:0">Night over</h2>
+    <section class="card stack primary-action">
+      <div class="end-hero">
+        <div class="trophy" aria-hidden="true">★</div>
+        <div class="section-kicker">Night over</div>
+        <h2 style="margin:0">Final standings</h2>
+      </div>
+      <div class="row" style="justify-content:center">
         <span class="pill" id="roomPill">—</span>
       </div>
-      <p class="muted" id="deckLine"></p>
+      <p class="muted center" id="deckLine"></p>
       <div class="scoreboard" id="scores"></div>
       <div>
         <div class="muted" style="margin-bottom:0.35rem">Share card</div>
@@ -50,7 +54,6 @@
         return;
       }
       if (room.status !== "ended") {
-        // Allow peeking mid-game via host end; otherwise send back
         if (room.status === "playing") {
           // still show live standings as shareable snapshot
         } else {
@@ -66,16 +69,18 @@
       UI.$("#roomPill").textContent = room.code;
       UI.$("#deckLine").textContent =
         (room.deckSnapshot?.name || room.deckId) +
-        " · " + room.round + " round" + (room.round === 1 ? "" : "s");
+        " · " + room.round + " round" + (room.round === 1 ? "" : "s") +
+        " · " + room.players.length + " players";
 
       const scores = UI.$("#scores");
       scores.innerHTML = "";
       Game.rankedPlayers(room).forEach((p, i) => {
         const row = document.createElement("div");
-        row.className = "score-row";
+        row.className = "score-row" + (i === 0 ? " top" : "");
         const medal = i === 0 ? " ★" : "";
+        const bot = p.bot ? " · bot" : "";
         row.innerHTML =
-          "<span>" + (i + 1) + ". " + escapeHtml(p.name) + medal + "</span><strong>" + p.score + "</strong>";
+          "<span>" + (i + 1) + ". " + escapeHtml(p.name) + bot + medal + "</span><strong>" + p.score + "</strong>";
         scores.appendChild(row);
       });
 

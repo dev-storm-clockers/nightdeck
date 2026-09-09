@@ -42,3 +42,34 @@
 - Pass 1 = Lobby Warmup loop shippable
 - Prefer stop by Pass 2 after unlock gate
 - Quality Done bar = these 4 hard stops + must-holds
+
+---
+
+## Change note (Phil go-ahead 2026-09-08) — Pass 3
+
+**Adds (hard stops):**
+1. **Solo demo:** From lobby, one human can start a full Lobby Warmup loop alone via bot/auto seat-fill to min players (≥3 including bots). Real multi-human party minimum unchanged when not in solo demo.
+2. **Visual refresh:** Clearer hierarchy, nicer cards/lobby/end, mobile polish — no new game mechanics.
+
+**Must hold:** Prior hard stops 1–4 still pass for multi-human path; Lobby Warmup free; NightDeck spelling; original decks only.
+
+**Out of scope this pass:** Upstash/Neon sync, new packs, Stripe.
+
+---
+
+## Change note (Phil 2026-09-08 evening) — Staff night cut
+
+Phil: clean version for work staff; **12 people** over a **~5 hour** window; **short game** rounds but **big window to choose winner**.
+
+### Hard stops (add/override for this cut)
+1. **Workplace-clean Lobby Warmup** — no spicy/unhinged cards in the default free deck path.
+2. **Roster size** — room supports at least **12** player seats.
+3. **Short round / long judge** — submit/play is quick; judge has a long (or effectively open) window to pick a winner before the round advances.
+4. Prior loop hard stops still hold: create/join, draw+blind submit, rotating judge+score, shareable end.
+
+### Must hold
+- Solo demo still works for host testing
+- Visual polish readable on laptop/phone
+- Group Chat Unhinged not required for staff night (gated/hidden OK)
+
+Phil said go ahead.

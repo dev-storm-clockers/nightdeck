@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NightDeck — Join Day</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="brand">
+      <div class="brand-mark">ND</div>
+      <div>
+        <h1>NightDeck</h1>
+        <p id="subtitle">Loading day…</p>
+      </div>
+    </div>
+
+    <section class="card stack hidden" id="errorCard">
+      <div class="error-banner" id="errorText">Day not found.</div>
+      <a class="btn secondary" href="index.html">Back to create</a>
+    </section>
+
+    <section class="card stack primary-action hidden" id="joinPanel">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">Join this day</h2>
+        <span class="pill" id="typePill">—</span>
+      </div>
+      <div class="center">
+        <div class="muted">Day code</div>
+        <div class="day-code" id="dayCode">—————</div>
+      </div>
+      <p class="muted tight" id="dayMeta"></p>
+      <label>Your name
+        <input id="playerName" type="text" maxlength="24" placeholder="What should we call you?" autocomplete="nickname" />
+      </label>
+      <button class="btn block" id="startBtn" type="button">Start game</button>
+      <a class="btn ghost block center" id="boardLink" href="#">Watch live leaderboard</a>
+    </section>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/sync-config.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    (function () {
+      const UI = NightDeckUI;
+      const Sync = NightDeckSync;
+      const Game = NightDeckGame;
+      const Catalog = NightDeckCatalog;
+
+      const code = (UI.qs("d") || "").trim().toUpperCase();
+      const soloFlag = UI.qs("solo") === "1";
+      let day = null;
+
+      async function load() {
+        if (!code) {
+          showError("Missing day code in the link.");
+          return;
+        }
+        if (soloFlag) {
+          const session = Sync.loadSession();
+          if (session && session.solo && session.day && session.dayCode === code) {
+            day = session.day;
+            renderJoin();
+            return;
+          }
+          showError("Solo day not found on this device.");
+          return;
+        }
+        try {
+          day = await Sync.getDay(code);
+          if (!day) {
+            showError("Day not found. Ask the host for a fresh link.");
+            return;
+          }
+          renderJoin();
+        } catch (err) {
+          showError(err.message || "Could not load day");
+        }
+      }
+
+      function showError(msg) {
+        UI.$("#subtitle").textContent = "Day unavailable";
+        UI.$("#errorCard").classList.remove("hidden");
+        UI.$("#errorText").textContent = msg;
+        UI.$("#joinPanel").classList.add("hidden");
+      }
+
+      function renderJoin() {
+        UI.$("#subtitle").textContent = "Staff Night · " + Game.typeLabel(day.gameType);
+        UI.$("#joinPanel").classList.remove("hidden");
+        UI.$("#dayCode").textContent = day.code;
+        UI.$("#typePill").textContent = Game.typeEmoji(day.gameType) + " " + Game.typeLabel(day.gameType);
+        UI.$("#typePill").className = "pill " + day.gameType;
+        UI.$("#dayMeta").textContent =
+          "Hosted by " + (day.hostName || "Host") +
+          " · " + Game.typeLabel(day.gameType) + " only · " +
+          ((day.players && day.players.length) || 0) + " joined";
+        UI.$("#boardLink").href = "board.html?d=" + encodeURIComponent(day.code);
+        const session = Sync.loadSession();
+        if (session && session.dayCode === day.code && session.name) {
+          UI.$("#playerName").value = session.name;
+        }
+      }
+
+      UI.$("#startBtn").addEventListener("click", async () => {
+        const name = UI.$("#playerName").value.trim();
+        if (!name) {
+          UI.toast("Enter your name");
+          return;
+        }
+        UI.$("#startBtn").disabled = true;
+        try {
+          let playerId;
+          if (day.solo || soloFlag) {
+            playerId = Sync.makePlayerId();
+            day.players = day.players || [];
+            day.players.push({ id: playerId, name, score: 0, finishedAt: null });
+            Sync.saveSession({
+              dayCode: day.code,
+              playerId,
+              name,
+              gameType: day.gameType,
+              solo: true,
+              day,
+            });
+          } else {
+            const res = await Sync.joinDay({ code: day.code, name });
+            if (!res.ok) {
+              UI.toast(res.error);
+              UI.$("#startBtn").disabled = false;
+              return;
+            }
+            playerId = res.playerId;
+            day = res.day;
+            Sync.saveSession({
+              dayCode: day.code,
+              playerId,
+              name,
+              gameType: day.gameType,
+              solo: false,
+            });
+          }
+          Sync.clearRun();
+          location.href = "play.html";
+        } catch (err) {
+          UI.toast(err.message || "Could not join");
+          UI.$("#startBtn").disabled = false;
+        }
+      });
+
+      load();
+    })();
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Staff Night</title>
+  <title>NightDeck — Play</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -13,55 +13,23 @@
         <div class="brand-mark">ND</div>
         <div>
           <h1>NightDeck</h1>
-          <p id="metaLine">Staff Night</p>
+          <p id="metaLine">Loading…</p>
         </div>
       </div>
-      <aside class="score-rail" aria-label="Live scoreboard">
-        <div class="score-rail-title">Scoreboard</div>
-        <ol id="liveScores" class="score-rail-list"></ol>
-      </aside>
+      <div class="score-chip">
+        <div class="lbl">Score</div>
+        <div class="val" id="scoreVal">0</div>
+      </div>
     </header>
 
     <div class="status-bar">
-      <span class="pill" id="roundPill">Round 0</span>
-      <span class="pill warn" id="phasePill">picking</span>
-      <span class="pill" id="roomPill">———</span>
-      <span class="pill hidden" id="typePill"></span>
-      <span class="role-badge hidden" id="roleBadge"></span>
+      <span class="pill" id="qPill">Q 0/0</span>
+      <span class="pill" id="typePill">—</span>
+      <span class="pill" id="dayPill">—</span>
     </div>
 
-    <!-- Picker -->
-    <section class="card stack picker-card" id="pickerSection">
-      <div class="section-head">
-        <h2 id="pickerTitle">Choose a round</h2>
-        <p class="muted tight" id="pickerHint">Host picks the next game. Short rounds, keep the night moving.</p>
-      </div>
-      <div class="round-picker" id="roundPicker">
-        <button type="button" class="round-type trivia" data-type="trivia">
-          <span class="emoji" aria-hidden="true">🧠</span>
-          <strong>Trivia</strong>
-          <span>Four options. Everyone answers. You reveal.</span>
-        </button>
-        <button type="button" class="round-type identify" data-type="identify">
-          <span class="emoji" aria-hidden="true">🔍</span>
-          <strong>Identify</strong>
-          <span>What is it? Options or a typed guess.</span>
-        </button>
-        <button type="button" class="round-type music" data-type="music">
-          <span class="emoji" aria-hidden="true">🎵</span>
-          <strong>Music</strong>
-          <span>Lyric cue. Name the song or artist.</span>
-        </button>
-      </div>
-      <div class="waiting-panel hidden" id="waitingPick">
-        <div class="waiting-pulse" aria-hidden="true"></div>
-        <p>Host is choosing the next round…</p>
-      </div>
-    </section>
-
-    <!-- Active round -->
-    <section class="card stack round-card hidden" id="roundSection">
-      <div class="prompt-card" id="promptCard" data-type="">
+    <section class="card stack round-card" id="roundSection">
+      <div class="prompt-card" id="promptCard">
         <div class="kicker" id="promptKicker">Question</div>
         <div class="clue hidden" id="promptClue"></div>
         <div class="big" id="promptBig">…</div>
@@ -69,14 +37,14 @@
       </div>
 
       <div class="progress-row">
-        <div class="lock-meter" id="lockMeter" aria-hidden="true"><i style="width:0%"></i></div>
-        <span class="waiting-chip" id="lockChip">0 locked in</span>
+        <div class="lock-meter" id="lockMeter" aria-hidden="true"><i id="progressBar" style="width:0%"></i></div>
+        <span class="waiting-chip" id="progChip">0 / 0</span>
       </div>
 
       <div id="answerArea">
         <div class="options" id="options" role="group" aria-label="Answer options"></div>
         <div class="typed-row hidden" id="typedWrap">
-          <label id="typedLabel" class="typed-label">
+          <label class="typed-label" style="flex:1;margin:0">
             <span class="sr-only">Type your guess</span>
             <input id="typedGuess" type="text" maxlength="80" placeholder="Or type a guess…" autocomplete="off" />
           </label>
@@ -85,138 +53,59 @@
         <p class="muted tight" id="lockedNote"></p>
       </div>
 
-      <div class="reveal-banner hidden" id="revealAnswer"></div>
-
-      <div class="hidden" id="answersPanel">
-        <div class="section-head compact">
-          <h2>Results</h2>
-          <p class="muted tight" id="resultsHint">Who got it.</p>
-        </div>
-        <div class="answer-grid" id="answersGrid"></div>
-      </div>
+      <div class="reveal-banner hidden" id="revealBanner"></div>
     </section>
 
-    <!-- Host controls -->
-    <section class="host-dock hidden" id="hostBar">
-      <div class="host-dock-label">Host</div>
-      <div class="host-dock-actions">
-        <button class="btn ok" id="revealBtn" type="button">Reveal answer</button>
-        <button class="btn secondary hidden" id="nextRoundBtn" type="button">Next round</button>
-        <button class="btn danger ghost-danger" id="endBtn" type="button">End night</button>
-      </div>
-    </section>
-
-    <section class="card stack scores-full">
-      <div class="section-head compact">
-        <h2>Full standings</h2>
-      </div>
-      <div class="scoreboard podium-board" id="scores"></div>
-      <div class="row foot-actions" id="playerFoot">
-        <a class="btn ghost" href="index.html">Lobby</a>
+    <section class="play-dock" id="playDock">
+      <div class="play-dock-actions">
+        <button class="btn ok hidden" id="nextBtn" type="button">Next question</button>
+        <a class="btn ghost" href="board.html" id="boardBtn">Leaderboard</a>
       </div>
     </section>
   </main>
 
   <script src="js/ui.js"></script>
+  <script src="js/sync-config.js"></script>
+  <script src="js/sync.js"></script>
   <script src="js/catalog.js"></script>
-  <script src="js/room.js"></script>
   <script src="js/game.js"></script>
   <script>
     (function () {
       const UI = NightDeckUI;
-      const Room = NightDeckRoom;
+      const Sync = NightDeckSync;
       const Game = NightDeckGame;
+      const Catalog = NightDeckCatalog;
 
-      const session = Room.loadSession();
-      if (!session) {
+      const session = Sync.loadSession();
+      if (!session || !session.dayCode || !session.gameType) {
         location.href = "index.html";
         return;
       }
 
+      let run = Sync.loadRun();
       let selectedOption = null;
+      let pack = null;
 
-      function isHost(room) {
-        return session.playerId === room.hostId;
-      }
-
-      function phaseLabel(phase) {
-        if (phase === "picking") return "choose round";
-        if (phase === "answering") return "answering";
-        if (phase === "reveal") return "reveal";
-        return phase || "—";
-      }
-
-      function typeLabel(type) {
-        return { trivia: "Trivia", identify: "Identify", music: "Music" }[type] || "";
-      }
-
-      function renderScores(room) {
-        const ranked = Game.rankedPlayers(room);
-        UI.$("#liveScores").innerHTML = ranked
-          .slice(0, 8)
-          .map((p, i) => {
-            const you = p.id === session.playerId ? ' class="you"' : "";
-            return (
-              "<li" +
-              you +
-              "><span class=\"n\">" +
-              (i + 1) +
-              ".</span><span class=\"who\">" +
-              UI.escapeHtml(p.name) +
-              '</span><span class="pts">' +
-              p.score +
-              "</span></li>"
-            );
-          })
-          .join("");
-
-        UI.$("#scores").innerHTML = ranked
-          .map((p, i) => {
-            const you = p.id === session.playerId ? " (you)" : "";
-            const bot = p.bot ? " · bot" : "";
-            const medal = i === 0 ? " top" : i < 3 ? " place" : "";
-            return (
-              '<div class="score-row' +
-              medal +
-              '"><span class="rank">' +
-              (i + 1) +
-              '</span><span class="who">' +
-              UI.escapeHtml(p.name) +
-              you +
-              bot +
-              '</span><span class="pts">' +
-              p.score +
-              "</span></div>"
-            );
-          })
-          .join("");
-      }
+      UI.$("#boardBtn").href = "board.html?d=" + encodeURIComponent(session.dayCode);
 
       function fillPrompt(item) {
-        const card = UI.$("#promptCard");
-        const kicker = UI.$("#promptKicker");
-        const big = UI.$("#promptBig");
         const clue = UI.$("#promptClue");
         const hint = UI.$("#promptHint");
-        card.setAttribute("data-type", item.type || "");
         clue.classList.add("hidden");
         hint.classList.add("hidden");
-        clue.textContent = "";
-        hint.textContent = "";
-
         if (item.type === "trivia") {
-          kicker.textContent = "Trivia";
-          big.textContent = item.q;
+          UI.$("#promptKicker").textContent = "Trivia";
+          UI.$("#promptBig").textContent = item.q;
         } else if (item.type === "identify") {
-          kicker.textContent = "Identify";
-          big.textContent = item.prompt;
+          UI.$("#promptKicker").textContent = "Identify";
+          UI.$("#promptBig").textContent = item.prompt;
           if (item.clue) {
             clue.textContent = item.clue;
             clue.classList.remove("hidden");
           }
         } else {
-          kicker.textContent = "Music";
-          big.textContent = "“" + item.cue + "”";
+          UI.$("#promptKicker").textContent = "Music";
+          UI.$("#promptBig").textContent = "“" + item.cue + "”";
           if (item.hint) {
             hint.textContent = item.hint;
             hint.classList.remove("hidden");
@@ -224,17 +113,19 @@
         }
       }
 
-      function renderOptions(room, meLocked) {
-        const item = room.current.item;
+      function renderOptions() {
+        const cur = Game.currentQuestion(run);
+        if (!cur) return;
+        const item = cur.item;
         const optsEl = UI.$("#options");
         const typedWrap = UI.$("#typedWrap");
         const typedGuess = UI.$("#typedGuess");
         const lockBtn = UI.$("#lockBtn");
         optsEl.innerHTML = "";
-
         const hasOptions = Array.isArray(item.options) && item.options.length > 0;
         const allowTyped = item.type !== "trivia";
         const letters = "ABCD";
+        const revealing = run.phase === "reveal";
 
         if (hasOptions) {
           item.options.forEach((opt, idx) => {
@@ -242,23 +133,17 @@
             btn.type = "button";
             btn.className = "option-btn";
             btn.innerHTML =
-              '<span class="opt-letter">' +
-              letters[idx] +
-              '</span><span class="opt-text">' +
-              UI.escapeHtml(opt) +
-              "</span>";
-            if (meLocked || room.phase === "reveal") {
+              '<span class="opt-letter">' + letters[idx] + '</span><span class="opt-text">' +
+              UI.escapeHtml(opt) + "</span>";
+            if (revealing || run.phase !== "answering") {
               btn.disabled = true;
-              const mine = room.current.answers[session.playerId] === opt;
-              if (mine) btn.classList.add("selected");
-              if (room.phase === "reveal") {
-                const isCorrect =
-                  item.type === "trivia"
-                    ? opt === item.answer
-                    : opt === item.answer || Game.matchesAccept(opt, item);
-                if (isCorrect) btn.classList.add("correct");
-                else if (mine) btn.classList.add("wrong");
-              }
+              if (run.currentGuess === opt) btn.classList.add("selected");
+              const isCorrect =
+                item.type === "trivia"
+                  ? opt === item.answer
+                  : opt === item.answer || Game.matchesAccept(opt, item);
+              if (isCorrect) btn.classList.add("correct");
+              else if (run.currentGuess === opt) btn.classList.add("wrong");
             } else {
               btn.onclick = () => {
                 selectedOption = opt;
@@ -272,15 +157,16 @@
           });
         }
 
-        if (room.phase === "answering" && !meLocked) {
-          typedWrap.classList.remove("hidden");
-          typedWrap.classList.toggle("typed-only", !hasOptions);
+        if (run.phase === "answering") {
+          typedWrap.classList.toggle("hidden", !allowTyped && hasOptions);
+          if (!hasOptions) typedWrap.classList.remove("hidden");
           if (allowTyped) {
             typedGuess.disabled = false;
             typedGuess.placeholder = hasOptions ? "Or type a guess…" : "Type your guess…";
           } else {
             typedGuess.disabled = true;
             typedGuess.placeholder = "Pick an option above";
+            if (hasOptions) typedWrap.classList.add("hidden");
           }
           lockBtn.classList.remove("hidden");
           lockBtn.disabled = !(selectedOption || (allowTyped && typedGuess.value.trim()));
@@ -289,269 +175,126 @@
         }
       }
 
-      function renderAnswersPanel(room) {
-        const panel = UI.$("#answersPanel");
-        const grid = UI.$("#answersGrid");
-        if (room.phase !== "reveal" || !room.current) {
-          panel.classList.add("hidden");
-          return;
-        }
-        panel.classList.remove("hidden");
-        const host = isHost(room);
-        const canOverride = host && room.current.item.type !== "trivia";
-        UI.$("#resultsHint").textContent = canOverride
-          ? "Tap ✓ / ✗ if auto-grade missed a close guess."
-          : "Green = point scored.";
-
-        grid.innerHTML = "";
-        const ordered = room.players.slice().sort((a, b) => {
-          const ac = room.current.correctMap[a.id] ? 0 : 1;
-          const bc = room.current.correctMap[b.id] ? 0 : 1;
-          return ac - bc || a.name.localeCompare(b.name);
-        });
-        ordered.forEach((p) => {
-          const ans = room.current.answers[p.id];
-          const correct = !!room.current.correctMap[p.id];
-          const row = document.createElement("div");
-          row.className = "answer-row" + (correct ? " correct" : " miss");
-          const left = document.createElement("div");
-          left.className = "answer-main";
-          left.innerHTML =
-            '<div class="who">' +
-            UI.escapeHtml(p.name) +
-            (p.bot ? ' <span class="tag">bot</span>' : "") +
-            (p.id === session.playerId ? ' <span class="tag you">you</span>' : "") +
-            "</div>" +
-            '<div class="guess">' +
-            (ans != null ? UI.escapeHtml(ans) : "<em>no answer</em>") +
-            "</div>";
-          const badge = document.createElement("div");
-          badge.className = "result-badge " + (correct ? "ok" : "no");
-          badge.textContent = correct ? "+1" : "—";
-          row.appendChild(left);
-          row.appendChild(badge);
-          if (canOverride) {
-            const actions = document.createElement("div");
-            actions.className = "override";
-            const ok = document.createElement("button");
-            ok.type = "button";
-            ok.className = "mini ok";
-            ok.textContent = "✓";
-            ok.title = "Mark correct";
-            ok.onclick = () => {
-              Game.markCorrect(Room.readRoom(session.code), p.id, true);
-              render();
-            };
-            const no = document.createElement("button");
-            no.type = "button";
-            no.className = "mini";
-            no.textContent = "✗";
-            no.title = "Mark wrong";
-            no.onclick = () => {
-              Game.markCorrect(Room.readRoom(session.code), p.id, false);
-              render();
-            };
-            actions.appendChild(ok);
-            actions.appendChild(no);
-            row.appendChild(actions);
-          }
-          grid.appendChild(row);
-        });
-      }
-
       function render() {
-        const room = Room.readRoom(session.code);
-        if (!room) {
-          UI.toast("Room went missing");
-          location.href = "index.html";
+        if (!run) return;
+        if (run.phase === "done") {
+          finish();
           return;
         }
-        if (room.status === "lobby") {
-          location.href = "index.html";
-          return;
-        }
-        if (room.status === "ended") {
-          location.href = "end.html";
-          return;
-        }
-
-        const host = isHost(room);
+        const prog = Game.progress(run);
         UI.$("#metaLine").textContent =
-          room.players.length + " players · " + room.code;
-        UI.$("#roundPill").textContent = "Round " + (room.round || 0);
-        UI.$("#phasePill").textContent = phaseLabel(room.phase);
-        UI.$("#roomPill").textContent = room.code;
+          session.name + " · " + Game.typeLabel(run.gameType);
+        UI.$("#scoreVal").textContent = String(run.score);
+        UI.$("#qPill").textContent = "Q " + prog.index + "/" + prog.total;
+        UI.$("#typePill").textContent = Game.typeLabel(run.gameType);
+        UI.$("#typePill").className = "pill " + run.gameType;
+        UI.$("#dayPill").textContent = session.dayCode;
+        const pct = prog.total ? Math.round((run.cursor / prog.total) * 100) : 0;
+        UI.$("#progressBar").style.width = pct + "%";
+        UI.$("#progChip").textContent = prog.index + " / " + prog.total;
 
-        const role = UI.$("#roleBadge");
-        role.classList.remove("hidden");
-        role.textContent = host ? "Host" : "Player";
-        role.className = "role-badge " + (host ? "host" : "player");
+        const cur = Game.currentQuestion(run);
+        if (!cur) return;
+        fillPrompt(cur.item);
+        renderOptions();
 
-        const typePill = UI.$("#typePill");
-        if (room.current && room.current.type) {
-          typePill.textContent = typeLabel(room.current.type);
-          typePill.className = "pill " + room.current.type;
-          typePill.classList.remove("hidden");
+        const banner = UI.$("#revealBanner");
+        if (run.phase === "reveal") {
+          banner.classList.remove("hidden");
+          banner.classList.toggle("miss", !run.currentCorrect);
+          banner.innerHTML =
+            '<span class="reveal-label">' +
+            (run.currentCorrect ? "Correct · +1" : "Answer") +
+            '</span><span class="reveal-value">' +
+            UI.escapeHtml(cur.item.answer) +
+            "</span>";
+          UI.$("#lockedNote").textContent = "";
+          UI.$("#nextBtn").classList.remove("hidden");
+          UI.$("#nextBtn").textContent =
+            run.cursor + 1 >= run.queue.length ? "Finish & submit score" : "Next question";
         } else {
-          typePill.classList.add("hidden");
+          banner.classList.add("hidden");
+          UI.$("#lockedNote").textContent = "Select an answer, then lock in.";
+          UI.$("#nextBtn").classList.add("hidden");
         }
-
-        renderScores(room);
-
-        const picker = UI.$("#pickerSection");
-        const roundSec = UI.$("#roundSection");
-        const hostBar = UI.$("#hostBar");
-
-        document.body.classList.toggle("is-host", host);
-        document.body.classList.toggle("is-player", !host);
-
-        if (room.phase === "picking") {
-          picker.classList.remove("hidden");
-          roundSec.classList.add("hidden");
-          UI.$("#roundPicker").classList.toggle("hidden", !host);
-          UI.$("#waitingPick").classList.toggle("hidden", host);
-          UI.$("#pickerTitle").textContent = host ? "Choose a round" : "Stand by";
-          UI.$("#pickerHint").textContent = host
-            ? "Trivia, Identify, or Music — keep rounds short."
-            : "The host picks the next game.";
-          selectedOption = null;
-          UI.$("#typedGuess").value = "";
-          hostBar.classList.toggle("hidden", !host);
-          UI.$("#revealBtn").classList.add("hidden");
-          UI.$("#nextRoundBtn").classList.add("hidden");
-          UI.$("#endBtn").classList.toggle("hidden", !host);
-        } else if (room.phase === "answering" || room.phase === "reveal") {
-          picker.classList.add("hidden");
-          roundSec.classList.remove("hidden");
-
-          const cur = room.current;
-          const item = cur.item;
-          fillPrompt(item);
-
-          const locked = Game.lockedCount(room);
-          const total = room.players.length;
-          const pct = total ? Math.round((locked / total) * 100) : 0;
-          UI.$("#lockChip").textContent = locked + " / " + total + " locked";
-          UI.$("#lockMeter i").style.width = pct + "%";
-
-          const meLocked = !!(cur.locked && cur.locked[session.playerId]);
-          if (room.phase === "answering") {
-            UI.$("#answerArea").classList.remove("hidden");
-            UI.$("#revealAnswer").classList.add("hidden");
-            UI.$("#lockedNote").textContent = meLocked
-              ? "Locked in. Waiting for reveal…"
-              : "Select an answer, then lock in.";
-            renderOptions(room, meLocked);
-          } else {
-            UI.$("#answerArea").classList.add("hidden");
-            const rev = UI.$("#revealAnswer");
-            rev.classList.remove("hidden");
-            rev.innerHTML =
-              '<span class="reveal-label">Answer</span><span class="reveal-value">' +
-              UI.escapeHtml(item.answer) +
-              "</span>";
-            renderOptions(room, true);
-            UI.$("#lockedNote").textContent = "";
-          }
-
-          renderAnswersPanel(room);
-
-          hostBar.classList.toggle("hidden", !host);
-          if (host) {
-            UI.$("#revealBtn").classList.toggle("hidden", room.phase !== "answering");
-            UI.$("#nextRoundBtn").classList.toggle("hidden", room.phase !== "reveal");
-            UI.$("#endBtn").classList.remove("hidden");
-          }
-        } else {
-          picker.classList.add("hidden");
-          roundSec.classList.add("hidden");
-          hostBar.classList.add("hidden");
-        }
-
-        // Player foot: only lobby link; host end lives in dock
-        UI.$("#playerFoot").classList.toggle("hidden", host);
       }
 
-      UI.$("#roundPicker").addEventListener("click", (ev) => {
-        const btn = ev.target.closest("[data-type]");
-        if (!btn) return;
-        const room = Room.readRoom(session.code);
-        if (!room || !isHost(room)) return;
-        const type = btn.getAttribute("data-type");
-        const res = Game.startRound(room, type);
-        if (!res.ok) return UI.toast(res.error);
-        selectedOption = null;
-        UI.$("#typedGuess").value = "";
-        UI.toast(typeLabel(type) + " — go");
-        render();
-      });
+      async function finish() {
+        Sync.saveRun(run);
+        try {
+          if (!session.solo) {
+            await Sync.submitScore({
+              code: session.dayCode,
+              playerId: session.playerId,
+              score: run.score,
+            });
+          } else {
+            const day = session.day || { code: session.dayCode, players: [] };
+            const p = (day.players || []).find((x) => x.id === session.playerId);
+            if (p) {
+              p.score = run.score;
+              p.finishedAt = Date.now();
+            }
+            session.day = day;
+            Sync.saveSession(session);
+          }
+        } catch (err) {
+          UI.toast(err.message || "Score sync failed — results still local");
+        }
+        location.href = "end.html";
+      }
+
+      async function boot() {
+        try {
+          pack = await Catalog.loadPack(session.gameType);
+          if (!run || run.dayCode !== session.dayCode || run.playerId !== session.playerId) {
+            run = Game.startRun({
+              gameType: session.gameType,
+              pack,
+              dayCode: session.dayCode,
+              playerId: session.playerId,
+              playerName: session.name,
+            });
+            Sync.saveRun(run);
+          }
+          render();
+        } catch (err) {
+          UI.toast(err.message || "Could not load pack");
+          UI.$("#promptBig").textContent = err.message || "Load failed";
+        }
+      }
 
       UI.$("#typedGuess").addEventListener("input", () => {
         selectedOption = null;
         UI.$all(".option-btn").forEach((b) => b.classList.remove("selected"));
         UI.$("#lockBtn").disabled = !UI.$("#typedGuess").value.trim();
       });
-
       UI.$("#typedGuess").addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
           UI.$("#lockBtn").click();
         }
       });
-
       UI.$("#lockBtn").onclick = () => {
-        const room = Room.readRoom(session.code);
-        if (!room || room.phase !== "answering") return;
+        if (!run || run.phase !== "answering") return;
         const text = selectedOption || UI.$("#typedGuess").value.trim();
-        const res = Game.lockAnswer(room, session.playerId, text);
+        const res = Game.lockAndReveal(run, text);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Locked");
+        Sync.saveRun(run);
         selectedOption = null;
         render();
       };
-
-      UI.$("#revealBtn").onclick = () => {
-        const room = Room.readRoom(session.code);
-        if (!room || !isHost(room)) return;
-        const res = Game.revealRound(room);
+      UI.$("#nextBtn").onclick = () => {
+        const res = Game.nextQuestion(run);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Revealed");
-        render();
-      };
-
-      UI.$("#nextRoundBtn").onclick = () => {
-        const room = Room.readRoom(session.code);
-        if (!room || !isHost(room)) return;
-        const res = Game.backToPicker(room);
-        if (!res.ok) return UI.toast(res.error);
+        Sync.saveRun(run);
         selectedOption = null;
         UI.$("#typedGuess").value = "";
-        render();
+        if (res.done) finish();
+        else render();
       };
 
-      UI.$("#endBtn").onclick = () => {
-        const room = Room.readRoom(session.code);
-        if (!room || !isHost(room)) return UI.toast("Only the host can end the night");
-        if (!confirm("End Staff Night and show the podium?")) return;
-        Game.endNight(room);
-        location.href = "end.html";
-      };
-
-      Room.subscribe((code) => {
-        if (code === session.code) render();
-      });
-      window.addEventListener("storage", (e) => {
-        if (e.key === "nightdeck:room:" + session.code) render();
-      });
-
-      render();
-      setInterval(() => {
-        const room = Room.readRoom(session.code);
-        if (room && room.status === "playing" && room.phase === "answering") {
-          Game.runBotAnswers(room);
-        }
-        render();
-      }, 1000);
+      boot();
     })();
   </script>
 </body>

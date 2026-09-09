@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Staff Night</title>
+  <title>NightDeck — Create a Staff Day</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,268 +12,171 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Staff Night · Trivia · Identify · Music</p>
+        <p>Staff Night · create a day · share one link</p>
       </div>
     </div>
 
     <div class="hero-banner">
-      <strong>Gather the crew. Keep the rounds short. Let the host cook.</strong>
-      <span>Up to 12 people. Mix Trivia, Identify, and Music across a long hang. Host controls the pace.</span>
+      <strong>Pick one game. Share a permanent day link. Watch the board fill up.</strong>
+      <span>Trivia, Identify, or Music — chosen once when you create the day. Players open the link, enter a name, and play.</span>
     </div>
 
     <section class="card stack primary-action" id="createCard">
-      <h2>Host a night</h2>
-      <label>What should we call you?
+      <h2>Create a day</h2>
+      <p class="muted tight">Choose the game type for everyone on this day.</p>
+      <div class="game-type-grid" id="typeGrid" role="radiogroup" aria-label="Game type">
+        <button type="button" class="game-type trivia" data-type="trivia" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">🧠</span>
+          <strong>Trivia</strong>
+          <span>Four options. Short workplace-clean questions.</span>
+        </button>
+        <button type="button" class="game-type identify" data-type="identify" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">🔍</span>
+          <strong>Identify</strong>
+          <span>What is it? Options or a typed guess.</span>
+        </button>
+        <button type="button" class="game-type music" data-type="music" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">🎵</span>
+          <strong>Music</strong>
+          <span>Lyric cues. Name the song or artist.</span>
+        </button>
+      </div>
+      <label>Your name (host)
         <input id="hostName" type="text" maxlength="24" placeholder="Your name" autocomplete="nickname" />
       </label>
-      <button class="btn block" id="createBtn" type="button">Create room</button>
+      <button class="btn block" id="createBtn" type="button">Create day &amp; get link</button>
+      <button class="btn secondary block" id="soloBtn" type="button">Solo demo (local only)</button>
+      <p class="muted tight" id="createStatus"></p>
+    </section>
+
+    <section class="card stack hidden" id="createdCard">
+      <h2>Day ready</h2>
+      <p class="muted tight">Share this permanent link. Anyone with it can join and play <strong id="createdType">—</strong>.</p>
+      <div class="center">
+        <div class="muted">Day code</div>
+        <div class="day-code" id="createdCode">—————</div>
+      </div>
+      <div class="link-box" id="createdLink"></div>
+      <div class="row">
+        <button class="btn" id="copyLinkBtn" type="button">Copy day link</button>
+        <a class="btn secondary" id="openDayBtn" href="#">Open day</a>
+        <a class="btn ghost" id="openBoardBtn" href="#">Live board</a>
+      </div>
+      <button class="btn ghost" id="anotherBtn" type="button">Create another day</button>
     </section>
 
     <section class="card stack" id="joinCard">
-      <h2>Jump in</h2>
-      <label>Room code
+      <h2>Join an existing day</h2>
+      <label>Day code
         <input id="joinCode" type="text" maxlength="8" placeholder="e.g. K7M2P" autocomplete="off" style="text-transform:uppercase" />
       </label>
-      <label>Your name
-        <input id="joinName" type="text" maxlength="24" placeholder="What friends call you" autocomplete="nickname" />
-      </label>
-      <button class="btn secondary block" id="joinBtn" type="button">Join the table</button>
+      <button class="btn secondary block" id="joinBtn" type="button">Open day link</button>
       <details class="inline-help">
-        <summary>Same-browser tips</summary>
-        <p class="muted" style="margin:0.5rem 0 0">Share a code across tabs in the same browser for now. Local rooms sync with BroadcastChannel — cloud sync later.</p>
+        <summary>How multi-device works</summary>
+        <p class="muted" style="margin:0.5rem 0 0">Days sync nicknames and scores through Upstash. Open the day link on phones; the live board updates about every 2 seconds.</p>
       </details>
-    </section>
-
-    <section class="card stack hidden" id="lobbyPanel">
-      <div class="row" style="justify-content:space-between">
-        <div>
-          <h2 style="margin:0">Your table</h2>
-        </div>
-        <span class="pill" id="statusPill">waiting</span>
-      </div>
-      <div class="center">
-        <div class="muted">Pass this code around</div>
-        <div class="room-code" id="roomCodeDisplay">—————</div>
-        <button class="btn ghost" id="copyCodeBtn" type="button" style="margin-top:0.5rem">Copy code</button>
-      </div>
-      <div>
-        <div class="muted" style="margin-bottom:0.35rem">Who's here <span id="playerCount"></span></div>
-        <ul class="player-list" id="playerList"></ul>
-      </div>
-      <div>
-        <div class="muted" style="margin-bottom:0.35rem">Scoreboard preview</div>
-        <div class="scoreboard" id="scorePreview"></div>
-      </div>
-      <p class="muted" id="startHint">Need 2 humans to start — or Solo demo for practice.</p>
-      <div class="lobby-actions rowish" id="hostTools">
-        <button class="btn secondary" id="soloDemoBtn" type="button">Solo demo (bots)</button>
-        <button class="btn ghost" id="padSeatsBtn" type="button">Fill empty seats</button>
-      </div>
-      <div class="row">
-        <button class="btn" id="startBtn" type="button" disabled>Start night</button>
-        <button class="btn ghost" id="leaveBtn" type="button">Leave</button>
-      </div>
-      <p class="muted hidden" id="soloNote" style="margin:0">Practice mode seats bots so you can dry-run hosting alone. For the real hang, invite humans.</p>
     </section>
   </main>
 
   <script src="js/ui.js"></script>
-  <script src="js/room.js"></script>
-  <script src="js/catalog.js"></script>
+  <script src="js/sync-config.js"></script>
+  <script src="js/sync.js"></script>
   <script src="js/game.js"></script>
   <script>
     (function () {
       const UI = NightDeckUI;
-      const Room = NightDeckRoom;
+      const Sync = NightDeckSync;
       const Game = NightDeckGame;
-      const Catalog = NightDeckCatalog;
+      let selectedType = null;
 
-      let session = Room.loadSession();
-      let unsub = null;
-
-      function isHost(room) {
-        return session && room && session.playerId === room.hostId;
+      function selectType(type) {
+        selectedType = type;
+        UI.$all(".game-type").forEach((btn) => {
+          const on = btn.getAttribute("data-type") === type;
+          btn.classList.toggle("selected", on);
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+        });
       }
 
-      function showLobby(room) {
+      UI.$("#typeGrid").addEventListener("click", (ev) => {
+        const btn = ev.target.closest("[data-type]");
+        if (!btn) return;
+        selectType(btn.getAttribute("data-type"));
+      });
+
+      function showCreated(day, opts) {
         UI.$("#createCard").classList.add("hidden");
-        UI.$("#joinCard").classList.add("hidden");
-        UI.$("#lobbyPanel").classList.remove("hidden");
-        renderLobby(room);
-      }
-
-      function renderLobby(room) {
-        if (!room) return;
-        UI.$("#roomCodeDisplay").textContent = room.code;
-        UI.$("#statusPill").textContent = room.status;
-        UI.$("#playerCount").textContent = "(" + room.players.length + "/" + Room.MAX_PLAYERS + ")";
-        const list = UI.$("#playerList");
-        list.innerHTML = room.players
-          .map((p) => {
-            const tags = [];
-            if (p.id === room.hostId) tags.push("host");
-            if (p.bot) tags.push("bot");
-            if (session && p.id === session.playerId) tags.push("you");
-            return (
-              "<li><span class=\"name\">" +
-              UI.escapeHtml(p.name) +
-              "</span><span class=\"meta\">" +
-              UI.escapeHtml(tags.join(" · ") || "player") +
-              " · " +
-              p.score +
-              " pts</span></li>"
-            );
-          })
-          .join("");
-
-        const ranked = Game.rankedPlayers(room);
-        UI.$("#scorePreview").innerHTML = ranked
-          .slice(0, 5)
-          .map(
-            (p, i) =>
-              '<div class="score-row' +
-              (i === 0 ? " top" : "") +
-              '"><span class="rank">' +
-              (i + 1) +
-              '</span><span class="who">' +
-              UI.escapeHtml(p.name) +
-              '</span><span class="pts">' +
-              p.score +
-              "</span></div>"
-          )
-          .join("");
-
-        const host = isHost(room);
-        UI.$("#hostTools").classList.toggle("hidden", !host);
-        UI.$("#startBtn").classList.toggle("hidden", !host);
-        UI.$("#soloNote").classList.toggle("hidden", !room.soloDemo);
-        UI.$("#startBtn").disabled = !Room.canStart(room);
-        if (room.soloDemo) {
-          UI.$("#startHint").textContent = "Solo demo ready — bots will answer for fun.";
-        } else if (Room.humanCount(room) < Room.MIN_HUMANS) {
-          UI.$("#startHint").textContent =
-            "Need " + Room.MIN_HUMANS + " humans to start (or Solo demo). Room for " + Room.MAX_PLAYERS + ".";
-        } else {
-          UI.$("#startHint").textContent = "Looks good — start whenever you're ready.";
-        }
-
-        if (room.status === "playing") {
-          location.href = "play.html";
-        } else if (room.status === "ended") {
-          location.href = "end.html";
+        UI.$("#createdCard").classList.remove("hidden");
+        UI.$("#createdCode").textContent = day.code;
+        UI.$("#createdType").textContent = Game.typeLabel(day.gameType);
+        const link = Sync.dayUrl(day.code);
+        const board = Sync.boardUrl(day.code);
+        UI.$("#createdLink").textContent = link;
+        UI.$("#openDayBtn").href = "day.html?d=" + encodeURIComponent(day.code);
+        UI.$("#openBoardBtn").href = "board.html?d=" + encodeURIComponent(day.code);
+        if (opts && opts.solo) {
+          UI.$("#createdLink").textContent = link + " (local solo — scores stay on this device)";
         }
       }
 
-      function watch(code) {
-        if (unsub) unsub();
-        unsub = Room.subscribe((c) => {
-          if (c !== code) return;
-          const room = Room.readRoom(code);
-          renderLobby(room);
+      UI.$("#createBtn").addEventListener("click", async () => {
+        if (!selectedType) {
+          UI.toast("Pick Trivia, Identify, or Music");
+          return;
+        }
+        const hostName = UI.$("#hostName").value;
+        UI.$("#createBtn").disabled = true;
+        UI.$("#createStatus").textContent = "Creating day…";
+        try {
+          const day = await Sync.createDay({ gameType: selectedType, hostName });
+          showCreated(day);
+          UI.toast("Day " + day.code + " created");
+        } catch (err) {
+          UI.$("#createStatus").textContent = err.message || "Could not create day";
+          UI.toast(err.message || "Create failed");
+        } finally {
+          UI.$("#createBtn").disabled = false;
+        }
+      });
+
+      UI.$("#soloBtn").addEventListener("click", () => {
+        if (!selectedType) {
+          UI.toast("Pick a game type first");
+          return;
+        }
+        const day = Sync.createSoloDay({
+          gameType: selectedType,
+          hostName: UI.$("#hostName").value || "You",
         });
-        // storage event for cross-tab same-origin
-        window.addEventListener("storage", (ev) => {
-          if (ev.key === "nightdeck:room:" + code) {
-            renderLobby(Room.readRoom(code));
-          }
+        Sync.saveSession({
+          dayCode: day.code,
+          playerId: Sync.makePlayerId(),
+          name: day.hostName,
+          gameType: day.gameType,
+          solo: true,
+          day: day,
         });
-      }
+        location.href = "day.html?d=" + encodeURIComponent(day.code) + "&solo=1";
+      });
 
-      async function resume() {
-        if (!session) return;
-        const room = Room.readRoom(session.code);
-        if (!room) {
-          Room.clearSession();
-          session = null;
-          return;
-        }
-        if (room.status === "playing") {
-          location.href = "play.html";
-          return;
-        }
-        if (room.status === "ended") {
-          location.href = "end.html";
-          return;
-        }
-        showLobby(room);
-        watch(room.code);
-      }
+      UI.$("#copyLinkBtn").addEventListener("click", () => {
+        UI.copyText(UI.$("#createdLink").textContent.replace(/\s*\(local.*\)$/, ""));
+      });
 
-      UI.$("#createBtn").addEventListener("click", () => {
-        const name = UI.$("#hostName").value;
-        const { room, playerId } = Room.createRoom({ hostName: name });
-        session = { code: room.code, playerId, name: room.players[0].name };
-        Room.saveSession(session);
-        showLobby(room);
-        watch(room.code);
-        UI.toast("Room " + room.code + " is open");
+      UI.$("#anotherBtn").addEventListener("click", () => {
+        UI.$("#createdCard").classList.add("hidden");
+        UI.$("#createCard").classList.remove("hidden");
+        UI.$("#createStatus").textContent = "";
       });
 
       UI.$("#joinBtn").addEventListener("click", () => {
         const code = UI.$("#joinCode").value.trim().toUpperCase();
-        const playerName = UI.$("#joinName").value;
-        const res = Room.joinRoom({ code, playerName });
-        if (!res.ok) {
-          UI.toast(res.error);
+        if (!code) {
+          UI.toast("Enter a day code");
           return;
         }
-        session = { code: res.room.code, playerId: res.playerId, name: playerName };
-        Room.saveSession(session);
-        showLobby(res.room);
-        watch(res.room.code);
-        UI.toast("You're in");
+        location.href = "day.html?d=" + encodeURIComponent(code);
       });
-
-      UI.$("#copyCodeBtn").addEventListener("click", () => {
-        if (!session) return;
-        UI.copyText(session.code);
-      });
-
-      UI.$("#soloDemoBtn").addEventListener("click", () => {
-        if (!session) return;
-        const room = Room.readRoom(session.code);
-        if (!isHost(room)) return;
-        const res = Room.fillSoloBots(room);
-        if (!res.ok) {
-          UI.toast(res.error);
-          return;
-        }
-        renderLobby(res.room);
-        UI.toast("Bots sat down — practice away");
-      });
-
-      UI.$("#padSeatsBtn").addEventListener("click", () => {
-        if (!session) return;
-        const room = Room.readRoom(session.code);
-        if (!isHost(room)) return;
-        const res = Room.addBotsTo(room, Math.min(Room.MAX_PLAYERS, room.players.length + 3));
-        if (!res.ok) {
-          UI.toast(res.error);
-          return;
-        }
-        renderLobby(res.room);
-        UI.toast("Filled a few seats");
-      });
-
-      UI.$("#startBtn").addEventListener("click", async () => {
-        if (!session) return;
-        const room = Room.readRoom(session.code);
-        if (!isHost(room) || !Room.canStart(room)) return;
-        try {
-          const packs = await Catalog.loadAll();
-          Game.startNight(room, packs);
-          location.href = "play.html";
-        } catch (err) {
-          UI.toast(err.message || "Couldn't load packs");
-        }
-      });
-
-      UI.$("#leaveBtn").addEventListener("click", () => {
-        Room.clearSession();
-        location.reload();
-      });
-
-      resume();
     })();
   </script>
 </body>

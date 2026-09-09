@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Staff Night Results</title>
+  <title>NightDeck — Results</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,96 +12,74 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Staff Night complete.</p>
+        <p>Run complete.</p>
       </div>
     </div>
 
     <section class="card stack primary-action">
       <div class="end-hero">
         <div class="trophy" aria-hidden="true">★</div>
-        <h2 style="margin:0">Final podium</h2>
-        <p class="muted tight" style="margin-top:0.35rem">Trivia · Identify · Music</p>
+        <h2 style="margin:0">Your score</h2>
+        <p class="muted tight" style="margin-top:0.35rem" id="typeLine">—</p>
+      </div>
+      <div class="center">
+        <div class="day-code" id="scoreBig">0</div>
+        <p class="muted" id="scoreSub">out of 0</p>
       </div>
       <div class="row" style="justify-content:center; gap:0.4rem">
-        <span class="pill" id="roomPill">—</span>
-        <span class="pill" id="roundPill">—</span>
+        <span class="pill" id="dayPill">—</span>
+        <span class="pill" id="namePill">—</span>
       </div>
-      <p class="muted center tight" id="summaryLine"></p>
-      <div class="scoreboard podium-board" id="scores"></div>
       <div>
         <div class="muted" style="margin-bottom:0.35rem">Share</div>
         <pre class="share-box" id="shareBox"></pre>
       </div>
       <div class="row">
         <button class="btn" id="copyBtn" type="button">Copy results</button>
-        <a class="btn secondary" href="index.html" id="againLink">Host another night</a>
+        <a class="btn secondary" id="boardLink" href="#">Live leaderboard</a>
+        <a class="btn ghost" href="index.html" id="againLink">Create another day</a>
       </div>
     </section>
   </main>
 
   <script src="js/ui.js"></script>
-  <script src="js/room.js"></script>
+  <script src="js/sync.js"></script>
   <script src="js/game.js"></script>
   <script>
     (function () {
       const UI = NightDeckUI;
-      const Room = NightDeckRoom;
+      const Sync = NightDeckSync;
       const Game = NightDeckGame;
-
-      const session = Room.loadSession();
-      const room = session ? Room.readRoom(session.code) : null;
-      if (!room) {
-        UI.$("#shareBox").textContent =
-          "No room found. Open a new Staff Night from the lobby.";
+      const session = Sync.loadSession();
+      const run = Sync.loadRun();
+      if (!session || !run || run.phase !== "done") {
+        if (session && session.dayCode) {
+          location.href = "board.html?d=" + encodeURIComponent(session.dayCode);
+        } else {
+          location.href = "index.html";
+        }
         return;
       }
-      if (room.status !== "ended" && room.status !== "playing") {
-        location.href = "index.html";
-        return;
-      }
-
-      UI.$("#roomPill").textContent = room.code;
-      UI.$("#roundPill").textContent =
-        room.round + " round" + (room.round === 1 ? "" : "s");
-
-      const types = {};
-      (room.history || []).forEach((h) => {
-        types[h.type] = (types[h.type] || 0) + 1;
+      const total = run.queue.length;
+      UI.$("#typeLine").textContent = Game.typeLabel(run.gameType) + " · Staff Night";
+      UI.$("#scoreBig").textContent = String(run.score);
+      UI.$("#scoreSub").textContent = "out of " + total;
+      UI.$("#dayPill").textContent = session.dayCode;
+      UI.$("#namePill").textContent = session.name || "Player";
+      UI.$("#boardLink").href = "board.html?d=" + encodeURIComponent(session.dayCode);
+      const text = Game.shareText({
+        dayCode: session.dayCode,
+        gameType: run.gameType,
+        playerName: session.name,
+        score: run.score,
+        total,
       });
-      const mix = ["trivia", "identify", "music"]
-        .filter((t) => types[t])
-        .map((t) => types[t] + " " + t)
-        .join(" · ");
-      UI.$("#summaryLine").textContent =
-        (mix || "Trivia · Identify · Music") +
-        " · " +
-        room.players.length +
-        " players";
-
-      const scores = UI.$("#scores");
-      scores.innerHTML = "";
-      Game.rankedPlayers(room).forEach((p, i) => {
-        const row = document.createElement("div");
-        row.className = "score-row" + (i === 0 ? " top" : i < 3 ? " place" : "");
-        const bot = p.bot ? " · bot" : "";
-        const you = session && p.id === session.playerId ? " (you)" : "";
-        row.innerHTML =
-          '<span class="rank">' +
-          (i + 1) +
-          '</span><span class="who">' +
-          UI.escapeHtml(p.name) +
-          you +
-          bot +
-          '</span><span class="pts">' +
-          p.score +
-          "</span>";
-        scores.appendChild(row);
-      });
-
-      const text = Game.shareText(room);
       UI.$("#shareBox").textContent = text;
       UI.$("#copyBtn").onclick = () => UI.copyText(text);
-      UI.$("#againLink").addEventListener("click", () => Room.clearSession());
+      UI.$("#againLink").addEventListener("click", () => {
+        Sync.clearSession();
+        Sync.clearRun();
+      });
     })();
   </script>
 </body>

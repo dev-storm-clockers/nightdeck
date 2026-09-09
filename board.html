@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NightDeck — Live Leaderboard</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="brand">
+      <div class="brand-mark">ND</div>
+      <div>
+        <h1>NightDeck</h1>
+        <p id="subtitle"><span class="live-dot" aria-hidden="true"></span>Live leaderboard</p>
+      </div>
+    </div>
+
+    <section class="card stack hidden" id="errorCard">
+      <div class="error-banner" id="errorText">Day not found.</div>
+      <a class="btn secondary" href="index.html">Create a day</a>
+    </section>
+
+    <section class="card stack primary-action" id="boardCard">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">Standings</h2>
+        <span class="pill" id="typePill">—</span>
+      </div>
+      <div class="center">
+        <div class="muted">Day code</div>
+        <div class="day-code" id="dayCode">—————</div>
+      </div>
+      <p class="muted tight" id="metaLine">Refreshing…</p>
+      <div class="scoreboard podium-board" id="scores"></div>
+      <div class="empty-board hidden" id="empty">No scores yet — share the day link and play.</div>
+      <div class="row">
+        <a class="btn" id="playLink" href="#">Join / play</a>
+        <a class="btn secondary" href="index.html">Create another day</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/sync-config.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    (function () {
+      const UI = NightDeckUI;
+      const Sync = NightDeckSync;
+      const Game = NightDeckGame;
+      const code = (UI.qs("d") || "").trim().toUpperCase();
+      let stop = null;
+
+      if (!code) {
+        UI.$("#errorCard").classList.remove("hidden");
+        UI.$("#boardCard").classList.add("hidden");
+        UI.$("#errorText").textContent = "Add ?d=CODE to the URL.";
+        return;
+      }
+
+      UI.$("#dayCode").textContent = code;
+      UI.$("#playLink").href = "day.html?d=" + encodeURIComponent(code);
+
+      async function refresh() {
+        const session = Sync.loadSession();
+        if (session && session.solo && session.dayCode === code && session.day) {
+          render(session.day, session.day.players || []);
+          return;
+        }
+        const res = await Sync.listScores(code);
+        if (!res.ok) {
+          UI.$("#errorCard").classList.remove("hidden");
+          UI.$("#boardCard").classList.add("hidden");
+          UI.$("#errorText").textContent = res.error || "Day not found";
+          if (stop) stop();
+          return;
+        }
+        render(res.day, res.players);
+      }
+
+      function render(day, players) {
+        UI.$("#typePill").textContent =
+          Game.typeEmoji(day.gameType) + " " + Game.typeLabel(day.gameType);
+        UI.$("#typePill").className = "pill " + day.gameType;
+        UI.$("#subtitle").innerHTML =
+          '<span class="live-dot" aria-hidden="true"></span>' +
+          Game.typeLabel(day.gameType) + " · live board";
+        const finished = (players || []).filter((p) => p.finishedAt);
+        const waiting = (players || []).filter((p) => !p.finishedAt);
+        UI.$("#metaLine").textContent =
+          finished.length + " finished · " + waiting.length + " in progress · updates ~2s · host " +
+          (day.hostName || "—");
+
+        const ranked = Game.rankedPlayers(players);
+        const box = UI.$("#scores");
+        if (!ranked.length) {
+          box.innerHTML = "";
+          UI.$("#empty").classList.remove("hidden");
+          return;
+        }
+        UI.$("#empty").classList.add("hidden");
+        box.innerHTML = ranked
+          .map((p, i) => {
+            const status = p.finishedAt ? "" : " · playing";
+            const medal = i === 0 && p.finishedAt ? " top" : i < 3 && p.finishedAt ? " place" : "";
+            return (
+              '<div class="score-row' + medal + '"><span class="rank">' + (i + 1) +
+              '</span><span class="who">' + UI.escapeHtml(p.name) + status +
+              '</span><span class="pts">' + (p.score || 0) + "</span></div>"
+            );
+          })
+          .join("");
+      }
+
+      refresh().catch((err) => {
+        UI.$("#errorCard").classList.remove("hidden");
+        UI.$("#boardCard").classList.add("hidden");
+        UI.$("#errorText").textContent = err.message || "Could not load board";
+      });
+      stop = Sync.poll(() => refresh(), 2000);
+    })();
+  </script>
+</body>
+</html>

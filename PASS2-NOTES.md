@@ -8,7 +8,7 @@
 
 ## Publish
 - Repo: https://github.com/dev-storm-clockers/nightdeck (public, dedicated — preferred over studio-intake nesting).
-- Pages: root of `main` (+ `.nojekyll`). Live URL recorded in ARTIFACT.md when deploy succeeds.
+- Pages: root of `main` (+ `.nojekyll`). **Live:** https://dev-storm-clockers.github.io/nightdeck/ (built OK; HTTP 200 smoke on index/play/css/catalog/lobby deck).
 - PAT note: fine-grained PAT is studio-intake-only; classic studio PAT used for create/push/pages. Never print tokens.
 
 ## Local serve (always)

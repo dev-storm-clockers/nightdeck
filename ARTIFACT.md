@@ -14,12 +14,12 @@
   - `data/lobby-warmup.json` — free starter (30 prompts / 40 answers)
   - `data/group-chat-unhinged.json` — unlock `NIGHTDECK-GCU`
 - **how_to_run:** `python3 -m http.server 4173 --directory /workspace/nightdeck` (or `npx --yes serve /workspace/nightdeck -p 4173`); open http://127.0.0.1:4173/ — multi-tab same browser for mock multiplayer
-- **live_url:** (pending Pages enable — see notes)
+- **live_url:** https://dev-storm-clockers.github.io/nightdeck/
 - **owner_agent:** Build Head
 - **ready_for_quality:** no
 - **pass:** 2
 - **notes:** |
-  **Pass 2 polish (2026-09-08 ADT):** Unlock gate UX polished for Group Chat Unhinged (locked/unlocked states, code entry, success path); Lobby Warmup remains free. Dedicated public repo `dev-storm-clockers/nightdeck` for GitHub Pages (not nested under studio-intake).
+  **Pass 2 polish (2026-09-08 ADT / published ~2026-09-09 02:03 UTC):** Unlock gate UX polished for Group Chat Unhinged (locked/unlocked states, code entry, success path); Lobby Warmup remains free. Live: https://dev-storm-clockers.github.io/nightdeck/ — repo https://github.com/dev-storm-clockers/nightdeck (Pages from `main` `/`). HTTP 200 verified on index/play/css/js/deck.
 
   **Build smoke required before Quality** — ready_for_quality left **no**; only Build Head flips to yes after smoke. CoS must not flip yes.
 

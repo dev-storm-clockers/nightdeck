@@ -57,7 +57,7 @@
     return day;
   }
 
-  async function createDay({ gameType, hostName, subject }) {
+  async function createDay({ gameType, hostName, subject, deck }) {
     if (!["trivia", "identify", "music"].includes(gameType)) {
       throw new Error("Pick Trivia, Identify, or Music");
     }
@@ -79,6 +79,7 @@
       createdAt: Date.now(),
       players: [],
       status: "open",
+      deck: Array.isArray(deck) ? deck.slice() : null,
     };
     await setDay(day);
     return day;
@@ -190,7 +191,7 @@
   }
 
   /** Local-only solo day (no Upstash). */
-  function createSoloDay({ gameType, hostName, subject }) {
+  function createSoloDay({ gameType, hostName, subject, deck }) {
     const code = "SOLO" + CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
     const subj = gameType === "trivia" ? String(subject || "").trim() || null : null;
     return {
@@ -202,6 +203,7 @@
       players: [],
       status: "open",
       solo: true,
+      deck: Array.isArray(deck) ? deck.slice() : null,
     };
   }
 

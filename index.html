@@ -174,16 +174,24 @@
         return true;
       }
 
+      async function buildDeck(gameType, subject) {
+        const pack = await Catalog.loadPack(gameType, subject);
+        return Game.pickDeck(pack, Game.QUESTIONS_PER_RUN);
+      }
+
       UI.$("#createBtn").addEventListener("click", async () => {
         if (!requireSelection()) return;
         const hostName = UI.$("#hostName").value;
+        const subject = selectedType === "trivia" ? selectedSubject : null;
         UI.$("#createBtn").disabled = true;
         UI.$("#createStatus").textContent = "Creating…";
         try {
+          const deck = await buildDeck(selectedType, subject);
           const day = await Sync.createDay({
             gameType: selectedType,
             hostName,
-            subject: selectedType === "trivia" ? selectedSubject : null,
+            subject,
+            deck,
           });
           showCreated(day);
           UI.toast("Day " + day.code);
@@ -195,23 +203,33 @@
         }
       });
 
-      UI.$("#soloBtn").addEventListener("click", () => {
+      UI.$("#soloBtn").addEventListener("click", async () => {
         if (!requireSelection()) return;
-        const day = Sync.createSoloDay({
-          gameType: selectedType,
-          hostName: UI.$("#hostName").value || "You",
-          subject: selectedType === "trivia" ? selectedSubject : null,
-        });
-        Sync.saveSession({
-          dayCode: day.code,
-          playerId: Sync.makePlayerId(),
-          name: day.hostName,
-          gameType: day.gameType,
-          subject: day.subject || null,
-          solo: true,
-          day: day,
-        });
-        location.href = "day.html?d=" + encodeURIComponent(day.code) + "&solo=1";
+        const subject = selectedType === "trivia" ? selectedSubject : null;
+        UI.$("#soloBtn").disabled = true;
+        try {
+          const deck = await buildDeck(selectedType, subject);
+          const day = Sync.createSoloDay({
+            gameType: selectedType,
+            hostName: UI.$("#hostName").value || "You",
+            subject,
+            deck,
+          });
+          Sync.saveSession({
+            dayCode: day.code,
+            playerId: Sync.makePlayerId(),
+            name: day.hostName,
+            gameType: day.gameType,
+            subject: day.subject || null,
+            solo: true,
+            day: day,
+            deck: day.deck || null,
+          });
+          location.href = "day.html?d=" + encodeURIComponent(day.code) + "&solo=1";
+        } catch (err) {
+          UI.toast(err.message || "Solo create failed");
+          UI.$("#soloBtn").disabled = false;
+        }
       });
 
       UI.$("#copyLinkBtn").addEventListener("click", () => {

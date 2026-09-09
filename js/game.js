@@ -144,11 +144,23 @@
     return matchesAccept(text, item);
   }
 
-  function startRun({ gameType, pack, dayCode, playerId, playerName, total }) {
+  /** Fixed set of pack indices for a day (same for every player). */
+  function pickDeck(pack, total) {
+    const items = (pack && pack.items) || [];
+    const count = Math.min(total || QUESTIONS_PER_RUN, items.length);
+    if (!count) return [];
+    return shuffle(items.map((_, i) => i)).slice(0, count);
+  }
+
+  function startRun({ gameType, pack, dayCode, playerId, playerName, total, deck }) {
     const items = (pack && pack.items) || [];
     const count = Math.min(total || QUESTIONS_PER_RUN, items.length || 0);
     if (!count) throw new Error("No questions in pack");
-    const indices = shuffle(items.map((_, i) => i)).slice(0, count);
+    // Same day deck for every player; shuffle order per run. Fallback: pick anew.
+    const indices =
+      Array.isArray(deck) && deck.length
+        ? shuffle(deck.slice())
+        : shuffle(items.map((_, i) => i)).slice(0, count);
     const queue = indices.map((index) => ({
       index,
       item: snapshotItem(gameType, items[index]),
@@ -273,6 +285,7 @@
 
   global.NightDeckGame = {
     QUESTIONS_PER_RUN,
+    pickDeck,
     startRun,
     currentQuestion,
     lockAndReveal,

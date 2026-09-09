@@ -274,6 +274,64 @@
         location.href = "end.html";
       }
 
+      async function resolveDayDeck(pack) {
+        let day = null;
+        let deck = Array.isArray(session.deck) && session.deck.length ? session.deck.slice() : null;
+
+        if (session.solo) {
+          day = session.day || null;
+          if ((!deck || !deck.length) && day && Array.isArray(day.deck) && day.deck.length) {
+            deck = day.deck.slice();
+          }
+          if ((!deck || !deck.length) && day) {
+            deck = Game.pickDeck(pack, Game.QUESTIONS_PER_RUN);
+            day.deck = deck.slice();
+            session.day = day;
+            session.deck = deck.slice();
+            Sync.saveSession(session);
+          } else if (deck && deck.length) {
+            session.deck = deck.slice();
+            if (day) {
+              day.deck = deck.slice();
+              session.day = day;
+            }
+            Sync.saveSession(session);
+          }
+          return deck;
+        }
+
+        // Live day: load from Upstash; lazy-migrate missing deck so late joiners align
+        try {
+          day = await Sync.getDay(session.dayCode);
+        } catch (e) {
+          day = null;
+        }
+        if (day) {
+          if (day.subject && session.gameType === "trivia") {
+            session.subject = day.subject;
+          }
+          if (Array.isArray(day.deck) && day.deck.length) {
+            deck = day.deck.slice();
+          } else {
+            deck = Game.pickDeck(pack, Game.QUESTIONS_PER_RUN);
+            day.deck = deck.slice();
+            try {
+              await Sync.setDay(day);
+            } catch (e) {
+              console.warn("NightDeck deck migrate", e);
+            }
+          }
+          session.deck = deck ? deck.slice() : null;
+          Sync.saveSession(session);
+        } else if (!deck || !deck.length) {
+          // Offline fallback — still playable, but not shared
+          deck = Game.pickDeck(pack, Game.QUESTIONS_PER_RUN);
+          session.deck = deck.slice();
+          Sync.saveSession(session);
+        }
+        return deck;
+      }
+
       async function boot() {
         try {
           let subject = session.subject || null;
@@ -292,6 +350,7 @@
             session.subject = subject;
           }
           pack = await Catalog.loadPack(session.gameType, subject);
+          const deck = await resolveDayDeck(pack);
           if (!run || run.dayCode !== session.dayCode || run.playerId !== session.playerId) {
             run = Game.startRun({
               gameType: session.gameType,
@@ -299,6 +358,7 @@
               dayCode: session.dayCode,
               playerId: session.playerId,
               playerName: session.name,
+              deck,
             });
             Sync.saveRun(run);
           }

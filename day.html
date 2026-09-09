@@ -127,6 +127,7 @@
               subject: day.subject || null,
               solo: true,
               day,
+              deck: Array.isArray(day.deck) ? day.deck.slice() : null,
             });
           } else {
             const res = await Sync.joinDay({ code: day.code, name });
@@ -144,6 +145,7 @@
               gameType: day.gameType,
               subject: day.subject || null,
               solo: false,
+              deck: Array.isArray(day.deck) ? day.deck.slice() : null,
             });
           }
           Sync.clearRun();

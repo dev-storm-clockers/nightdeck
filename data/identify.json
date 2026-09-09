@@ -4,156 +4,375 @@
     {
       "prompt": "Tiny metal hero that holds your life together until it doesn't.",
       "clue": "📎",
-      "options": ["Paperclip", "Safety pin", "Staple", "Binder ring"],
+      "options": [
+        "Paperclip",
+        "Safety pin",
+        "Staple",
+        "Binder ring"
+      ],
       "answer": "Paperclip",
-      "accept": ["paperclip", "paper clip"]
+      "accept": [
+        "paperclip",
+        "paper clip"
+      ]
     },
     {
       "prompt": "The glowing orb that decides your mood before coffee.",
       "clue": "🔴🟢",
-      "options": ["Slack status light", "Smoke alarm", "Router LED", "Webcam mute light"],
+      "options": [
+        "Slack status light",
+        "Smoke alarm",
+        "Router LED",
+        "Webcam mute light"
+      ],
       "answer": "Slack status light",
-      "accept": ["slack status", "status light", "green light", "slack light"]
+      "accept": [
+        "slack status",
+        "status light",
+        "green light",
+        "slack light"
+      ]
     },
     {
       "prompt": "Rectangular portal that eats badges and occasionally souls.",
       "clue": "🚪",
-      "options": ["Badge reader", "Vending machine", "Elevator panel", "Thermostat"],
+      "options": [
+        "Badge reader",
+        "Vending machine",
+        "Elevator panel",
+        "Thermostat"
+      ],
       "answer": "Badge reader",
-      "accept": ["badge reader", "card reader", "door reader", "access reader"]
+      "accept": [
+        "badge reader",
+        "card reader",
+        "door reader",
+        "access reader"
+      ]
     },
     {
       "prompt": "White rectangle of temporary truth — until Facilities wipes it.",
       "clue": "⬜🖊️",
-      "options": ["Whiteboard", "Projector screen", "Sticky wall", "Glass door"],
+      "options": [
+        "Whiteboard",
+        "Projector screen",
+        "Sticky wall",
+        "Glass door"
+      ],
       "answer": "Whiteboard",
-      "accept": ["whiteboard", "white board"]
+      "accept": [
+        "whiteboard",
+        "white board"
+      ]
     },
     {
       "prompt": "The chair that somehow rolls farther than physics allows.",
       "clue": "🪑",
-      "options": ["Office chair", "Stool", "Beanbag", "Yoga ball"],
+      "options": [
+        "Office chair",
+        "Stool",
+        "Beanbag",
+        "Yoga ball"
+      ],
       "answer": "Office chair",
-      "accept": ["office chair", "desk chair", "rolling chair", "swivel chair"]
+      "accept": [
+        "office chair",
+        "desk chair",
+        "rolling chair",
+        "swivel chair"
+      ]
     },
     {
       "prompt": "Crunchy rectangle that starts meetings and ends friendships.",
       "clue": "☕🍪",
-      "options": ["Conference-room cookie", "Protein bar", "Rice cake", "Granola"],
+      "options": [
+        "Conference-room cookie",
+        "Protein bar",
+        "Rice cake",
+        "Granola"
+      ],
       "answer": "Conference-room cookie",
-      "accept": ["cookie", "cookies", "meeting cookie", "conference cookie"]
+      "accept": [
+        "cookie",
+        "cookies",
+        "meeting cookie",
+        "conference cookie"
+      ]
     },
     {
       "prompt": "The cable that only works when held at a sacred angle.",
       "clue": "🔌",
-      "options": ["HDMI cable", "USB-C charger", "Ethernet", "Lightning cable"],
+      "options": [
+        "HDMI cable",
+        "USB-C charger",
+        "Ethernet",
+        "Lightning cable"
+      ],
       "answer": "HDMI cable",
-      "accept": ["hdmi", "hdmi cable", "projector cable"]
+      "accept": [
+        "hdmi",
+        "hdmi cable",
+        "projector cable"
+      ]
     },
     {
       "prompt": "Tiny sticky notes that become a wall of anxiety art.",
       "clue": "🟨",
-      "options": ["Sticky notes", "Index cards", "Postcards", "Receipts"],
+      "options": [
+        "Sticky notes",
+        "Index cards",
+        "Postcards",
+        "Receipts"
+      ],
       "answer": "Sticky notes",
-      "accept": ["sticky notes", "stickies", "post-its", "post its", "postit"]
+      "accept": [
+        "sticky notes",
+        "stickies",
+        "post-its",
+        "post its",
+        "postit"
+      ]
     },
     {
       "prompt": "The mug that says “World's Okayest Employee” and means it.",
       "clue": "mug",
-      "options": ["Desk mug", "Travel thermos", "Paper cup", "Water bottle"],
+      "options": [
+        "Desk mug",
+        "Travel thermos",
+        "Paper cup",
+        "Water bottle"
+      ],
       "answer": "Desk mug",
-      "accept": ["mug", "coffee mug", "desk mug", "cup"]
+      "accept": [
+        "desk mug",
+        "coffee mug",
+        "office mug"
+      ]
     },
     {
       "prompt": "Beeping box that prints “PC LOAD LETTER” energy forever.",
       "clue": "🖨️",
-      "options": ["Office printer", "Fax machine", "Scanner", "Label maker"],
+      "options": [
+        "Office printer",
+        "Fax machine",
+        "Scanner",
+        "Label maker"
+      ],
       "answer": "Office printer",
-      "accept": ["printer", "office printer", "the printer"]
+      "accept": [
+        "printer",
+        "office printer",
+        "the printer"
+      ]
     },
     {
       "prompt": "The calendar invite that arrives 2 minutes before the call.",
       "clue": "📅⏰",
-      "options": ["Last-minute meeting", "OOO block", "Focus time", "Birthday reminder"],
+      "options": [
+        "Last-minute meeting",
+        "OOO block",
+        "Focus time",
+        "Birthday reminder"
+      ],
       "answer": "Last-minute meeting",
-      "accept": ["last minute meeting", "last-minute meeting", "surprise meeting", "urgent meeting"]
+      "accept": [
+        "last minute meeting",
+        "last-minute meeting",
+        "surprise meeting",
+        "urgent meeting"
+      ]
     },
     {
       "prompt": "Noise-canceling crown of open-office survivors.",
       "clue": "🎧",
-      "options": ["Headphones", "Earmuffs", "Headset mic only", "AirPods case"],
+      "options": [
+        "Headphones",
+        "Earmuffs",
+        "Bluetooth speaker",
+        "AirPods case"
+      ],
       "answer": "Headphones",
-      "accept": ["headphones", "headset", "noise cancelling headphones", "airpods"]
+      "accept": [
+        "headphones",
+        "noise cancelling headphones",
+        "noise-canceling headphones",
+        "cans"
+      ]
     },
     {
       "prompt": "The plant that thrives on fluorescent light and neglect.",
       "clue": "🪴",
-      "options": ["Desk plant", "Bouquet", "Cactus farm", "Herb garden"],
+      "options": [
+        "Desk plant",
+        "Bouquet",
+        "Cactus farm",
+        "Herb garden"
+      ],
       "answer": "Desk plant",
-      "accept": ["plant", "desk plant", "office plant", "succulent"]
+      "accept": [
+        "desk plant",
+        "office plant",
+        "succulent",
+        "plant"
+      ]
     },
     {
       "prompt": "Plastic rectangle that opens doors and closes conversations.",
       "clue": "🪪",
-      "options": ["Badge / ID card", "Credit card", "Gift card", "Metro card"],
+      "options": [
+        "Badge / ID card",
+        "Credit card",
+        "Gift card",
+        "Metro card"
+      ],
       "answer": "Badge / ID card",
-      "accept": ["badge", "id", "id card", "keycard", "key card", "access card"]
+      "accept": [
+        "badge",
+        "id card",
+        "keycard",
+        "key card",
+        "access card",
+        "badge card"
+      ]
     },
     {
       "prompt": "The fridge shelf labeled with a name and a threat.",
       "clue": "🧊📝",
-      "options": ["Labeled leftovers", "Company yogurt", "Ice machine", "Free soda"],
+      "options": [
+        "Labeled leftovers",
+        "Company yogurt",
+        "Ice machine",
+        "Free soda"
+      ],
       "answer": "Labeled leftovers",
-      "accept": ["leftovers", "labeled leftovers", "lunch", "tupperware"]
+      "accept": [
+        "leftovers",
+        "labeled leftovers",
+        "lunch",
+        "tupperware"
+      ]
     },
     {
       "prompt": "Spinning wheel of destiny on every corporate login page.",
       "clue": "⏳",
-      "options": ["SSO loading spinner", "Screen saver", "Progress bar for pizza", "Captcha"],
+      "options": [
+        "SSO loading spinner",
+        "Screen saver",
+        "Progress bar for pizza",
+        "Captcha"
+      ],
       "answer": "SSO loading spinner",
-      "accept": ["sso", "spinner", "loading spinner", "login spinner", "okta spinner"]
+      "accept": [
+        "sso",
+        "spinner",
+        "loading spinner",
+        "login spinner",
+        "okta spinner"
+      ]
     },
     {
       "prompt": "The hallway TV stuck on a dashboard nobody understands.",
       "clue": "📺📊",
-      "options": ["Office metrics TV", "Sports channel", "Weather loop", "Onboarding video"],
+      "options": [
+        "Office metrics TV",
+        "Sports channel",
+        "Weather loop",
+        "Onboarding video"
+      ],
       "answer": "Office metrics TV",
-      "accept": ["dashboard", "metrics tv", "office tv", "kpi screen", "hallway tv"]
+      "accept": [
+        "dashboard",
+        "metrics tv",
+        "office tv",
+        "kpi screen",
+        "hallway tv"
+      ]
     },
     {
       "prompt": "Box that beeps when you microwave soup for 4:00 exactly.",
       "clue": "🍲🔔",
-      "options": ["Microwave", "Toaster oven", "Air fryer", "Kettle"],
+      "options": [
+        "Microwave",
+        "Toaster oven",
+        "Air fryer",
+        "Kettle"
+      ],
       "answer": "Microwave",
-      "accept": ["microwave", "micro wave"]
+      "accept": [
+        "microwave",
+        "micro wave"
+      ]
     },
     {
       "prompt": "The shared doc titled “Final_FINAL_v7_USE_THIS”.",
       "clue": "📄",
-      "options": ["Version chaos file", "Style guide", "NDA template", "Parking map"],
+      "options": [
+        "Version chaos file",
+        "Style guide",
+        "NDA template",
+        "Parking map"
+      ],
       "answer": "Version chaos file",
-      "accept": ["final final", "version chaos", "shared doc", "google doc", "the final doc"]
+      "accept": [
+        "final final",
+        "version chaos",
+        "shared doc",
+        "google doc",
+        "the final doc"
+      ]
     },
     {
       "prompt": "Tiny camera eye that turns green when you're “on stage”.",
       "clue": "🟢📷",
-      "options": ["Webcam light", "Smoke detector", "Motion sensor", "Ring light"],
+      "options": [
+        "Webcam light",
+        "Smoke detector",
+        "Motion sensor",
+        "Ring light"
+      ],
       "answer": "Webcam light",
-      "accept": ["webcam", "camera light", "webcam light", "laptop camera"]
+      "accept": [
+        "webcam",
+        "camera light",
+        "webcam light",
+        "laptop camera"
+      ]
     },
     {
       "prompt": "The snack drawer that is somehow both empty and full of kale.",
       "clue": "🗄️",
-      "options": ["Office snack drawer", "First-aid kit", "Supply closet", "Lost & found"],
+      "options": [
+        "Office snack drawer",
+        "First-aid kit",
+        "Supply closet",
+        "Lost & found"
+      ],
       "answer": "Office snack drawer",
-      "accept": ["snack drawer", "snacks", "snack cabinet", "kitchen drawer"]
+      "accept": [
+        "snack drawer",
+        "snacks",
+        "snack cabinet",
+        "kitchen drawer"
+      ]
     },
     {
       "prompt": "A link that says “deck” but opens a 90-slide odyssey.",
       "clue": "📊",
-      "options": ["Slide deck", "Spreadsheet", "Notion wiki", "Figma file"],
+      "options": [
+        "Slide deck",
+        "Spreadsheet",
+        "Notion wiki",
+        "Figma file"
+      ],
       "answer": "Slide deck",
-      "accept": ["deck", "slides", "slide deck", "powerpoint", "presentation"]
+      "accept": [
+        "deck",
+        "slides",
+        "slide deck",
+        "powerpoint",
+        "presentation",
+        "ppt"
+      ]
     }
   ]
 }

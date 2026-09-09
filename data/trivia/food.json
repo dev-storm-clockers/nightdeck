@@ -3,128 +3,40 @@
   "subject": "food",
   "items": [
     {
-      "q": "Which fruit is the main base of guacamole?",
+      "q": "Which grain is sushi rice typically made from?",
       "options": [
-        "Tomato",
-        "Avocado",
-        "Mango",
-        "Papaya"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Sushi rice is typically which kind of grain?",
-      "options": [
-        "Wheat",
-        "Short-grain rice",
+        "Basmati",
+        "Short-grain japonica",
         "Quinoa",
-        "Barley"
+        "Wild rice"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "What is tofu primarily made from?",
+      "q": "What spirit is the base of a classic mojito?",
       "options": [
-        "Cow's milk",
-        "Soybeans",
-        "Almonds",
-        "Chickpeas"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which pasta is long and thin like strings?",
-      "options": [
-        "Penne",
-        "Fusilli",
-        "Spaghetti",
-        "Farfalle"
+        "Vodka",
+        "Gin",
+        "Rum",
+        "Tequila"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "What beverage is brewed from roasted coffee beans?",
+      "q": "Which cheese is traditionally used on a Margherita pizza?",
       "options": [
-        "Tea",
-        "Coffee",
-        "Cocoa",
-        "Mate"
+        "Cheddar",
+        "Mozzarella",
+        "Gouda",
+        "Blue cheese"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which nut is used to make traditional marzipan?",
-      "options": [
-        "Walnut",
-        "Almond",
-        "Cashew",
-        "Pecan"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Besides chickpeas, what paste is essential in classic hummus?",
-      "options": [
-        "Yogurt",
-        "Tahini",
-        "Mayonnaise",
-        "Peanut butter"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which fresh herb tops a classic Margherita pizza?",
-      "options": [
-        "Basil",
-        "Cilantro",
-        "Dill",
-        "Mint"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "A traditional mimosa is orange juice mixed with\u2026",
-      "options": [
-        "Gin",
-        "Sparkling wine",
-        "Vodka",
-        "Rum"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which spice often gives curry dishes a yellow color?",
-      "options": [
-        "Paprika",
-        "Turmeric",
-        "Cumin",
-        "Cardamom"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What dairy product is churned to make butter?",
-      "options": [
-        "Cheese",
-        "Cream",
-        "Yogurt",
-        "Whey"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which fruit is dried to make raisins?",
+      "q": "What fruit is dried to make raisins?",
       "options": [
         "Apricot",
         "Grape",
@@ -135,135 +47,223 @@
       "difficulty": "easy"
     },
     {
-      "q": "What is the main grain in traditional oatmeal?",
+      "q": "Which country is credited with inventing pizza as we know it?",
       "options": [
-        "Wheat",
-        "Oats",
-        "Rye",
-        "Corn"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which Italian cheese is commonly grated over pasta?",
-      "options": [
-        "Brie",
-        "Parmesan",
-        "Feta",
-        "Gouda"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Paella originated in which country?",
-      "options": [
+        "France",
         "Italy",
-        "Portugal",
-        "Spain",
-        "Greece"
+        "Greece",
+        "Spain"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is tofu primarily made from?",
+      "options": [
+        "Rice",
+        "Soybeans",
+        "Almonds",
+        "Chickpeas"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which spice gives mustard its heat and yellow color (often with turmeric)?",
+      "options": [
+        "Cumin",
+        "Mustard seed",
+        "Paprika",
+        "Saffron"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What cocktail is gin + tonic water?",
+      "options": [
+        "G&T",
+        "Martini",
+        "Negroni",
+        "Tom Collins"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which nut is used to make marzipan?",
+      "options": [
+        "Walnut",
+        "Almond",
+        "Cashew",
+        "Pistachio"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What does “al dente” describe about pasta?",
+      "options": [
+        "Overcooked",
+        "Firm to the bite",
+        "Served cold",
+        "Stuffed"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which bean is the main ingredient in traditional hummus?",
+      "options": [
+        "Black beans",
+        "Chickpeas",
+        "Lentils",
+        "Kidney beans"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the primary alcohol in a margarita?",
+      "options": [
+        "Rum",
+        "Vodka",
+        "Tequila",
+        "Whiskey"
       ],
       "correct": 2,
-      "difficulty": "medium"
+      "difficulty": "easy"
     },
     {
-      "q": "What is the Korean fermented cabbage dish called?",
+      "q": "Which fruit is technically a berry and grows in bunches on vines?",
       "options": [
-        "Sauerkraut",
-        "Kimchi",
-        "Tsukemono",
-        "Curtido"
+        "Strawberry",
+        "Grape",
+        "Apple",
+        "Peach"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What breakfast meat is often paired with eggs in a classic diner plate?",
+      "options": [
+        "Bacon",
+        "Salami",
+        "Pastrami",
+        "Chorizo only"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which country is the largest producer of coffee (often cited)?",
+      "options": [
+        "Colombia",
+        "Brazil",
+        "Ethiopia",
+        "Vietnam"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Classic \u00e9clairs are made from which pastry dough?",
+      "q": "What is the Japanese drink made from fermented rice?",
       "options": [
-        "Choux pastry",
-        "Puff pastry",
-        "Shortcrust",
-        "Phyllo"
+        "Soju",
+        "Sake",
+        "Shochu only",
+        "Mirin as a cocktail"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which pastry is filled and then fried or baked in a crescent shape in many cultures — classic French version?",
+      "options": [
+        "Éclair",
+        "Croissant",
+        "Madeleine",
+        "Profiterole"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What cut of beef is typically used for a New York strip?",
+      "options": [
+        "Short loin",
+        "Brisket",
+        "Chuck",
+        "Shank"
       ],
       "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which pasta shape's name means \"little ears\"?",
+      "q": "Which herb is essential in classic pesto Genovese?",
       "options": [
-        "Orzo",
-        "Orecchiette",
-        "Rigatoni",
-        "Linguine"
+        "Cilantro",
+        "Basil",
+        "Parsley",
+        "Dill"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Citrus fruits are especially rich in which vitamin?",
+      "q": "What does an IPA stand for in craft beer?",
       "options": [
-        "Vitamin A",
-        "Vitamin B12",
-        "Vitamin C",
-        "Vitamin D"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which Japanese soup stock is made with kombu and bonito?",
-      "options": [
-        "Miso",
-        "Dashi",
-        "Ponzu",
-        "Mirin"
+        "Indian Pale Ale",
+        "India Pale Ale",
+        "Irish Pilsner Ale",
+        "Imperial Porter Ale"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Espresso is a concentrated form of which drink?",
+      "q": "Which French sauce is egg yolks + butter (mother sauce family / hollandaise sibling)?",
       "options": [
-        "Tea",
-        "Coffee",
-        "Chocolate",
-        "Chicory"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the primary alcohol base of a classic margarita?",
-      "options": [
-        "Vodka",
-        "Tequila",
-        "Rum",
-        "Gin"
-      ],
-      "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "Which French sauce is egg yolks whisked with melted butter?",
-      "options": [
-        "B\u00e9chamel",
+        "Béchamel",
         "Hollandaise",
-        "Velout\u00e9",
-        "Tomato"
+        "Velouté",
+        "Espagnole"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the Scoville scale used to measure?",
+      "options": [
+        "Saltiness",
+        "Chili heat",
+        "Wine tannins",
+        "Coffee roast"
       ],
       "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "Roquefort cheese is traditionally made from the milk of which animal?",
+      "q": "Which region of France is Champagne legally from?",
       "options": [
-        "Cow",
-        "Goat",
-        "Sheep",
-        "Buffalo"
+        "Bordeaux",
+        "Champagne",
+        "Burgundy",
+        "Provence"
       ],
-      "correct": 2,
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the main flavoring in a traditional béarnaise sauce beyond hollandaise base?",
+      "options": [
+        "Tarragon",
+        "Rosemary",
+        "Mint",
+        "Thyme only"
+      ],
+      "correct": 0,
       "difficulty": "hard"
     }
   ]

@@ -1,22 +1,15 @@
-# LOCK — NightDeck (Pass 8 trivia subjects)
+# LOCK — NightDeck (Pass 9 grade fix + better trivia)
 
 - **name:** NightDeck
 - **spelling_notes:** NightDeck one word
 - **slug:** nightdeck
 - **demo_vs_sku:** sku
 - **in_scope:**
-  - Keep Pass 6–7: white/blue game HUD, day link, Upstash board, mobile one-tap lock
-  - **Trivia upgrade:** when host picks Trivia, they also pick a **subject**; day stores `subject`; players get that pack only
-  - Subjects (cards): General · Pop Culture · Movies & TV · Science & Nature · Geography · Food & Drink · Decades (90s/2000s) · Mixed
-  - **Content bar:** factual MCQ only (no opinion/joke “correct” answers). Original questions; workplace-clean; difficulty ~60% easy / 30% medium / 10% hard; ≥20 items per subject (8 drawn per run)
-  - Identify / Music unchanged this pass unless trivial wiring
-- **out_of_scope:**
-  - Politics, religion, NSFW, niche fandom traps, copying third-party quiz banks verbatim
-  - Company-specific insider rounds (no Phil company facts on file)
+  - **BUG FIX (hard):** Reveal/grading must mark **exactly one** correct option. No substring/`includes` matching that lights up every Adele/Queen option. Trivia uses option index; Identify/Music exact normalized answer (plus explicit accept list only for typed guesses).
+  - Shuffle options at run start; keep correct index aligned.
+  - **Better trivia content:** replace thin/too-easy or dull items; keep 8 subjects × ≥20 (prefer 24); sellable bar; workplace-clean factual MCQ; stronger distractors; mix of “aha” and accessible — not only grade-school gimmes (Paris/H2O) and not niche traps.
+  - Keep subject picker, day link, Upstash, Pass 7 mobile HUD.
+- **out_of_scope:** Politics/NSFW; copying quiz banks verbatim; rushing.
 - **landing:** github-pages
-- **hard_stop_passes:** 2 prefer on this content pass
-- **phil_ok:** 2026-09-09 yes — site good; trivia sucks; research + subject choice; knock it out of the park
-
-## Pass 8 quality bar (Phil 2026-09-09)
-- **Do it right, not quick** — product will be sold.
-- ≥20 factual items per trivia subject (prefer 24); retail-ready subject picker; no joke trivia.
+- **hard_stop_passes:** 2 on this fix+content
+- **phil_ok:** 2026-09-09 yes — “some felt like all answers showed right”; “make this better content”; sellable

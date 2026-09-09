@@ -3,36 +3,47 @@
   "subject": "science",
   "items": [
     {
-      "q": "What is H2O more commonly called?",
+      "q": "What gas do plants absorb during photosynthesis?",
       "options": [
-        "Salt",
-        "Water",
-        "Hydrogen peroxide",
-        "Ammonia"
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "How many bones are in an adult human skeleton (typical count)?",
+      "options": [
+        "186",
+        "206",
+        "226",
+        "256"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "How many legs does a typical spider have?",
+      "q": "Which blood type is known as the universal recipient?",
       "options": [
-        "6",
-        "8",
-        "10",
-        "12"
+        "O−",
+        "O+",
+        "AB+",
+        "A−"
       ],
-      "correct": 1,
+      "correct": 2,
       "difficulty": "easy"
     },
     {
       "q": "Which planet is closest to the Sun?",
       "options": [
         "Venus",
-        "Earth",
         "Mercury",
+        "Earth",
         "Mars"
       ],
-      "correct": 2,
+      "correct": 1,
       "difficulty": "easy"
     },
     {
@@ -47,80 +58,91 @@
       "difficulty": "easy"
     },
     {
-      "q": "What is the largest organ of the human body?",
+      "q": "Which organ pumps blood through the body?",
       "options": [
         "Liver",
-        "Brain",
-        "Skin",
-        "Lungs"
+        "Lungs",
+        "Heart",
+        "Kidneys"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "Which gas makes up most of Earth's atmosphere?",
+      "q": "What is the boiling point of water at standard pressure (Celsius)?",
       "options": [
-        "Oxygen",
-        "Carbon dioxide",
-        "Nitrogen",
-        "Argon"
+        "90°C",
+        "100°C",
+        "110°C",
+        "212°C"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which vitamin is produced in skin exposed to sunlight?",
+      "options": [
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin D",
+        "Vitamin K"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "What do honeybees collect from flowers to make honey?",
+      "q": "What do bees collect from flowers to make honey?",
       "options": [
         "Pollen only",
         "Nectar",
-        "Tree sap",
+        "Sap",
         "Dew"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which animal is famous for eating bamboo?",
+      "q": "Which blood cells help the body fight infection?",
       "options": [
-        "Koala",
-        "Giant panda",
-        "Sloth",
-        "Lemur"
+        "Red blood cells",
+        "White blood cells",
+        "Platelets",
+        "Plasma only"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "At standard pressure, at what Celsius temperature does water freeze?",
+      "q": "What is the center of an atom called?",
       "options": [
-        "0\u00b0C",
-        "32\u00b0C",
-        "100\u00b0C",
-        "-10\u00b0C"
+        "Electron",
+        "Neutron cloud",
+        "Nucleus",
+        "Orbit"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which animal is a mammal that lays eggs?",
+      "options": [
+        "Platypus",
+        "Penguin",
+        "Crocodile",
+        "Shark"
       ],
       "correct": 0,
       "difficulty": "easy"
     },
     {
-      "q": "Where is DNA stored in human cells?",
+      "q": "What scale measures earthquake magnitude?",
       "options": [
-        "Mitochondria",
-        "Nucleus",
-        "Ribosome",
-        "Cell membrane"
+        "Beaufort",
+        "Richter (and modern moment magnitude)",
+        "Fujita",
+        "Pascal"
       ],
       "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What do plants primarily take in during photosynthesis?",
-      "options": [
-        "Oxygen",
-        "Nitrogen",
-        "Carbon dioxide",
-        "Helium"
-      ],
-      "correct": 2,
       "difficulty": "easy"
     },
     {
@@ -128,142 +150,120 @@
       "options": [
         "Jupiter",
         "Saturn",
-        "Uranus",
-        "Neptune"
+        "Neptune",
+        "Mars"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "What is the boiling point of water at standard pressure in Celsius?",
+      "q": "What does DNA stand for?",
       "options": [
-        "90\u00b0C",
-        "100\u00b0C",
-        "110\u00b0C",
-        "212\u00b0C"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which sense organ detects light?",
-      "options": [
-        "Ear",
-        "Nose",
-        "Eye",
-        "Tongue"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Approximately what is the speed of light in a vacuum?",
-      "options": [
-        "3,000 km/s",
-        "30,000 km/s",
-        "300,000 km/s",
-        "3,000,000 km/s"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Who proposed the theory of general relativity?",
-      "options": [
-        "Isaac Newton",
-        "Albert Einstein",
-        "Niels Bohr",
-        "Galileo Galilei"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the chemical formula for table salt?",
-      "options": [
-        "NaCl",
-        "KCl",
-        "CaCO3",
-        "HCl"
+        "Deoxyribonucleic acid",
+        "Dynamic nuclear acid",
+        "Dual nucleotide array",
+        "Dioxin nucleic agent"
       ],
       "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which blood type is often called the universal red-cell donor?",
+      "q": "Which scientist proposed the three laws of motion?",
       "options": [
-        "A+",
-        "B+",
-        "AB+",
-        "O\u2212"
-      ],
-      "correct": 3,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Earthquakes are commonly measured using which scale family?",
-      "options": [
-        "Beaufort",
-        "Richter / moment magnitude",
-        "Fujita",
-        "Kelvin"
+        "Einstein",
+        "Newton",
+        "Galileo",
+        "Kepler"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What is the powerhouse of the cell often called?",
-      "options": [
-        "Nucleus",
-        "Mitochondrion",
-        "Golgi apparatus",
-        "Lysosome"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which vitamin does skin produce when exposed to sunlight?",
-      "options": [
-        "Vitamin A",
-        "Vitamin B12",
-        "Vitamin C",
-        "Vitamin D"
-      ],
-      "correct": 3,
-      "difficulty": "medium"
-    },
-    {
-      "q": "About how long does light from the Sun take to reach Earth?",
-      "options": [
-        "8 seconds",
-        "8 minutes",
-        "8 hours",
-        "8 days"
-      ],
-      "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "What is the most abundant element in the universe?",
+      "q": "What is the most abundant gas in Earth’s atmosphere?",
       "options": [
         "Oxygen",
-        "Hydrogen",
-        "Helium",
-        "Carbon"
+        "Carbon dioxide",
+        "Nitrogen",
+        "Argon"
       ],
-      "correct": 1,
-      "difficulty": "hard"
+      "correct": 2,
+      "difficulty": "medium"
     },
     {
-      "q": "Which particle has a negative electric charge?",
+      "q": "Which particle has a negative charge?",
       "options": [
         "Proton",
         "Neutron",
         "Electron",
-        "Nucleus"
+        "Photon"
       ],
       "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the chemical symbol for iron?",
+      "options": [
+        "Ir",
+        "Fe",
+        "In",
+        "I"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which part of the cell contains genetic material in eukaryotes?",
+      "options": [
+        "Mitochondria",
+        "Nucleus",
+        "Ribosome",
+        "Golgi body"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What type of rock is formed from cooled magma or lava?",
+      "options": [
+        "Sedimentary",
+        "Metamorphic",
+        "Igneous",
+        "Fossilized"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Approximately how old is the Earth?",
+      "options": [
+        "4.6 million years",
+        "46 million years",
+        "4.6 billion years",
+        "13.8 billion years"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which element has the chemical symbol “K”?",
+      "options": [
+        "Krypton",
+        "Potassium",
+        "Calcium",
+        "Phosphorus"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the speed of light in a vacuum (approx.)?",
+      "options": [
+        "3×10^5 km/s",
+        "3×10^8 m/s",
+        "3×10^6 m/s",
+        "300 mph"
+      ],
+      "correct": 1,
       "difficulty": "hard"
     }
   ]

@@ -1,188 +1,232 @@
 {
-  "title": "Decades (90s / 2000s)",
+  "title": "Decades (90s/2000s)",
   "subject": "decades",
   "items": [
     {
-      "q": "Which Nintendo handheld dominated portable gaming through the 1990s?",
-      "options": [
-        "PSP",
-        "Game Boy",
-        "Nintendo DS",
-        "Game Gear"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which late-90s / 2000s chat tool used screen names and buddy lists?",
-      "options": [
-        "Skype",
-        "AOL Instant Messenger",
-        "Slack",
-        "Discord"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which group had the 1999 hit \"I Want It That Way\"?",
+      "q": "Which boy band sang “I Want It That Way”?",
       "options": [
         "NSYNC",
         "Backstreet Boys",
-        "Westlife",
-        "One Direction"
+        "98 Degrees",
+        "Westlife"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which portable music player did Apple introduce in 2001?",
+      "q": "What year did the first iPhone launch?",
       "options": [
-        "Zune",
-        "Walkman",
-        "iPod",
-        "Discman"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which fantasy film trilogy began with The Fellowship of the Ring in 2001?",
-      "options": [
-        "Harry Potter",
-        "The Lord of the Rings",
-        "The Matrix",
-        "Narnia"
+        "2005",
+        "2007",
+        "2009",
+        "2010"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which social network launched in 2004 and grew into a global giant?",
-      "options": [
-        "MySpace",
-        "Friendster",
-        "Facebook",
-        "Twitter"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which New York sitcom about six friends ended in 2004?",
+      "q": "Which sitcom featured the Central Perk gang through the 1990s?",
       "options": [
         "Seinfeld",
         "Friends",
-        "How I Met Your Mother",
-        "The Big Bang Theory"
+        "Frasier",
+        "Will & Grace"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "What did Y2K fears mainly focus on disrupting?",
+      "q": "Who was U.S. President for most of the 1990s?",
       "options": [
-        "Satellite TV",
-        "Computer date systems",
-        "Radio only",
-        "GPS satellites alone"
+        "George H. W. Bush",
+        "Bill Clinton",
+        "George W. Bush",
+        "Ronald Reagan"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which Disney Channel star released Breakout in 2008?",
+      "q": "Which film trilogy began with “The Fellowship of the Ring” in 2001?",
       "options": [
-        "Selena Gomez",
-        "Miley Cyrus",
-        "Demi Lovato",
-        "Hilary Duff"
+        "Harry Potter",
+        "Lord of the Rings",
+        "Matrix",
+        "Pirates of the Caribbean"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which U.S. singing competition with Simon Cowell debuted in 2002?",
+      "q": "What file-sharing service famously disrupted music in the late ’90s?",
       "options": [
-        "The Voice",
-        "American Idol",
-        "America's Got Talent",
-        "The X Factor"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which search engine became the default for most web users in the 2000s?",
-      "options": [
-        "Yahoo",
-        "Ask Jeeves",
-        "Google",
-        "AltaVista"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which cartoon about a sponge under the sea premiered in 1999?",
-      "options": [
-        "Adventure Time",
-        "SpongeBob SquarePants",
-        "Phineas and Ferb",
-        "Regular Show"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which matrix-themed film trilogy began in 1999?",
-      "options": [
-        "The Matrix",
-        "Blade",
-        "Equilibrium",
-        "Dark City"
+        "Napster",
+        "Spotify",
+        "iTunes",
+        "Pandora"
       ],
       "correct": 0,
       "difficulty": "easy"
     },
     {
-      "q": "What flip-style Motorola phone became a 2000s fashion icon?",
+      "q": "Which Britney Spears hit asks “Hit me baby one more time”?",
       "options": [
-        "Nokia 3310",
-        "RAZR",
-        "BlackBerry Bold",
-        "iPhone 3G"
+        "Oops!… I Did It Again",
+        "…Baby One More Time",
+        "Toxic",
+        "Oops"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which Microsoft console launched in 2001 to rival PlayStation 2?",
+      "q": "What gaming console did Sony launch in 1994/1995 (region-dependent)?",
       "options": [
-        "Wii",
         "Xbox",
-        "Dreamcast",
-        "GameCube"
+        "PlayStation",
+        "Wii",
+        "Dreamcast"
       ],
       "correct": 1,
-      "difficulty": "medium"
+      "difficulty": "easy"
     },
     {
-      "q": "Which file-sharing service disrupted music distribution in the late 1990s?",
+      "q": "Which reality show marooned contestants and coined “voted off the island”?",
       "options": [
-        "Spotify",
-        "Napster",
-        "iTunes",
-        "SoundCloud"
+        "Survivor",
+        "Fear Factor",
+        "The Amazing Race",
+        "Naked and Afraid"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who sang “Crazy in Love” with Jay-Z in 2003?",
+      "options": [
+        "Beyoncé",
+        "Alicia Keys",
+        "Ciara",
+        "Jennifer Lopez"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which search engine became dominant in the 2000s?",
+      "options": [
+        "Yahoo",
+        "Google",
+        "AltaVista",
+        "Bing"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What year did Y2K fears peak around New Year?",
+      "options": [
+        "1998",
+        "1999–2000",
+        "2001",
+        "1995"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which animated series about four Colorado boys debuted in 1997?",
+      "options": [
+        "Family Guy",
+        "South Park",
+        "Futurama",
+        "King of the Hill"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which social network launched in 2004 and later became Meta’s flagship?",
+      "options": [
+        "MySpace",
+        "Facebook",
+        "Friendster",
+        "Twitter"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which film won Best Picture for 1994 at the Oscars (Forrest vs Pulp — who won)?",
+      "options": [
+        "Pulp Fiction",
+        "Forrest Gump",
+        "The Shawshank Redemption",
+        "Quiz Show"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Which Harry Potter novel was published first (1997)?",
+      "q": "What was the name of Apple’s music store launched with the iPod era?",
+      "options": [
+        "Apple Music",
+        "iTunes Store",
+        "Beats Store",
+        "QuickTime Shop"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which reality show debuted with Richard Hatch winning in 2000?",
+      "options": [
+        "American Idol",
+        "Survivor",
+        "The Bachelor",
+        "Big Brother US first"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Who was British Prime Minister for most of the late ’90s and 2000s (until 2007)?",
+      "options": [
+        "John Major",
+        "Tony Blair",
+        "Gordon Brown",
+        "David Cameron"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Nokia phone era slogan was “Connecting People”?",
+      "options": [
+        "Motorola",
+        "Nokia",
+        "BlackBerry",
+        "Ericsson"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What year did YouTube launch?",
+      "options": [
+        "2003",
+        "2005",
+        "2007",
+        "2008"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Harry Potter book was published first in 1997?",
       "options": [
         "Chamber of Secrets",
-        "Philosopher's/Sorcerer's Stone",
+        "Philosopher’s/Sorcerer’s Stone",
         "Prisoner of Azkaban",
         "Goblet of Fire"
       ],
@@ -190,80 +234,36 @@
       "difficulty": "medium"
     },
     {
-      "q": "Which reality show with Jeff Probst premiered in 2000?",
+      "q": "Which band’s album “OK Computer” dropped in 1997?",
       "options": [
-        "The Amazing Race",
-        "Survivor",
-        "Big Brother",
-        "Fear Factor"
+        "Oasis",
+        "Radiohead",
+        "Blur",
+        "Coldplay"
       ],
       "correct": 1,
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
-      "q": "Which messaging service popularized status updates like \"Away\" and \"Busy\"?",
+      "q": "What was the original name of Twitter’s 140-character limit tied to?",
       "options": [
-        "MSN Messenger / Windows Live Messenger",
-        "Telegram",
-        "WhatsApp",
-        "Signal"
+        "SMS length",
+        "Email subject lines",
+        "IRC buffers",
+        "Pager codes"
       ],
       "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which animated film about toys was Pixar's first feature (1995)?",
-      "options": [
-        "A Bug's Life",
-        "Toy Story",
-        "Monsters, Inc.",
-        "Finding Nemo"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which British pop group had a massive 1990s hit with \"Wannabe\"?",
-      "options": [
-        "Take That",
-        "Spice Girls",
-        "Westlife",
-        "Boyzone"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In what year did YouTube publicly launch?",
-      "options": [
-        "2003",
-        "2005",
-        "2007",
-        "2009"
-      ],
-      "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "Which gaming console introduced motion controls with a remote in 2006?",
+      "q": "Which 2008 financial event is often called the Global Financial Crisis peak year?",
       "options": [
-        "Xbox 360",
-        "PlayStation 3",
-        "Nintendo Wii",
-        "Dreamcast"
+        "Dot-com bust",
+        "Lehman Brothers collapse year",
+        "Asian crisis",
+        "Savings & loan crisis"
       ],
-      "correct": 2,
-      "difficulty": "hard"
-    },
-    {
-      "q": "Which tech company acquired YouTube in 2006?",
-      "options": [
-        "Yahoo",
-        "Microsoft",
-        "Google",
-        "Amazon"
-      ],
-      "correct": 2,
+      "correct": 1,
       "difficulty": "hard"
     }
   ]

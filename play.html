@@ -170,10 +170,8 @@
             if (revealing || run.phase !== "answering") {
               btn.disabled = true;
               if (run.currentGuess === opt) btn.classList.add("selected");
-              const isCorrect =
-                item.type === "trivia"
-                  ? opt === item.answer
-                  : opt === item.answer || Game.matchesAccept(opt, item);
+              // Exactly one correct option: index or exact answer text — never loose accept/includes
+              const isCorrect = Game.isOptionCorrect(item, opt, idx);
               if (isCorrect) btn.classList.add("correct");
               else if (run.currentGuess === opt) btn.classList.add("wrong");
             } else {

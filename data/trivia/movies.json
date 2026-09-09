@@ -3,7 +3,84 @@
   "subject": "movies",
   "items": [
     {
-      "q": "Who directed Jurassic Park (1993)?",
+      "q": "At his wedding to Emily, whose name does Ross say by mistake?",
+      "options": [
+        "Monica",
+        "Rachel",
+        "Phoebe",
+        "Carol"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which film features the line “I’ll be back”?",
+      "options": [
+        "Predator",
+        "The Terminator",
+        "Aliens",
+        "Commando"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who plays Iron Man in the Marvel Cinematic Universe?",
+      "options": [
+        "Chris Evans",
+        "Robert Downey Jr.",
+        "Chris Hemsworth",
+        "Mark Ruffalo"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the name of the coffee shop in “Friends”?",
+      "options": [
+        "Central Perk",
+        "Monk’s Café",
+        "Luke’s Diner",
+        "MacLaren’s"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which animated film is about a clownfish searching for his son?",
+      "options": [
+        "Shark Tale",
+        "Finding Nemo",
+        "The Little Mermaid",
+        "Luca"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In “The Office” (U.S.), who is regional manager at the start?",
+      "options": [
+        "Jim Halpert",
+        "Dwight Schrute",
+        "Michael Scott",
+        "David Wallace"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which movie won Best Picture at the 2020 Oscars (for 2019 films)?",
+      "options": [
+        "1917",
+        "Joker",
+        "Parasite",
+        "Once Upon a Time in Hollywood"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who directed “Jurassic Park” (1993)?",
       "options": [
         "James Cameron",
         "Steven Spielberg",
@@ -14,254 +91,177 @@
       "difficulty": "easy"
     },
     {
-      "q": "In The Lion King, what is Simba's father's name?",
+      "q": "What house does Harry Potter get sorted into?",
       "options": [
-        "Scar",
-        "Mufasa",
-        "Rafiki",
-        "Zazu"
+        "Slytherin",
+        "Hufflepuff",
+        "Ravenclaw",
+        "Gryffindor"
       ],
-      "correct": 1,
+      "correct": 3,
       "difficulty": "easy"
     },
     {
-      "q": "Which movie popularized the line \"I'll be back\"?",
+      "q": "Which Netflix series follows Eleven and the Upside Down?",
       "options": [
-        "Die Hard",
-        "Predator",
-        "The Terminator",
-        "Aliens"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which hobbit does Elijah Wood play in The Lord of the Rings?",
-      "options": [
-        "Sam",
-        "Frodo",
-        "Merry",
-        "Pippin"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which series is set mainly in Hawkins, Indiana?",
-      "options": [
-        "Riverdale",
+        "Dark",
         "Stranger Things",
-        "Twin Peaks",
-        "Gilmore Girls"
+        "The OA",
+        "Locke & Key"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "In Frozen, what is Elsa's younger sister's name?",
-      "options": [
-        "Anna",
-        "Ariel",
-        "Aurora",
-        "Belle"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who played Jack Dawson in Titanic?",
-      "options": [
-        "Brad Pitt",
-        "Leonardo DiCaprio",
-        "Matt Damon",
-        "Johnny Depp"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What kind of fish is Nemo in Finding Nemo?",
-      "options": [
-        "Clownfish",
-        "Goldfish",
-        "Angelfish",
-        "Blue tang"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which sitcom starred Ted Danson as a Boston bartender?",
-      "options": [
-        "Cheers",
-        "Frasier",
-        "Seinfeld",
-        "Friends"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What color is Luke Skywalker's first lightsaber in Star Wars?",
-      "options": [
-        "Blue",
-        "Green",
-        "Red",
-        "Purple"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which wizard school does Harry Potter attend?",
-      "options": [
-        "Beauxbatons",
-        "Durmstrang",
-        "Hogwarts",
-        "Ilvermorny"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "In Toy Story, what is the name of the cowboy doll?",
-      "options": [
-        "Buzz",
-        "Woody",
-        "Jessie",
-        "Rex"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which streaming series follows the royal family of England in dramatized form?",
-      "options": [
-        "The Crown",
-        "Bridgerton",
-        "Downton Abbey",
-        "Victoria"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who voices Shrek in the Shrek films?",
-      "options": [
-        "Eddie Murphy",
-        "Mike Myers",
-        "John Goodman",
-        "Robin Williams"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which film won Best Picture at the Oscars for 2019 films (ceremony in 2020)?",
-      "options": [
-        "1917",
-        "Joker",
-        "Parasite",
-        "Once Upon a Time in Hollywood"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Who played the Joker opposite Christian Bale's Batman in The Dark Knight?",
-      "options": [
-        "Joaquin Phoenix",
-        "Heath Ledger",
-        "Jared Leto",
-        "Jack Nicholson"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In Breaking Bad, what alias does Walter White use while cooking?",
+      "q": "In “Breaking Bad,” what is Walter White’s street alias?",
       "options": [
         "Heisenberg",
         "Saul",
         "Gus",
-        "Todd"
+        "Spider"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which actress plays Elle Woods in “Legally Blonde”?",
+      "options": [
+        "Reese Witherspoon",
+        "Jennifer Aniston",
+        "Cameron Diaz",
+        "Kirsten Dunst"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the highest-grossing film of all time (nominal, often cited with Avatar)?",
+      "options": [
+        "Avengers: Endgame",
+        "Avatar",
+        "Titanic",
+        "Star Wars: The Force Awakens"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which sitcom is set at a bar in Boston called Cheers?",
+      "options": [
+        "Frasier",
+        "Cheers",
+        "How I Met Your Mother",
+        "Taxi"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who composed the score for “Inception” and “Interstellar”?",
+      "options": [
+        "John Williams",
+        "Hans Zimmer",
+        "Howard Shore",
+        "James Horner"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In “Game of Thrones,” what is the name of Jon Snow’s direwolf?",
+      "options": [
+        "Ghost",
+        "Nymeria",
+        "Summer",
+        "Grey Wind"
       ],
       "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which Pixar film is set mostly inside a young girl's mind?",
+      "q": "Which film trilogy is based on Tolkien’s “The Lord of the Rings”?",
       "options": [
-        "Soul",
-        "Inside Out",
-        "Coco",
-        "Up"
+        "The Hobbit only",
+        "Peter Jackson’s LOTR films",
+        "Narnia",
+        "His Dark Materials"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Which James Cameron film is often cited as the highest-grossing movie of all time (unadjusted)?",
+      "q": "What year did the first “Toy Story” film release?",
       "options": [
-        "Titanic",
-        "Avatar",
-        "Terminator 2",
-        "Aliens"
+        "1993",
+        "1995",
+        "1997",
+        "1999"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "In The Office (U.S.), who is the regional manager at the start of the series?",
-      "options": [
-        "Jim Halpert",
-        "Michael Scott",
-        "Dwight Schrute",
-        "David Wallace"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which director made Pulp Fiction and Kill Bill?",
-      "options": [
-        "Christopher Nolan",
-        "Quentin Tarantino",
-        "Martin Scorsese",
-        "David Fincher"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which actress played Katniss Everdeen in The Hunger Games films?",
-      "options": [
-        "Emma Watson",
-        "Jennifer Lawrence",
-        "Shailene Woodley",
-        "Kristen Stewart"
-      ],
-      "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "In what year was the first Star Wars film (A New Hope) released?",
-      "options": [
-        "1975",
-        "1977",
-        "1979",
-        "1980"
-      ],
-      "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "Which HBO series centers on a contest for control of Westeros?",
+      "q": "Which TV series features the fictional country of Westeros?",
       "options": [
         "The Witcher",
         "Game of Thrones",
-        "Westworld",
-        "Rome"
+        "Shadow and Bone",
+        "His Dark Materials"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Who played the Caped Crusader in Christopher Nolan’s Dark Knight trilogy?",
+      "options": [
+        "Ben Affleck",
+        "Christian Bale",
+        "Michael Keaton",
+        "George Clooney"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which movie features a talking snowman named Olaf?",
+      "options": [
+        "Tangled",
+        "Frozen",
+        "Moana",
+        "Brave"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which 1994 film stars Tim Robbins and Morgan Freeman in a prison drama?",
+      "options": [
+        "Pulp Fiction",
+        "The Shawshank Redemption",
+        "Forrest Gump",
+        "Se7en"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who created the TV series “The Sopranos”?",
+      "options": [
+        "David Chase",
+        "David Simon",
+        "Matthew Weiner",
+        "Vince Gilligan"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In “The Matrix,” what color pill does Neo take to see the truth?",
+      "options": [
+        "Blue",
+        "Red",
+        "Green",
+        "Yellow"
       ],
       "correct": 1,
       "difficulty": "hard"

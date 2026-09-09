@@ -3,265 +3,265 @@
   "subject": "general",
   "items": [
     {
-      "q": "How many continents are generally recognized on Earth?",
+      "q": "Which country uses the yen as its official currency?",
       "options": [
-        "5",
-        "6",
-        "7",
-        "8"
+        "China",
+        "Japan",
+        "South Korea",
+        "Thailand"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What do you call a group of lions?",
+      "options": [
+        "Herd",
+        "Pack",
+        "Pride",
+        "Flock"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "What is the chemical symbol for gold?",
+      "q": "Which U.S. document begins “We the People”?",
       "options": [
-        "Go",
-        "Au",
-        "Ag",
-        "Gd"
+        "Declaration of Independence",
+        "Bill of Rights",
+        "Constitution",
+        "Federalist Papers"
       ],
-      "correct": 1,
+      "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "Which planet is known as the Red Planet?",
+      "q": "How many players are on the field for one soccer team during open play?",
       "options": [
-        "Venus",
-        "Mars",
-        "Jupiter",
-        "Mercury"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "How many degrees are in a right angle?",
-      "options": [
-        "45",
-        "90",
-        "180",
-        "360"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the primary official language of Brazil?",
-      "options": [
-        "Spanish",
-        "Portuguese",
-        "French",
-        "Italian"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which ocean covers the largest surface area?",
-      "options": [
-        "Atlantic",
-        "Indian",
-        "Arctic",
-        "Pacific"
-      ],
-      "correct": 3,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the square root of 81?",
-      "options": [
-        "7",
-        "8",
         "9",
-        "10"
+        "10",
+        "11",
+        "12"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "Which instrument typically has 88 keys?",
+      "q": "Which artist painted the ceiling of the Sistine Chapel?",
       "options": [
-        "Guitar",
-        "Violin",
-        "Piano",
-        "Harp"
+        "Leonardo da Vinci",
+        "Michelangelo",
+        "Raphael",
+        "Donatello"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the tallest mountain above sea level on Earth?",
+      "options": [
+        "K2",
+        "Kangchenjunga",
+        "Mount Everest",
+        "Denali"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "How many sides does a hexagon have?",
+      "q": "Which language has the most native speakers worldwide?",
       "options": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What color results from mixing blue and yellow paint?",
-      "options": [
-        "Purple",
-        "Green",
-        "Orange",
-        "Brown"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "From which direction does the sun rise?",
-      "options": [
-        "North",
-        "South",
-        "East",
-        "West"
+        "English",
+        "Spanish",
+        "Mandarin Chinese",
+        "Hindi"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "How many minutes are in two hours?",
+      "q": "In standard poker, which hand beats a flush?",
       "options": [
-        "60",
-        "90",
-        "120",
-        "180"
+        "Three of a kind",
+        "Straight",
+        "Full house",
+        "Two pair"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "What is the largest animal alive today?",
+      "q": "Which planet has the most moons (known count keeps rising, but which leads)?",
       "options": [
-        "African elephant",
-        "Blue whale",
-        "Giraffe",
-        "Sperm whale"
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which sport is played with a shuttlecock?",
+      "q": "What does GPS stand for?",
       "options": [
-        "Tennis",
-        "Badminton",
-        "Squash",
-        "Racquetball"
+        "Global Positioning System",
+        "General Pinpoint Satellite",
+        "Geographic Point Scanner",
+        "Ground Path Sync"
+      ],
+      "correct": 0,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which blood type is often called the universal donor?",
+      "options": [
+        "AB+",
+        "A−",
+        "O−",
+        "B+"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who wrote the novel “1984”?",
+      "options": [
+        "Aldous Huxley",
+        "George Orwell",
+        "Ray Bradbury",
+        "Philip K. Dick"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which country gifted the Statue of Liberty to the United States?",
+      "q": "Which chess piece can jump over other pieces?",
       "options": [
-        "United Kingdom",
-        "France",
-        "Spain",
-        "Italy"
+        "Bishop",
+        "Rook",
+        "Knight",
+        "Queen"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the capital of Canada?",
+      "options": [
+        "Toronto",
+        "Vancouver",
+        "Ottawa",
+        "Montreal"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which ancient city was buried by Vesuvius in 79 AD?",
+      "options": [
+        "Athens",
+        "Pompeii",
+        "Carthage",
+        "Troy"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What does HTTP stand for?",
+      "q": "What does the “M” stand for in HTML?",
       "options": [
-        "HyperText Transfer Protocol",
-        "High Transfer Text Process",
-        "Host Terminal Type Protocol",
-        "Hyperlink Text Tracking Path"
+        "Markup",
+        "Machine",
+        "Module",
+        "Media"
       ],
       "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which metal is liquid at standard room temperature?",
+      "q": "Which composer wrote “The Four Seasons”?",
       "options": [
-        "Sodium",
-        "Mercury",
-        "Aluminum",
-        "Zinc"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the hardest natural mineral on the Mohs scale?",
-      "options": [
-        "Quartz",
-        "Topaz",
-        "Diamond",
-        "Corundum"
+        "Bach",
+        "Mozart",
+        "Vivaldi",
+        "Handel"
       ],
       "correct": 2,
       "difficulty": "medium"
     },
     {
-      "q": "Which of the Seven Wonders of the Ancient World was a lighthouse near Alexandria?",
+      "q": "In which year did the Titanic sink?",
       "options": [
-        "Colossus of Rhodes",
-        "Pharos of Alexandria",
-        "Hanging Gardens",
-        "Temple of Artemis"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which unit measures electric current?",
-      "options": [
-        "Volt",
-        "Watt",
-        "Ampere",
-        "Ohm"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "How many time zones does Russia span at its widest commonly cited count?",
-      "options": [
-        "5",
-        "7",
-        "9",
-        "11"
-      ],
-      "correct": 3,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In which year did the Wright brothers make their first powered flight?",
-      "options": [
-        "1899",
-        "1903",
+        "1905",
         "1912",
-        "1920"
+        "1918",
+        "1923"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the largest internal organ in the human body?",
+      "options": [
+        "Liver",
+        "Brain",
+        "Lungs",
+        "Heart"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which country hosted the 2016 Summer Olympics?",
+      "options": [
+        "China",
+        "United Kingdom",
+        "Brazil",
+        "Russia"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the chemical formula for table salt?",
+      "options": [
+        "NaCl",
+        "KCl",
+        "CaCO3",
+        "H2SO4"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Shakespeare play features the line “To be, or not to be”?",
+      "options": [
+        "Macbeth",
+        "Othello",
+        "Hamlet",
+        "King Lear"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "About how long does light from the Sun take to reach Earth?",
+      "options": [
+        "8 seconds",
+        "8 minutes",
+        "8 hours",
+        "8 days"
       ],
       "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "About how many kilometers is Earth's equatorial circumference?",
+      "q": "Which Nobel Prize category did Marie Curie win twice (across fields)?",
       "options": [
-        "20,000 km",
-        "40,075 km",
-        "60,000 km",
-        "80,000 km"
-      ],
-      "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "Which chemical element has atomic number 1?",
-      "options": [
-        "Helium",
-        "Hydrogen",
-        "Lithium",
-        "Carbon"
+        "Only Physics",
+        "Physics and Chemistry",
+        "Chemistry and Medicine",
+        "Peace and Literature"
       ],
       "correct": 1,
       "difficulty": "hard"

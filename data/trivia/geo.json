@@ -3,124 +3,25 @@
   "subject": "geo",
   "items": [
     {
-      "q": "What is the capital of France?",
-      "options": [
-        "Lyon",
-        "Marseille",
-        "Paris",
-        "Nice"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "On which continent is Egypt primarily located?",
-      "options": [
-        "Asia",
-        "Africa",
-        "Europe",
-        "South America"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which river is traditionally cited as the world's longest?",
+      "q": "Which river flows through Egypt?",
       "options": [
         "Amazon",
         "Nile",
-        "Yangtze",
-        "Mississippi"
+        "Danube",
+        "Yangtze"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which country is also a continent?",
+      "q": "What is the largest continent by land area?",
       "options": [
-        "Greenland",
-        "Australia",
-        "New Zealand",
-        "Iceland"
+        "Africa",
+        "Asia",
+        "North America",
+        "Europe"
       ],
       "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the capital of Japan?",
-      "options": [
-        "Osaka",
-        "Kyoto",
-        "Tokyo",
-        "Nagoya"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is Earth's highest mountain above sea level?",
-      "options": [
-        "K2",
-        "Mount Everest",
-        "Kilimanjaro",
-        "Denali"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which U.S. state is a Pacific archipelago?",
-      "options": [
-        "Alaska",
-        "California",
-        "Hawaii",
-        "Florida"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which country has the largest land area?",
-      "options": [
-        "China",
-        "Canada",
-        "United States",
-        "Russia"
-      ],
-      "correct": 3,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which is the world's largest hot desert?",
-      "options": [
-        "Gobi",
-        "Sahara",
-        "Kalahari",
-        "Mojave"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which sea lies between southern Europe and northern Africa?",
-      "options": [
-        "Black Sea",
-        "Red Sea",
-        "Mediterranean Sea",
-        "Caspian Sea"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the capital of Canada?",
-      "options": [
-        "Toronto",
-        "Vancouver",
-        "Ottawa",
-        "Montreal"
-      ],
-      "correct": 2,
       "difficulty": "easy"
     },
     {
@@ -135,40 +36,106 @@
       "difficulty": "easy"
     },
     {
-      "q": "Which continent is home to the Amazon rainforest?",
+      "q": "What is the capital of Australia?",
       "options": [
-        "Africa",
-        "Asia",
-        "South America",
-        "Australia"
+        "Sydney",
+        "Melbourne",
+        "Canberra",
+        "Brisbane"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "What is the capital of Italy?",
+      "q": "Which country is shaped roughly like a boot?",
       "options": [
-        "Milan",
-        "Rome",
-        "Naples",
-        "Florence"
+        "Spain",
+        "Italy",
+        "Greece",
+        "Portugal"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which South American capital sits high in the Andes (administrative seat of Bolivia)?",
+      "q": "Mount Fuji is located in which country?",
       "options": [
-        "Buenos Aires",
-        "Santiago",
-        "La Paz",
-        "Lima"
+        "China",
+        "Japan",
+        "South Korea",
+        "Taiwan"
       ],
-      "correct": 2,
-      "difficulty": "medium"
+      "correct": 1,
+      "difficulty": "easy"
     },
     {
-      "q": "What is the world's smallest country by area?",
+      "q": "Which U.S. state is an archipelago in the Pacific?",
+      "options": [
+        "Alaska",
+        "Hawaii",
+        "California",
+        "Florida"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the longest river in South America?",
+      "options": [
+        "Nile",
+        "Amazon",
+        "Orinoco",
+        "Paraná"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which desert is the largest hot desert on Earth?",
+      "options": [
+        "Gobi",
+        "Sahara",
+        "Kalahari",
+        "Mojave"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which European city is home to the Acropolis?",
+      "options": [
+        "Rome",
+        "Athens",
+        "Istanbul",
+        "Lisbon"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which mountain range separates Europe and Asia (often cited)?",
+      "options": [
+        "Alps",
+        "Urals",
+        "Andes",
+        "Rockies"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which country has the most time zones (including territories)?",
+      "options": [
+        "Russia",
+        "United States",
+        "France",
+        "China"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the smallest country in the world by area?",
       "options": [
         "Monaco",
         "Vatican City",
@@ -176,59 +143,26 @@
         "Liechtenstein"
       ],
       "correct": 1,
-      "difficulty": "medium"
+      "difficulty": "easy"
     },
     {
-      "q": "Which African country has Accra as its capital?",
+      "q": "Which African country is an island nation in the Indian Ocean?",
       "options": [
-        "Nigeria",
+        "Madagascar",
+        "Morocco",
         "Kenya",
-        "Ghana",
-        "Senegal"
+        "Ghana"
       ],
-      "correct": 2,
-      "difficulty": "medium"
+      "correct": 0,
+      "difficulty": "easy"
     },
     {
-      "q": "The Great Barrier Reef lies off which country?",
+      "q": "Which canal connects the Atlantic and Pacific Oceans?",
       "options": [
-        "Indonesia",
-        "Philippines",
-        "Australia",
-        "Fiji"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which Canadian province is largest by land area?",
-      "options": [
-        "Ontario",
-        "Quebec",
-        "British Columbia",
-        "Alberta"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which mountain range separates Europe from Asia in Russia?",
-      "options": [
-        "Alps",
-        "Urals",
-        "Carpathians",
-        "Pyrenees"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the capital of Egypt?",
-      "options": [
-        "Alexandria",
-        "Cairo",
-        "Giza",
-        "Luxor"
+        "Suez",
+        "Panama",
+        "Kiel",
+        "Corinth"
       ],
       "correct": 1,
       "difficulty": "medium"
@@ -237,33 +171,99 @@
       "q": "What is the capital of New Zealand?",
       "options": [
         "Auckland",
-        "Christchurch",
         "Wellington",
-        "Hamilton"
-      ],
-      "correct": 2,
-      "difficulty": "hard"
-    },
-    {
-      "q": "Which strait separates Spain from Morocco?",
-      "options": [
-        "Bosphorus",
-        "Strait of Gibraltar",
-        "Dardanelles",
-        "Strait of Magellan"
+        "Christchurch",
+        "Queenstown"
       ],
       "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which sea is the saltiest large body of water commonly cited?",
+      "options": [
+        "Dead Sea",
+        "Red Sea",
+        "Baltic Sea",
+        "Caspian Sea"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In which country would you find Machu Picchu?",
+      "options": [
+        "Chile",
+        "Peru",
+        "Bolivia",
+        "Ecuador"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which European capital sits on the River Danube?",
+      "options": [
+        "Prague",
+        "Budapest",
+        "Warsaw",
+        "Stockholm"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What is the official language of Brazil?",
+      "options": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "Italian"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Canadian province is the largest by area?",
+      "options": [
+        "Ontario",
+        "Quebec",
+        "British Columbia",
+        "Nunavut"
+      ],
+      "correct": 3,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which African capital is closest to the equator among these?",
+      "options": [
+        "Nairobi",
+        "Cairo",
+        "Cape Town",
+        "Casablanca"
+      ],
+      "correct": 0,
       "difficulty": "hard"
     },
     {
-      "q": "Lake Baikal, the world's deepest freshwater lake, is in which country?",
+      "q": "What is the deepest known point in Earth’s oceans called?",
       "options": [
-        "Canada",
-        "China",
-        "Russia",
-        "Mongolia"
+        "Mariana Trench’s Challenger Deep",
+        "Puerto Rico Trench",
+        "Tonga Trench",
+        "Java Trench"
       ],
-      "correct": 2,
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which South American country is landlocked between Brazil, Argentina, and Bolivia?",
+      "options": [
+        "Uruguay",
+        "Paraguay",
+        "Suriname",
+        "Ecuador"
+      ],
+      "correct": 1,
       "difficulty": "hard"
     }
   ]

@@ -10,55 +10,67 @@
       .trim();
   }
 
-  function matchesAccept(guess, item) {
-    const g = normalize(guess);
-    if (!g) return false;
-    const answer = normalize(item.answer);
-    if (answer && (g === answer || answer.includes(g) || g.includes(answer))) return true;
-    const accept = item.accept || [];
-    for (const a of accept) {
-      const n = normalize(a);
-      if (!n) continue;
-      if (g === n || g.includes(n) || n.includes(g)) return true;
-    }
-    if (Array.isArray(item.options)) {
-      for (const opt of item.options) {
-        if (normalize(opt) === g) {
-          return normalize(opt) === normalize(item.answer);
+  function words(s) {
+    return normalize(s).split(" ").filter(Boolean);
+  }
+
+  /** Consecutive word-sequence containment (typed guesses only). */
+  function containsWordSeq(hayWords, needleWords) {
+    if (!needleWords.length || needleWords.length > hayWords.length) return false;
+    for (let i = 0; i <= hayWords.length - needleWords.length; i++) {
+      let ok = true;
+      for (let j = 0; j < needleWords.length; j++) {
+        if (hayWords[i + j] !== needleWords[j]) {
+          ok = false;
+          break;
         }
       }
+      if (ok) return true;
     }
     return false;
   }
 
-  function snapshotItem(type, item) {
-    if (type === "trivia") {
-      return {
-        type,
-        q: item.q,
-        options: (item.options || []).slice(),
-        correct: item.correct,
-        answer: item.options[item.correct],
-      };
+  /**
+   * Typed identify/music grading.
+   * Exact normalize on answer + each accept alias.
+   * Optional careful multi-word containment (never used for MCQ reveal).
+   */
+  function matchesAccept(guess, item) {
+    const g = normalize(guess);
+    if (!g) return false;
+    const answer = normalize(item.answer);
+    if (answer && g === answer) return true;
+    const accept = item.accept || [];
+    for (const a of accept) {
+      const n = normalize(a);
+      if (n && g === n) return true;
     }
-    if (type === "identify") {
-      return {
-        type,
-        prompt: item.prompt,
-        clue: item.clue || "",
-        options: (item.options || []).slice(),
-        answer: item.answer,
-        accept: (item.accept || []).slice(),
-      };
+    // Careful: multi-word phrase contained as whole words (typed only)
+    const gw = words(g);
+    if (answer) {
+      const aw = words(answer);
+      if (gw.length >= 2 && containsWordSeq(aw, gw)) return true;
+      if (aw.length >= 2 && containsWordSeq(gw, aw)) return true;
     }
-    return {
-      type: "music",
-      cue: item.cue,
-      hint: item.hint || "",
-      options: (item.options || []).slice(),
-      answer: item.answer,
-      accept: (item.accept || []).slice(),
-    };
+    for (const a of accept) {
+      const n = normalize(a);
+      if (!n) continue;
+      const aw = words(n);
+      if (gw.length >= 2 && containsWordSeq(aw, gw)) return true;
+      if (aw.length >= 2 && containsWordSeq(gw, aw)) return true;
+    }
+    return false;
+  }
+
+  /** Reveal / MCQ: exactly one option — by correctIndex or exact answer text. */
+  function isOptionCorrect(item, opt, idx) {
+    if (typeof item.correctIndex === "number" && item.correctIndex >= 0) {
+      return idx === item.correctIndex;
+    }
+    if (typeof item.correct === "number" && item.correct >= 0 && Array.isArray(item.options)) {
+      return idx === item.correct;
+    }
+    return normalize(opt) === normalize(item.answer);
   }
 
   function shuffle(arr) {
@@ -72,11 +84,62 @@
     return a;
   }
 
+  function snapshotItem(type, item) {
+    if (type === "trivia") {
+      const raw = (item.options || []).slice();
+      const answerText = raw[item.correct];
+      const options = shuffle(raw);
+      const correctIndex = options.findIndex((o) => o === answerText);
+      return {
+        type,
+        q: item.q,
+        options,
+        correct: correctIndex,
+        correctIndex,
+        answer: answerText,
+        difficulty: item.difficulty || null,
+      };
+    }
+    if (type === "identify") {
+      const options = shuffle((item.options || []).slice());
+      const answer = item.answer;
+      let correctIndex = options.findIndex((o) => normalize(o) === normalize(answer));
+      if (correctIndex < 0) correctIndex = options.findIndex((o) => o === answer);
+      return {
+        type,
+        prompt: item.prompt,
+        clue: item.clue || "",
+        options,
+        correctIndex,
+        answer,
+        accept: (item.accept || []).slice(),
+      };
+    }
+    const options = shuffle((item.options || []).slice());
+    const answer = item.answer;
+    let correctIndex = options.findIndex((o) => normalize(o) === normalize(answer));
+    if (correctIndex < 0) correctIndex = options.findIndex((o) => o === answer);
+    return {
+      type: "music",
+      cue: item.cue,
+      hint: item.hint || "",
+      options,
+      correctIndex,
+      answer,
+      accept: (item.accept || []).slice(),
+    };
+  }
+
   function gradeAnswer(item, answerText) {
     const text = String(answerText || "").trim();
     if (!text) return false;
     if (item.type === "trivia") {
       return normalize(text) === normalize(item.answer);
+    }
+    // Identify / Music typed or MCQ text: exact option match OR accept aliases
+    if (Array.isArray(item.options)) {
+      const hit = item.options.find((o) => normalize(o) === normalize(text));
+      if (hit) return normalize(hit) === normalize(item.answer);
     }
     return matchesAccept(text, item);
   }
@@ -212,6 +275,8 @@
     progress,
     gradeAnswer,
     matchesAccept,
+    isOptionCorrect,
+    normalize,
     typeLabel,
     typeEmoji,
     subjectLabel,

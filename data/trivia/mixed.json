@@ -3,267 +3,267 @@
   "subject": "mixed",
   "items": [
     {
-      "q": "How many continents are generally recognized on Earth?",
+      "q": "Which country uses the yen as its official currency?",
       "options": [
-        "5",
-        "6",
-        "7",
-        "8"
+        "China",
+        "Japan",
+        "South Korea",
+        "Thailand"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who plays Iron Man in the Marvel Cinematic Universe?",
+      "options": [
+        "Chris Evans",
+        "Robert Downey Jr.",
+        "Chris Hemsworth",
+        "Mark Ruffalo"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What spirit is the base of a classic mojito?",
+      "options": [
+        "Vodka",
+        "Gin",
+        "Rum",
+        "Tequila"
       ],
       "correct": 2,
       "difficulty": "easy"
     },
     {
-      "q": "What is the chemical symbol for gold?",
+      "q": "Which river flows through Egypt?",
       "options": [
-        "Go",
-        "Au",
-        "Ag",
-        "Gd"
+        "Amazon",
+        "Nile",
+        "Danube",
+        "Yangtze"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which unit measures electric current?",
-      "options": [
-        "Volt",
-        "Watt",
-        "Ampere",
-        "Ohm"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which streaming service premiered Stranger Things?",
-      "options": [
-        "Hulu",
-        "Netflix",
-        "Disney+",
-        "Max"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "In The Office (U.S.), what is Dwight's last name?",
-      "options": [
-        "Schrute",
-        "Halpert",
-        "Beesly",
-        "Bernard"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which K-pop group released \"Dynamite\" in 2020?",
-      "options": [
-        "BLACKPINK",
-        "BTS",
-        "EXO",
-        "TWICE"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Who directed Jurassic Park (1993)?",
-      "options": [
-        "James Cameron",
-        "Steven Spielberg",
-        "Ridley Scott",
-        "George Lucas"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What kind of fish is Nemo in Finding Nemo?",
-      "options": [
-        "Clownfish",
-        "Goldfish",
-        "Angelfish",
-        "Blue tang"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who played the Joker in The Dark Knight?",
-      "options": [
-        "Joaquin Phoenix",
-        "Heath Ledger",
-        "Jared Leto",
-        "Jack Nicholson"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is H2O more commonly called?",
-      "options": [
-        "Salt",
-        "Water",
-        "Hydrogen peroxide",
-        "Ammonia"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which planet is closest to the Sun?",
-      "options": [
-        "Venus",
-        "Earth",
-        "Mercury",
-        "Mars"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who proposed the theory of general relativity?",
-      "options": [
-        "Isaac Newton",
-        "Albert Einstein",
-        "Niels Bohr",
-        "Galileo Galilei"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the capital of France?",
-      "options": [
-        "Lyon",
-        "Marseille",
-        "Paris",
-        "Nice"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is Earth's highest mountain above sea level?",
-      "options": [
-        "K2",
-        "Mount Everest",
-        "Kilimanjaro",
-        "Denali"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the world's smallest country by area?",
-      "options": [
-        "Monaco",
-        "Vatican City",
-        "San Marino",
-        "Liechtenstein"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which fruit is the main base of guacamole?",
-      "options": [
-        "Tomato",
-        "Avocado",
-        "Mango",
-        "Papaya"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which spice often gives curry dishes a yellow color?",
-      "options": [
-        "Paprika",
-        "Turmeric",
-        "Cumin",
-        "Cardamom"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Paella originated in which country?",
-      "options": [
-        "Italy",
-        "Portugal",
-        "Spain",
-        "Greece"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which portable music player did Apple introduce in 2001?",
-      "options": [
-        "Zune",
-        "Walkman",
-        "iPod",
-        "Discman"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which group had the 1999 hit \"I Want It That Way\"?",
+      "q": "Which boy band sang “I Want It That Way”?",
       "options": [
         "NSYNC",
         "Backstreet Boys",
-        "Westlife",
-        "One Direction"
+        "98 Degrees",
+        "Westlife"
       ],
       "correct": 1,
       "difficulty": "easy"
     },
     {
-      "q": "Which file-sharing service disrupted music in the late 1990s?",
+      "q": "What gas do plants absorb during photosynthesis?",
       "options": [
-        "Spotify",
-        "Napster",
-        "iTunes",
-        "SoundCloud"
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which pop star’s 2014 album is titled “1989”?",
+      "options": [
+        "Rihanna",
+        "Taylor Swift",
+        "Lady Gaga",
+        "Katy Perry"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What is the capital of Australia?",
+      "options": [
+        "Sydney",
+        "Melbourne",
+        "Canberra",
+        "Brisbane"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "In “The Office” (U.S.), who is regional manager at the start?",
+      "options": [
+        "Jim Halpert",
+        "Dwight Schrute",
+        "Michael Scott",
+        "David Wallace"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which chess piece can jump over other pieces?",
+      "options": [
+        "Bishop",
+        "Rook",
+        "Knight",
+        "Queen"
+      ],
+      "correct": 2,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What year did the first iPhone launch?",
+      "options": [
+        "2005",
+        "2007",
+        "2009",
+        "2010"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which bean is the main ingredient in traditional hummus?",
+      "options": [
+        "Black beans",
+        "Chickpeas",
+        "Lentils",
+        "Kidney beans"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "What force keeps planets in orbit around the Sun?",
+      "options": [
+        "Magnetism",
+        "Gravity",
+        "Friction",
+        "Electricity"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Who wrote the novel “1984”?",
+      "options": [
+        "Aldous Huxley",
+        "George Orwell",
+        "Ray Bradbury",
+        "Philip K. Dick"
+      ],
+      "correct": 1,
+      "difficulty": "easy"
+    },
+    {
+      "q": "Which canal connects the Atlantic and Pacific Oceans?",
+      "options": [
+        "Suez",
+        "Panama",
+        "Kiel",
+        "Corinth"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "In what year did the first iPhone go on sale?",
+      "q": "Who composed the score for “Inception” and “Interstellar”?",
       "options": [
+        "John Williams",
+        "Hans Zimmer",
+        "Howard Shore",
+        "James Horner"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What does an IPA stand for in craft beer?",
+      "options": [
+        "Indian Pale Ale",
+        "India Pale Ale",
+        "Irish Pilsner Ale",
+        "Imperial Porter Ale"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which scientist proposed the three laws of motion?",
+      "options": [
+        "Einstein",
+        "Newton",
+        "Galileo",
+        "Kepler"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "What year did YouTube launch?",
+      "options": [
+        "2003",
         "2005",
-        "2006",
         "2007",
         "2008"
       ],
-      "correct": 2,
-      "difficulty": "hard"
+      "correct": 1,
+      "difficulty": "medium"
     },
     {
-      "q": "About how long does sunlight take to reach Earth?",
+      "q": "Which artist released the album “Lemonade” in 2016?",
       "options": [
-        "8 seconds",
-        "8 minutes",
-        "8 hours",
-        "8 days"
+        "Beyoncé",
+        "Rihanna",
+        "Solange",
+        "Alicia Keys"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In which year did the Titanic sink?",
+      "options": [
+        "1905",
+        "1912",
+        "1918",
+        "1923"
       ],
       "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Approximately how old is the Earth?",
+      "options": [
+        "4.6 million years",
+        "46 million years",
+        "4.6 billion years",
+        "13.8 billion years"
+      ],
+      "correct": 2,
       "difficulty": "hard"
     },
     {
-      "q": "What is the capital of New Zealand?",
+      "q": "Who created the TV series “The Sopranos”?",
       "options": [
-        "Auckland",
-        "Christchurch",
-        "Wellington",
-        "Hamilton"
+        "David Chase",
+        "David Simon",
+        "Matthew Weiner",
+        "Vince Gilligan"
       ],
-      "correct": 2,
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the deepest known point in Earth’s oceans called?",
+      "options": [
+        "Mariana Trench’s Challenger Deep",
+        "Puerto Rico Trench",
+        "Tonga Trench",
+        "Java Trench"
+      ],
+      "correct": 0,
       "difficulty": "hard"
     }
   ]

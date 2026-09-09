@@ -1,0 +1,347 @@
+{
+  "title": "Name That Tune (text cues)",
+  "items": [
+    {
+      "cue": "Is this the real life? Is this just fantasy?",
+      "hint": "1970s \u00b7 operatic rock",
+      "options": [
+        "Bohemian Rhapsody \u2014 Queen",
+        "Stairway to Heaven \u2014 Led Zeppelin",
+        "Hotel California \u2014 Eagles",
+        "Imagine \u2014 John Lennon"
+      ],
+      "answer": "Bohemian Rhapsody \u2014 Queen",
+      "accept": [
+        "bohemian rhapsody",
+        "queen"
+      ]
+    },
+    {
+      "cue": "Don't stop believin'\u2026 hold on to that feelin'",
+      "hint": "Arena rock classic",
+      "options": [
+        "Don't Stop Believin' \u2014 Journey",
+        "Eye of the Tiger \u2014 Survivor",
+        "We Will Rock You \u2014 Queen",
+        "Sweet Child O' Mine \u2014 Guns N' Roses"
+      ],
+      "answer": "Don't Stop Believin' \u2014 Journey",
+      "accept": [
+        "don't stop believin",
+        "dont stop believing",
+        "journey"
+      ]
+    },
+    {
+      "cue": "Because I'm happy\u2026 clap along if you feel like a room without a roof",
+      "hint": "2010s pop sunshine",
+      "options": [
+        "Happy \u2014 Pharrell Williams",
+        "Uptown Funk \u2014 Bruno Mars",
+        "Can't Stop the Feeling \u2014 Justin Timberlake",
+        "Shake It Off \u2014 Taylor Swift"
+      ],
+      "answer": "Happy \u2014 Pharrell Williams",
+      "accept": [
+        "happy",
+        "pharrell"
+      ]
+    },
+    {
+      "cue": "I'm never gonna give you up\u2026 never gonna let you down",
+      "hint": "Internet legend",
+      "options": [
+        "Never Gonna Give You Up \u2014 Rick Astley",
+        "Take On Me \u2014 a-ha",
+        "Wake Me Up Before You Go-Go \u2014 Wham!",
+        "Billie Jean \u2014 Michael Jackson"
+      ],
+      "answer": "Never Gonna Give You Up \u2014 Rick Astley",
+      "accept": [
+        "never gonna give you up",
+        "rick astley",
+        "rickroll",
+        "rick roll"
+      ]
+    },
+    {
+      "cue": "I got a feeling\u2026 that tonight's gonna be a good night",
+      "hint": "Party anthem",
+      "options": [
+        "I Gotta Feeling \u2014 Black Eyed Peas",
+        "Party Rock Anthem \u2014 LMFAO",
+        "Dynamite \u2014 BTS",
+        "Levitating \u2014 Dua Lipa"
+      ],
+      "answer": "I Gotta Feeling \u2014 Black Eyed Peas",
+      "accept": [
+        "i gotta feeling",
+        "i got a feeling",
+        "black eyed peas"
+      ]
+    },
+    {
+      "cue": "Sweet dreams are made of this\u2026 who am I to disagree?",
+      "hint": "80s synth",
+      "options": [
+        "Sweet Dreams \u2014 Eurythmics",
+        "Take On Me \u2014 a-ha",
+        "Girls Just Want to Have Fun \u2014 Cyndi Lauper",
+        "Material Girl \u2014 Madonna"
+      ],
+      "answer": "Sweet Dreams \u2014 Eurythmics",
+      "accept": [
+        "sweet dreams",
+        "eurythmics"
+      ]
+    },
+    {
+      "cue": "You can dance\u2026 you can jive\u2026 having the time of your life",
+      "hint": "Disco royalty",
+      "options": [
+        "Dancing Queen \u2014 ABBA",
+        "Stayin' Alive \u2014 Bee Gees",
+        "September \u2014 Earth, Wind & Fire",
+        "Le Freak \u2014 Chic"
+      ],
+      "answer": "Dancing Queen \u2014 ABBA",
+      "accept": [
+        "dancing queen",
+        "abba"
+      ]
+    },
+    {
+      "cue": "Hello from the other side\u2026 I must've called a thousand times",
+      "hint": "Power ballad megahit",
+      "options": [
+        "Hello \u2014 Adele",
+        "Someone Like You \u2014 Adele",
+        "Rolling in the Deep \u2014 Adele",
+        "Chandelier \u2014 Sia"
+      ],
+      "answer": "Hello \u2014 Adele",
+      "accept": [
+        "hello",
+        "adele"
+      ]
+    },
+    {
+      "cue": "Oh, Mickey, you're so fine\u2026 you're so fine you blow my mind",
+      "hint": "Cheerleader energy",
+      "options": [
+        "Mickey \u2014 Toni Basil",
+        "Girls Just Want to Have Fun \u2014 Cyndi Lauper",
+        "Wake Me Up Before You Go-Go \u2014 Wham!",
+        "Material Girl \u2014 Madonna"
+      ],
+      "answer": "Mickey \u2014 Toni Basil",
+      "accept": [
+        "mickey",
+        "toni basil"
+      ]
+    },
+    {
+      "cue": "I see a little silhouetto of a man\u2026 Scaramouche, Scaramouche\u2026",
+      "hint": "Same band as the fantasy question",
+      "options": [
+        "Bohemian Rhapsody \u2014 Queen",
+        "We Are the Champions \u2014 Queen",
+        "Somebody to Love \u2014 Queen",
+        "Killer Queen \u2014 Queen"
+      ],
+      "answer": "Bohemian Rhapsody \u2014 Queen",
+      "accept": [
+        "bohemian rhapsody",
+        "queen"
+      ]
+    },
+    {
+      "cue": "Work, work, work, work, work, work\u2026 He said me haffi",
+      "hint": "Dancehall-pop crossover",
+      "options": [
+        "Work \u2014 Rihanna",
+        "Umbrella \u2014 Rihanna",
+        "Diamonds \u2014 Rihanna",
+        "Only Girl \u2014 Rihanna"
+      ],
+      "answer": "Work \u2014 Rihanna",
+      "accept": [
+        "work",
+        "rihanna"
+      ]
+    },
+    {
+      "cue": "Buddy you're a boy make a big noise\u2026 playin' in the street\u2026 gonna be a big man someday",
+      "hint": "Stomp stomp clap",
+      "options": [
+        "We Will Rock You \u2014 Queen",
+        "We Are the Champions \u2014 Queen",
+        "Another One Bites the Dust \u2014 Queen",
+        "Crazy Little Thing Called Love \u2014 Queen"
+      ],
+      "answer": "We Will Rock You \u2014 Queen",
+      "accept": [
+        "we will rock you",
+        "queen"
+      ]
+    },
+    {
+      "cue": "I'm blue\u2026 da ba dee da ba di",
+      "hint": "Late-90s earworm",
+      "options": [
+        "Blue (Da Ba Dee) \u2014 Eiffel 65",
+        "Barbie Girl \u2014 Aqua",
+        "Macarena \u2014 Los Del Rio",
+        "Cotton Eye Joe \u2014 Rednex"
+      ],
+      "answer": "Blue (Da Ba Dee) \u2014 Eiffel 65",
+      "accept": [
+        "blue",
+        "da ba dee",
+        "eiffel 65",
+        "i'm blue"
+      ]
+    },
+    {
+      "cue": "It's a beautiful day\u2026 don't let it get away",
+      "hint": "U2 sunshine",
+      "options": [
+        "Beautiful Day \u2014 U2",
+        "With or Without You \u2014 U2",
+        "One \u2014 U2",
+        "Vertigo \u2014 U2"
+      ],
+      "answer": "Beautiful Day \u2014 U2",
+      "accept": [
+        "beautiful day",
+        "u2"
+      ]
+    },
+    {
+      "cue": "I'm walking on sunshine\u2026 whoa-oh",
+      "hint": "Feel-good 80s",
+      "options": [
+        "Walking on Sunshine \u2014 Katrina and the Waves",
+        "Good Vibrations \u2014 The Beach Boys",
+        "Here Comes the Sun \u2014 The Beatles",
+        "Three Little Birds \u2014 Bob Marley"
+      ],
+      "answer": "Walking on Sunshine \u2014 Katrina and the Waves",
+      "accept": [
+        "walking on sunshine",
+        "katrina"
+      ]
+    },
+    {
+      "cue": "You spin me right round, baby, right round\u2026",
+      "hint": "80s dancefloor",
+      "options": [
+        "You Spin Me Round \u2014 Dead or Alive",
+        "Blue Monday \u2014 New Order",
+        "Tainted Love \u2014 Soft Cell",
+        "Relax \u2014 Frankie Goes to Hollywood"
+      ],
+      "answer": "You Spin Me Round \u2014 Dead or Alive",
+      "accept": [
+        "you spin me round",
+        "spin me right round",
+        "dead or alive"
+      ]
+    },
+    {
+      "cue": "All the single ladies\u2026 all the single ladies",
+      "hint": "Hand choreography required",
+      "options": [
+        "Single Ladies \u2014 Beyonc\u00e9",
+        "Crazy in Love \u2014 Beyonc\u00e9",
+        "Formation \u2014 Beyonc\u00e9",
+        "Halo \u2014 Beyonc\u00e9"
+      ],
+      "answer": "Single Ladies \u2014 Beyonc\u00e9",
+      "accept": [
+        "single ladies",
+        "beyonce",
+        "beyonc\u00e9"
+      ]
+    },
+    {
+      "cue": "I wanna dance with somebody\u2026 I wanna feel the heat with somebody",
+      "hint": "Whitney energy",
+      "options": [
+        "I Wanna Dance with Somebody \u2014 Whitney Houston",
+        "How Will I Know \u2014 Whitney Houston",
+        "I Will Always Love You \u2014 Whitney Houston",
+        "Greatest Love of All \u2014 Whitney Houston"
+      ],
+      "answer": "I Wanna Dance with Somebody \u2014 Whitney Houston",
+      "accept": [
+        "i wanna dance with somebody",
+        "whitney",
+        "whitney houston"
+      ]
+    },
+    {
+      "cue": "So you wanna play with magic\u2026 boy you should know what you're fallin' for",
+      "hint": "2010s pop",
+      "options": [
+        "Dark Horse \u2014 Katy Perry",
+        "Roar \u2014 Katy Perry",
+        "Firework \u2014 Katy Perry",
+        "Teenage Dream \u2014 Katy Perry"
+      ],
+      "answer": "Dark Horse \u2014 Katy Perry",
+      "accept": [
+        "dark horse",
+        "katy perry"
+      ]
+    },
+    {
+      "cue": "I've paid my dues\u2026 time after time\u2026 I've done my sentence\u2026 but committed no crime",
+      "hint": "Champions energy",
+      "options": [
+        "We Are the Champions \u2014 Queen",
+        "We Will Rock You \u2014 Queen",
+        "The Show Must Go On \u2014 Queen",
+        "Under Pressure \u2014 Queen & Bowie"
+      ],
+      "answer": "We Are the Champions \u2014 Queen",
+      "accept": [
+        "we are the champions",
+        "champions",
+        "queen"
+      ]
+    },
+    {
+      "cue": "I'm coming out\u2026 I want the world to know\u2026 got to let it show",
+      "hint": "Disco / R&B classic",
+      "options": [
+        "I'm Coming Out \u2014 Diana Ross",
+        "Respect \u2014 Aretha Franklin",
+        "I Will Survive \u2014 Gloria Gaynor",
+        "Ain't No Mountain High Enough \u2014 Marvin Gaye & Tammi Terrell"
+      ],
+      "answer": "I'm Coming Out \u2014 Diana Ross",
+      "accept": [
+        "i'm coming out",
+        "im coming out",
+        "diana ross"
+      ]
+    },
+    {
+      "cue": "Cause baby you're a firework\u2026 come on show 'em what you're worth",
+      "hint": "Stadium pop",
+      "options": [
+        "Firework \u2014 Katy Perry",
+        "Roar \u2014 Katy Perry",
+        "Teenage Dream \u2014 Katy Perry",
+        "California Gurls \u2014 Katy Perry"
+      ],
+      "answer": "Firework \u2014 Katy Perry",
+      "accept": [
+        "firework",
+        "fireworks",
+        "katy perry"
+      ]
+    }
+  ]
+}

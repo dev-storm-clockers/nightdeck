@@ -1,28 +1,26 @@
-# LOCK — NightDeck
+# LOCK — NightDeck (genre pivot)
 
 - **name:** NightDeck
-- **spelling_notes:** one word, capital N and D; not Night Deck / nightdeck in UI copy (slug is lowercase)
+- **spelling_notes:** NightDeck one word
 - **slug:** nightdeck
 - **demo_vs_sku:** sku
+- **genre_pivot (Phil 2026-09-08):** Drop blank-fill / Cards-Against-style play. Rebuild as a **company hang game** people are happy to play — like the trivia, identify, and music games the team already enjoys.
 - **in_scope:**
-  - Host-run party card nights with **original curated decks only** (no CAH clones, no scraped cards)
-  - Free starter: **Lobby Warmup** — **workplace-clean** copy only (safe for office staff)
-  - First paid pack intent **Group Chat Unhinged** stays gated/hidden for work cut (not default for staff night)
-  - Play loop: create/join room (code), draw, rotating judge, scores, shareable end
-  - **Staff night (Phil):** support **~12 players**; session spans **~5 hours** of hang time
-  - **Short rounds** (fast submit/play); **long judge window** to choose the winner (async-friendly — people step away)
-  - Solo demo mode (bot seat-fill) still OK for testing
-  - Visual refresh — clearer hierarchy, nicer cards/lobby/end, mobile polish
-  - Landing: GitHub Pages (live https://dev-storm-clockers.github.io/nightdeck/)
+  - Host-run **Staff Night** for ~**12** people over a **~5 hour** hang
+  - Three round types (mix in one night):
+    1. **Trivia** — multiple choice; everyone answers; host reveals; scoring
+    2. **Identify** — guess what it is (logo/brand/movie still description / famous line / office-safe cultural cue) — typed or pick-from-options
+    3. **Music** — lyric snippet or “name that song” text cue (no copyrighted audio required for MVP — lyric/line reveal); guess title/artist
+  - Short rounds; host controls pace (long hang = many short rounds)
+  - Shared room code; live scoreboard; shareable end podium
+  - Solo demo for host dry-run (bots or auto-answers optional)
+  - Workplace-clean content only; warm human voice UI (not clinical)
+  - GitHub Pages landing (replace current card game)
 - **out_of_scope:**
-  - Spicy/unhinged deck as default for staff night
-  - Dorm After Dark / Small-Town Main Street
-  - Real Stripe; Upstash/Neon sync this pass (localStorage/BroadcastChannel OK)
-  - Changing real multi-human minimum except allowing 12 seats
-- **landing:** github-pages
-- **hard_stop_passes:** 4 (prefer stop by 2)
-- **phil_ok:** 2026-09-08/09 yes — workplace clean cut; 12 over ~5h; short game + big winner-choice window
-
-- **ac_files:** `/workspace/nightdeck/AC-accepted.md` · `/workspace/nightdeck/AC-change-solo-visual.md` · `/workspace/nightdeck/AC-change-staff-night.md`
-
-- **Pass 4 (Phil):** feel/quality rewrite — human voice UI, funnier workplace-clean Lobby Warmup, less clinical framing; no new mechanics; hard-stop pass (4/4), prefer STOP after if Done green
+  - Blank-fill / judge-pick card game
+  - Spicy decks / Group Chat Unhinged as default
+  - Streaming copyrighted audio files (use lyric/text music cues for MVP)
+  - Upstash/Neon this pass (localStorage + BroadcastChannel OK)
+- **landing:** github-pages https://dev-storm-clockers.github.io/nightdeck/
+- **hard_stop_passes:** 4 prefer stop by 2
+- **phil_ok:** 2026-09-08 yes — “redo the whole thing”; trivia + identify + music; make everyone happy to play

@@ -22,7 +22,7 @@
       '<div class="brand">' +
       '<div class="brand-mark">ND</div>' +
       "<div><h1>NightDeck</h1><p>" +
-      (subtitle || "Party card nights") +
+      (subtitle || "Staff Night games") +
       "</p></div></div>"
     );
   }
@@ -42,5 +42,13 @@
     return new URLSearchParams(location.search).get(name);
   }
 
-  global.NightDeckUI = { $, $all, toast, brandHtml, copyText, qs };
+  function escapeHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  global.NightDeckUI = { $, $all, toast, brandHtml, copyText, qs, escapeHtml };
 })(window);

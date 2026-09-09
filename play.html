@@ -3,55 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Play</title>
+  <title>NightDeck — Staff Night</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
   <main class="app">
-    <div class="brand">
-      <div class="brand-mark">ND</div>
-      <div>
-        <h1>NightDeck</h1>
-        <p id="metaLine">In progress…</p>
+    <div class="topbar">
+      <div class="brand" style="margin:0">
+        <div class="brand-mark">ND</div>
+        <div>
+          <h1>NightDeck</h1>
+          <p id="metaLine">Staff Night</p>
+        </div>
+      </div>
+      <div class="live-scores">
+        <div class="tiny">Live scores</div>
+        <ol id="liveScores"></ol>
       </div>
     </div>
 
-    <section class="card stack phase-card">
-      <div class="row" style="justify-content:space-between">
-        <span class="pill" id="roundPill">Round</span>
-        <span class="pill warn" id="phasePill">phase</span>
-        <span class="pill soft" id="roomPill">room</span>
+    <div class="status-line">
+      <span class="pill" id="roundPill">Round 0</span>
+      <span class="pill warn" id="phasePill">picking</span>
+      <span class="pill soft" id="roomPill">room</span>
+      <span class="pill" id="typePill"></span>
+    </div>
+
+    <!-- HOST: pick next round type -->
+    <section class="card stack" id="pickerSection">
+      <h2>What are we playing?</h2>
+      <p class="muted" id="pickerHint">Host picks Trivia, Identify, or Music. Keep rounds short.</p>
+      <div class="round-picker" id="roundPicker">
+        <button type="button" class="round-type trivia" data-type="trivia">
+          <span class="emoji">🧠</span>
+          <strong>Trivia</strong>
+          <span>4 options · everyone locks · host reveals</span>
+        </button>
+        <button type="button" class="round-type identify" data-type="identify">
+          <span class="emoji">🔍</span>
+          <strong>Identify</strong>
+          <span>Guess what it is · options or type-in</span>
+        </button>
+        <button type="button" class="round-type music" data-type="music">
+          <span class="emoji">🎵</span>
+          <strong>Music</strong>
+          <span>Lyric / line cue · name that song</span>
+        </button>
       </div>
-      <div class="prompt-wrap">
-        <div class="prompt-label">This round's prompt</div>
-        <div class="prompt-card" id="promptCard">…</div>
-      </div>
-      <div class="role-line" id="roleLine">You're up.</div>
-      <div class="muted" id="judgeLine">Judge: —</div>
-      <div class="judge-banner hidden" id="judgeBanner">
-        <strong>You're judging — take your time.</strong>
-        Grab a snack. Debate. No clock is chasing you.
-      </div>
+      <p class="muted hidden" id="waitingPick">Waiting on the host to pick the next round…</p>
     </section>
 
-    <section class="card stack" id="handSection">
-      <h2>Your hand</h2>
-      <p class="muted" id="handHint">Pick the card that makes the table lose it.</p>
-      <div class="hand" id="hand"></div>
-      <button class="btn block" id="submitBtn" type="button" disabled>Play this card</button>
-    </section>
+    <!-- ANSWERING / REVEAL: prompt + answers -->
+    <section class="card stack hidden" id="roundSection">
+      <div class="prompt-card" id="promptCard">
+        <div class="kicker" id="promptKicker">Question</div>
+        <div class="clue hidden" id="promptClue"></div>
+        <div class="big" id="promptBig">…</div>
+        <div class="hint hidden" id="promptHint"></div>
+      </div>
 
-    <section class="card stack" id="judgeSection">
-      <h2 id="tableTitle">On the table</h2>
-      <p class="muted" id="judgeHint">Waiting on the crew…</p>
-      <div class="submissions" id="submissions"></div>
-      <button class="btn block" id="pickBtn" type="button" disabled>That's the winner</button>
-    </section>
+      <div class="waiting-chip" id="lockChip">0 locked in</div>
 
-    <section class="card stack hidden" id="revealSection">
-      <h2>Round champ</h2>
-      <p id="winnerLine" class="prompt-card"></p>
-      <button class="btn block" id="nextBtn" type="button">Deal the next one</button>
+      <div id="answerArea">
+        <div class="options" id="options"></div>
+        <div class="stack" id="typedWrap" style="margin-top:0.5rem">
+          <label class="hidden" id="typedLabel">Or type your guess
+            <input id="typedGuess" type="text" maxlength="80" placeholder="Your guess" autocomplete="off" />
+          </label>
+          <button class="btn block" id="lockBtn" type="button" disabled>Lock it in</button>
+        </div>
+        <p class="muted" id="lockedNote"></p>
+      </div>
+
+      <div class="reveal-answer hidden" id="revealAnswer"></div>
+
+      <div class="hidden" id="answersPanel">
+        <h2 style="margin-top:0.5rem">Answers</h2>
+        <div class="answer-grid" id="answersGrid"></div>
+      </div>
+
+      <div class="host-bar hidden" id="hostBar">
+        <button class="btn ok" id="revealBtn" type="button">Reveal answer</button>
+        <button class="btn secondary hidden" id="nextRoundBtn" type="button">Next round</button>
+      </div>
     </section>
 
     <section class="card stack scores-card">
@@ -59,7 +93,7 @@
       <div class="scoreboard" id="scores"></div>
       <div class="row">
         <button class="btn danger" id="endBtn" type="button">Call it a night</button>
-        <a class="btn ghost" href="index.html">Back to lobby</a>
+        <a class="btn ghost" href="index.html">Lobby</a>
       </div>
     </section>
   </main>
@@ -80,21 +114,219 @@
         return;
       }
 
-      let selectedAnswer = null;
-      let selectedWinnerId = null;
+      let selectedOption = null;
+      let suppressPoll = false;
 
-      function escapeHtml(s) {
-        return String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+      function isHost(room) {
+        return session.playerId === room.hostId;
       }
 
       function phaseLabel(phase) {
-        if (phase === "submit") return "play a card";
-        if (phase === "judge") return "judging";
+        if (phase === "picking") return "pick a round";
+        if (phase === "answering") return "answering";
         if (phase === "reveal") return "reveal";
-        return phase;
+        return phase || "—";
+      }
+
+      function typeLabel(type) {
+        if (type === "trivia") return "Trivia";
+        if (type === "identify") return "Identify";
+        if (type === "music") return "Music";
+        return "";
+      }
+
+      function renderScores(room) {
+        const ranked = Game.rankedPlayers(room);
+        const live = UI.$("#liveScores");
+        live.innerHTML = ranked
+          .slice(0, 6)
+          .map(
+            (p) =>
+              "<li><span>" +
+              UI.escapeHtml(p.name) +
+              '</span><span class="pts">' +
+              p.score +
+              "</span></li>"
+          )
+          .join("");
+
+        const scores = UI.$("#scores");
+        scores.innerHTML = ranked
+          .map((p, i) => {
+            const you = p.id === session.playerId ? " (you)" : "";
+            const bot = p.bot ? " · bot" : "";
+            return (
+              '<div class="score-row' +
+              (i === 0 ? " top" : "") +
+              '"><span class="rank">' +
+              (i + 1) +
+              '</span><span class="who">' +
+              UI.escapeHtml(p.name) +
+              you +
+              bot +
+              '</span><span class="pts">' +
+              p.score +
+              "</span></div>"
+            );
+          })
+          .join("");
+      }
+
+      function fillPrompt(item) {
+        const kicker = UI.$("#promptKicker");
+        const big = UI.$("#promptBig");
+        const clue = UI.$("#promptClue");
+        const hint = UI.$("#promptHint");
+        clue.classList.add("hidden");
+        hint.classList.add("hidden");
+        clue.textContent = "";
+        hint.textContent = "";
+
+        if (item.type === "trivia") {
+          kicker.textContent = "Trivia";
+          big.textContent = item.q;
+        } else if (item.type === "identify") {
+          kicker.textContent = "Identify this";
+          big.textContent = item.prompt;
+          if (item.clue) {
+            clue.textContent = item.clue;
+            clue.classList.remove("hidden");
+          }
+        } else {
+          kicker.textContent = "Name that tune";
+          big.textContent = "“" + item.cue + "”";
+          if (item.hint) {
+            hint.textContent = item.hint;
+            hint.classList.remove("hidden");
+          }
+        }
+      }
+
+      function renderOptions(room, meLocked) {
+        const item = room.current.item;
+        const optsEl = UI.$("#options");
+        const typedLabel = UI.$("#typedLabel");
+        const typedGuess = UI.$("#typedGuess");
+        const lockBtn = UI.$("#lockBtn");
+        const typedWrap = UI.$("#typedWrap");
+        optsEl.innerHTML = "";
+
+        const hasOptions = Array.isArray(item.options) && item.options.length > 0;
+        const allowTyped = item.type !== "trivia";
+
+        if (hasOptions) {
+          item.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "option-btn";
+            btn.textContent = opt;
+            if (meLocked) {
+              btn.disabled = true;
+              if (room.current.answers[session.playerId] === opt) {
+                btn.classList.add("selected");
+              }
+              if (room.phase === "reveal") {
+                const correct =
+                  item.type === "trivia"
+                    ? opt === item.answer
+                    : Game.matchesAccept(opt, item) || opt === item.answer;
+                if (correct) btn.classList.add("correct");
+                else if (room.current.answers[session.playerId] === opt) btn.classList.add("wrong");
+              }
+            } else {
+              btn.onclick = () => {
+                selectedOption = opt;
+                UI.$all(".option-btn", optsEl).forEach((b) => b.classList.remove("selected"));
+                btn.classList.add("selected");
+                typedGuess.value = "";
+                lockBtn.disabled = false;
+              };
+            }
+            optsEl.appendChild(btn);
+          });
+        }
+
+        if (allowTyped && room.phase === "answering" && !meLocked) {
+          typedLabel.classList.remove("hidden");
+          typedGuess.disabled = false;
+        } else {
+          typedLabel.classList.add("hidden");
+        }
+
+        if (room.phase === "answering" && !meLocked) {
+          typedWrap.classList.remove("hidden");
+          lockBtn.classList.remove("hidden");
+          lockBtn.disabled = !(selectedOption || typedGuess.value.trim());
+        } else {
+          lockBtn.classList.add("hidden");
+          if (!(allowTyped && room.phase === "answering")) {
+            typedLabel.classList.add("hidden");
+          }
+        }
+      }
+
+      function renderAnswersPanel(room) {
+        const panel = UI.$("#answersPanel");
+        const grid = UI.$("#answersGrid");
+        if (room.phase !== "reveal" || !room.current) {
+          panel.classList.add("hidden");
+          return;
+        }
+        panel.classList.remove("hidden");
+        const host = isHost(room);
+        grid.innerHTML = "";
+        room.players.forEach((p) => {
+          const ans = room.current.answers[p.id];
+          const correct = !!room.current.correctMap[p.id];
+          const row = document.createElement("div");
+          row.className = "answer-row" + (correct ? " correct" : "");
+          const left = document.createElement("div");
+          left.innerHTML =
+            '<div class="who">' +
+            UI.escapeHtml(p.name) +
+            (p.bot ? " · bot" : "") +
+            (p.id === session.playerId ? " (you)" : "") +
+            "</div>" +
+            '<div class="guess">' +
+            (ans != null ? UI.escapeHtml(ans) : "<em>no answer</em>") +
+            (correct ? " ✓" : "") +
+            "</div>";
+          row.appendChild(left);
+          if (host && room.current.item.type !== "trivia") {
+            const actions = document.createElement("div");
+            actions.className = "rowish";
+            const ok = document.createElement("button");
+            ok.type = "button";
+            ok.className = "btn ok";
+            ok.style.padding = "0.35rem 0.6rem";
+            ok.textContent = "✓";
+            ok.title = "Mark correct";
+            ok.onclick = () => {
+              const r = Room.readRoom(session.code);
+              Game.markCorrect(r, p.id, true);
+              render();
+            };
+            const no = document.createElement("button");
+            no.type = "button";
+            no.className = "btn secondary";
+            no.style.padding = "0.35rem 0.6rem";
+            no.textContent = "✗";
+            no.title = "Mark wrong";
+            no.onclick = () => {
+              const r = Room.readRoom(session.code);
+              Game.markCorrect(r, p.id, false);
+              render();
+            };
+            actions.appendChild(ok);
+            actions.appendChild(no);
+            row.appendChild(actions);
+          }
+          grid.appendChild(row);
+        });
       }
 
       function render() {
+        if (suppressPoll) return;
         const room = Room.readRoom(session.code);
         if (!room) {
           UI.toast("Room went missing");
@@ -110,181 +342,146 @@
           return;
         }
 
-        Game.runBotTurns(room);
-
+        const host = isHost(room);
         const me = room.players.find((p) => p.id === session.playerId);
-        const judge = Game.currentJudge(room);
-        const iAmJudge = judge && judge.id === session.playerId;
 
         UI.$("#metaLine").textContent =
-          (room.deckSnapshot?.name || room.deckId) +
-          " · " + room.players.length + " at the table";
-        UI.$("#roundPill").textContent = "Round " + room.round + " of " + room.roundCap;
+          room.players.length + " at the table · room " + room.code;
+        UI.$("#roundPill").textContent = "Round " + (room.round || 0);
         UI.$("#phasePill").textContent = phaseLabel(room.phase);
         UI.$("#roomPill").textContent = room.code;
-        UI.$("#promptCard").textContent = room.prompt || "…";
-        UI.$("#judgeLine").textContent =
-          "Judge tonight: " + (judge ? judge.name : "—") + (judge && judge.bot ? " (bot)" : "");
-        UI.$("#roleLine").textContent = iAmJudge
-          ? "You're judging — sit back and crown a winner when you're ready."
-          : "You're playing — drop one blind card and wait for the laugh.";
 
-        const banner = UI.$("#judgeBanner");
-        if (room.phase === "judge") {
-          banner.classList.remove("hidden");
-          const rem = Game.judgeRemainingMs(room);
-          const soft = rem != null ? " Soft clock: ~" + Game.formatDuration(rem) + " left — ignore it if you want." : "";
-          if (iAmJudge) {
-            banner.innerHTML =
-              "<strong>You're judging — take your time.</strong> Grab a snack. Debate. No auto-skip." + soft;
-          } else {
-            banner.innerHTML =
-              "<strong>Judge is thinking.</strong> Stretch. Refill. Nobody's rushing this." + soft;
-          }
+        const typePill = UI.$("#typePill");
+        if (room.current && room.current.type) {
+          typePill.textContent = typeLabel(room.current.type);
+          typePill.className = "pill " + room.current.type;
+          typePill.classList.remove("hidden");
         } else {
-          banner.classList.add("hidden");
+          typePill.classList.add("hidden");
         }
 
-        const scores = UI.$("#scores");
-        scores.innerHTML = "";
-        Game.rankedPlayers(room).forEach((p, i) => {
-          const row = document.createElement("div");
-          row.className = "score-row" + (i === 0 ? " top" : "");
-          const you = p.id === session.playerId ? " (you)" : "";
-          const j = judge && judge.id === p.id ? " ★" : "";
-          const bot = p.bot ? " · bot" : "";
-          row.innerHTML =
-            "<span>" + escapeHtml(p.name) + you + bot + j + "</span><strong>" + p.score + "</strong>";
-          scores.appendChild(row);
-        });
+        renderScores(room);
 
-        const handSec = UI.$("#handSection");
-        const judgeSec = UI.$("#judgeSection");
-        const revealSec = UI.$("#revealSection");
+        const picker = UI.$("#pickerSection");
+        const roundSec = UI.$("#roundSection");
+        const hostBar = UI.$("#hostBar");
 
-        if (room.phase === "reveal") {
-          handSec.classList.add("hidden");
-          judgeSec.classList.add("hidden");
-          revealSec.classList.remove("hidden");
-          const winner = room.players.find((p) => p.id === room.winnerId);
-          UI.$("#winnerLine").textContent =
-            (winner ? winner.name : "?") + " lands it with: “" + (room.winnerAnswer || "") + "”";
-          UI.$("#nextBtn").disabled = false;
-        } else {
-          revealSec.classList.add("hidden");
-          handSec.classList.toggle("hidden", iAmJudge || room.phase !== "submit");
-          judgeSec.classList.remove("hidden");
+        if (room.phase === "picking") {
+          picker.classList.remove("hidden");
+          roundSec.classList.add("hidden");
+          UI.$("#roundPicker").classList.toggle("hidden", !host);
+          UI.$("#waitingPick").classList.toggle("hidden", host);
+          UI.$("#pickerHint").textContent = host
+            ? "Pick Trivia, Identify, or Music. Short rounds. Mix it up."
+            : "Hang tight — host is choosing the next round.";
+          selectedOption = null;
+          UI.$("#typedGuess").value = "";
+        } else if (room.phase === "answering" || room.phase === "reveal") {
+          picker.classList.add("hidden");
+          roundSec.classList.remove("hidden");
 
-          const handEl = UI.$("#hand");
-          handEl.innerHTML = "";
-          selectedAnswer = null;
-          UI.$("#submitBtn").disabled = true;
-          if (!iAmJudge && room.phase === "submit") {
-            const already = !!room.submissions[session.playerId];
-            UI.$("#handHint").textContent = already
-              ? "Card's in. Waiting on the rest of the table…"
-              : "Pick the card that makes the table lose it.";
-            const hand = (room.hands && room.hands[session.playerId]) || [];
-            hand.forEach((text) => {
-              const btn = document.createElement("button");
-              btn.type = "button";
-              btn.className = "answer-card";
-              btn.textContent = text;
-              btn.disabled = already;
-              btn.onclick = () => {
-                if (already) return;
-                selectedAnswer = text;
-                UI.$all(".answer-card", handEl).forEach((b) => b.classList.remove("selected"));
-                btn.classList.add("selected");
-                UI.$("#submitBtn").disabled = false;
-              };
-              handEl.appendChild(btn);
-            });
-          }
+          const cur = room.current;
+          const item = cur.item;
+          fillPrompt(item);
 
-          const subEl = UI.$("#submissions");
-          subEl.innerHTML = "";
-          selectedWinnerId = null;
-          UI.$("#pickBtn").disabled = true;
-          UI.$("#pickBtn").classList.toggle("hidden", !iAmJudge || room.phase !== "judge");
-          const entries = Game.getBlindSubmissions(room);
-          const needed = room.players.filter((p) => !judge || p.id !== judge.id).length;
-          const count = Object.keys(room.submissions || {}).length;
+          const locked = Game.lockedCount(room);
+          const total = room.players.length;
+          UI.$("#lockChip").textContent =
+            locked + " of " + total + " locked in";
 
-          if (room.phase === "submit") {
-            UI.$("#tableTitle").textContent = "On the table";
-            UI.$("#judgeHint").textContent =
-              count + " of " + needed + " cards in. Faces down until everyone's played.";
-            for (let i = 0; i < count; i++) {
-              const div = document.createElement("div");
-              div.className = "submission sealed";
-              div.textContent = "Sealed card";
-              div.style.pointerEvents = "none";
-              subEl.appendChild(div);
+          const meLocked = !!(cur.locked && cur.locked[session.playerId]);
+          UI.$("#lockedNote").textContent = meLocked
+            ? "You're locked in. Waiting on the host to reveal…"
+            : room.phase === "answering"
+              ? "Pick an option" + (item.type !== "trivia" ? " or type a guess" : "") + ", then lock it in."
+              : "";
+
+          if (room.phase === "answering") {
+            UI.$("#answerArea").classList.remove("hidden");
+            UI.$("#revealAnswer").classList.add("hidden");
+            renderOptions(room, meLocked);
+            if (meLocked) {
+              UI.$("#lockBtn").classList.add("hidden");
+              UI.$("#typedLabel").classList.add("hidden");
             }
-          } else if (room.phase === "judge") {
-            UI.$("#tableTitle").textContent = iAmJudge ? "Pick a winner" : "The contenders";
-            UI.$("#judgeHint").textContent = iAmJudge
-              ? "Tap the funniest. Names stay hidden until you crown someone."
-              : "Judge is choosing — no rush.";
-            entries.forEach((e) => {
-              const btn = document.createElement("button");
-              btn.type = "button";
-              btn.className = "submission";
-              btn.textContent = e.text;
-              if (iAmJudge) {
-                btn.onclick = () => {
-                  selectedWinnerId = e.playerId;
-                  UI.$all(".submission", subEl).forEach((b) => b.classList.remove("winner"));
-                  btn.classList.add("winner");
-                  UI.$("#pickBtn").disabled = false;
-                };
-              } else {
-                btn.style.pointerEvents = "none";
-              }
-              subEl.appendChild(btn);
-            });
+          } else {
+            // reveal
+            UI.$("#answerArea").classList.add("hidden");
+            const rev = UI.$("#revealAnswer");
+            rev.classList.remove("hidden");
+            rev.textContent = "Answer: " + item.answer;
+            renderOptions(room, true);
           }
+
+          renderAnswersPanel(room);
+
+          hostBar.classList.toggle("hidden", !host);
+          if (host) {
+            UI.$("#revealBtn").classList.toggle("hidden", room.phase !== "answering");
+            UI.$("#nextRoundBtn").classList.toggle("hidden", room.phase !== "reveal");
+          }
+        } else {
+          picker.classList.add("hidden");
+          roundSec.classList.add("hidden");
         }
+
+        UI.$("#endBtn").classList.toggle("hidden", !host);
       }
 
-      UI.$("#submitBtn").onclick = () => {
-        if (!selectedAnswer) return;
+      UI.$("#roundPicker").addEventListener("click", (ev) => {
+        const btn = ev.target.closest("[data-type]");
+        if (!btn) return;
         const room = Room.readRoom(session.code);
-        const res = Game.submitAnswer(room, session.playerId, selectedAnswer);
+        if (!room || !isHost(room)) return;
+        const res = Game.startRound(room, btn.getAttribute("data-type"));
         if (!res.ok) return UI.toast(res.error);
-        Game.runBotTurns(room);
-        UI.toast(res.allIn || room.phase === "judge" ? "All in — judge time" : "Played");
+        selectedOption = null;
+        UI.$("#typedGuess").value = "";
+        UI.toast(typeLabel(btn.getAttribute("data-type")) + " round started");
+        render();
+      });
+
+      UI.$("#typedGuess").addEventListener("input", () => {
+        selectedOption = null;
+        UI.$all(".option-btn").forEach((b) => b.classList.remove("selected"));
+        UI.$("#lockBtn").disabled = !UI.$("#typedGuess").value.trim();
+      });
+
+      UI.$("#lockBtn").onclick = () => {
+        const room = Room.readRoom(session.code);
+        if (!room || room.phase !== "answering") return;
+        const text = selectedOption || UI.$("#typedGuess").value.trim();
+        const res = Game.lockAnswer(room, session.playerId, text);
+        if (!res.ok) return UI.toast(res.error);
+        UI.toast("Locked in");
+        selectedOption = null;
         render();
       };
 
-      UI.$("#pickBtn").onclick = () => {
-        if (!selectedWinnerId) return;
+      UI.$("#revealBtn").onclick = () => {
         const room = Room.readRoom(session.code);
-        const res = Game.pickWinner(room, session.playerId, selectedWinnerId);
+        if (!room || !isHost(room)) return;
+        const res = Game.revealRound(room);
         if (!res.ok) return UI.toast(res.error);
-        UI.toast("Winner locked in");
+        UI.toast("Answer revealed");
         render();
       };
 
-      UI.$("#nextBtn").onclick = () => {
+      UI.$("#nextRoundBtn").onclick = () => {
         const room = Room.readRoom(session.code);
-        const res = Game.nextRound(room);
+        if (!room || !isHost(room)) return;
+        const res = Game.backToPicker(room);
         if (!res.ok) return UI.toast(res.error);
-        if (res.ended) {
-          location.href = "end.html";
-          return;
-        }
+        selectedOption = null;
+        UI.$("#typedGuess").value = "";
         render();
       };
 
       UI.$("#endBtn").onclick = () => {
         const room = Room.readRoom(session.code);
         if (!room) return;
-        if (session.playerId !== room.hostId) {
-          return UI.toast("Only the host can wrap it up");
-        }
-        Game.endGame(room);
+        if (!isHost(room)) return UI.toast("Only the host can wrap it up");
+        Game.endNight(room);
         location.href = "end.html";
       };
 
@@ -297,13 +494,13 @@
 
       render();
       setInterval(() => {
-        if (selectedAnswer || selectedWinnerId) {
-          const room = Room.readRoom(session.code);
-          if (room && room.status === "playing") Game.runBotTurns(room);
-          return;
+        if (suppressPoll) return;
+        const room = Room.readRoom(session.code);
+        if (room && room.status === "playing" && room.phase === "answering") {
+          Game.runBotAnswers(room);
         }
         render();
-      }, 900);
+      }, 1000);
     })();
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NightDeck — Let's play</title>
+  <title>NightDeck — Staff Night</title>
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -12,28 +12,24 @@
       <div class="brand-mark">ND</div>
       <div>
         <h1>NightDeck</h1>
-        <p>Cards for the after-hours hang.</p>
+        <p>Staff Night — trivia, identify, music.</p>
       </div>
     </div>
 
     <div class="hero-banner">
-      <strong>Gather the crew. Deal the weirdest cards you can.</strong>
-      <span>Up to 12. Quick plays. The judge can take forever — that's the fun.</span>
+      <strong>Gather the crew. Keep the rounds short. Let the host cook.</strong>
+      <span>Up to 12. Mix Trivia, Identify, and Music all night. No blank-fill cards — just games people actually like.</span>
     </div>
 
-    <section class="card stack primary-action">
+    <section class="card stack primary-action" id="createCard">
       <h2>Host a night</h2>
       <label>What should we call you?
         <input id="hostName" type="text" maxlength="24" placeholder="Your name" autocomplete="nickname" />
       </label>
-      <label>Deck
-        <select id="deckSelect"></select>
-      </label>
-      <p class="muted" id="deckHint">Lobby Warmup — safe enough for work, sharp enough for laughs.</p>
       <button class="btn block" id="createBtn" type="button">Open a room</button>
     </section>
 
-    <section class="card stack">
+    <section class="card stack" id="joinCard">
       <h2>Jump in</h2>
       <label>Room code
         <input id="joinCode" type="text" maxlength="8" placeholder="e.g. K7M2P" autocomplete="off" style="text-transform:uppercase" />
@@ -43,8 +39,8 @@
       </label>
       <button class="btn secondary block" id="joinBtn" type="button">Join the table</button>
       <details class="inline-help">
-        <summary>Same Wi‑Fi tips</summary>
-        <p class="muted" style="margin:0.5rem 0 0">Share a code across tabs in the same browser for now. Cloud sync is coming — tonight works locally.</p>
+        <summary>Same-browser tips</summary>
+        <p class="muted" style="margin:0.5rem 0 0">Share a code across tabs in the same browser for now. Local rooms sync with BroadcastChannel — cloud sync later.</p>
       </details>
     </section>
 
@@ -64,130 +60,131 @@
         <div class="muted" style="margin-bottom:0.35rem">Who's here <span id="playerCount"></span></div>
         <ul class="player-list" id="playerList"></ul>
       </div>
-      <p class="muted" id="startHint">Need 3 to start. Room for 12.</p>
+      <div>
+        <div class="muted" style="margin-bottom:0.35rem">Scoreboard preview</div>
+        <div class="scoreboard" id="scorePreview"></div>
+      </div>
+      <p class="muted" id="startHint">Need 2 humans to start — or Solo demo for practice.</p>
       <div class="lobby-actions rowish" id="hostTools">
-        <button class="btn secondary" id="soloDemoBtn" type="button">Practice alone (bots)</button>
+        <button class="btn secondary" id="soloDemoBtn" type="button">Solo demo (bots)</button>
         <button class="btn ghost" id="padSeatsBtn" type="button">Fill empty seats</button>
       </div>
       <div class="row">
-        <button class="btn" id="startBtn" type="button" disabled>Start NightDeck</button>
+        <button class="btn" id="startBtn" type="button" disabled>Start Staff Night</button>
         <button class="btn ghost" id="leaveBtn" type="button">Leave</button>
       </div>
-      <p class="muted hidden" id="soloNote" style="margin:0">Practice mode seats bots so you can try the full loop alone. For the real hang, invite humans.</p>
+      <p class="muted hidden" id="soloNote" style="margin:0">Practice mode seats bots so you can dry-run hosting alone. For the real hang, invite humans.</p>
     </section>
-
-    <details class="more-packs" id="unlockPanel">
-      <summary>Extra packs (optional)</summary>
-      <div class="stack">
-        <div class="row" style="justify-content:space-between;align-items:flex-start">
-          <strong>Group Chat Unhinged</strong>
-          <span class="pill warn" id="gcuStatusPill">Locked</span>
-        </div>
-        <p class="muted" id="gcuBlurb" style="margin:0">Spicier pack — not for the office default. Unlock stays on this device.</p>
-        <div class="gate-box" id="gcuLockedBox">
-          <div class="gate-title">Needs a code</div>
-          <p class="muted" style="margin:0.35rem 0 0">Lobby Warmup stays free either way.</p>
-        </div>
-        <div class="gate-box ok hidden" id="gcuUnlockedBox">
-          <div class="gate-title">✓ Unlocked here</div>
-          <p class="muted" style="margin:0.35rem 0 0">Shows up in the deck picker. Warmup still recommended for work nights.</p>
-        </div>
-        <div id="unlockFormWrap" class="stack">
-          <label>Unlock code
-            <input id="unlockCode" type="text" placeholder="Enter code" autocomplete="off" spellcheck="false" inputmode="text" />
-          </label>
-          <div class="row">
-            <button class="btn secondary" id="unlockBtn" type="button">Unlock</button>
-          </div>
-          <p class="field-msg" id="unlockMsg" role="status" aria-live="polite"></p>
-        </div>
-      </div>
-    </details>
   </main>
 
   <script src="js/ui.js"></script>
-  <script src="js/catalog.js"></script>
   <script src="js/room.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/game.js"></script>
   <script>
     (function () {
       const UI = NightDeckUI;
-      const Cat = NightDeckCatalog;
       const Room = NightDeckRoom;
       const Game = NightDeckGame;
-
-      const hostName = UI.$("#hostName");
-      const joinName = UI.$("#joinName");
-      const joinCode = UI.$("#joinCode");
-      const deckSelect = UI.$("#deckSelect");
-      const lobbyPanel = UI.$("#lobbyPanel");
+      const Catalog = NightDeckCatalog;
 
       let session = Room.loadSession();
       let unsub = null;
 
-      function setUnlockMsg(text, kind) {
-        const el = UI.$("#unlockMsg");
-        el.textContent = text || "";
-        el.className = "field-msg" + (kind ? " " + kind : "");
+      function isHost(room) {
+        return session && room && session.playerId === room.hostId;
       }
 
-      function refreshUnlockPanel() {
-        const unlocked = Cat.isUnlocked("group-chat-unhinged");
-        const pill = UI.$("#gcuStatusPill");
-        const form = UI.$("#unlockFormWrap");
-        pill.textContent = unlocked ? "Unlocked" : "Locked";
-        pill.className = "pill " + (unlocked ? "ok" : "warn");
-        UI.$("#gcuLockedBox").classList.toggle("hidden", unlocked);
-        UI.$("#gcuUnlockedBox").classList.toggle("hidden", !unlocked);
-        form.classList.toggle("hidden", unlocked);
-        if (unlocked) setUnlockMsg("");
+      function showLobby(room) {
+        UI.$("#createCard").classList.add("hidden");
+        UI.$("#joinCard").classList.add("hidden");
+        UI.$("#lobbyPanel").classList.remove("hidden");
+        renderLobby(room);
       }
 
-      function refreshDeckSelect(preferDeckId) {
-        const prev = preferDeckId || deckSelect.value;
-        deckSelect.innerHTML = "";
-        const source = Cat.listDecks({ staff: false }).filter((d) => d.unlocked || d.free);
-        source.forEach((d) => {
-          const opt = document.createElement("option");
-          opt.value = d.id;
-          if (d.free) opt.textContent = d.name + " — free";
-          else if (d.unlocked) opt.textContent = d.name + " — unlocked";
-          else opt.textContent = d.name + " — locked";
-          opt.disabled = !d.unlocked;
-          deckSelect.appendChild(opt);
-        });
-        const want = prev && Cat.isUnlocked(prev) ? prev : "lobby-warmup";
-        deckSelect.value = want;
-        updateDeckHint();
-        refreshUnlockPanel();
-      }
+      function renderLobby(room) {
+        if (!room) return;
+        UI.$("#roomCodeDisplay").textContent = room.code;
+        UI.$("#statusPill").textContent = room.status;
+        UI.$("#playerCount").textContent = "(" + room.players.length + "/" + Room.MAX_PLAYERS + ")";
+        const list = UI.$("#playerList");
+        list.innerHTML = room.players
+          .map((p) => {
+            const tags = [];
+            if (p.id === room.hostId) tags.push("host");
+            if (p.bot) tags.push("bot");
+            if (session && p.id === session.playerId) tags.push("you");
+            return (
+              "<li><span class=\"name\">" +
+              UI.escapeHtml(p.name) +
+              "</span><span class=\"meta\">" +
+              UI.escapeHtml(tags.join(" · ") || "player") +
+              " · " +
+              p.score +
+              " pts</span></li>"
+            );
+          })
+          .join("");
 
-      function updateDeckHint() {
-        const id = deckSelect.value || "lobby-warmup";
-        const meta = Cat.listDecks({ staff: false }).find((d) => d.id === id);
-        const hint = UI.$("#deckHint");
-        if (!meta || meta.free) {
-          hint.textContent = "Lobby Warmup — safe enough for work, sharp enough for laughs.";
-          return;
-        }
-        if (meta.unlocked) {
-          hint.textContent = meta.name + " is unlocked on this device.";
+        const ranked = Game.rankedPlayers(room);
+        UI.$("#scorePreview").innerHTML = ranked
+          .slice(0, 5)
+          .map(
+            (p, i) =>
+              '<div class="score-row' +
+              (i === 0 ? " top" : "") +
+              '"><span class="rank">' +
+              (i + 1) +
+              '</span><span class="who">' +
+              UI.escapeHtml(p.name) +
+              '</span><span class="pts">' +
+              p.score +
+              "</span></div>"
+          )
+          .join("");
+
+        const host = isHost(room);
+        UI.$("#hostTools").classList.toggle("hidden", !host);
+        UI.$("#startBtn").classList.toggle("hidden", !host);
+        UI.$("#soloNote").classList.toggle("hidden", !room.soloDemo);
+        UI.$("#startBtn").disabled = !Room.canStart(room);
+        if (room.soloDemo) {
+          UI.$("#startHint").textContent = "Solo demo ready — bots will answer for fun.";
+        } else if (Room.humanCount(room) < Room.MIN_HUMANS) {
+          UI.$("#startHint").textContent =
+            "Need " + Room.MIN_HUMANS + " humans to start (or Solo demo). Room for " + Room.MAX_PLAYERS + ".";
         } else {
-          hint.textContent = "Stick with Lobby Warmup for the office hang.";
+          UI.$("#startHint").textContent = "Looks good — start whenever you're ready.";
+        }
+
+        if (room.status === "playing") {
+          location.href = "play.html";
+        } else if (room.status === "ended") {
+          location.href = "end.html";
         }
       }
 
-      function renderLobby() {
-        if (!session) {
-          lobbyPanel.classList.add("hidden");
-          return;
-        }
+      function watch(code) {
+        if (unsub) unsub();
+        unsub = Room.subscribe((c) => {
+          if (c !== code) return;
+          const room = Room.readRoom(code);
+          renderLobby(room);
+        });
+        // storage event for cross-tab same-origin
+        window.addEventListener("storage", (ev) => {
+          if (ev.key === "nightdeck:room:" + code) {
+            renderLobby(Room.readRoom(code));
+          }
+        });
+      }
+
+      async function resume() {
+        if (!session) return;
         const room = Room.readRoom(session.code);
         if (!room) {
           Room.clearSession();
           session = null;
-          lobbyPanel.classList.add("hidden");
-          UI.toast("That room expired — open a new one");
           return;
         }
         if (room.status === "playing") {
@@ -198,158 +195,85 @@
           location.href = "end.html";
           return;
         }
-        lobbyPanel.classList.remove("hidden");
-        UI.$("#roomCodeDisplay").textContent = room.code;
-        UI.$("#playerCount").textContent =
-          "(" + room.players.length + "/" + Room.MAX_PLAYERS + ")";
-        const list = UI.$("#playerList");
-        list.innerHTML = "";
-        room.players.forEach((p) => {
-          const li = document.createElement("li");
-          const you = p.id === session.playerId ? ' <span class="you">(you)</span>' : "";
-          const host = p.id === room.hostId ? " · host" : "";
-          const bot = p.bot ? ' <span class="bot-tag">bot</span>' : "";
-          li.innerHTML =
-            "<span>" + escapeHtml(p.name) + you + host + bot + "</span><span class='pill soft'>" + p.score + "</span>";
-          list.appendChild(li);
-        });
-        const isHost = session.playerId === room.hostId;
-        UI.$("#hostTools").classList.toggle("hidden", !isHost);
-        const can = Room.canStart(room) && isHost;
-        UI.$("#startBtn").disabled = !can;
-        UI.$("#soloDemoBtn").disabled = !isHost;
-        UI.$("#padSeatsBtn").disabled = !isHost || room.players.length >= Room.MAX_PLAYERS;
-        if (room.players.length < Room.MIN_PLAYERS) {
-          UI.$("#startHint").textContent =
-            "Need " + Room.MIN_PLAYERS + " to start — or practice alone with bots. Cap is " + Room.MAX_PLAYERS + ".";
-        } else if (isHost) {
-          UI.$("#startHint").textContent =
-            "Looks good — " + room.players.length + " at the table. Fire when ready.";
-        } else {
-          UI.$("#startHint").textContent = "Host is about to start… hang tight.";
-        }
-        UI.$("#statusPill").textContent = room.soloDemo ? "practice" : "lobby";
-        UI.$("#soloNote").classList.toggle("hidden", !room.soloDemo && room.players.every((p) => !p.bot));
+        showLobby(room);
+        watch(room.code);
       }
 
-      function escapeHtml(s) {
-        return String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
-      }
-
-      function bindRoomWatch() {
-        if (unsub) unsub();
-        unsub = Room.subscribe((code) => {
-          if (session && code === session.code) renderLobby();
-        });
-        window.addEventListener("storage", (e) => {
-          if (session && e.key === "nightdeck:room:" + session.code) renderLobby();
-        });
-      }
-
-      UI.$("#createBtn").onclick = () => {
-        const name = hostName.value.trim();
-        if (!name) return UI.toast("Drop a name first");
-        const deckId = deckSelect.value || "lobby-warmup";
-        if (!Cat.isUnlocked(deckId)) return UI.toast("That deck is locked");
-        const { room, playerId } = Room.createRoom({ hostName: name, deckId });
-        session = { code: room.code, playerId, name };
+      UI.$("#createBtn").addEventListener("click", () => {
+        const name = UI.$("#hostName").value;
+        const { room, playerId } = Room.createRoom({ hostName: name });
+        session = { code: room.code, playerId, name: room.players[0].name };
         Room.saveSession(session);
-        UI.toast("Room " + room.code + " is live");
-        bindRoomWatch();
-        renderLobby();
-        lobbyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
-      };
+        showLobby(room);
+        watch(room.code);
+        UI.toast("Room " + room.code + " is open");
+      });
 
-      UI.$("#joinBtn").onclick = () => {
-        const code = joinCode.value.trim().toUpperCase();
-        const name = joinName.value.trim();
-        if (!code || !name) return UI.toast("Need a code and a name");
-        const res = Room.joinRoom({ code, playerName: name });
-        if (!res.ok) return UI.toast(res.error);
-        session = { code: res.room.code, playerId: res.playerId, name };
-        Room.saveSession(session);
-        UI.toast("You're in — " + res.room.code);
-        bindRoomWatch();
-        renderLobby();
-        lobbyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
-      };
-
-      UI.$("#soloDemoBtn").onclick = () => {
-        if (!session) return;
-        const room = Room.readRoom(session.code);
-        if (!room || session.playerId !== room.hostId) return UI.toast("Only the host can do that");
-        const res = Room.fillSoloBots(room);
-        if (!res.ok) return UI.toast(res.error);
-        UI.toast("Bots seated — start whenever");
-        renderLobby();
-      };
-
-      UI.$("#padSeatsBtn").onclick = () => {
-        if (!session) return;
-        const room = Room.readRoom(session.code);
-        if (!room || session.playerId !== room.hostId) return UI.toast("Only the host");
-        const res = Room.addBotsTo(room, Room.MAX_PLAYERS);
-        if (!res.ok) return UI.toast(res.error);
-        UI.toast("Filled to " + res.room.players.length);
-        renderLobby();
-      };
-
-      function applyUnlock() {
-        const raw = UI.$("#unlockCode").value;
-        if (!String(raw || "").trim()) {
-          setUnlockMsg("Need a code.", "err");
-          return;
-        }
-        const res = Cat.tryUnlock(raw);
+      UI.$("#joinBtn").addEventListener("click", () => {
+        const code = UI.$("#joinCode").value.trim().toUpperCase();
+        const playerName = UI.$("#joinName").value;
+        const res = Room.joinRoom({ code, playerName });
         if (!res.ok) {
-          setUnlockMsg(res.error + " — Lobby Warmup is still free.", "err");
           UI.toast(res.error);
           return;
         }
-        setUnlockMsg("Nice — " + res.name + " unlocked. Warmup stays free.", "ok");
-        UI.toast("Unlocked " + res.name);
-        UI.$("#unlockCode").value = "";
-        refreshDeckSelect(res.deckId);
-      }
-
-      UI.$("#unlockBtn").onclick = applyUnlock;
-      UI.$("#unlockCode").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          applyUnlock();
-        }
+        session = { code: res.room.code, playerId: res.playerId, name: playerName };
+        Room.saveSession(session);
+        showLobby(res.room);
+        watch(res.room.code);
+        UI.toast("You're in");
       });
-      deckSelect.addEventListener("change", updateDeckHint);
 
-      UI.$("#copyCodeBtn").onclick = () => {
-        if (session) UI.copyText(session.code);
-      };
+      UI.$("#copyCodeBtn").addEventListener("click", () => {
+        if (!session) return;
+        UI.copyText(session.code);
+      });
 
-      UI.$("#startBtn").onclick = async () => {
+      UI.$("#soloDemoBtn").addEventListener("click", () => {
         if (!session) return;
         const room = Room.readRoom(session.code);
-        if (!room || session.playerId !== room.hostId) return UI.toast("Only the host can start");
-        if (!Room.canStart(room)) return UI.toast("Need " + Room.MIN_PLAYERS + " players");
+        if (!isHost(room)) return;
+        const res = Room.fillSoloBots(room);
+        if (!res.ok) {
+          UI.toast(res.error);
+          return;
+        }
+        renderLobby(res.room);
+        UI.toast("Bots sat down — practice away");
+      });
+
+      UI.$("#padSeatsBtn").addEventListener("click", () => {
+        if (!session) return;
+        const room = Room.readRoom(session.code);
+        if (!isHost(room)) return;
+        const res = Room.addBotsTo(room, Math.min(Room.MAX_PLAYERS, room.players.length + 3));
+        if (!res.ok) {
+          UI.toast(res.error);
+          return;
+        }
+        renderLobby(res.room);
+        UI.toast("Filled a few seats");
+      });
+
+      UI.$("#startBtn").addEventListener("click", async () => {
+        if (!session) return;
+        const room = Room.readRoom(session.code);
+        if (!isHost(room) || !Room.canStart(room)) return;
         try {
-          const deck = await Cat.loadDeck(room.deckId);
-          Game.startGame(room, deck);
+          const packs = await Catalog.loadAll();
+          Game.startNight(room, packs);
           location.href = "play.html";
         } catch (err) {
-          UI.toast(err.message || "Couldn't start");
+          UI.toast(err.message || "Couldn't load packs");
         }
-      };
+      });
 
-      UI.$("#leaveBtn").onclick = () => {
+      UI.$("#leaveBtn").addEventListener("click", () => {
         Room.clearSession();
-        session = null;
-        lobbyPanel.classList.add("hidden");
-      };
+        location.reload();
+      });
 
-      refreshDeckSelect();
-      if (session) {
-        bindRoomWatch();
-        renderLobby();
-      }
+      resume();
     })();
   </script>
 </body>

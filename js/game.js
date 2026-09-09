@@ -1,251 +1,313 @@
-/** NightDeck play loop: draw, submit blind, rotating judge, scores. */
+/** NightDeck Staff Night — trivia / identify / music rounds. */
 (function (global) {
   const Room = () => global.NightDeckRoom;
 
-  function shuffle(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
+  function normalize(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[^\w\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
-  function pickUnused(pool, used) {
-    const available = pool
-      .map((text, index) => ({ text, index }))
-      .filter((x) => !used.includes(x.index));
-    if (!available.length) return null;
+  function matchesAccept(guess, item) {
+    const g = normalize(guess);
+    if (!g) return false;
+    const answer = normalize(item.answer);
+    if (answer && (g === answer || answer.includes(g) || g.includes(answer))) return true;
+    const accept = item.accept || [];
+    for (const a of accept) {
+      const n = normalize(a);
+      if (!n) continue;
+      if (g === n || g.includes(n) || n.includes(g)) return true;
+    }
+    // Exact option match
+    if (Array.isArray(item.options)) {
+      for (const opt of item.options) {
+        if (normalize(opt) === g) {
+          return normalize(opt) === normalize(item.answer);
+        }
+      }
+    }
+    return false;
+  }
+
+  function pickUnused(pack, usedList) {
+    const items = pack.items || [];
+    const available = items
+      .map((item, index) => ({ item, index }))
+      .filter((x) => !usedList.includes(x.index));
+    if (!available.length) {
+      // recycle
+      return items.length
+        ? { item: items[Math.floor(Math.random() * items.length)], index: Math.floor(Math.random() * items.length), recycled: true }
+        : null;
+    }
     return available[Math.floor(Math.random() * available.length)];
   }
 
-  function ensureHands(room, deck) {
-    const handSize = Room().HAND_SIZE;
-    room.hands = room.hands || {};
-    room.usedAnswers = room.usedAnswers || [];
-    for (const p of room.players) {
-      let hand = room.hands[p.id] || [];
-      while (hand.length < handSize) {
-        let pick = pickUnused(deck.answers, room.usedAnswers);
-        if (!pick) {
-          // Long staff nights / 12 seats: recycle answers once the pool is empty.
-          room.usedAnswers = [];
-          pick = pickUnused(deck.answers, room.usedAnswers);
-          if (!pick) break;
-        }
-        room.usedAnswers.push(pick.index);
-        hand.push(pick.text);
-      }
-      room.hands[p.id] = hand;
+  function snapshotItem(type, item) {
+    if (type === "trivia") {
+      return {
+        type,
+        q: item.q,
+        options: item.options.slice(),
+        correct: item.correct,
+        answer: item.options[item.correct],
+      };
     }
+    if (type === "identify") {
+      return {
+        type,
+        prompt: item.prompt,
+        clue: item.clue || "",
+        options: (item.options || []).slice(),
+        answer: item.answer,
+        accept: (item.accept || []).slice(),
+      };
+    }
+    return {
+      type: "music",
+      cue: item.cue,
+      hint: item.hint || "",
+      options: (item.options || []).slice(),
+      answer: item.answer,
+      accept: (item.accept || []).slice(),
+    };
   }
 
-  function startGame(room, deck) {
-    room.deckSnapshot = {
-      id: deck.id,
-      name: deck.name,
-      prompts: deck.prompts,
-      answers: deck.answers,
+  function startNight(room, packs) {
+    room.packs = {
+      trivia: { id: packs.trivia.id, name: packs.trivia.name, items: packs.trivia.items },
+      identify: { id: packs.identify.id, name: packs.identify.name, items: packs.identify.items },
+      music: { id: packs.music.id, name: packs.music.name, items: packs.music.items },
     };
     room.status = "playing";
+    room.phase = "picking";
     room.round = 0;
-    room.judgeIndex = 0;
-    room.usedPrompts = [];
-    room.usedAnswers = [];
-    room.hands = {};
-    room.judgeWindowMs = room.judgeWindowMs || Room().JUDGE_WINDOW_MS;
-    ensureHands(room, deck);
-    beginRound(room);
-    runBotTurns(room);
+    room.current = null;
+    room.used = Room().emptyUsed();
+    room.history = [];
+    room.endedAt = null;
     Room().writeRoom(room);
     return room;
   }
 
-  function currentJudge(room) {
-    if (!room.players.length) return null;
-    return room.players[room.judgeIndex % room.players.length];
-  }
+  function startRound(room, type) {
+    if (room.status !== "playing") return { ok: false, error: "Night not in play" };
+    if (room.phase !== "picking" && room.phase !== "reveal") {
+      return { ok: false, error: "Finish the current round first" };
+    }
+    if (!["trivia", "identify", "music"].includes(type)) {
+      return { ok: false, error: "Unknown round type" };
+    }
+    const pack = room.packs && room.packs[type];
+    if (!pack) return { ok: false, error: "Packs not loaded" };
 
-  function beginRound(room) {
-    const deck = room.deckSnapshot;
+    const used = room.used[type] || [];
+    const pick = pickUnused(pack, used);
+    if (!pick) return { ok: false, error: "No items left" };
+
+    if (!pick.recycled) {
+      room.used[type] = used.concat([pick.index]);
+    } else {
+      room.used[type] = [pick.index];
+    }
+
     room.round += 1;
-    room.submissions = {};
-    room.blindOrder = [];
-    room.revealed = false;
-    room.winnerId = null;
-    room.winnerAnswer = null;
-    room.phase = "submit";
-    room.judgeOpenedAt = null;
-    room.submitOpenedAt = Date.now();
-    const pick = pickUnused(deck.prompts, room.usedPrompts);
-    if (!pick) {
-      endGame(room);
-      return;
-    }
-    room.usedPrompts.push(pick.index);
-    room.prompt = pick.text;
-    room.promptIndex = pick.index;
-    ensureHands(room, deck);
-  }
-
-  function submitAnswer(room, playerId, answerText) {
-    if (room.phase !== "submit") return { ok: false, error: "Not in submit phase" };
-    const judge = currentJudge(room);
-    if (judge && judge.id === playerId) {
-      return { ok: false, error: "Judge sits this round out" };
-    }
-    const hand = room.hands[playerId] || [];
-    const idx = hand.indexOf(answerText);
-    if (idx === -1) return { ok: false, error: "Card not in hand" };
-    if (room.submissions[playerId]) return { ok: false, error: "Already submitted" };
-    room.submissions[playerId] = answerText;
-    hand.splice(idx, 1);
-    room.hands[playerId] = hand;
-
-    const needed = room.players.filter((p) => p.id !== judge.id);
-    const allIn = needed.every((p) => room.submissions[p.id]);
-    if (allIn) {
-      room.phase = "judge";
-      room.revealed = true;
-      room.judgeOpenedAt = Date.now();
-      // Stable blind order for judge UI (avoid reshuffle on every render)
-      const entries = Object.entries(room.submissions).map(([playerId, text]) => ({ playerId, text }));
-      room.blindOrder = shuffle(entries);
-    }
+    room.phase = "answering";
+    room.current = {
+      type,
+      index: pick.index,
+      item: snapshotItem(type, pick.item),
+      answers: {},
+      locked: {},
+      correctMap: {},
+      revealed: false,
+      scored: false,
+      openedAt: Date.now(),
+    };
     Room().writeRoom(room);
-    return { ok: true, allIn };
+    runBotAnswers(room);
+    return { ok: true };
   }
 
-  /** Bots auto-submit random hand cards; bot judge auto-picks after short delay (solo demo). */
-  function runBotTurns(room) {
-    if (!room || room.status !== "playing") return { acted: false };
-    let acted = false;
-    const judge = currentJudge(room);
-
-    if (room.phase === "submit") {
-      for (const p of room.players) {
-        if (!p.bot) continue;
-        if (judge && p.id === judge.id) continue;
-        if (room.submissions[p.id]) continue;
-        const hand = room.hands[p.id] || [];
-        if (!hand.length) continue;
-        const pick = hand[Math.floor(Math.random() * hand.length)];
-        const res = submitAnswer(room, p.id, pick);
-        if (res.ok) acted = true;
-      }
+  function lockAnswer(room, playerId, answerText) {
+    if (room.phase !== "answering" || !room.current) {
+      return { ok: false, error: "Not answering right now" };
     }
-
-    if (room.phase === "judge" && judge && judge.bot) {
-      const entries = Object.keys(room.submissions || {});
-      if (entries.length) {
-        // Soft delay: only auto-pick if judge window has been open briefly (solo demo speed)
-        const opened = room.judgeOpenedAt || Date.now();
-        if (Date.now() - opened >= 600) {
-          const winnerId = entries[Math.floor(Math.random() * entries.length)];
-          const res = pickWinner(room, judge.id, winnerId);
-          if (res.ok) acted = true;
-        }
-      }
+    const player = room.players.find((p) => p.id === playerId);
+    if (!player) return { ok: false, error: "Unknown player" };
+    if (room.current.locked[playerId]) {
+      return { ok: false, error: "Already locked in" };
     }
+    const text = String(answerText || "").trim();
+    if (!text) return { ok: false, error: "Pick or type something" };
 
-    return { acted };
-  }
-
-  function pickWinner(room, judgeId, winnerPlayerId) {
-    if (room.phase !== "judge") return { ok: false, error: "Not in judge phase" };
-    const judge = currentJudge(room);
-    if (!judge || judge.id !== judgeId) return { ok: false, error: "Only the judge can pick" };
-    if (!room.submissions[winnerPlayerId]) {
-      return { ok: false, error: "That player did not submit" };
-    }
-    const winner = room.players.find((p) => p.id === winnerPlayerId);
-    if (!winner) return { ok: false, error: "Unknown winner" };
-    winner.score += 1;
-    room.winnerId = winnerPlayerId;
-    room.winnerAnswer = room.submissions[winnerPlayerId];
-    room.phase = "reveal";
+    room.current.answers[playerId] = text;
+    room.current.locked[playerId] = true;
     Room().writeRoom(room);
     return { ok: true };
   }
 
-  function nextRound(room) {
-    if (room.phase !== "reveal") return { ok: false, error: "Reveal first" };
-    if (room.round >= room.roundCap) {
-      endGame(room);
-      return { ok: true, ended: true };
+  function runBotAnswers(room) {
+    if (!room || room.phase !== "answering" || !room.current) return;
+    const item = room.current.item;
+    for (const p of room.players) {
+      if (!p.bot) continue;
+      if (room.current.locked[p.id]) continue;
+      let answer;
+      if (item.type === "trivia") {
+        // ~55% correct for fun solo demos
+        if (Math.random() < 0.55) {
+          answer = item.options[item.correct];
+        } else {
+          const wrong = item.options.filter((_, i) => i !== item.correct);
+          answer = wrong[Math.floor(Math.random() * wrong.length)] || item.options[0];
+        }
+      } else {
+        if (Math.random() < 0.5) {
+          answer = item.answer;
+        } else if (item.options && item.options.length) {
+          answer = item.options[Math.floor(Math.random() * item.options.length)];
+        } else {
+          answer = "No idea";
+        }
+      }
+      room.current.answers[p.id] = answer;
+      room.current.locked[p.id] = true;
     }
-    room.judgeIndex = (room.judgeIndex + 1) % room.players.length;
-    beginRound(room);
-    if (room.status === "ended") return { ok: true, ended: true };
-    runBotTurns(room);
     Room().writeRoom(room);
-    return { ok: true, ended: false };
   }
 
-  function endGame(room) {
+  function autoGrade(room) {
+    const cur = room.current;
+    if (!cur) return;
+    const item = cur.item;
+    cur.correctMap = cur.correctMap || {};
+    for (const p of room.players) {
+      const ans = cur.answers[p.id];
+      if (ans == null) {
+        cur.correctMap[p.id] = false;
+        continue;
+      }
+      if (item.type === "trivia") {
+        cur.correctMap[p.id] = normalize(ans) === normalize(item.answer);
+      } else {
+        cur.correctMap[p.id] = matchesAccept(ans, item);
+      }
+    }
+  }
+
+  function revealRound(room) {
+    if (room.phase !== "answering" || !room.current) {
+      return { ok: false, error: "Nothing to reveal" };
+    }
+    room.current.revealed = true;
+    room.phase = "reveal";
+    autoGrade(room);
+    applyScores(room);
+    Room().writeRoom(room);
+    return { ok: true };
+  }
+
+  function applyScores(room) {
+    const cur = room.current;
+    if (!cur || cur.scored) return;
+    for (const p of room.players) {
+      if (cur.correctMap[p.id]) {
+        p.score += 1;
+      }
+    }
+    cur.scored = true;
+  }
+
+  function markCorrect(room, playerId, isCorrect) {
+    if (room.phase !== "reveal" || !room.current) {
+      return { ok: false, error: "Reveal first" };
+    }
+    const cur = room.current;
+    const was = !!cur.correctMap[playerId];
+    const now = !!isCorrect;
+    if (was === now) return { ok: true };
+    const player = room.players.find((p) => p.id === playerId);
+    if (!player) return { ok: false, error: "Unknown player" };
+    // Adjust score if already scored
+    if (cur.scored) {
+      if (now && !was) player.score += 1;
+      if (!now && was) player.score = Math.max(0, player.score - 1);
+    }
+    cur.correctMap[playerId] = now;
+    Room().writeRoom(room);
+    return { ok: true };
+  }
+
+  function backToPicker(room) {
+    if (room.phase !== "reveal") return { ok: false, error: "Reveal first" };
+    if (room.current) {
+      room.history.push({
+        round: room.round,
+        type: room.current.type,
+        answer: room.current.item.answer,
+      });
+    }
+    room.current = null;
+    room.phase = "picking";
+    Room().writeRoom(room);
+    return { ok: true };
+  }
+
+  function endNight(room) {
+    if (room.current && room.phase === "reveal") {
+      room.history.push({
+        round: room.round,
+        type: room.current.type,
+        answer: room.current.item.answer,
+      });
+    }
     room.status = "ended";
     room.phase = "ended";
     room.endedAt = Date.now();
+    room.current = null;
     Room().writeRoom(room);
-  }
-
-  function getBlindSubmissions(room) {
-    if (Array.isArray(room.blindOrder) && room.blindOrder.length) {
-      return room.blindOrder.slice();
-    }
-    const entries = Object.entries(room.submissions || {}).map(([playerId, text]) => ({
-      playerId,
-      text,
-    }));
-    return shuffle(entries);
   }
 
   function rankedPlayers(room) {
     return room.players.slice().sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
   }
 
-  function judgeRemainingMs(room) {
-    if (room.phase !== "judge" || !room.judgeOpenedAt) return null;
-    const windowMs = room.judgeWindowMs || Room().JUDGE_WINDOW_MS;
-    return Math.max(0, windowMs - (Date.now() - room.judgeOpenedAt));
-  }
-
-  function formatDuration(ms) {
-    if (ms == null) return "";
-    const totalSec = Math.floor(ms / 1000);
-    const h = Math.floor(totalSec / 3600);
-    const m = Math.floor((totalSec % 3600) / 60);
-    if (h > 0) return h + "h " + m + "m";
-    if (m > 0) return m + " min";
-    return totalSec + "s";
-  }
-
   function shareText(room) {
     const ranks = rankedPlayers(room);
     const lines = [
-      "NightDeck night — room " + room.code,
-      (room.deckSnapshot?.name || room.deckId) + " · " + room.round + " rounds",
+      "NightDeck Staff Night — room " + room.code,
+      room.round + " round" + (room.round === 1 ? "" : "s") + " · Trivia · Identify · Music",
       "",
-      ...ranks.map((p, i) => (i + 1) + ". " + p.name + " — " + p.score + " pt" + (p.score === 1 ? "" : "s")),
+      ...ranks.map(
+        (p, i) => (i + 1) + ". " + p.name + " — " + p.score + " pt" + (p.score === 1 ? "" : "s")
+      ),
       "",
-      "Dealt on NightDeck",
+      "Played on NightDeck",
     ];
     return lines.join("\n");
   }
 
+  function lockedCount(room) {
+    if (!room.current) return 0;
+    return Object.keys(room.current.locked || {}).length;
+  }
+
   global.NightDeckGame = {
-    startGame,
-    currentJudge,
-    submitAnswer,
-    pickWinner,
-    nextRound,
-    endGame,
-    getBlindSubmissions,
+    startNight,
+    startRound,
+    lockAnswer,
+    revealRound,
+    markCorrect,
+    backToPicker,
+    endNight,
     rankedPlayers,
     shareText,
-    ensureHands,
-    runBotTurns,
-    judgeRemainingMs,
-    formatDuration,
+    runBotAnswers,
+    lockedCount,
+    matchesAccept,
   };
 })(window);

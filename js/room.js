@@ -2,32 +2,23 @@
 (function (global) {
   const PREFIX = "nightdeck:room:";
   const CHANNEL = "nightdeck-rooms";
-  const MIN_PLAYERS = 3;
-  /** Staff night: at least 12 seats. */
+  /** Staff Night: start with ≥2 humans, or Solo demo. */
+  const MIN_HUMANS = 2;
   const MAX_PLAYERS = 12;
-  /** Short rounds; host can end anytime. Plenty for a long hang. */
-  const ROUND_CAP = 12;
-  /** Smaller hand = faster pick/submit. */
-  const HAND_SIZE = 4;
-  /**
-   * Judge window default: 60 minutes (pause-friendly).
-   * No auto-advance — judge picks when ready. Soft hint only.
-   */
-  const JUDGE_WINDOW_MS = 60 * 60 * 1000;
 
   const BOT_NAMES = [
-    "Bot Avery",
-    "Bot Blake",
-    "Bot Casey",
-    "Bot Drew",
-    "Bot Ellis",
-    "Bot Finley",
-    "Bot Gray",
-    "Bot Harper",
-    "Bot Indy",
-    "Bot Jules",
-    "Bot Kai",
-    "Bot Logan",
+    "Avery",
+    "Blake",
+    "Casey",
+    "Drew",
+    "Ellis",
+    "Finley",
+    "Gray",
+    "Harper",
+    "Indy",
+    "Jules",
+    "Kai",
+    "Logan",
   ];
 
   function codeChars() {
@@ -93,35 +84,28 @@
     return () => listeners.delete(fn);
   }
 
-  function createRoom({ hostName, deckId }) {
+  function emptyUsed() {
+    return { trivia: [], identify: [], music: [] };
+  }
+
+  function createRoom({ hostName }) {
     const code = makeRoomCode();
     const playerId = makePlayerId();
     const room = {
       code,
       createdAt: Date.now(),
-      deckId: deckId || "lobby-warmup",
       status: "lobby", // lobby | playing | ended
       hostId: playerId,
       soloDemo: false,
       players: [
-        { id: playerId, name: hostName.trim() || "Host", score: 0, connected: true, bot: false },
+        { id: playerId, name: (hostName || "").trim() || "Host", score: 0, connected: true, bot: false },
       ],
       round: 0,
-      roundCap: ROUND_CAP,
-      judgeIndex: 0,
-      judgeOpenedAt: null,
-      judgeWindowMs: JUDGE_WINDOW_MS,
-      prompt: null,
-      promptIndex: 0,
-      usedPrompts: [],
-      usedAnswers: [],
-      hands: {},
-      submissions: {}, // playerId -> answer text
-      revealed: false,
-      winnerId: null,
-      winnerAnswer: null,
-      phase: "lobby", // lobby | submit | judge | reveal
-      deckSnapshot: null,
+      phase: "lobby", // lobby | picking | answering | reveal | ended
+      current: null,
+      used: emptyUsed(),
+      packs: null,
+      history: [],
       endedAt: null,
     };
     writeRoom(room);
@@ -130,22 +114,21 @@
 
   function joinRoom({ code, playerName }) {
     const room = readRoom(code);
-    if (!room) return { ok: false, error: "Room not found — try the same browser for now (local rooms)." };
-    if (room.status === "ended") return { ok: false, error: "This room already ended." };
+    if (!room) {
+      return { ok: false, error: "Room not found — same browser / device for now (local rooms)." };
+    }
+    if (room.status === "ended") return { ok: false, error: "That night already ended." };
     const name = (playerName || "").trim() || "Player";
-    const existing = room.players.find(
-      (p) => p.name.toLowerCase() === name.toLowerCase()
-    );
+    const existing = room.players.find((p) => p.name.toLowerCase() === name.toLowerCase());
     let playerId;
     if (existing) {
       playerId = existing.id;
       existing.connected = true;
     } else {
       if (room.status !== "lobby") {
-        return { ok: false, error: "Game already started — join before start." };
+        return { ok: false, error: "Night already started — jump in before Start." };
       }
-      const humansAndBots = room.players.length;
-      if (humansAndBots >= MAX_PLAYERS) {
+      if (room.players.length >= MAX_PLAYERS) {
         return { ok: false, error: "Room is full (" + MAX_PLAYERS + " seats)." };
       }
       playerId = makePlayerId();
@@ -155,14 +138,13 @@
     return { ok: true, room, playerId };
   }
 
-  /** Fill bots up to MIN_PLAYERS for solo host testing. Demo-only. */
   function fillSoloBots(room) {
     if (!room || room.status !== "lobby") {
       return { ok: false, error: "Solo demo only from lobby" };
     }
     room.soloDemo = true;
     let i = 0;
-    while (room.players.length < MIN_PLAYERS && room.players.length < MAX_PLAYERS) {
+    while (room.players.length < 3 && room.players.length < MAX_PLAYERS) {
       const name = BOT_NAMES[i % BOT_NAMES.length];
       i += 1;
       if (room.players.some((p) => p.name === name)) continue;
@@ -178,7 +160,6 @@
     return { ok: true, room };
   }
 
-  /** Optional: add bots up to a target seat count (≤ MAX). Host testing / padding. */
   function addBotsTo(room, targetCount) {
     if (!room || room.status !== "lobby") {
       return { ok: false, error: "Bots only in lobby" };
@@ -187,7 +168,8 @@
     room.soloDemo = true;
     let i = 0;
     while (room.players.length < target) {
-      const name = BOT_NAMES[i % BOT_NAMES.length] + (i >= BOT_NAMES.length ? " " + (i + 1) : "");
+      const base = BOT_NAMES[i % BOT_NAMES.length];
+      const name = i >= BOT_NAMES.length ? base + " " + (i + 1) : base;
       i += 1;
       if (room.players.some((p) => p.name === name)) continue;
       room.players.push({
@@ -202,12 +184,14 @@
     return { ok: true, room };
   }
 
-  function canStart(room) {
-    return room && room.status === "lobby" && room.players.length >= MIN_PLAYERS;
-  }
-
   function humanCount(room) {
     return (room.players || []).filter((p) => !p.bot).length;
+  }
+
+  function canStart(room) {
+    if (!room || room.status !== "lobby") return false;
+    if (room.soloDemo && room.players.length >= 2) return true;
+    return humanCount(room) >= MIN_HUMANS;
   }
 
   function sessionKey() {
@@ -231,11 +215,8 @@
   }
 
   global.NightDeckRoom = {
-    MIN_PLAYERS,
+    MIN_HUMANS,
     MAX_PLAYERS,
-    ROUND_CAP,
-    HAND_SIZE,
-    JUDGE_WINDOW_MS,
     makeRoomCode,
     makePlayerId,
     readRoom,
@@ -250,5 +231,6 @@
     saveSession,
     loadSession,
     clearSession,
+    emptyUsed,
   };
 })(window);

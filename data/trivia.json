@@ -1,0 +1,115 @@
+{
+  "title": "Office Trivia",
+  "items": [
+    {
+      "q": "Which meeting invite subject is most likely a trap?",
+      "options": ["Quick sync (30 min)", "Birthday cake in kitchen", "All-hands agenda", "Parking lot update"],
+      "correct": 0
+    },
+    {
+      "q": "A Slack thread with 47 replies usually means…",
+      "options": ["Someone said “quick question”", "The CEO posted a meme", "IT fixed Wi‑Fi", "HR sent free stickers"],
+      "correct": 0
+    },
+    {
+      "q": "What's the universal sign a projector cable is cursed?",
+      "options": ["It works on the first try", "Someone says “try HDMI 2”", "The room has natural light", "Facilities left a note"],
+      "correct": 1
+    },
+    {
+      "q": "“I'll circle back” most often translates to…",
+      "options": ["I have a plan", "I need time to forget this", "Calendar invite incoming", "Budget approved"],
+      "correct": 1
+    },
+    {
+      "q": "Which kitchen crime is most forgivable?",
+      "options": ["Empty coffee pot left behind", "Mystery Tupperware from 2019", "Microwave fish", "Stealing the good mug"],
+      "correct": 3
+    },
+    {
+      "q": "The phrase “per my last email” is basically…",
+      "options": ["A compliment", "A polite dagger", "An out-of-office reply", "A calendar tip"],
+      "correct": 1
+    },
+    {
+      "q": "Which badge behavior screams “I live here now”?",
+      "options": ["Wearing it on a lanyard", "Leaving it in the car", "Waving it at every door like a wand", "Putting it in airplane mode"],
+      "correct": 2
+    },
+    {
+      "q": "A “working lunch” is usually…",
+      "options": ["A vacation day", "Lunch that somehow has slides", "Free catering forever", "HR wellness hour"],
+      "correct": 1
+    },
+    {
+      "q": "What's the real purpose of a standing desk?",
+      "options": ["Better posture forever", "Looking productive while checking sports scores", "Hiding snack crumbs", "Intimidating the printer"],
+      "correct": 1
+    },
+    {
+      "q": "If someone says “let's take this offline,” they mean…",
+      "options": ["Turn off Wi‑Fi", "This thread is about to get weird", "Move the server rack", "Cancel the meeting"],
+      "correct": 1
+    },
+    {
+      "q": "Which password strategy is classic office folklore (not advice)?",
+      "options": ["Password123!", "A 64-character passphrase", "Hardware key only", "Biometrics + vault"],
+      "correct": 0
+    },
+    {
+      "q": "The printer's natural habitat is…",
+      "options": ["Wherever you need it", "Jamming during a deadline", "Quietly printing perfect color", "In the cloud"],
+      "correct": 1
+    },
+    {
+      "q": "A calendar block named “Focus time” often becomes…",
+      "options": ["Sacred silence", "Three “got a sec?” pings", "A spa appointment", "Mandatory fun"],
+      "correct": 1
+    },
+    {
+      "q": "Which Slack reaction means “I saw this and I'm choosing peace”?",
+      "options": [":eyes:", ":ack: / :white_check_mark:", ":tada:", ":fire:"],
+      "correct": 1
+    },
+    {
+      "q": "The phrase “bandwidth” at work usually refers to…",
+      "options": ["Your home router speed", "Whether you can take on more nonsense", "The Wi‑Fi password", "Ethernet vs Wi‑Fi"],
+      "correct": 1
+    },
+    {
+      "q": "What's most likely taped to a conference room wall?",
+      "options": ["A Picasso", "“Please wipe the whiteboard”", "Stock options", "The Wi‑Fi password in Comic Sans"],
+      "correct": 1
+    },
+    {
+      "q": "“Synergy” in a slide deck is a clue that…",
+      "options": ["The deck needed one more buzzword", "The product launched", "Finance celebrated", "Someone got a raise"],
+      "correct": 0
+    },
+    {
+      "q": "Which snack vanishes first in a shared kitchen?",
+      "options": ["The kale chips", "Anything chocolate", "Unlabeled plain rice cakes", "Herbal tea"],
+      "correct": 1
+    },
+    {
+      "q": "A “brief update” that runs 40 minutes is powered by…",
+      "options": ["Laser focus", "One more thing…", "A strict timer", "Silent meditation"],
+      "correct": 1
+    },
+    {
+      "q": "What's the official sport of open offices?",
+      "options": ["Competitive headphone wearing", "Competitive badminton", "Quiet chess", "Group yoga at desks"],
+      "correct": 0
+    },
+    {
+      "q": "If the all-hands starts with “exciting news,” brace for…",
+      "options": ["Free pizza forever", "A reorg chart", "Early Friday", "Unlimited PTO clarified again"],
+      "correct": 1
+    },
+    {
+      "q": "Which phrase means the ticket is going nowhere fast?",
+      "options": ["In progress", "Blocked on vendor", "Done", "Ready for QA"],
+      "correct": 1
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Abstract album card">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <g stroke="#c4b5fd" stroke-width="2" opacity="0.55">
+    <path d="M0 80 H400 M0 160 H400 M0 240 H400 M0 320 H400"/>
+    <path d="M80 0 V400 M160 0 V400 M240 0 V400 M320 0 V400"/>
+  </g>
+  <circle cx="200" cy="200" r="70" fill="none" stroke="#f5f3ff" stroke-width="8"/>
+  <circle cx="200" cy="200" r="28" fill="#f5f3ff"/>
+  <rect x="24" y="24" width="352" height="352" fill="none" stroke="#a78bfa" stroke-width="6" opacity="0.7"/>
+</svg>

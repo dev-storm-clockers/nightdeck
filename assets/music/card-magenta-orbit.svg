@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Abstract album card">
+  <rect width="400" height="400" fill="#4a044e"/>
+  <ellipse cx="200" cy="200" rx="160" ry="70" fill="none" stroke="#f0abfc" stroke-width="10" transform="rotate(25 200 200)"/>
+  <ellipse cx="200" cy="200" rx="160" ry="70" fill="none" stroke="#e879f9" stroke-width="6" transform="rotate(-35 200 200)"/>
+  <circle cx="200" cy="200" r="48" fill="#fae8ff"/>
+  <circle cx="310" cy="140" r="16" fill="#f5d0fe"/>
+  <rect x="30" y="340" width="340" height="18" fill="#86198f"/>
+</svg>

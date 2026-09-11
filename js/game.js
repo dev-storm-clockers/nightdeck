@@ -123,6 +123,7 @@
       type: "music",
       cue: item.cue,
       hint: item.hint || "",
+      image: item.image || null,
       options,
       correctIndex,
       answer,

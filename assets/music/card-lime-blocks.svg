@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Abstract album card">
+  <rect width="400" height="400" fill="#14532d"/>
+  <rect x="40" y="40" width="140" height="140" fill="#84cc16"/>
+  <rect x="220" y="40" width="140" height="70" fill="#a3e635"/>
+  <rect x="220" y="130" width="140" height="50" fill="#365314"/>
+  <rect x="40" y="210" width="70" height="150" fill="#bef264"/>
+  <rect x="130" y="210" width="230" height="70" fill="#4d7c0f"/>
+  <rect x="130" y="300" width="230" height="60" fill="#65a30d"/>
+  <circle cx="335" cy="335" r="18" fill="#ecfccb"/>
+</svg>

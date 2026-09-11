@@ -36,6 +36,9 @@
 
     <div class="prompt-card" id="promptCard">
       <div class="kicker" id="promptKicker">Question</div>
+      <div class="music-card hidden" id="musicCard">
+        <img id="musicCardImg" class="music-card-img" alt="Album-style cue card" />
+      </div>
       <div class="clue hidden" id="promptClue"></div>
       <div class="big" id="promptBig">…</div>
       <div class="hint hidden" id="promptHint"></div>
@@ -91,8 +94,14 @@
       function fillPrompt(item) {
         const clue = UI.$("#promptClue");
         const hint = UI.$("#promptHint");
+        const musicCard = UI.$("#musicCard");
+        const musicImg = UI.$("#musicCardImg");
         clue.classList.add("hidden");
         hint.classList.add("hidden");
+        musicCard.classList.add("hidden");
+        musicImg.removeAttribute("src");
+        const promptCard = UI.$("#promptCard");
+        promptCard.classList.remove("music-layout", "has-music-art");
         if (item.type === "trivia") {
           const subj = (run && run.subject) || session.subject;
           UI.$("#promptKicker").textContent = subj
@@ -112,6 +121,12 @@
           if (item.hint) {
             hint.textContent = item.hint;
             hint.classList.remove("hidden");
+          }
+          if (item.image) {
+            musicImg.src = item.image;
+            musicImg.alt = "Music cue card";
+            musicCard.classList.remove("hidden");
+            promptCard.classList.add("music-layout", "has-music-art");
           }
         }
       }

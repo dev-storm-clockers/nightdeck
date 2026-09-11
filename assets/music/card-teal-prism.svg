@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Abstract album card">
+  <rect width="400" height="400" fill="#042f2e"/>
+  <polygon points="200,40 340,320 60,320" fill="#14b8a6" opacity="0.9"/>
+  <polygon points="200,90 300,300 100,300" fill="#5eead4" opacity="0.55"/>
+  <line x1="40" y1="360" x2="360" y2="360" stroke="#99f6e4" stroke-width="10"/>
+  <circle cx="320" cy="80" r="22" fill="#f0fdfa"/>
+</svg>

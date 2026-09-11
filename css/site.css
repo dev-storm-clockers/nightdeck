@@ -515,6 +515,55 @@ input:focus, select:focus, textarea:focus {
   font-weight: 600;
 }
 
+/* Pass 12 — Music visual cue cards (original abstract assets) */
+.music-card {
+  display: flex;
+  justify-content: center;
+  margin: 0.35rem 0 0.75rem;
+}
+.music-card-img {
+  display: block;
+  width: min(220px, 58vw);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid #c7d2fe;
+  box-shadow: 0 8px 20px rgba(67, 56, 202, 0.18);
+  background: #0f172a;
+}
+.prompt-card.has-music-art .big {
+  font-size: 1.15rem;
+}
+@media (min-width: 640px) {
+  .prompt-card.music-layout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "kicker kicker"
+      "art cue"
+      "art hint";
+    column-gap: 1rem;
+    align-items: start;
+  }
+  .prompt-card.music-layout .kicker { grid-area: kicker; }
+  .prompt-card.music-layout .music-card {
+    grid-area: art;
+    margin: 0;
+    justify-content: flex-start;
+  }
+  .prompt-card.music-layout .music-card-img {
+    width: 140px;
+  }
+  .prompt-card.music-layout .big { grid-area: cue; }
+  .prompt-card.music-layout .hint { grid-area: hint; margin-top: 0.35rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-card-img { box-shadow: none; }
+}
+
+
 .options {
   display: grid;
   gap: 0.65rem;

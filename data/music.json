@@ -1,349 +1,376 @@
 {
-  "title": "Name That Tune (text cues)",
+  "title": "Music (harder cues + visual cards)",
   "items": [
     {
-      "cue": "Is this the real life? Is this just fantasy?",
-      "hint": "1970s · operatic rock",
+      "cue": "A heart that's full up like a landfill\u2026",
+      "hint": "1990s Brit alt \u00b7 deep cut from a breakout album",
       "options": [
-        "Bohemian Rhapsody — Queen",
-        "Stairway to Heaven — Led Zeppelin",
-        "Hotel California — Eagles",
-        "Imagine — John Lennon"
+        "Fake Plastic Trees \u2014 Radiohead",
+        "Creep \u2014 Radiohead",
+        "High and Dry \u2014 Radiohead",
+        "Bittersweet Symphony \u2014 The Verve"
       ],
-      "answer": "Bohemian Rhapsody — Queen",
+      "answer": "Fake Plastic Trees \u2014 Radiohead",
       "accept": [
-        "bohemian rhapsody",
-        "queen"
-      ]
+        "fake plastic trees",
+        "radiohead fake plastic trees"
+      ],
+      "image": "assets/music/card-violet-grid.svg"
     },
     {
-      "cue": "Don't stop believin'… hold on to that feelin'",
-      "hint": "Arena rock classic",
+      "cue": "Which Radiohead album includes Exit Music (For a Film) and No Surprises?",
+      "hint": "Late-90s landmark \u2014 no song title in the answer choices needed",
       "options": [
-        "Don't Stop Believin' — Journey",
-        "Eye of the Tiger — Survivor",
-        "We Will Rock You — Queen",
-        "Sweet Child O' Mine — Guns N' Roses"
+        "OK Computer",
+        "The Bends",
+        "Kid A",
+        "In Rainbows"
       ],
-      "answer": "Don't Stop Believin' — Journey",
+      "answer": "OK Computer",
       "accept": [
-        "don't stop believin",
-        "dont stop believing",
-        "journey"
-      ]
+        "ok computer",
+        "o.k. computer"
+      ],
+      "image": "assets/music/card-slate-mosaic.svg"
     },
     {
-      "cue": "Because I'm happy… clap along if you feel like a room without a roof",
-      "hint": "2010s pop sunshine",
+      "cue": "And you may find yourself living in a shotgun shack\u2026",
+      "hint": "New wave / art-rock \u00b7 early 80s",
       "options": [
-        "Happy — Pharrell Williams",
-        "Uptown Funk — Bruno Mars",
-        "Can't Stop the Feeling — Justin Timberlake",
-        "Shake It Off — Taylor Swift"
+        "Once in a Lifetime \u2014 Talking Heads",
+        "Psycho Killer \u2014 Talking Heads",
+        "Burning Down the House \u2014 Talking Heads",
+        "Love Will Tear Us Apart \u2014 Joy Division"
       ],
-      "answer": "Happy — Pharrell Williams",
+      "answer": "Once in a Lifetime \u2014 Talking Heads",
       "accept": [
-        "happy",
-        "pharrell"
-      ]
+        "once in a lifetime",
+        "talking heads once in a lifetime"
+      ],
+      "image": "assets/music/card-teal-prism.svg"
     },
     {
-      "cue": "I'm never gonna give you up… never gonna let you down",
-      "hint": "Internet legend",
+      "cue": "In which decade did Talking Heads release Remain in Light?",
+      "hint": "Afrobeat-influenced art-rock classic",
       "options": [
-        "Never Gonna Give You Up — Rick Astley",
-        "Take On Me — a-ha",
-        "Wake Me Up Before You Go-Go — Wham!",
-        "Billie Jean — Michael Jackson"
+        "1980s",
+        "1970s",
+        "1990s",
+        "2000s"
       ],
-      "answer": "Never Gonna Give You Up — Rick Astley",
+      "answer": "1980s",
       "accept": [
-        "never gonna give you up",
-        "rick astley",
-        "rickroll",
-        "rick roll"
-      ]
+        "1980s",
+        "80s",
+        "the 80s",
+        "1980"
+      ],
+      "image": "assets/music/card-indigo-wave.svg"
     },
     {
-      "cue": "I got a feeling… that tonight's gonna be a good night",
-      "hint": "Party anthem",
+      "cue": "She came from Greece, she had a thirst for knowledge\u2026",
+      "hint": "Britpop class satire",
       "options": [
-        "I Gotta Feeling — Black Eyed Peas",
-        "Party Rock Anthem — LMFAO",
-        "Dynamite — BTS",
-        "Levitating — Dua Lipa"
+        "Common People \u2014 Pulp",
+        "Wonderwall \u2014 Oasis",
+        "Song 2 \u2014 Blur",
+        "Disco 2000 \u2014 Pulp"
       ],
-      "answer": "I Gotta Feeling — Black Eyed Peas",
+      "answer": "Common People \u2014 Pulp",
       "accept": [
-        "i gotta feeling",
-        "i got a feeling",
-        "black eyed peas"
-      ]
+        "common people",
+        "pulp common people"
+      ],
+      "image": "assets/music/card-coral-burst.svg"
     },
     {
-      "cue": "Sweet dreams are made of this… who am I to disagree?",
-      "hint": "80s synth",
+      "cue": "Which Beatles album closes with A Day in the Life?",
+      "hint": "1967 \u00b7 concept-era peak",
       "options": [
-        "Sweet Dreams — Eurythmics",
-        "Take On Me — a-ha",
-        "Girls Just Want to Have Fun — Cyndi Lauper",
-        "Material Girl — Madonna"
+        "Sgt. Pepper's Lonely Hearts Club Band",
+        "Revolver",
+        "Abbey Road",
+        "The White Album"
       ],
-      "answer": "Sweet Dreams — Eurythmics",
+      "answer": "Sgt. Pepper's Lonely Hearts Club Band",
       "accept": [
-        "sweet dreams",
-        "eurythmics"
-      ]
+        "sgt pepper",
+        "sgt. pepper",
+        "sgt peppers",
+        "sgt. pepper's lonely hearts club band",
+        "sergeant pepper"
+      ],
+      "image": "assets/music/card-amber-rings.svg"
     },
     {
-      "cue": "You can dance… you can jive… having the time of your life",
-      "hint": "Disco royalty",
+      "cue": "It's in the trees! It's coming!",
+      "hint": "1985 \u00b7 art-pop title track energy",
       "options": [
-        "Dancing Queen — ABBA",
-        "Stayin' Alive — Bee Gees",
-        "September — Earth, Wind & Fire",
-        "Le Freak — Chic"
+        "Hounds of Love \u2014 Kate Bush",
+        "Wuthering Heights \u2014 Kate Bush",
+        "Running Up That Hill \u2014 Kate Bush",
+        "Babooshka \u2014 Kate Bush"
       ],
-      "answer": "Dancing Queen — ABBA",
+      "answer": "Hounds of Love \u2014 Kate Bush",
       "accept": [
-        "dancing queen",
-        "abba"
-      ]
+        "hounds of love",
+        "kate bush hounds of love"
+      ],
+      "image": "assets/music/card-magenta-orbit.svg"
     },
     {
-      "cue": "Hello from the other side… I must've called a thousand times",
-      "hint": "Power ballad megahit",
+      "cue": "Which David Bowie album is the middle of his late-70s Berlin trilogy?",
+      "hint": "Bookended by Low and Lodger",
       "options": [
-        "Hello — Adele",
-        "Someone Like You — Adele",
-        "Stay With Me — Sam Smith",
-        "Chandelier — Sia"
+        "\"Heroes\"",
+        "Station to Station",
+        "Scary Monsters",
+        "Let's Dance"
       ],
-      "answer": "Hello — Adele",
+      "answer": "\"Heroes\"",
       "accept": [
-        "hello",
-        "hello adele",
-        "adele hello"
-      ]
+        "heroes",
+        "\"heroes\"",
+        "bowie heroes",
+        "heroes album"
+      ],
+      "image": "assets/music/card-navy-stripe.svg"
     },
     {
-      "cue": "Oh, Mickey, you're so fine… you're so fine you blow my mind",
-      "hint": "Cheerleader energy",
+      "cue": "The carpet crawlers heed their callers\u2026",
+      "hint": "Prog \u00b7 mid-70s concept suite",
       "options": [
-        "Mickey — Toni Basil",
-        "Girls Just Want to Have Fun — Cyndi Lauper",
-        "Wake Me Up Before You Go-Go — Wham!",
-        "Material Girl — Madonna"
+        "The Carpet Crawlers \u2014 Genesis",
+        "Money \u2014 Pink Floyd",
+        "Roundabout \u2014 Yes",
+        "Squonk \u2014 Genesis"
       ],
-      "answer": "Mickey — Toni Basil",
+      "answer": "The Carpet Crawlers \u2014 Genesis",
       "accept": [
-        "mickey",
-        "toni basil"
-      ]
+        "carpet crawlers",
+        "the carpet crawlers",
+        "genesis carpet crawlers"
+      ],
+      "image": "assets/music/card-lime-blocks.svg"
     },
     {
-      "cue": "I see a little silhouetto of a man… Scaramouche, Scaramouche…",
-      "hint": "Same band as the fantasy question",
+      "cue": "Which Pixies album opens with Debaser?",
+      "hint": "Late-80s alt cornerstone",
       "options": [
-        "Bohemian Rhapsody — Queen",
-        "Stairway to Heaven — Led Zeppelin",
-        "Hotel California — Eagles",
-        "Dream On — Aerosmith"
+        "Doolittle",
+        "Surfer Rosa",
+        "Bossanova",
+        "Trompe le Monde"
       ],
-      "answer": "Bohemian Rhapsody — Queen",
+      "answer": "Doolittle",
       "accept": [
-        "bohemian rhapsody",
-        "bohemian"
-      ]
+        "doolittle",
+        "pixies doolittle"
+      ],
+      "image": "assets/music/card-crimson-slash.svg"
     },
     {
-      "cue": "Work, work, work, work, work, work… He said me haffi",
-      "hint": "Dancehall-pop crossover",
+      "cue": "Twenty-five years and my life is still / Trying to get up that great big hill of hope\u2026",
+      "hint": "Late-90s one-hit alt-rock earworm (deeper than the chorus shout)",
       "options": [
-        "Work — Rihanna",
-        "Umbrella — Rihanna",
-        "Sorry — Justin Bieber",
-        "Hotline Bling — Drake"
+        "Flagpole Sitta \u2014 Harvey Danger",
+        "Semi-Charmed Life \u2014 Third Eye Blind",
+        "Closing Time \u2014 Semisonic",
+        "Inside Out \u2014 Eve 6"
       ],
-      "answer": "Work — Rihanna",
+      "answer": "Flagpole Sitta \u2014 Harvey Danger",
       "accept": [
-        "work",
-        "work rihanna",
-        "rihanna work"
-      ]
+        "flagpole sitta",
+        "flagpole sitter",
+        "harvey danger"
+      ],
+      "image": "assets/music/card-violet-grid.svg"
     },
     {
-      "cue": "Buddy you're a boy make a big noise… playin' in the street… gonna be a big man someday",
-      "hint": "Stomp stomp clap",
+      "cue": "Which decade did Fleetwood Mac release Rumours?",
+      "hint": "Soft-rock soap opera peak",
       "options": [
-        "We Will Rock You — Queen",
-        "Eye of the Tiger — Survivor",
-        "Another One Bites the Dust — Queen",
-        "Rock You Like a Hurricane — Scorpions"
+        "1970s",
+        "1960s",
+        "1980s",
+        "1990s"
       ],
-      "answer": "We Will Rock You — Queen",
+      "answer": "1970s",
       "accept": [
-        "we will rock you",
-        "we will rock you queen"
-      ]
+        "1970s",
+        "70s",
+        "the 70s",
+        "1977"
+      ],
+      "image": "assets/music/card-amber-rings.svg"
     },
     {
-      "cue": "I'm blue… da ba dee da ba di",
-      "hint": "Late-90s earworm",
+      "cue": "I don't want to know the reasons why / Love keeps right on walking down the line\u2026",
+      "hint": "Rumours-era deep cut (not Dreams / Go Your Own Way)",
       "options": [
-        "Blue (Da Ba Dee) — Eiffel 65",
-        "Barbie Girl — Aqua",
-        "Macarena — Los Del Rio",
-        "Cotton Eye Joe — Rednex"
+        "I Don't Want to Know \u2014 Fleetwood Mac",
+        "Dreams \u2014 Fleetwood Mac",
+        "Go Your Own Way \u2014 Fleetwood Mac",
+        "Landslide \u2014 Fleetwood Mac"
       ],
-      "answer": "Blue (Da Ba Dee) — Eiffel 65",
+      "answer": "I Don't Want to Know \u2014 Fleetwood Mac",
       "accept": [
-        "blue",
-        "da ba dee",
-        "eiffel 65",
-        "i'm blue"
-      ]
+        "i don't want to know",
+        "i dont want to know",
+        "fleetwood mac i don't want to know"
+      ],
+      "image": "assets/music/card-coral-burst.svg"
     },
     {
-      "cue": "It's a beautiful day… don't let it get away",
-      "hint": "U2 sunshine",
+      "cue": "Which Nirvana album is a mostly-acoustic MTV set recorded in New York?",
+      "hint": "1990s \u00b7 post\u2013Nevermind",
       "options": [
-        "Beautiful Day — U2",
-        "Viva La Vida — Coldplay",
-        "The Scientist — Coldplay",
-        "Vertigo — U2"
+        "MTV Unplugged in New York",
+        "Nevermind",
+        "In Utero",
+        "Bleach"
       ],
-      "answer": "Beautiful Day — U2",
+      "answer": "MTV Unplugged in New York",
       "accept": [
-        "beautiful day",
-        "beautiful day u2"
-      ]
+        "mtv unplugged",
+        "unplugged",
+        "mtv unplugged in new york",
+        "nirvana unplugged"
+      ],
+      "image": "assets/music/card-slate-mosaic.svg"
     },
     {
-      "cue": "I'm walking on sunshine… whoa-oh",
-      "hint": "Feel-good 80s",
+      "cue": "Is it getting better / Or do you feel the same? / Will it make it easier on you, now you got someone to blame\u2026",
+      "hint": "1991 \u00b7 not the stadium \"you too\" shout most people cite first",
       "options": [
-        "Walking on Sunshine — Katrina and the Waves",
-        "Good Vibrations — The Beach Boys",
-        "Here Comes the Sun — The Beatles",
-        "Three Little Birds — Bob Marley"
+        "One \u2014 U2",
+        "With or Without You \u2014 U2",
+        "Beautiful Day \u2014 U2",
+        "Where the Streets Have No Name \u2014 U2"
       ],
-      "answer": "Walking on Sunshine — Katrina and the Waves",
+      "answer": "One \u2014 U2",
       "accept": [
-        "walking on sunshine",
-        "katrina"
-      ]
+        "one",
+        "one u2",
+        "u2 one"
+      ],
+      "image": "assets/music/card-indigo-wave.svg"
     },
     {
-      "cue": "You spin me right round, baby, right round…",
-      "hint": "80s dancefloor",
+      "cue": "Which Prince studio album shares its name with his 1984 feature film?",
+      "hint": "Purple-era blockbuster",
       "options": [
-        "You Spin Me Round — Dead or Alive",
-        "Blue Monday — New Order",
-        "Tainted Love — Soft Cell",
-        "Relax — Frankie Goes to Hollywood"
+        "Purple Rain",
+        "1999",
+        "Sign o' the Times",
+        "Dirty Mind"
       ],
-      "answer": "You Spin Me Round — Dead or Alive",
+      "answer": "Purple Rain",
       "accept": [
-        "you spin me round",
-        "spin me right round",
-        "dead or alive"
-      ]
+        "purple rain",
+        "prince purple rain"
+      ],
+      "image": "assets/music/card-magenta-orbit.svg"
     },
     {
-      "cue": "All the single ladies… all the single ladies",
-      "hint": "Hand choreography required",
+      "cue": "Oh, life is bigger / It's bigger than you / And you are not me\u2026",
+      "hint": "Early-90s college rock \u00b7 automatic-for-the-people era adjacent",
       "options": [
-        "Single Ladies — Beyoncé",
-        "Crazy in Love — Beyoncé",
-        "Umbrella — Rihanna",
-        "Halo — Beyoncé"
+        "Losing My Religion \u2014 R.E.M.",
+        "Everybody Hurts \u2014 R.E.M.",
+        "The One I Love \u2014 R.E.M.",
+        "Man on the Moon \u2014 R.E.M."
       ],
-      "answer": "Single Ladies — Beyoncé",
+      "answer": "Losing My Religion \u2014 R.E.M.",
       "accept": [
-        "single ladies",
-        "all the single ladies",
-        "single ladies beyonce",
-        "single ladies beyoncé"
-      ]
+        "losing my religion",
+        "r.e.m. losing my religion",
+        "rem losing my religion"
+      ],
+      "image": "assets/music/card-teal-prism.svg"
     },
     {
-      "cue": "I wanna dance with somebody… I wanna feel the heat with somebody",
-      "hint": "Whitney energy",
+      "cue": "Which Bj\u00f6rk album opens with Hunter and includes J\u00f3ga?",
+      "hint": "Late-90s \u00b7 strings + beats",
       "options": [
-        "I Wanna Dance with Somebody — Whitney Houston",
-        "Like a Prayer — Madonna",
-        "I Will Always Love You — Whitney Houston",
-        "Girls Just Want to Have Fun — Cyndi Lauper"
+        "Homogenic",
+        "Debut",
+        "Post",
+        "Vespertine"
       ],
-      "answer": "I Wanna Dance with Somebody — Whitney Houston",
+      "answer": "Homogenic",
       "accept": [
-        "i wanna dance with somebody",
-        "wanna dance with somebody",
-        "whitney houston dance"
-      ]
+        "homogenic",
+        "bjork homogenic",
+        "bj\u00f6rk homogenic"
+      ],
+      "image": "assets/music/card-lime-blocks.svg"
     },
     {
-      "cue": "So you wanna play with magic… boy you should know what you're fallin' for",
-      "hint": "2010s pop",
+      "cue": "In which year did Michael Jackson release Thriller?",
+      "hint": "Early MTV era \u00b7 blockbuster LP",
       "options": [
-        "Dark Horse — Katy Perry",
-        "Roar — Katy Perry",
-        "Blank Space — Taylor Swift",
-        "Problem — Ariana Grande"
+        "1982",
+        "1979",
+        "1987",
+        "1991"
       ],
-      "answer": "Dark Horse — Katy Perry",
+      "answer": "1982",
       "accept": [
-        "dark horse",
-        "dark horse katy perry"
-      ]
+        "1982",
+        "eighty two",
+        "82"
+      ],
+      "image": "assets/music/card-navy-stripe.svg"
     },
     {
-      "cue": "I've paid my dues… time after time… I've done my sentence… but committed no crime",
-      "hint": "Champions energy",
+      "cue": "Which Arcade Fire debut album includes Wake Up and Rebellion (Lies)?",
+      "hint": "Mid-00s \u00b7 Canadian indie landmark",
       "options": [
-        "We Are the Champions — Queen",
-        "We Will Rock You — Queen",
-        "Don't Stop Believin' — Journey",
-        "Livin' on a Prayer — Bon Jovi"
+        "Funeral",
+        "Neon Bible",
+        "The Suburbs",
+        "Reflektor"
       ],
-      "answer": "We Are the Champions — Queen",
+      "answer": "Funeral",
       "accept": [
-        "we are the champions",
-        "champions",
-        "we are the champions queen"
-      ]
+        "funeral",
+        "arcade fire funeral"
+      ],
+      "image": "assets/music/card-crimson-slash.svg"
     },
     {
-      "cue": "I'm coming out… I want the world to know… got to let it show",
-      "hint": "Disco / R&B classic",
+      "cue": "Which OutKast double album splits Andr\u00e9 3000 and Big Boi into separate discs?",
+      "hint": "Early 2000s \u00b7 Speakerboxxx companion",
       "options": [
-        "I'm Coming Out — Diana Ross",
-        "Respect — Aretha Franklin",
-        "I Will Survive — Gloria Gaynor",
-        "Ain't No Mountain High Enough — Marvin Gaye & Tammi Terrell"
+        "Speakerboxxx/The Love Below",
+        "Stankonia",
+        "Aquemini",
+        "Idlewild"
       ],
-      "answer": "I'm Coming Out — Diana Ross",
+      "answer": "Speakerboxxx/The Love Below",
       "accept": [
-        "i'm coming out",
-        "im coming out",
-        "diana ross"
-      ]
+        "speakerboxxx",
+        "speakerboxxx/the love below",
+        "the love below",
+        "speakerboxx"
+      ],
+      "image": "assets/music/card-coral-burst.svg"
     },
     {
-      "cue": "Cause baby you're a firework… come on show 'em what you're worth",
-      "hint": "Stadium pop",
+      "cue": "Which R.E.M. album includes Losing My Religion and Shiny Happy People?",
+      "hint": "Early 90s \u00b7 mandolin-era peak",
       "options": [
-        "Firework — Katy Perry",
-        "Roar — Katy Perry",
-        "Shake It Off — Taylor Swift",
-        "Happy — Pharrell Williams"
+        "Out of Time",
+        "Automatic for the People",
+        "Document",
+        "Monster"
       ],
-      "answer": "Firework — Katy Perry",
+      "answer": "Out of Time",
       "accept": [
-        "firework",
-        "fireworks",
-        "firework katy perry"
+        "out of time",
+        "rem out of time",
+        "r.e.m. out of time"
       ]
     }
   ]

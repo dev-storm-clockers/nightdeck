@@ -7,13 +7,12 @@
   - `js/{sync-config,sync,catalog,game,ui}.js` / `css/site.css`
   - `data/trivia/<subject>.json` · `data/trivia-subjects.json` · `data/identify.json` · `data/music.json`
   - `assets/logo.png` · `finish.png` · `modes.png` · `icon-{trivia,identify,music}.png`
+  - `assets/music/card-*.svg` (Pass 12 original abstract album cards)
   - `scripts/smoke-pass9-grade.mjs` · `scripts/smoke-pass11-deck.mjs`
-- **how_to_run:** `python3 -m http.server 4173 --directory /workspace/nightdeck` → http://127.0.0.1:4173/
+- **how_to_run:** `python3 -m http.server 5180 --directory /workspace/nightdeck` → http://127.0.0.1:5180/
 - **live_url:** https://dev-storm-clockers.github.io/nightdeck/
 - **owner_agent:** Build Head
 - **ready_for_quality:** no
-- **pass:** 11
+- **pass:** 12
 - **notes:** |
-  Pass 11: shared day deck — create picks fixed pack indices (`deck`), each
-  player shuffles order only so contestants get the same questions out of order.
-  Lazy migrate for old days missing deck. ready_for_quality=no until Quality.
+  **Pass 12 — Music harder + visual:** `data/music.json` rebuilt (22 items) — famous lyric gimmes purged (no Bohemian / Don’t Stop Believin’ / Happy / Rickroll peers). Majority harder mix: deep-cut lyric fragments, name-the-album, decade/year without title giveaway. Optional `image` on items → original SVG cards under `assets/music/` (10 abstract cards; no scraped/hotlinked commercial art). `play.html` shows `.music-card` when `item.image` present; `game.js` snapshots `image`. Trivia + Identify + Pass 9 grading + brand + Upstash board untouched. Local smoke :5180. Prefer STOP after Quality GO — `ready_for_quality: no` until Build flips.

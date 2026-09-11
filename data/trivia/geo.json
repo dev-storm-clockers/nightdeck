@@ -3,265 +3,265 @@
   "subject": "geo",
   "items": [
     {
-      "q": "Which river flows through Egypt?",
+      "q": "Which major African capital sits near 2,400 m elevation?",
       "options": [
-        "Amazon",
-        "Nile",
-        "Danube",
-        "Yangtze"
+        "Nairobi",
+        "Addis Ababa",
+        "Kampala",
+        "Harare"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "What is the largest continent by land area?",
+      "q": "The Strait of Hormuz links the Persian Gulf to the:",
       "options": [
-        "Africa",
-        "Asia",
-        "North America",
-        "Europe"
+        "Red Sea",
+        "Gulf of Oman",
+        "Mediterranean",
+        "Caspian Sea"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which ocean lies between Africa and Australia?",
+      "q": "Which South American capital was inaugurated as a planned inland city in 1960?",
       "options": [
-        "Atlantic",
-        "Pacific",
-        "Indian",
-        "Arctic"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the capital of Australia?",
-      "options": [
-        "Sydney",
-        "Melbourne",
-        "Canberra",
-        "Brisbane"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which country is shaped roughly like a boot?",
-      "options": [
-        "Spain",
-        "Italy",
-        "Greece",
-        "Portugal"
+        "Buenos Aires",
+        "Brasília",
+        "Santiago",
+        "Montevideo"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
-      "q": "Mount Fuji is located in which country?",
+      "q": "Lake Baikal, Earth’s deepest freshwater lake, lies in:",
       "options": [
-        "China",
-        "Japan",
-        "South Korea",
-        "Taiwan"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which U.S. state is an archipelago in the Pacific?",
-      "options": [
-        "Alaska",
-        "Hawaii",
-        "California",
-        "Florida"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the longest river in South America?",
-      "options": [
-        "Nile",
-        "Amazon",
-        "Orinoco",
-        "Paraná"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which desert is the largest hot desert on Earth?",
-      "options": [
-        "Gobi",
-        "Sahara",
-        "Kalahari",
-        "Mojave"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which European city is home to the Acropolis?",
-      "options": [
-        "Rome",
-        "Athens",
-        "Istanbul",
-        "Lisbon"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which mountain range separates Europe and Asia (often cited)?",
-      "options": [
-        "Alps",
-        "Urals",
-        "Andes",
-        "Rockies"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which country has the most time zones (including territories)?",
-      "options": [
+        "Mongolia",
         "Russia",
-        "United States",
-        "France",
+        "Kazakhstan",
         "China"
       ],
-      "correct": 2,
-      "difficulty": "easy"
+      "correct": 1,
+      "difficulty": "medium"
     },
     {
-      "q": "What is the smallest country in the world by area?",
+      "q": "Which microstate is an enclave entirely within Italy?",
       "options": [
         "Monaco",
-        "Vatican City",
         "San Marino",
+        "Andorra",
         "Liechtenstein"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which African country is an island nation in the Indian Ocean?",
+      "q": "The Durand Line forms much of Afghanistan’s border with:",
       "options": [
-        "Madagascar",
-        "Morocco",
-        "Kenya",
-        "Ghana"
+        "Iran",
+        "Pakistan",
+        "India",
+        "Tajikistan"
       ],
-      "correct": 0,
-      "difficulty": "easy"
+      "correct": 1,
+      "difficulty": "hard"
     },
     {
-      "q": "Which canal connects the Atlantic and Pacific Oceans?",
+      "q": "Which Canadian territory was created in 1999?",
       "options": [
-        "Suez",
-        "Panama",
-        "Kiel",
-        "Corinth"
+        "Yukon",
+        "Nunavut",
+        "Labrador",
+        "Nunavik"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What is the capital of New Zealand?",
+      "q": "Kazakhstan moved its capital from Almaty to which city (Astana/Nur-Sultan)?",
       "options": [
-        "Auckland",
-        "Wellington",
-        "Christchurch",
-        "Queenstown"
+        "Shymkent",
+        "Astana",
+        "Karaganda",
+        "Aktau"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which hyper-arid desert covers much of northern Chile?",
+      "options": [
+        "Patagonian",
+        "Atacama",
+        "Sechura",
+        "Monte"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Which sea is the saltiest large body of water commonly cited?",
+      "q": "The Mekong’s primary delta reaches the sea mainly through:",
       "options": [
-        "Dead Sea",
-        "Red Sea",
-        "Baltic Sea",
-        "Caspian Sea"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In which country would you find Machu Picchu?",
-      "options": [
-        "Chile",
-        "Peru",
-        "Bolivia",
-        "Ecuador"
+        "Thailand",
+        "Vietnam",
+        "Laos",
+        "Myanmar"
       ],
       "correct": 1,
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
-      "q": "Which European capital sits on the River Danube?",
+      "q": "Which European capital lies on the River Spree?",
       "options": [
+        "Vienna",
+        "Berlin",
         "Prague",
-        "Budapest",
-        "Warsaw",
-        "Stockholm"
+        "Warsaw"
       ],
       "correct": 1,
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
-      "q": "What is the official language of Brazil?",
+      "q": "The Tropic of Capricorn does NOT cross which country?",
       "options": [
-        "Spanish",
-        "Portuguese",
-        "French",
-        "Italian"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which Canadian province is the largest by area?",
-      "options": [
-        "Ontario",
-        "Quebec",
-        "British Columbia",
-        "Nunavut"
+        "Australia",
+        "Brazil",
+        "Botswana",
+        "Spain"
       ],
       "correct": 3,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Valletta is the capital of which island nation?",
+      "options": [
+        "Cyprus",
+        "Malta",
+        "Iceland",
+        "Bahrain"
+      ],
+      "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Which African capital is closest to the equator among these?",
+      "q": "Mount Kilimanjaro rises in which country?",
       "options": [
-        "Nairobi",
-        "Cairo",
-        "Cape Town",
-        "Casablanca"
+        "Kenya",
+        "Tanzania",
+        "Uganda",
+        "Ethiopia"
       ],
-      "correct": 0,
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which sea separates the Arabian Peninsula from Africa?",
+      "options": [
+        "Caspian Sea",
+        "Red Sea",
+        "Black Sea",
+        "Aral Sea"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Aconcagua, the Andes’ highest peak, is in:",
+      "options": [
+        "Chile",
+        "Argentina",
+        "Peru",
+        "Bolivia"
+      ],
+      "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "What is the deepest known point in Earth’s oceans called?",
+      "q": "Juneau is the capital of which U.S. state?",
       "options": [
-        "Mariana Trench’s Challenger Deep",
-        "Puerto Rico Trench",
-        "Tonga Trench",
-        "Java Trench"
+        "Washington",
+        "Alaska",
+        "Hawaii",
+        "Oregon"
       ],
-      "correct": 0,
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The Danube empties into which body of water?",
+      "options": [
+        "Adriatic Sea",
+        "Black Sea",
+        "Baltic Sea",
+        "North Sea"
+      ],
+      "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "Which South American country is landlocked between Brazil, Argentina, and Bolivia?",
+      "q": "Which landlocked country borders Brazil, Argentina, and Bolivia?",
       "options": [
         "Uruguay",
         "Paraguay",
         "Suriname",
-        "Ecuador"
+        "Guyana"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Huang He is better known in English as the:",
+      "options": [
+        "Yangtze",
+        "Yellow River",
+        "Pearl River",
+        "Amur"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Cape of Good Hope is at the southern tip of which country?",
+      "options": [
+        "Namibia",
+        "South Africa",
+        "Mozambique",
+        "Madagascar"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Central American country uses the balboa alongside the U.S. dollar?",
+      "options": [
+        "Costa Rica",
+        "Panama",
+        "Honduras",
+        "Nicaragua"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which Asian landlocked country is sandwiched between Russia and China?",
+      "options": [
+        "Nepal",
+        "Mongolia",
+        "Laos",
+        "Bhutan"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The deepest known oceanic point is Challenger Deep in which trench?",
+      "options": [
+        "Puerto Rico Trench",
+        "Mariana Trench",
+        "Tonga Trench",
+        "Java Trench"
       ],
       "correct": 1,
       "difficulty": "hard"

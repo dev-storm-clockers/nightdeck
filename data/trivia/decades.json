@@ -3,216 +3,18 @@
   "subject": "decades",
   "items": [
     {
-      "q": "Which boy band sang “I Want It That Way”?",
+      "q": "Which 1997 album includes “Paranoid Android” and “No Surprises”?",
       "options": [
-        "NSYNC",
-        "Backstreet Boys",
-        "98 Degrees",
-        "Westlife"
+        "The Bends",
+        "OK Computer",
+        "Kid A",
+        "Pablo Honey"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "What year did the first iPhone launch?",
-      "options": [
-        "2005",
-        "2007",
-        "2009",
-        "2010"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which sitcom featured the Central Perk gang through the 1990s?",
-      "options": [
-        "Seinfeld",
-        "Friends",
-        "Frasier",
-        "Will & Grace"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who was U.S. President for most of the 1990s?",
-      "options": [
-        "George H. W. Bush",
-        "Bill Clinton",
-        "George W. Bush",
-        "Ronald Reagan"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which film trilogy began with “The Fellowship of the Ring” in 2001?",
-      "options": [
-        "Harry Potter",
-        "Lord of the Rings",
-        "Matrix",
-        "Pirates of the Caribbean"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What file-sharing service famously disrupted music in the late ’90s?",
-      "options": [
-        "Napster",
-        "Spotify",
-        "iTunes",
-        "Pandora"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which Britney Spears hit asks “Hit me baby one more time”?",
-      "options": [
-        "Oops!… I Did It Again",
-        "…Baby One More Time",
-        "Toxic",
-        "Oops"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What gaming console did Sony launch in 1994/1995 (region-dependent)?",
-      "options": [
-        "Xbox",
-        "PlayStation",
-        "Wii",
-        "Dreamcast"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which reality show marooned contestants and coined “voted off the island”?",
-      "options": [
-        "Survivor",
-        "Fear Factor",
-        "The Amazing Race",
-        "Naked and Afraid"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who sang “Crazy in Love” with Jay-Z in 2003?",
-      "options": [
-        "Beyoncé",
-        "Alicia Keys",
-        "Ciara",
-        "Jennifer Lopez"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which search engine became dominant in the 2000s?",
-      "options": [
-        "Yahoo",
-        "Google",
-        "AltaVista",
-        "Bing"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What year did Y2K fears peak around New Year?",
-      "options": [
-        "1998",
-        "1999–2000",
-        "2001",
-        "1995"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which animated series about four Colorado boys debuted in 1997?",
-      "options": [
-        "Family Guy",
-        "South Park",
-        "Futurama",
-        "King of the Hill"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which social network launched in 2004 and later became Meta’s flagship?",
-      "options": [
-        "MySpace",
-        "Facebook",
-        "Friendster",
-        "Twitter"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which film won Best Picture for 1994 at the Oscars (Forrest vs Pulp — who won)?",
-      "options": [
-        "Pulp Fiction",
-        "Forrest Gump",
-        "The Shawshank Redemption",
-        "Quiz Show"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What was the name of Apple’s music store launched with the iPod era?",
-      "options": [
-        "Apple Music",
-        "iTunes Store",
-        "Beats Store",
-        "QuickTime Shop"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which reality show debuted with Richard Hatch winning in 2000?",
-      "options": [
-        "American Idol",
-        "Survivor",
-        "The Bachelor",
-        "Big Brother US first"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Who was British Prime Minister for most of the late ’90s and 2000s (until 2007)?",
-      "options": [
-        "John Major",
-        "Tony Blair",
-        "Gordon Brown",
-        "David Cameron"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which Nokia phone era slogan was “Connecting People”?",
-      "options": [
-        "Motorola",
-        "Nokia",
-        "BlackBerry",
-        "Ericsson"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What year did YouTube launch?",
+      "q": "YouTube was founded in which year?",
       "options": [
         "2003",
         "2005",
@@ -223,32 +25,87 @@
       "difficulty": "medium"
     },
     {
-      "q": "Which Harry Potter book was published first in 1997?",
+      "q": "Which firm’s September 2008 bankruptcy became a flashpoint of the financial crisis?",
       "options": [
-        "Chamber of Secrets",
-        "Philosopher’s/Sorcerer’s Stone",
-        "Prisoner of Azkaban",
-        "Goblet of Fire"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which band’s album “OK Computer” dropped in 1997?",
-      "options": [
-        "Oasis",
-        "Radiohead",
-        "Blur",
-        "Coldplay"
+        "Bear Stearns",
+        "Lehman Brothers",
+        "Merrill Lynch",
+        "Washington Mutual"
       ],
       "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "What was the original name of Twitter’s 140-character limit tied to?",
+      "q": "Tony Blair’s UK premiership ended in which year?",
       "options": [
-        "SMS length",
-        "Email subject lines",
+        "2005",
+        "2007",
+        "2010",
+        "1997"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which Nokia candybar phone (2000) became a cultural icon with swappable covers?",
+      "options": [
+        "3210",
+        "3310",
+        "8800",
+        "N95"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The first Harry Potter novel was published in the UK in:",
+      "options": [
+        "1995",
+        "1997",
+        "1999",
+        "2001"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which 1994 Best Picture winner beat “Pulp Fiction” and “Shawshank”?",
+      "options": [
+        "Forrest Gump",
+        "The Lion King",
+        "Quiz Show",
+        "Four Weddings and a Funeral"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Apple’s iTunes Store launched in which year?",
+      "options": [
+        "2001",
+        "2003",
+        "2005",
+        "2007"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The first U.S. Survivor season (2000) was filmed in which location branding?",
+      "options": [
+        "Australian Outback",
+        "Borneo (Pulau Tiga)",
+        "Africa",
+        "Marquesas"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Twitter’s original 140-character cap was tied mainly to:",
+      "options": [
+        "SMS length constraints",
+        "Email subject limits",
         "IRC buffers",
         "Pager codes"
       ],
@@ -256,12 +113,155 @@
       "difficulty": "hard"
     },
     {
-      "q": "Which 2008 financial event is often called the Global Financial Crisis peak year?",
+      "q": "Which Swedish songwriter/producer co-wrote “…Baby One More Time,” “I Want It That Way,” and later “Blank Space”?",
       "options": [
-        "Dot-com bust",
-        "Lehman Brothers collapse year",
-        "Asian crisis",
-        "Savings & loan crisis"
+        "Denniz Pop",
+        "Max Martin",
+        "Shellback alone",
+        "Bloodshy"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Matrix (1999) popularized which on-screen visual-effect nickname?",
+      "options": [
+        "Bullet time",
+        "Dolly zoom",
+        "Smash cut",
+        "Whip pan"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which search engine’s IPO was in 2004?",
+      "options": [
+        "Yahoo",
+        "Google",
+        "Ask Jeeves",
+        "AltaVista"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Napster’s peer-to-peer service faced major legal shutdown pressure culminating around:",
+      "options": [
+        "1997",
+        "2001",
+        "2005",
+        "2008"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which animated series by Trey Parker and Matt Stone debuted in 1997?",
+      "options": [
+        "Family Guy",
+        "South Park",
+        "Futurama",
+        "King of the Hill"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "PlayStation 2 launched in Japan in which year?",
+      "options": [
+        "1998",
+        "2000",
+        "2001",
+        "2004"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which 2001 trilogy opener adapted Tolkien’s Fellowship?",
+      "options": [
+        "Harry Potter and the Sorcerer’s Stone",
+        "The Lord of the Rings: The Fellowship of the Ring",
+        "Lara Croft: Tomb Raider",
+        "Shrek"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Facebook opened registration beyond colleges to the general public in which year?",
+      "options": [
+        "2004",
+        "2006",
+        "2008",
+        "2010"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Britney Spears’ debut album (1999) shared its title with which lead single’s parenthetical stylization?",
+      "options": [
+        "Oops!…I Did It Again",
+        "…Baby One More Time",
+        "Stronger",
+        "Lucky"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The Kyoto Protocol was adopted in which year?",
+      "options": [
+        "1992",
+        "1997",
+        "2001",
+        "2005"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Destiny’s Child’s final studio album before Beyoncé’s solo breakout was titled:",
+      "options": [
+        "The Writing’s on the Wall",
+        "Survivor",
+        "Destiny Fulfilled",
+        "#1’s"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Xbox Live launched as a subscription online service in:",
+      "options": [
+        "2001",
+        "2002",
+        "2005",
+        "2006"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Before YouTube, which pair of formats dominated much early web video?",
+      "options": [
+        "RealMedia / Windows Media",
+        "AV1 / VP9",
+        "WebM / Opus",
+        "HLS native only"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Euro banknotes and coins entered circulation in:",
+      "options": [
+        "1999",
+        "2002",
+        "2004",
+        "1995"
       ],
       "correct": 1,
       "difficulty": "hard"

@@ -3,265 +3,265 @@
   "subject": "science",
   "items": [
     {
-      "q": "What gas do plants absorb during photosynthesis?",
+      "q": "Which particle mediates the electromagnetic force?",
       "options": [
-        "Oxygen",
-        "Nitrogen",
-        "Carbon dioxide",
-        "Hydrogen"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "How many bones are in an adult human skeleton (typical count)?",
-      "options": [
-        "186",
-        "206",
-        "226",
-        "256"
+        "Gluon",
+        "Photon",
+        "W boson",
+        "Z boson"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which blood type is known as the universal recipient?",
+      "q": "CRISPR-Cas systems originated as bacterial defenses primarily against:",
       "options": [
-        "O−",
-        "O+",
-        "AB+",
-        "A−"
+        "Bacteriophages",
+        "Antibiotics",
+        "Fungi",
+        "Prions"
       ],
-      "correct": 2,
-      "difficulty": "easy"
+      "correct": 0,
+      "difficulty": "hard"
     },
     {
-      "q": "Which planet is closest to the Sun?",
+      "q": "Radiocarbon dating relies on carbon-14’s half-life of roughly:",
       "options": [
+        "573 years",
+        "5,730 years",
+        "57,300 years",
+        "1.3 billion years"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which ABO genotype yields blood type AB?",
+      "options": [
+        "I^A I^A",
+        "I^A I^B",
+        "ii",
+        "I^B i"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Per Kepler’s second law, a planet moves fastest in its orbit at:",
+      "options": [
+        "Aphelion",
+        "Perihelion",
+        "Lagrangian L4",
+        "Equinox"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Oxidative phosphorylation primarily occurs in which organelle?",
+      "options": [
+        "Chloroplast",
+        "Mitochondrion",
+        "Golgi apparatus",
+        "Peroxisome"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "A solution with [H+] = 1×10^−3 M has pH:",
+      "options": [
+        "3",
+        "7",
+        "11",
+        "0"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The SI unit of electrical capacitance is the:",
+      "options": [
+        "Ohm",
+        "Farad",
+        "Henry",
+        "Siemens"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Rhizobium nitrogen fixation in legumes occurs mainly in:",
+      "options": [
+        "Root nodules",
+        "Leaf stomata",
+        "Xylem vessels",
+        "Flower ovaries"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which planet has a sidereal day longer than its year?",
+      "options": [
+        "Mars",
         "Venus",
         "Mercury",
-        "Earth",
-        "Mars"
+        "Neptune"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "What force keeps planets in orbit around the Sun?",
+      "q": "Avogadro’s number is approximately:",
       "options": [
-        "Magnetism",
-        "Gravity",
-        "Friction",
-        "Electricity"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which organ pumps blood through the body?",
-      "options": [
-        "Liver",
-        "Lungs",
-        "Heart",
-        "Kidneys"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the boiling point of water at standard pressure (Celsius)?",
-      "options": [
-        "90°C",
-        "100°C",
-        "110°C",
-        "212°C"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which vitamin is produced in skin exposed to sunlight?",
-      "options": [
-        "Vitamin A",
-        "Vitamin C",
-        "Vitamin D",
-        "Vitamin K"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What do bees collect from flowers to make honey?",
-      "options": [
-        "Pollen only",
-        "Nectar",
-        "Sap",
-        "Dew"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which blood cells help the body fight infection?",
-      "options": [
-        "Red blood cells",
-        "White blood cells",
-        "Platelets",
-        "Plasma only"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the center of an atom called?",
-      "options": [
-        "Electron",
-        "Neutron cloud",
-        "Nucleus",
-        "Orbit"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which animal is a mammal that lays eggs?",
-      "options": [
-        "Platypus",
-        "Penguin",
-        "Crocodile",
-        "Shark"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What scale measures earthquake magnitude?",
-      "options": [
-        "Beaufort",
-        "Richter (and modern moment magnitude)",
-        "Fujita",
-        "Pascal"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which planet is famous for its prominent ring system?",
-      "options": [
-        "Jupiter",
-        "Saturn",
-        "Neptune",
-        "Mars"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What does DNA stand for?",
-      "options": [
-        "Deoxyribonucleic acid",
-        "Dynamic nuclear acid",
-        "Dual nucleotide array",
-        "Dioxin nucleic agent"
+        "6.022×10^23",
+        "3.00×10^8",
+        "1.602×10^−19",
+        "9.81"
       ],
       "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which scientist proposed the three laws of motion?",
+      "q": "Scurvy results from deficiency of which vitamin?",
       "options": [
-        "Einstein",
-        "Newton",
-        "Galileo",
-        "Kepler"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the most abundant gas in Earth’s atmosphere?",
-      "options": [
-        "Oxygen",
-        "Carbon dioxide",
-        "Nitrogen",
-        "Argon"
+        "A",
+        "B12",
+        "C",
+        "D"
       ],
       "correct": 2,
       "difficulty": "medium"
     },
     {
-      "q": "Which particle has a negative charge?",
+      "q": "Hardy–Weinberg equilibrium is broken by which of these?",
       "options": [
-        "Proton",
-        "Neutron",
-        "Electron",
-        "Photon"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the chemical symbol for iron?",
-      "options": [
-        "Ir",
-        "Fe",
-        "In",
-        "I"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which part of the cell contains genetic material in eukaryotes?",
-      "options": [
-        "Mitochondria",
-        "Nucleus",
-        "Ribosome",
-        "Golgi body"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What type of rock is formed from cooled magma or lava?",
-      "options": [
-        "Sedimentary",
-        "Metamorphic",
-        "Igneous",
-        "Fossilized"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Approximately how old is the Earth?",
-      "options": [
-        "4.6 million years",
-        "46 million years",
-        "4.6 billion years",
-        "13.8 billion years"
+        "Infinite population size",
+        "No mutation",
+        "Strong directional selection",
+        "Random mating"
       ],
       "correct": 2,
       "difficulty": "hard"
     },
     {
-      "q": "Which element has the chemical symbol “K”?",
+      "q": "CERN announced discovery of which boson in 2012?",
+      "options": [
+        "Top quark",
+        "Higgs boson",
+        "Tau neutrino",
+        "Gluon"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Under typical conditions, sound travels fastest through:",
+      "options": [
+        "Air",
+        "Fresh water",
+        "Steel",
+        "Vacuum"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which era immediately precedes the Mesozoic in the Phanerozoic?",
+      "options": [
+        "Cenozoic",
+        "Paleozoic",
+        "Quaternary",
+        "Neogene"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In Linnaean ranks, which sits directly above species?",
+      "options": [
+        "Order",
+        "Genus",
+        "Family",
+        "Class"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Jupiter’s atmosphere is dominated by which gas?",
+      "options": [
+        "Oxygen",
+        "Hydrogen",
+        "Carbon dioxide",
+        "Nitrogen"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Cone density peaks in which retinal region?",
+      "options": [
+        "Optic disc",
+        "Fovea",
+        "Choroid",
+        "Ora serrata"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Boyle’s law relates pressure and volume of an ideal gas when which is held constant?",
+      "options": [
+        "Mass only",
+        "Temperature",
+        "Density alone",
+        "Entropy"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Enriched nuclear reactor fuel primarily increases the fraction of:",
+      "options": [
+        "U-235",
+        "U-238",
+        "Th-232",
+        "Pu-241"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Cone-bearing seed plants without true flowers are:",
+      "options": [
+        "Angiosperms",
+        "Gymnosperms",
+        "Bryophytes",
+        "Ferns"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "The Mid-Atlantic Ridge is primarily which plate boundary type?",
+      "options": [
+        "Convergent",
+        "Divergent",
+        "Transform only",
+        "Passive margin"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which element has chemical symbol K?",
       "options": [
         "Krypton",
         "Potassium",
         "Calcium",
         "Phosphorus"
-      ],
-      "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "What is the speed of light in a vacuum (approx.)?",
-      "options": [
-        "3×10^5 km/s",
-        "3×10^8 m/s",
-        "3×10^6 m/s",
-        "300 mph"
       ],
       "correct": 1,
       "difficulty": "hard"

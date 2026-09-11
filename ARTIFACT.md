@@ -12,7 +12,7 @@
 - **how_to_run:** `python3 -m http.server 5180 --directory /workspace/nightdeck` → http://127.0.0.1:5180/
 - **live_url:** https://dev-storm-clockers.github.io/nightdeck/
 - **owner_agent:** Build Head
-- **ready_for_quality:** yes
-- **pass:** 12
+- **ready_for_quality:** no
+- **pass:** 13
 - **notes:** |
-  **Pass 12 — Music harder + visual:** `data/music.json` rebuilt (22 items) — famous lyric gimmes purged (no Bohemian / Don’t Stop Believin’ / Happy / Rickroll peers). Majority harder mix: deep-cut lyric fragments, name-the-album, decade/year without title giveaway. Optional `image` on items → original SVG cards under `assets/music/` (10 abstract cards; no scraped/hotlinked commercial art). `play.html` shows `.music-card` when `item.image` present; `game.js` snapshots `image`. Trivia + Identify + Pass 9 grading + brand + Upstash board untouched. Local smoke :5180. Prefer STOP after Quality GO — `ready_for_quality: yes` live smoke PASS @ `93eeeee`.
+  **Pass 13 — Trivia harder:** All 8 `data/trivia/*.json` rewritten (24 each) — pub-quiz gimmes purged; majority `hard`, rest `medium`; no `easy`. Near-miss distractors. Pass 9 grading / `game.js` schema intact. Music Pass 12 bank untouched (22 items). Trivia + Identify playable. Files: general, pop, movies, science, geo, food, decades, mixed. See PASS13-NOTES.md. Prefer STOP after Quality GO — `ready_for_quality: no` until smoke/spot-check.

@@ -3,249 +3,260 @@
   "subject": "movies",
   "items": [
     {
-      "q": "At his wedding to Emily, whose name does Ross say by mistake?",
+      "q": "Which Coen Brothers film opens on a hat tumbling across snowy Minnesota prairie?",
       "options": [
-        "Monica",
-        "Rachel",
-        "Phoebe",
-        "Carol"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which film features the line “I’ll be back”?",
-      "options": [
-        "Predator",
-        "The Terminator",
-        "Aliens",
-        "Commando"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who plays Iron Man in the Marvel Cinematic Universe?",
-      "options": [
-        "Chris Evans",
-        "Robert Downey Jr.",
-        "Chris Hemsworth",
-        "Mark Ruffalo"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the name of the coffee shop in “Friends”?",
-      "options": [
-        "Central Perk",
-        "Monk’s Café",
-        "Luke’s Diner",
-        "MacLaren’s"
+        "Fargo",
+        "No Country for Old Men",
+        "Miller’s Crossing",
+        "The Big Lebowski"
       ],
       "correct": 0,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which animated film is about a clownfish searching for his son?",
+      "q": "Who wrote and directed “Get Out” (2017)?",
       "options": [
-        "Shark Tale",
-        "Finding Nemo",
-        "The Little Mermaid",
-        "Luca"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "In “The Office” (U.S.), who is regional manager at the start?",
-      "options": [
-        "Jim Halpert",
-        "Dwight Schrute",
-        "Michael Scott",
-        "David Wallace"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which movie won Best Picture at the 2020 Oscars (for 2019 films)?",
-      "options": [
-        "1917",
-        "Joker",
-        "Parasite",
-        "Once Upon a Time in Hollywood"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who directed “Jurassic Park” (1993)?",
-      "options": [
-        "James Cameron",
-        "Steven Spielberg",
-        "Ridley Scott",
-        "George Lucas"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What house does Harry Potter get sorted into?",
-      "options": [
-        "Slytherin",
-        "Hufflepuff",
-        "Ravenclaw",
-        "Gryffindor"
-      ],
-      "correct": 3,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which Netflix series follows Eleven and the Upside Down?",
-      "options": [
-        "Dark",
-        "Stranger Things",
-        "The OA",
-        "Locke & Key"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "In “Breaking Bad,” what is Walter White’s street alias?",
-      "options": [
-        "Heisenberg",
-        "Saul",
-        "Gus",
-        "Spider"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which actress plays Elle Woods in “Legally Blonde”?",
-      "options": [
-        "Reese Witherspoon",
-        "Jennifer Aniston",
-        "Cameron Diaz",
-        "Kirsten Dunst"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the highest-grossing film of all time (nominal, often cited with Avatar)?",
-      "options": [
-        "Avengers: Endgame",
-        "Avatar",
-        "Titanic",
-        "Star Wars: The Force Awakens"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which sitcom is set at a bar in Boston called Cheers?",
-      "options": [
-        "Frasier",
-        "Cheers",
-        "How I Met Your Mother",
-        "Taxi"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who composed the score for “Inception” and “Interstellar”?",
-      "options": [
-        "John Williams",
-        "Hans Zimmer",
-        "Howard Shore",
-        "James Horner"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In “Game of Thrones,” what is the name of Jon Snow’s direwolf?",
-      "options": [
-        "Ghost",
-        "Nymeria",
-        "Summer",
-        "Grey Wind"
+        "Jordan Peele",
+        "Barry Jenkins",
+        "Ryan Coogler",
+        "Ava DuVernay"
       ],
       "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which film trilogy is based on Tolkien’s “The Lord of the Rings”?",
+      "q": "Ridley Scott’s 1979 film with the tagline “In space no one can hear you scream” is:",
       "options": [
-        "The Hobbit only",
-        "Peter Jackson’s LOTR films",
-        "Narnia",
-        "His Dark Materials"
+        "Blade Runner",
+        "Alien",
+        "The Thing",
+        "Event Horizon"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What year did the first “Toy Story” film release?",
+      "q": "The investigative drama “Spotlight” (2015) is set at which newspaper?",
       "options": [
-        "1993",
-        "1995",
-        "1997",
-        "1999"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which TV series features the fictional country of Westeros?",
-      "options": [
-        "The Witcher",
-        "Game of Thrones",
-        "Shadow and Bone",
-        "His Dark Materials"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Who played the Caped Crusader in Christopher Nolan’s Dark Knight trilogy?",
-      "options": [
-        "Ben Affleck",
-        "Christian Bale",
-        "Michael Keaton",
-        "George Clooney"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which movie features a talking snowman named Olaf?",
-      "options": [
-        "Tangled",
-        "Frozen",
-        "Moana",
-        "Brave"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which 1994 film stars Tim Robbins and Morgan Freeman in a prison drama?",
-      "options": [
-        "Pulp Fiction",
-        "The Shawshank Redemption",
-        "Forrest Gump",
-        "Se7en"
+        "The New York Times",
+        "The Boston Globe",
+        "The Washington Post",
+        "Chicago Tribune"
       ],
       "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "Who created the TV series “The Sopranos”?",
+      "q": "In “Succession,” which Roy sibling champions the “Living+” pitch?",
+      "options": [
+        "Roman",
+        "Kendall",
+        "Shiv",
+        "Connor"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who played Amy Dunne in David Fincher’s “Gone Girl”?",
+      "options": [
+        "Rosamund Pike",
+        "Reese Witherspoon",
+        "Amy Adams",
+        "Jessica Chastain"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which Tarantino film bookends with a diner robbery and a nonlinear timeline?",
+      "options": [
+        "Kill Bill Vol. 1",
+        "Pulp Fiction",
+        "Reservoir Dogs",
+        "Jackie Brown"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In “Breaking Bad,” Gus Fring’s distribution front is a chicken chain named Los Pollos Hermanos; in which U.S. state is much of the series set?",
+      "options": [
+        "Texas",
+        "New Mexico",
+        "Arizona",
+        "Nevada"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Hitchcock’s courtyard-surveillance thriller starring James Stewart is:",
+      "options": [
+        "Vertigo",
+        "Rear Window",
+        "Psycho",
+        "North by Northwest"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Who co-created “Twin Peaks” with Mark Frost?",
+      "options": [
+        "David Cronenberg",
+        "David Lynch",
+        "John Carpenter",
+        "Wes Craven"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In “The Good Place,” Michael is portrayed as what kind of being for most of Season 1?",
+      "options": [
+        "An angel",
+        "A demon architect",
+        "A human intern",
+        "A Judge"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which Studio Ghibli film won the first Oscar for Best Animated Feature?",
+      "options": [
+        "Princess Mononoke",
+        "Spirited Away",
+        "Howl’s Moving Castle",
+        "Porco Rosso"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In Nolan’s “The Prestige,” Christian Bale plays which magician?",
+      "options": [
+        "Robert Angier",
+        "Alfred Borden",
+        "Cutter",
+        "Nikola Tesla"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "“How I Met Your Mother” frames Ted telling the story to his kids via what device?",
+      "options": [
+        "A podcast",
+        "A future framing narration",
+        "Found home video",
+        "Court testimony"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who directed “Moonlight” (2016)?",
+      "options": [
+        "Barry Jenkins",
+        "Dee Rees",
+        "Steve McQueen",
+        "Ava DuVernay"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "HBO’s “Chernobyl” dramatizes the 1986 disaster at which plant?",
+      "options": [
+        "Fukushima Daiichi",
+        "Chernobyl (Pripyat)",
+        "Three Mile Island",
+        "Sellafield"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which actress’s Best Actress win preceded the 2017 Best Picture envelope mix-up?",
+      "options": [
+        "Emma Stone",
+        "Natalie Portman",
+        "Jennifer Lawrence",
+        "Brie Larson"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Jimmy McGill’s brother in “Better Call Saul” is named:",
+      "options": [
+        "Chuck",
+        "Howard",
+        "Kim",
+        "Nacho"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Jim Carrey’s 1998 constructed-reality comedy is:",
+      "options": [
+        "Eternal Sunshine of the Spotless Mind",
+        "The Truman Show",
+        "EdTV",
+        "Bruce Almighty"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who composed the “Game of Thrones” main title theme?",
+      "options": [
+        "Hans Zimmer",
+        "Ramin Djawadi",
+        "Bear McCreary",
+        "John Williams"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Phoebe Waller-Bridge’s “Fleabag” breaks the fourth wall via:",
+      "options": [
+        "Diary voice-over",
+        "Direct-to-camera asides",
+        "A documentary crew",
+        "Dream sequences"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In “Mad Men,” Don Draper’s birth name is:",
+      "options": [
+        "Dick Whitman",
+        "Donald Sterling",
+        "Pete Campbell",
+        "Roger Sterling"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In Coppola’s “The Godfather Part II,” which actor plays young Vito Corleone?",
+      "options": [
+        "Al Pacino",
+        "Robert De Niro",
+        "James Caan",
+        "John Cazale"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who created “The Sopranos”?",
       "options": [
         "David Chase",
         "David Simon",
@@ -253,17 +264,6 @@
         "Vince Gilligan"
       ],
       "correct": 0,
-      "difficulty": "hard"
-    },
-    {
-      "q": "In “The Matrix,” what color pill does Neo take to see the truth?",
-      "options": [
-        "Blue",
-        "Red",
-        "Green",
-        "Yellow"
-      ],
-      "correct": 1,
       "difficulty": "hard"
     }
   ]

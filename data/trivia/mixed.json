@@ -3,267 +3,267 @@
   "subject": "mixed",
   "items": [
     {
-      "q": "Which country uses the yen as its official currency?",
+      "q": "Which treaty formally ended World War I for Germany in 1919?",
       "options": [
-        "China",
-        "Japan",
-        "South Korea",
-        "Thailand"
+        "Treaty of Versailles",
+        "Treaty of Trianon",
+        "Treaty of Brest-Litovsk",
+        "Locarno Pact"
       ],
-      "correct": 1,
-      "difficulty": "easy"
+      "correct": 0,
+      "difficulty": "hard"
     },
     {
-      "q": "Who plays Iron Man in the Marvel Cinematic Universe?",
+      "q": "Who directed “Parasite” (2019)?",
       "options": [
-        "Chris Evans",
-        "Robert Downey Jr.",
-        "Chris Hemsworth",
-        "Mark Ruffalo"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What spirit is the base of a classic mojito?",
-      "options": [
-        "Vodka",
-        "Gin",
-        "Rum",
-        "Tequila"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which river flows through Egypt?",
-      "options": [
-        "Amazon",
-        "Nile",
-        "Danube",
-        "Yangtze"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which boy band sang “I Want It That Way”?",
-      "options": [
-        "NSYNC",
-        "Backstreet Boys",
-        "98 Degrees",
-        "Westlife"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What gas do plants absorb during photosynthesis?",
-      "options": [
-        "Oxygen",
-        "Nitrogen",
-        "Carbon dioxide",
-        "Hydrogen"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which pop star’s 2014 album is titled “1989”?",
-      "options": [
-        "Rihanna",
-        "Taylor Swift",
-        "Lady Gaga",
-        "Katy Perry"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the capital of Australia?",
-      "options": [
-        "Sydney",
-        "Melbourne",
-        "Canberra",
-        "Brisbane"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "In “The Office” (U.S.), who is regional manager at the start?",
-      "options": [
-        "Jim Halpert",
-        "Dwight Schrute",
-        "Michael Scott",
-        "David Wallace"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which chess piece can jump over other pieces?",
-      "options": [
-        "Bishop",
-        "Rook",
-        "Knight",
-        "Queen"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What year did the first iPhone launch?",
-      "options": [
-        "2005",
-        "2007",
-        "2009",
-        "2010"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which bean is the main ingredient in traditional hummus?",
-      "options": [
-        "Black beans",
-        "Chickpeas",
-        "Lentils",
-        "Kidney beans"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What force keeps planets in orbit around the Sun?",
-      "options": [
-        "Magnetism",
-        "Gravity",
-        "Friction",
-        "Electricity"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who wrote the novel “1984”?",
-      "options": [
-        "Aldous Huxley",
-        "George Orwell",
-        "Ray Bradbury",
-        "Philip K. Dick"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which canal connects the Atlantic and Pacific Oceans?",
-      "options": [
-        "Suez",
-        "Panama",
-        "Kiel",
-        "Corinth"
+        "Park Chan-wook",
+        "Bong Joon-ho",
+        "Lee Chang-dong",
+        "Hirokazu Kore-eda"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Who composed the score for “Inception” and “Interstellar”?",
+      "q": "Traditional béarnaise leans on which herb beyond a hollandaise base?",
       "options": [
-        "John Williams",
-        "Hans Zimmer",
-        "Howard Shore",
-        "James Horner"
+        "Tarragon",
+        "Basil",
+        "Dill",
+        "Oregano"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Strait of Hormuz connects the Persian Gulf to the:",
+      "options": [
+        "Red Sea",
+        "Gulf of Oman",
+        "Mediterranean",
+        "Black Sea"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which 1997 Radiohead album includes “Paranoid Android”?",
+      "options": [
+        "The Bends",
+        "OK Computer",
+        "Kid A",
+        "Amnesiac"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which particle mediates electromagnetism?",
+      "options": [
+        "Gluon",
+        "Photon",
+        "W boson",
+        "Neutrino"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Virgil Abloh led menswear at which house until 2021?",
+      "options": [
+        "Dior",
+        "Louis Vuitton",
+        "Gucci",
+        "Prada"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Lake Baikal is located in:",
+      "options": [
+        "Mongolia",
+        "Russia",
+        "Finland",
+        "Canada"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What does an IPA stand for in craft beer?",
+      "q": "In “Fleabag,” the fourth wall is broken via:",
       "options": [
-        "Indian Pale Ale",
-        "India Pale Ale",
-        "Irish Pilsner Ale",
-        "Imperial Porter Ale"
+        "Narration diary",
+        "Direct-to-camera asides",
+        "Found footage",
+        "Musical numbers"
       ],
       "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "A Negroni is gin, sweet vermouth, and:",
+      "options": [
+        "Campari",
+        "Aperol",
+        "Chartreuse",
+        "Fernet"
+      ],
+      "correct": 0,
       "difficulty": "medium"
     },
     {
-      "q": "Which scientist proposed the three laws of motion?",
-      "options": [
-        "Einstein",
-        "Newton",
-        "Galileo",
-        "Kepler"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What year did YouTube launch?",
+      "q": "YouTube launched in which year?",
       "options": [
         "2003",
         "2005",
         "2007",
-        "2008"
+        "2009"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "Which artist released the album “Lemonade” in 2016?",
+      "q": "Kepler’s second law implies planets move fastest at:",
       "options": [
-        "Beyoncé",
-        "Rihanna",
-        "Solange",
-        "Alicia Keys"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In which year did the Titanic sink?",
-      "options": [
-        "1905",
-        "1912",
-        "1918",
-        "1923"
+        "Aphelion",
+        "Perihelion",
+        "Opposition",
+        "Quadrature"
       ],
       "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Approximately how old is the Earth?",
-      "options": [
-        "4.6 million years",
-        "46 million years",
-        "4.6 billion years",
-        "13.8 billion years"
-      ],
-      "correct": 2,
       "difficulty": "hard"
     },
     {
-      "q": "Who created the TV series “The Sopranos”?",
+      "q": "Who created “The Sopranos”?",
       "options": [
         "David Chase",
         "David Simon",
         "Matthew Weiner",
-        "Vince Gilligan"
+        "Aaron Sorkin"
       ],
       "correct": 0,
       "difficulty": "hard"
     },
     {
-      "q": "What is the deepest known point in Earth’s oceans called?",
+      "q": "Which microstate is an enclave entirely within Italy (besides Vatican City)?",
       "options": [
-        "Mariana Trench’s Challenger Deep",
-        "Puerto Rico Trench",
-        "Tonga Trench",
-        "Java Trench"
+        "Monaco",
+        "San Marino",
+        "Andorra",
+        "Liechtenstein"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "CRISPR-Cas systems first evolved as defenses against:",
+      "options": [
+        "Bacteriophages",
+        "Antibiotics",
+        "Fungal spores",
+        "Heavy metals"
       ],
       "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who composed the score for “Black Panther” (2018)?",
+      "options": [
+        "Hans Zimmer",
+        "Ludwig Göransson",
+        "John Williams",
+        "Hildur Guðnadóttir"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which landlocked country borders Brazil, Argentina, and Bolivia?",
+      "options": [
+        "Uruguay",
+        "Paraguay",
+        "Chile",
+        "Suriname"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In heraldry, “or” means:",
+      "options": [
+        "Silver",
+        "Gold",
+        "Green",
+        "Purple"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Lehman Brothers collapsed in which crisis year?",
+      "options": [
+        "2001",
+        "2008",
+        "2011",
+        "1998"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Studio Ghibli film won the first Best Animated Feature Oscar?",
+      "options": [
+        "Princess Mononoke",
+        "Spirited Away",
+        "My Neighbor Totoro",
+        "Howl’s Moving Castle"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Umami was linked to which compound isolated from kombu?",
+      "options": [
+        "Capsaicin",
+        "Glutamate / MSG",
+        "Caffeine",
+        "Tannin"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Durand Line borders Afghanistan and:",
+      "options": [
+        "Iran",
+        "Pakistan",
+        "China",
+        "India"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Don Draper’s birth name in “Mad Men” is:",
+      "options": [
+        "Dick Whitman",
+        "Pete Campbell",
+        "Lane Pryce",
+        "Ted Chaough"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Mid-Atlantic Ridge is primarily a:",
+      "options": [
+        "Convergent boundary",
+        "Divergent boundary",
+        "Transform fault only",
+        "Hotspot"
+      ],
+      "correct": 1,
       "difficulty": "hard"
     }
   ]

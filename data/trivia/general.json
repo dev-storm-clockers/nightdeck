@@ -3,268 +3,268 @@
   "subject": "general",
   "items": [
     {
-      "q": "Which country uses the yen as its official currency?",
+      "q": "Which treaty formally ended World War I for Germany in 1919?",
       "options": [
-        "China",
-        "Japan",
-        "South Korea",
-        "Thailand"
+        "Treaty of Versailles",
+        "Treaty of Trianon",
+        "Treaty of Brest-Litovsk",
+        "Locarno Pact"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The Rosetta Stone helped decipher hieroglyphs by aligning them with Demotic and which language?",
+      "options": [
+        "Latin",
+        "Greek",
+        "Aramaic",
+        "Phoenician"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "What do you call a group of lions?",
+      "q": "Which U.S. constitutional amendment lowered the voting age to 18?",
       "options": [
-        "Herd",
-        "Pack",
-        "Pride",
-        "Flock"
+        "19th",
+        "24th",
+        "26th",
+        "22nd"
       ],
       "correct": 2,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which U.S. document begins “We the People”?",
+      "q": "Which economist authored “The General Theory of Employment, Interest and Money” (1936)?",
       "options": [
-        "Declaration of Independence",
-        "Bill of Rights",
-        "Constitution",
-        "Federalist Papers"
+        "Milton Friedman",
+        "John Maynard Keynes",
+        "Friedrich Hayek",
+        "Adam Smith"
       ],
-      "correct": 2,
-      "difficulty": "easy"
+      "correct": 1,
+      "difficulty": "hard"
     },
     {
-      "q": "How many players are on the field for one soccer team during open play?",
+      "q": "The Magna Carta was sealed in 1215 at which location?",
       "options": [
-        "9",
+        "Runnymede",
+        "Salisbury Plain",
+        "Bosworth Field",
+        "Hastings"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which chess opening begins with the moves 1.e4 c5?",
+      "options": [
+        "French Defense",
+        "Sicilian Defense",
+        "Caro-Kann",
+        "King’s Gambit"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "How many regional Federal Reserve Banks exist in the U.S. system?",
+      "options": [
         "10",
+        "12",
+        "14",
+        "50"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which playwright wrote “Waiting for Godot”?",
+      "options": [
+        "Harold Pinter",
+        "Samuel Beckett",
+        "Tom Stoppard",
+        "Eugene Ionesco"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The SI base unit of luminous intensity is the:",
+      "options": [
+        "Lumen",
+        "Candela",
+        "Lux",
+        "Watt"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which empire’s capital was Tenochtitlán before the Spanish conquest?",
+      "options": [
+        "Inca",
+        "Maya",
+        "Aztec",
+        "Olmec"
+      ],
+      "correct": 2,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In contract bridge, taking all 13 tricks is called a:",
+      "options": [
+        "Small slam",
+        "Grand slam",
+        "Rubber",
+        "Vulnerable game"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Finnish, Estonian, and Hungarian belong to which language family?",
+      "options": [
+        "Slavic",
+        "Germanic",
+        "Uralic",
+        "Romance"
+      ],
+      "correct": 2,
+      "difficulty": "hard"
+    },
+    {
+      "q": "The “shot heard round the world” refers to fighting at:",
+      "options": [
+        "Bunker Hill",
+        "Lexington and Concord",
+        "Yorktown",
+        "Saratoga"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which composer’s Symphony No. 8 in B minor is nicknamed the “Unfinished”?",
+      "options": [
+        "Franz Schubert",
+        "Ludwig van Beethoven",
+        "Anton Bruckner",
+        "Gustav Mahler"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "A traditional baker’s dozen counts how many items?",
+      "options": [
         "11",
-        "12"
+        "12",
+        "13",
+        "14"
       ],
       "correct": 2,
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
-      "q": "Which artist painted the ceiling of the Sistine Chapel?",
+      "q": "Which African state largely resisted formal colonization and defeated Italy at Adwa in 1896?",
       "options": [
-        "Leonardo da Vinci",
-        "Michelangelo",
-        "Raphael",
-        "Donatello"
+        "Liberia",
+        "Ethiopia",
+        "Ghana",
+        "Morocco"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "What is the tallest mountain above sea level on Earth?",
+      "q": "Nobel Prizes are presented in Stockholm except which prize, awarded in Oslo?",
       "options": [
-        "K2",
-        "Kangchenjunga",
-        "Mount Everest",
-        "Denali"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which language has the most native speakers worldwide?",
-      "options": [
-        "English",
-        "Spanish",
-        "Mandarin Chinese",
-        "Hindi"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "In standard poker, which hand beats a flush?",
-      "options": [
-        "Three of a kind",
-        "Straight",
-        "Full house",
-        "Two pair"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which planet has the most moons (known count keeps rising, but which leads)?",
-      "options": [
-        "Jupiter",
-        "Saturn",
-        "Uranus",
-        "Neptune"
+        "Literature",
+        "Peace",
+        "Economics",
+        "Chemistry"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
-      "q": "What does GPS stand for?",
+      "q": "Which knot is classically used to join two ropes of roughly equal diameter?",
       "options": [
-        "Global Positioning System",
-        "General Pinpoint Satellite",
-        "Geographic Point Scanner",
-        "Ground Path Sync"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which blood type is often called the universal donor?",
-      "options": [
-        "AB+",
-        "A−",
-        "O−",
-        "B+"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who wrote the novel “1984”?",
-      "options": [
-        "Aldous Huxley",
-        "George Orwell",
-        "Ray Bradbury",
-        "Philip K. Dick"
+        "Clove hitch",
+        "Sheet bend",
+        "Bowline",
+        "Trucker's hitch"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which chess piece can jump over other pieces?",
+      "q": "In heraldry, the tincture “or” means:",
       "options": [
-        "Bishop",
-        "Rook",
-        "Knight",
-        "Queen"
+        "Silver / white",
+        "Gold / yellow",
+        "Red",
+        "Blue"
       ],
-      "correct": 2,
-      "difficulty": "easy"
+      "correct": 1,
+      "difficulty": "hard"
     },
     {
-      "q": "What is the capital of Canada?",
+      "q": "Which city hosted the first modern Olympic Games in 1896?",
       "options": [
-        "Toronto",
-        "Vancouver",
-        "Ottawa",
-        "Montreal"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which ancient city was buried by Vesuvius in 79 AD?",
-      "options": [
+        "Paris",
         "Athens",
-        "Pompeii",
-        "Carthage",
-        "Troy"
+        "London",
+        "Rome"
       ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What does the “M” stand for in HTML?",
+      "q": "The Beaufort scale was originally devised to rank:",
       "options": [
-        "Markup",
-        "Machine",
-        "Module",
-        "Media"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which composer wrote “The Four Seasons”?",
-      "options": [
-        "Bach",
-        "Mozart",
-        "Vivaldi",
-        "Handel"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "In which year did the Titanic sink?",
-      "options": [
-        "1905",
-        "1912",
-        "1918",
-        "1923"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the largest internal organ in the human body?",
-      "options": [
-        "Liver",
-        "Brain",
-        "Lungs",
-        "Heart"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which country hosted the 2016 Summer Olympics?",
-      "options": [
-        "China",
-        "United Kingdom",
-        "Brazil",
-        "Russia"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the chemical formula for table salt?",
-      "options": [
-        "NaCl",
-        "KCl",
-        "CaCO3",
-        "H2SO4"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which Shakespeare play features the line “To be, or not to be”?",
-      "options": [
-        "Macbeth",
-        "Othello",
-        "Hamlet",
-        "King Lear"
-      ],
-      "correct": 2,
-      "difficulty": "hard"
-    },
-    {
-      "q": "About how long does light from the Sun take to reach Earth?",
-      "options": [
-        "8 seconds",
-        "8 minutes",
-        "8 hours",
-        "8 days"
+        "Earthquake intensity",
+        "Wind force at sea",
+        "Hurricane categories",
+        "Tornado damage"
       ],
       "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "Which Nobel Prize category did Marie Curie win twice (across fields)?",
+      "q": "Which philosopher wrote “Critique of Pure Reason”?",
       "options": [
-        "Only Physics",
-        "Physics and Chemistry",
-        "Chemistry and Medicine",
-        "Peace and Literature"
+        "Hegel",
+        "Immanuel Kant",
+        "Descartes",
+        "Hume"
       ],
       "correct": 1,
       "difficulty": "hard"
+    },
+    {
+      "q": "How many national teams contested the 2022 FIFA World Cup finals?",
+      "options": [
+        "24",
+        "32",
+        "36",
+        "48"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which ancient library’s destruction is tied to classical Alexandria?",
+      "options": [
+        "Library of Pergamon",
+        "Library of Alexandria",
+        "Library of Ashurbanipal",
+        "Villa of the Papyri"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
     }
   ]
 }

@@ -3,268 +3,268 @@
   "subject": "food",
   "items": [
     {
-      "q": "Which grain is sushi rice typically made from?",
+      "q": "Traditional béarnaise is distinguished from hollandaise mainly by which herb?",
       "options": [
-        "Basmati",
-        "Short-grain japonica",
-        "Quinoa",
-        "Wild rice"
+        "Tarragon",
+        "Rosemary",
+        "Mint",
+        "Cilantro"
       ],
-      "correct": 1,
-      "difficulty": "easy"
+      "correct": 0,
+      "difficulty": "hard"
     },
     {
-      "q": "What spirit is the base of a classic mojito?",
+      "q": "Which French mother sauce is a white sauce of milk thickened with roux?",
+      "options": [
+        "Velouté",
+        "Béchamel",
+        "Espagnole",
+        "Hollandaise"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "In Japanese cuisine, dashi is most classically built from kombu and:",
+      "options": [
+        "Miso paste",
+        "Katsuobushi (bonito flakes)",
+        "Soy sauce alone",
+        "Mirin only"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which grape variety is the primary red grape of Burgundy’s Côte d’Or?",
+      "options": [
+        "Cabernet Sauvignon",
+        "Pinot Noir",
+        "Syrah",
+        "Merlot"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "A Negroni is equal parts gin, sweet vermouth, and:",
+      "options": [
+        "Campari",
+        "Aperol",
+        "Fernet",
+        "Cynar"
+      ],
+      "correct": 0,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which Mexican chile is a smoked, dried jalapeño?",
+      "options": [
+        "Ancho",
+        "Chipotle",
+        "Guajillo",
+        "Pasilla"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Pasta water’s starch helps emulsify which Roman classic of guanciale, egg, and pecorino?",
+      "options": [
+        "Cacio e pepe",
+        "Carbonara",
+        "Amatriciana",
+        "Gricia"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which tea term refers to a whole-leaf grade family (not fannings or dust)?",
+      "options": [
+        "CTC crush",
+        "Orange Pekoe",
+        "Instant soluble",
+        "Brick compressed"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Sous-vide cooking typically holds food in a precisely controlled:",
+      "options": [
+        "Dry smoker",
+        "Water bath",
+        "Pressure fryer",
+        "Salamander"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which cheese is aged in caves near Roquefort-sur-Soulzon and is a blue?",
+      "options": [
+        "Gorgonzola",
+        "Roquefort",
+        "Stilton",
+        "Cabrales"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In baking, the Maillard reaction primarily needs proteins/amino acids plus:",
+      "options": [
+        "Salt only",
+        "Reducing sugars and heat",
+        "Yeast alone",
+        "Steam"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which spirit must be made from blue Weber agave in specific Mexican states to be labeled tequila?",
+      "options": [
+        "Mezcal (any agave)",
+        "Tequila",
+        "Sotol",
+        "Baijiu"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Umami was identified as a fifth taste after isolation of which compound from kombu?",
+      "options": [
+        "Capsaicin",
+        "Monosodium glutamate (glutamate)",
+        "Quinine",
+        "Menthol"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which cut is the source of traditional osso buco?",
+      "options": [
+        "Beef short rib",
+        "Veal shank cross-cut",
+        "Pork belly",
+        "Lamb rack"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "A classic dry martini’s traditional base spirit is:",
       "options": [
         "Vodka",
         "Gin",
         "Rum",
         "Tequila"
       ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which cheese is traditionally used on a Margherita pizza?",
-      "options": [
-        "Cheddar",
-        "Mozzarella",
-        "Gouda",
-        "Blue cheese"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What fruit is dried to make raisins?",
-      "options": [
-        "Apricot",
-        "Grape",
-        "Plum",
-        "Fig"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which country is credited with inventing pizza as we know it?",
-      "options": [
-        "France",
-        "Italy",
-        "Greece",
-        "Spain"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is tofu primarily made from?",
-      "options": [
-        "Rice",
-        "Soybeans",
-        "Almonds",
-        "Chickpeas"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which spice gives mustard its heat and yellow color (often with turmeric)?",
-      "options": [
-        "Cumin",
-        "Mustard seed",
-        "Paprika",
-        "Saffron"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What cocktail is gin + tonic water?",
-      "options": [
-        "G&T",
-        "Martini",
-        "Negroni",
-        "Tom Collins"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which nut is used to make marzipan?",
-      "options": [
-        "Walnut",
-        "Almond",
-        "Cashew",
-        "Pistachio"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What does “al dente” describe about pasta?",
-      "options": [
-        "Overcooked",
-        "Firm to the bite",
-        "Served cold",
-        "Stuffed"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which bean is the main ingredient in traditional hummus?",
-      "options": [
-        "Black beans",
-        "Chickpeas",
-        "Lentils",
-        "Kidney beans"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What is the primary alcohol in a margarita?",
-      "options": [
-        "Rum",
-        "Vodka",
-        "Tequila",
-        "Whiskey"
-      ],
-      "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which fruit is technically a berry and grows in bunches on vines?",
-      "options": [
-        "Strawberry",
-        "Grape",
-        "Apple",
-        "Peach"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What breakfast meat is often paired with eggs in a classic diner plate?",
-      "options": [
-        "Bacon",
-        "Salami",
-        "Pastrami",
-        "Chorizo only"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which country is the largest producer of coffee (often cited)?",
-      "options": [
-        "Colombia",
-        "Brazil",
-        "Ethiopia",
-        "Vietnam"
-      ],
       "correct": 1,
       "difficulty": "medium"
     },
     {
-      "q": "What is the Japanese drink made from fermented rice?",
+      "q": "Which rice is traditional for Valencian paella?",
       "options": [
-        "Soju",
-        "Sake",
-        "Shochu only",
-        "Mirin as a cocktail"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which pastry is filled and then fried or baked in a crescent shape in many cultures — classic French version?",
-      "options": [
-        "Éclair",
-        "Croissant",
-        "Madeleine",
-        "Profiterole"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What cut of beef is typically used for a New York strip?",
-      "options": [
-        "Short loin",
-        "Brisket",
-        "Chuck",
-        "Shank"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which herb is essential in classic pesto Genovese?",
-      "options": [
-        "Cilantro",
-        "Basil",
-        "Parsley",
-        "Dill"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What does an IPA stand for in craft beer?",
-      "options": [
-        "Indian Pale Ale",
-        "India Pale Ale",
-        "Irish Pilsner Ale",
-        "Imperial Porter Ale"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which French sauce is egg yolks + butter (mother sauce family / hollandaise sibling)?",
-      "options": [
-        "Béchamel",
-        "Hollandaise",
-        "Velouté",
-        "Espagnole"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the Scoville scale used to measure?",
-      "options": [
-        "Saltiness",
-        "Chili heat",
-        "Wine tannins",
-        "Coffee roast"
+        "Arborio",
+        "Bomba (or similar short-grain)",
+        "Basmati",
+        "Jasmine"
       ],
       "correct": 1,
       "difficulty": "hard"
     },
     {
-      "q": "Which region of France is Champagne legally from?",
+      "q": "Dutch-process cocoa differs from natural cocoa mainly because it is:",
       "options": [
-        "Bordeaux",
+        "Smoked",
+        "Alkali-treated (less acidic)",
+        "Fermented longer only",
+        "Fully defatted"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which liqueur flavors a classic Sidecar alongside cognac and lemon?",
+      "options": [
+        "Cointreau / orange curaçao",
+        "Chartreuse",
+        "Amaretto",
+        "Kahlúa"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Kimchi’s sour tang comes primarily from:",
+      "options": [
+        "Acetic pickling only",
+        "Lactic acid fermentation",
+        "Citric acid powder",
+        "Vinegar brine alone"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which spice is the dried stigma of Crocus sativus?",
+      "options": [
+        "Turmeric",
+        "Saffron",
+        "Annatto",
+        "Paprika"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "In wine tasting, “brett” (Brettanomyces) is often described as adding:",
+      "options": [
+        "Butter / diacetyl",
+        "Barnyard / band-aid notes",
+        "Green bell pepper",
+        "Petrol"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which flour protein network traps gas in yeasted bread?",
+      "options": [
+        "Pectin",
+        "Gluten",
+        "Casein",
+        "Collagen"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Espresso’s “crema” is largely:",
+      "options": [
+        "Steamed milk foam",
+        "Emulsified oils and CO2 foam",
+        "Burnt sugar crust",
+        "Steam condensate"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which French AOC region’s sparkling wine may legally be labeled Champagne?",
+      "options": [
+        "Alsace",
         "Champagne",
-        "Burgundy",
-        "Provence"
+        "Loire",
+        "Burgundy"
       ],
       "correct": 1,
-      "difficulty": "hard"
-    },
-    {
-      "q": "What is the main flavoring in a traditional béarnaise sauce beyond hollandaise base?",
-      "options": [
-        "Tarragon",
-        "Rosemary",
-        "Mint",
-        "Thyme only"
-      ],
-      "correct": 0,
-      "difficulty": "hard"
+      "difficulty": "medium"
     }
   ]
 }

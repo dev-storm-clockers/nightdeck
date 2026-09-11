@@ -3,191 +3,246 @@
   "subject": "pop",
   "items": [
     {
-      "q": "Which pop star’s 2014 album is titled “1989”?",
+      "q": "Which Netflix limited series starring Anya Taylor-Joy follows a 1950s chess prodigy?",
       "options": [
-        "Rihanna",
-        "Taylor Swift",
-        "Lady Gaga",
-        "Katy Perry"
+        "The Crown",
+        "The Queen’s Gambit",
+        "Halston",
+        "Inventing Anna"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
-      "q": "What social platform popularized short vertical videos before Meta owned it?",
+      "q": "Drake’s 2016 album “Views” cover was shot from which Toronto landmark?",
       "options": [
-        "Vine",
-        "TikTok",
-        "Snapchat",
-        "BeReal"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which reality show crowns a “Bachelor” or “Bachelorette”?",
-      "options": [
-        "Love Island",
-        "The Bachelor franchise",
-        "Married at First Sight",
-        "Too Hot to Handle"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who is the lead singer of U2?",
-      "options": [
-        "Bono",
-        "Sting",
-        "Chris Martin",
-        "Adam Levine"
+        "CN Tower",
+        "Rogers Centre",
+        "Casa Loma",
+        "Ripley’s Aquarium"
       ],
       "correct": 0,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which comic-book publisher created Spider-Man?",
+      "q": "Who directed the 2019 Palme d’Or and Best Picture winner “Parasite”?",
       "options": [
-        "DC",
-        "Marvel",
-        "Image",
-        "Dark Horse"
+        "Park Chan-wook",
+        "Bong Joon-ho",
+        "Lee Chang-dong",
+        "Kim Jee-woon"
       ],
       "correct": 1,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "What does the “K” stand for in K-pop?",
+      "q": "Which K-pop act’s all-English single “Dynamite” topped the Billboard Hot 100 in 2020?",
       "options": [
-        "Korean",
-        "Kyoto",
-        "Karaoke",
-        "Kingdom"
+        "BLACKPINK",
+        "BTS",
+        "EXO",
+        "TWICE"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "“Serial” Season 1 re-examined which 1999 Maryland murder conviction?",
+      "options": [
+        "Casey Anthony",
+        "Adnan Syed / Hae Min Lee",
+        "West Memphis Three",
+        "Central Park Five"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which studio developed “The Last of Us” (2013)?",
+      "options": [
+        "Rockstar North",
+        "Naughty Dog",
+        "Insomniac Games",
+        "Santa Monica Studio"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Lady Gaga’s breakthrough era centered on which 2008–09 album cycle?",
+      "options": [
+        "Artpop",
+        "The Fame / The Fame Monster",
+        "Chromatica",
+        "Joanne"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which Daily Show alum created HBO’s “Last Week Tonight”?",
+      "options": [
+        "Trevor Noah",
+        "John Oliver",
+        "Jordan Klepper",
+        "Hasan Minhaj"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Virgil Abloh was artistic director of menswear at which house until 2021?",
+      "options": [
+        "Dior Homme",
+        "Louis Vuitton",
+        "Balenciaga",
+        "Givenchy"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "HBO’s “Succession” is widely read as a satire of which media dynasty?",
+      "options": [
+        "Hearst",
+        "Murdoch",
+        "Bloomberg",
+        "Sulzberger"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Which 2015 album opens with “Wesley’s Theory” and “King Kunta”?",
+      "options": [
+        "Forest Hills Drive",
+        "To Pimp a Butterfly",
+        "If You’re Reading This…",
+        "Because the Internet"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "ByteDance, parent of TikTok, is headquartered in which city?",
+      "options": [
+        "Shanghai",
+        "Beijing",
+        "Shenzhen",
+        "Hangzhou"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "American Idol’s first U.S. season winner (2002) was:",
+      "options": [
+        "Clay Aiken",
+        "Kelly Clarkson",
+        "Carrie Underwood",
+        "Ruben Studdard"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who played assassin Villanelle in “Killing Eve”?",
+      "options": [
+        "Phoebe Waller-Bridge",
+        "Jodie Comer",
+        "Sandra Oh",
+        "Thandie Newton"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Nike and Michael Jordan debuted which silhouette in 1985?",
+      "options": [
+        "Air Force 1",
+        "Air Jordan 1",
+        "Dunk High",
+        "Cortez"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Hannah Gadsby’s 2018 Netflix special that upended standup norms was titled:",
+      "options": [
+        "Nanette",
+        "Douglas",
+        "Baby Cobra",
+        "Kid Gorgeous"
       ],
       "correct": 0,
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
-      "q": "Which late-night host took over The Tonight Show in 2014?",
+      "q": "In “The Mandalorian,” Grogu’s species is the same as which Jedi Master from the prequel-era films?",
       "options": [
-        "Jimmy Kimmel",
-        "Stephen Colbert",
-        "Jimmy Fallon",
-        "Seth Meyers"
+        "Mace Windu",
+        "Yoda",
+        "Qui-Gon Jinn",
+        "Ki-Adi-Mundi"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Nike’s Swoosh logo was designed in 1971 by which Portland State student for $35?",
+      "options": [
+        "Carolyn Davidson",
+        "Cathy McFarland",
+        "Susan Kare",
+        "Paula Scher"
+      ],
+      "correct": 0,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Who composed the score for Marvel’s “Black Panther” (2018)?",
+      "options": [
+        "Hans Zimmer",
+        "Ludwig Göransson",
+        "Michael Giacchino",
+        "Ramin Djawadi"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Instagram launched which ephemeral, Snapchat-like format in 2016?",
+      "options": [
+        "Reels",
+        "Stories",
+        "Live Rooms",
+        "Guides"
+      ],
+      "correct": 1,
+      "difficulty": "medium"
+    },
+    {
+      "q": "Frank Ocean’s 2016 visual album released ahead of “Blond(e)” was:",
+      "options": [
+        "channel ORANGE",
+        "Endless",
+        "Nostalgia, Ultra",
+        "Moon River"
+      ],
+      "correct": 1,
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which fashion week city is NOT traditionally counted among the “Big Four”?",
+      "options": [
+        "Paris",
+        "Milan",
+        "Tokyo",
+        "New York"
       ],
       "correct": 2,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which fashion house’s logo is interlocking “C”s?",
-      "options": [
-        "Gucci",
-        "Chanel",
-        "Louis Vuitton",
-        "Prada"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who played the Joker in 2019’s “Joker”?",
-      "options": [
-        "Heath Ledger",
-        "Joaquin Phoenix",
-        "Jared Leto",
-        "Jack Nicholson"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which app’s original filter dog ears helped launch its fame?",
-      "options": [
-        "Instagram",
-        "Snapchat",
-        "VSCO",
-        "Tumblr"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which singer’s fans are called “Swifties”?",
-      "options": [
-        "Billie Eilish",
-        "Taylor Swift",
-        "Ariana Grande",
-        "Dua Lipa"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "What streaming service dropped “The Crown”?",
-      "options": [
-        "Netflix",
-        "Hulu",
-        "Apple TV+",
-        "Prime Video"
-      ],
-      "correct": 0,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which reality competition features Gordon Ramsay yelling in a kitchen?",
-      "options": [
-        "Top Chef",
-        "Hell’s Kitchen",
-        "MasterChef Junior only",
-        "Chopped"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Who created the “Star Wars” saga?",
-      "options": [
-        "Steven Spielberg",
-        "George Lucas",
-        "James Cameron",
-        "Ridley Scott"
-      ],
-      "correct": 1,
-      "difficulty": "easy"
-    },
-    {
-      "q": "Which artist released the album “Lemonade” in 2016?",
-      "options": [
-        "Beyoncé",
-        "Rihanna",
-        "Solange",
-        "Alicia Keys"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What is the name of Harry Styles’ debut solo album?",
-      "options": [
-        "Fine Line",
-        "Harry Styles",
-        "Harry’s House",
-        "Sign of the Times"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which Instagram-born brand made “fanny packs” cool again in the 2010s?",
-      "options": [
-        "Supreme",
-        "Lululemon",
-        "Aerie",
-        "Outdoor Voices"
-      ],
-      "correct": 0,
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "q": "Who hosted “The Daily Show” immediately before Trevor Noah?",
@@ -201,62 +256,7 @@
       "difficulty": "medium"
     },
     {
-      "q": "Which video game franchise features the character Master Chief?",
-      "options": [
-        "Gears of War",
-        "Halo",
-        "Doom",
-        "Destiny"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "What year did Spotify officially launch in the United States?",
-      "options": [
-        "2008",
-        "2011",
-        "2013",
-        "2015"
-      ],
-      "correct": 1,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Which fashion week city is NOT one of the “Big Four”?",
-      "options": [
-        "Paris",
-        "Milan",
-        "Tokyo",
-        "New York"
-      ],
-      "correct": 2,
-      "difficulty": "medium"
-    },
-    {
-      "q": "Who directed the 2018 film “Black Panther”?",
-      "options": [
-        "Ryan Coogler",
-        "Taika Waititi",
-        "Jordan Peele",
-        "Ava DuVernay"
-      ],
-      "correct": 0,
-      "difficulty": "hard"
-    },
-    {
-      "q": "Which band released the 2018 hit “Youngblood”?",
-      "options": [
-        "5 Seconds of Summer",
-        "One Direction",
-        "The Vamps",
-        "Why Don’t We"
-      ],
-      "correct": 0,
-      "difficulty": "hard"
-    },
-    {
-      "q": "What was the original name of Facebook when it launched at Harvard?",
+      "q": "What was Facebook’s original Harvard-era product name?",
       "options": [
         "TheFacebook",
         "Facemash Pro",
